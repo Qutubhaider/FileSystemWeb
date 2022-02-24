@@ -1,0 +1,272 @@
+﻿@using FileSystemUtility.Utilities;
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title | File System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="">
+
+    <!-- jvectormap -->
+    <link href="~/assets/libs/jqvmap/jqvmap.min.css" rel="stylesheet" />
+
+    <!-- plugin css -->
+    <link href="~/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="~/assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Css -->
+    <link href="~/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        ._loading {
+            position: fixed; /* Sit on top of the page content */
+            display: none; /* Hidden by default */
+            width: 100%; /* Full width (cover the whole page) */
+            height: 100%; /* Full height (cover the whole page) */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+            z-index: 100; /* Specify a stack order in case you're using a different order for other elements */
+            cursor: progress; /* Add a pointer on hover */
+            opacity: 0.7;
+        }
+
+        ._loading_img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+            z-index: 200;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body data-sidebar="dark">
+
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box text-center">
+                        <!--<a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm p-3">
+                                <img src="https://www.jharkhand.gov.in/images/jhlogo55.PNG" alt="logo-sm-dark">
+                            </span>
+                            <span class="logo-lg p-3">
+                                <img src="https://www.jharkhand.gov.in/images/jhlogo55.PNG" alt="logo-dark">
+                            </span>
+                        </a>
+
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm p-3">
+                                <img src="https://www.jharkhand.gov.in/images/jhlogo55.PNG" alt="logo-sm-light">
+                            </span>
+                            <span class="logo-lg p-3">
+                                <img src="https://www.jharkhand.gov.in/images/jhlogo55.PNG" alt="logo-light">
+                            </span>
+                        </a>-->
+                    </div>
+
+                    <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
+                        <i class="ri-menu-2-line align-middle"></i>
+                    </button>
+
+                </div>
+
+                <div class="d-flex">
+
+                    <div class="dropdown d-none d-lg-inline-block ms-1">
+                        <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                            <i class="ri-fullscreen-line"></i>
+                        </button>
+                    </div>
+
+
+                    <div class="dropdown d-inline-block user-dropdown">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="mdi mdi-account-circle-outline"></i>
+                            <span class="d-none d-xl-inline-block ms-1">Admin</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- item-->
+                            <a class="dropdown-item" href="#"><i class="ri-user-line align-middle me-1"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle me-1"></i> My Wallet</a>
+                            <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end mt-1">11</span><i class="ri-settings-2-line align-middle me-1"></i> Settings</a>
+                            <a class="dropdown-item" href="#"><i class="ri-lock-unlock-line align-middle me-1"></i> Lock screen</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#"><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+
+            <div data-simplebar class="h-100">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Menu</li>
+
+                        <li>
+                            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="waves-effect">
+                                <i class="mdi mdi-home-variant-outline"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-map-pin-line"></i>
+                                <span>Area Setting</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a asp-area="Admin" asp-controller="State" asp-action="Index">State</a></li>
+                                <li><a asp-area="Admin" asp-controller="Division" asp-action="Index">Division</a></li>
+                                <li><a asp-area="Admin" asp-controller="District" asp-action="Index">District</a></li>
+                                <li><a asp-area="Admin" asp-controller="Block" asp-action="Index">Block</a></li>
+                                <li><a asp-area="Admin" asp-controller="VillageWard" asp-action="Index">Village/Ward</a></li>
+                                <li><a asp-area="Admin" asp-controller="GP" asp-action="Index">GP/Ward No</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a asp-area="Admin" asp-controller="Department" asp-action="Index" class="waves-effect">
+                                <i class="ri-share-line"></i>
+                                <span>Department</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="Admin" asp-controller="Sector" asp-action="Index" class="waves-effect">
+                                <i class="ri-eraser-fill"></i>
+                                <span>Sector</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="Admin" asp-controller="WorkType" asp-action="Index" class="waves-effect">
+                                <i class="mdi mdi-format-page-break"></i>
+                                <span>Work Type</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="Admin" asp-controller="Project" asp-action="Index" class="waves-effect">
+                                <i class="mdi mdi-briefcase-variant-outline"></i>
+                                <span>Project</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+                <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © File System.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Crafted with <i class="mdi mdi-heart text-danger"></i> by Monochrome Lab
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- JAVASCRIPT -->
+    <script src="~/assets/libs/jquery/jquery.min.js"></script>
+    <script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/assets/libs/node-waves/waves.min.js"></script>
+
+
+
+    <!-- jquery.vectormap map -->
+    <script src="~/assets/libs/jqvmap/jquery.vmap.min.js"></script>
+    <!--<script src="~/assets/libs/jqvmap/maps/jquery.vmap.usa.js"></script>-->
+    <!-- plugins -->
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+    <script src="~/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
+    <script src="~/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="~/assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+    <script src="~/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" integrity="sha256-He3QEBKoL/nMXlVsoM7S2C2kjFQqS5L+mgA+F8LpG+U=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha256-R91pD48xW+oHbpJYGn5xR0Q7tMhH4xOrWn1QqMRINtA=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha256-yNbKY1y6h2rbVcQtf0b8lq4a+xpktyFc3pSYoGAY1qQ=" crossorigin="anonymous"></script>
+
+    <!-- init js -->
+    <script src="~/assets/js/pages/form-advanced.init.js"></script>
+
+    <script src="~/assets/js/app.js"></script>
+    @RenderSection("Scripts", required: false)
+    @if (TempData["Message"] != null)
+    {
+        @if (Convert.ToInt32(TempData["ResultCode"]) == (int)CommonFunctions.ActionResponse.Error)
+        {
+            <script type="text/javascript">
+                toastr.error("@(TempData["Message"] as string)");
+            </script>
+        }
+        else if (Convert.ToInt32(TempData["ResultCode"]) == (int)CommonFunctions.ActionResponse.Warning)
+        {
+            <script type="text/javascript">
+                toastr.warning("@(TempData["Message"] as string)");
+            </script>
+        }
+        else
+        {
+            <script type="text/javascript">
+                toastr.success("@(TempData["Message"] as string)");
+            </script>
+        }
+    }
+</body>
+</html>
