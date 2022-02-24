@@ -76,5 +76,10 @@
     <Build Include="dbo\table\tblStoreFileDetails.sql" />
     <Build Include="dbo\table\tblIssueFileHistory.sql" />
     <Build Include="dbo\Fucntions\getDateTimeByTimezone.sql" />
+    <Build Include="dbo\Stored Procedures\saveZone.sql" />
+    <Build Include="dbo\Stored Procedures\saveDivision.sql" />
+    <Build Include="dbo\Stored Procedures\saveDepartment.sql" />
+    <Build Include="dbo\Stored Procedures\saveDesignation.sql" />
+    <Build Include="dbo\Stored Procedures\saveUserProfile.sql" />
   </ItemGroup>
 </Project>
