@@ -9,5 +9,9 @@ namespace DmfWeb.Areas.Admin.Controllers
         {
             return View("~/Areas/Admin/Views/Divistion/DivistionList.cshtml");
         }
+        public IActionResult Create()
+        {
+            return View("~/Areas/Admin/Views/Divistion/AddDivision.cshtml");
+        }
     }
 }

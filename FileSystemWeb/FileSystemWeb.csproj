@@ -11,6 +11,9 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\Views\Zone\" />
+    <Folder Include="Areas\Admin\Views\Designation\" />
+    <Folder Include="Areas\Admin\Views\Desk\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,4 +21,9 @@
     <ProjectReference Include="..\FileSystemUtility\FileSystemUtility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Areas\Admin\Views\Zone\" />
+    <None Remove="Areas\Admin\Views\Designation\" />
+    <None Remove="Areas\Admin\Views\Desk\" />
+  </ItemGroup>
 </Project>
