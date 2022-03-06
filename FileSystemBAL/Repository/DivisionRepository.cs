@@ -39,7 +39,7 @@ namespace FileSystemBAL.Repository
         public void SaveDivision(Division.Models.Division foDivision, int fiUserId, out int fiSuccess)
         {
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveDivision @inDivistionId={foDivision.inDivisionId},@inStateId={foDivision.inStateId},@stDivistionName={foDivision.stDivisionName},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveDivision @inDivistionId={foDivision.inDivisionId},@inZoneId={foDivision.inZoneId},@stDivisionName={foDivision.stDivisionName},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
     }

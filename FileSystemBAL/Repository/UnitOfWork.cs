@@ -15,9 +15,11 @@ namespace FileSystemBAL.Repository
         {
             moDatabaseContext = foDatabaseContext;
             DivisionRepository = new DivisionRepository(moDatabaseContext);
+            ZoneRepository = new ZoneRepository(moDatabaseContext);
         }
 
         public IDivisionRepository DivisionRepository {get;private set;}
+        public IZoneRepository ZoneRepository{get;private set;}
 
         public void Dispose()
         {

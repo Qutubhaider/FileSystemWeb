@@ -81,5 +81,11 @@
     <Build Include="dbo\Stored Procedures\saveDepartment.sql" />
     <Build Include="dbo\Stored Procedures\saveDesignation.sql" />
     <Build Include="dbo\Stored Procedures\saveUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\getZoneDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getZoneDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\getZoneList.sql" />
+    <Build Include="dbo\Stored Procedures\getDivisionDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getDivisionDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\getDivisionList.sql" />
   </ItemGroup>
 </Project>

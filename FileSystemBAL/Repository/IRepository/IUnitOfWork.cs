@@ -10,6 +10,7 @@ namespace FileSystemBAL.Repository.IRepository
     public interface IUnitOfWork:IDisposable
     {
         IDivisionRepository DivisionRepository { get; }
+        IZoneRepository ZoneRepository { get; }
         void Save();
     }
 }
