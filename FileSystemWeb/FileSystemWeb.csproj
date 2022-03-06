@@ -6,13 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Admin\Views\Designation\**" />
     <Compile Remove="Areas\Admin\Views\Desk\**" />
-    <Content Remove="Areas\Admin\Views\Designation\**" />
     <Content Remove="Areas\Admin\Views\Desk\**" />
-    <EmbeddedResource Remove="Areas\Admin\Views\Designation\**" />
     <EmbeddedResource Remove="Areas\Admin\Views\Desk\**" />
-    <None Remove="Areas\Admin\Views\Designation\**" />
     <None Remove="Areas\Admin\Views\Desk\**" />
   </ItemGroup>
 
