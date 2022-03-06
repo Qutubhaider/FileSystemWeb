@@ -1,4 +1,4 @@
-﻿@model FileSystemBAL.Zone.Models.Zone
+﻿@model FileSystemBAL.Department.Models.Department
 @{
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Add Department";
@@ -24,7 +24,7 @@
                         <div class="mb-3">
 
                             <label class="form-label">Department Name</label>
-                            <input type="text" class="form-control" placeholder="Department Name">
+                            <input type="text" asp-for="stDepartmentName" class="form-control" placeholder="Department Name">
                         </div>
                         <div>
                             <div>
@@ -36,6 +36,10 @@
                                 </a>
                             </div>
                         </div>
+                        <input type="hidden" asp-for="inDepartmentId" />
+                        <input type="hidden" asp-for="unDepartmentId" />
+                        <input type="hidden" asp-for="inZoneId" value="0" />
+                        <input type="hidden" asp-for="inDivisionId" value="0" />
                     </form>
                 </div>
             </div>

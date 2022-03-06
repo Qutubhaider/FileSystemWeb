@@ -87,5 +87,8 @@
     <Build Include="dbo\Stored Procedures\getDivisionDetail.sql" />
     <Build Include="dbo\Stored Procedures\getDivisionDropDown.sql" />
     <Build Include="dbo\Stored Procedures\getDivisionList.sql" />
+    <Build Include="dbo\Stored Procedures\getDepartmentDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getDepartmentDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\getDepartmentList.sql" />
   </ItemGroup>
 </Project>

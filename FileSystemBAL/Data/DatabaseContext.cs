@@ -21,6 +21,8 @@ namespace FileSystemBAL.Data
         public DbSet<ZoneListResult> ZoneListResult { get; set; }
         public DbSet<Division.Models.Division> Division { get; set; }
         public DbSet<DivisionListResult> DivisionListResult { get; set; }
+        public DbSet<Department.Models.Department> Department { get; set; }
+        public DbSet<Department.Models.DepartmentListResult> DepartmentListResult { get; set; }
         public DbSet<Select2> Select2 { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
@@ -29,6 +31,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<Zone.Models.Zone>().HasNoKey();
             foModelbuilder.Entity<Division.Models.Division>().HasNoKey();
             foModelbuilder.Entity<DivisionListResult>().HasNoKey();
+            foModelbuilder.Entity<Department.Models.DepartmentListResult> ().HasNoKey();
+            foModelbuilder.Entity<Department.Models.Department> ().HasNoKey();
             foModelbuilder.Entity<Select2>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
