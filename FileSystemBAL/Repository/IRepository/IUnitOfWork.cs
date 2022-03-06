@@ -12,6 +12,7 @@ namespace FileSystemBAL.Repository.IRepository
         IDivisionRepository DivisionRepository { get; }
         IZoneRepository ZoneRepository { get; }
         IDepartmentRepository DepartmentRepository { get; }
+        IDesignationRepository DesignationRepository { get; }
         void Save();
     }
 }

@@ -1,4 +1,4 @@
-﻿@model FileSystemBAL.Zone.Models.Zone
+﻿@model FileSystemBAL.Designation.Models.Designation
 @{
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Add Designation";
@@ -20,11 +20,12 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    <form asp-action="SaveDepartment" asp-controller="Designation" asp-area="Admin" class="custom-validation" novalidate="">
+                    <form asp-action="SaveDesignation" asp-controller="Designation" asp-area="Admin" class="custom-validation" novalidate="">
                         <div class="mb-3">
 
                             <label class="form-label">Designation Name</label>
-                            <input type="text" class="form-control" placeholder="Designation Name">
+                            <input asp-for="stDesignationName" type="text" class="form-control" placeholder="Designation Name">
+                            <span asp-validation-for="stDesignationName" class="text-danger"></span>
                         </div>
                         <div>
                             <div>
@@ -36,6 +37,11 @@
                                 </a>
                             </div>
                         </div>
+                        <input type="hidden" asp-for="inDepartmentId" value="0" />
+                        <input type="hidden" asp-for="inDivisionId" value="0" />
+                        <input type="hidden" asp-for="inZoneId" value="0" />
+                        <input type="hidden" asp-for="inDesignationId" />
+                        <input type="hidden" asp-for="unDesignationId" />
                     </form>
                 </div>
             </div>
