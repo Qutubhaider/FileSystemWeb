@@ -1,4 +1,4 @@
-﻿CREATE TABLE tblStoreFileDetails
+﻿CREATE TABLE [dbo].[tblStoreFileDetails]
 (
     inStoreFileDetailsId INT IDENTITY(1,1) PRIMARY KEY,
     unStoreFileDetailsId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,

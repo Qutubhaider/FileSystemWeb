@@ -1,4 +1,4 @@
-﻿CREATE TABLE tblAlmirah
+﻿CREATE TABLE [dbo].[tblAlmirah]
 (
     inAlmirahId INT IDENTITY(1,1) PRIMARY KEY,
     unAlmirahId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,

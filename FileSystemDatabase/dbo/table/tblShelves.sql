@@ -1,4 +1,4 @@
-﻿CREATE TABLE tblShelves
+﻿CREATE TABLE [dbo].[tblShelves]
 (
     inShelvesId INT IDENTITY(1,1) PRIMARY KEY,
     unShelvesId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,

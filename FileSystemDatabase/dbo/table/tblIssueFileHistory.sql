@@ -1,4 +1,4 @@
-﻿CREATE TABLE tblIssueFileHistory
+﻿CREATE TABLE [dbo].[tblIssueFileHistory]
 (
     inlssueFileId INT IDENTITY(1,1) PRIMARY KEY,
     unlssueFileId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,

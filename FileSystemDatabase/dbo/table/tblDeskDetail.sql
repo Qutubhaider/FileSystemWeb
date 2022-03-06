@@ -1,4 +1,4 @@
-﻿CREATE TABLE tblDeskDetail
+﻿CREATE TABLE [dbo].[tblDeskDetail]
 (
     inDeskid INT IDENTITY(1,1) PRIMARY KEY,
     unDeslId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,

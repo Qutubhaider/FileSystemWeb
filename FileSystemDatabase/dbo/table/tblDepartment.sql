@@ -1,4 +1,4 @@
-﻿CREATE TABLE tblDepartment
+﻿CREATE TABLE [dbo].[tblDepartment]
 (
     inDepartmentId INT IDENTITY(1,1) PRIMARY KEY,
     unDepartmentId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,

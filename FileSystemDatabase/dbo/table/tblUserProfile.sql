@@ -1,4 +1,4 @@
-﻿CREATE TABLE tblUserProfile
+﻿CREATE TABLE [dbo].[tblUserProfile]
 (
     inUserProfileId INT IDENTITY(1,1) PRIMARY KEY,
     unUserProfileId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,
