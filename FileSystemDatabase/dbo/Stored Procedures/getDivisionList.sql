@@ -19,7 +19,7 @@ BEGIN
 SET NOCOUNT ON;   
 	SET @stDivistionName =REPLACE(@stDivistionName,'''','''''') 
 	DECLARE @stSQL AS NVARCHAR(MAX) 
-	DECLARE @stSort AS NVARCHAR(MAX) = 'stDivistionName' 
+	DECLARE @stSort AS NVARCHAR(MAX) = 'stDivisionName' 
 	DECLARE @inStart INT, @inEnd INT 
  
 	SET @stSortOrder = ISNULL(@stSortOrder, 'DESC') 
@@ -28,7 +28,7 @@ SET NOCOUNT ON;
  
 	IF @inSortColumn = 1 
 	BEGIN 
-		SET @stSort = 'stDivistionName'; 
+		SET @stSort = 'stDivisionName'; 
 	END 
 	ELSE IF @inSortColumn = 2 
 	BEGIN 
@@ -36,19 +36,19 @@ SET NOCOUNT ON;
 	END 
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		inDivistionId,unDivisionId,stDivistionName,stStateName 
+		inDivisionId,unDivisionId,stDivisionName,stZoneName 
 		FROM ( 
             SELECT  
-                    D.inDivistionId, 
+                    D.inDivisionId, 
                     D.unDivisionId, 
-                    D.stDivistionName, 
-                    Z.inZoneId
+                    D.stDivisionName, 
+                    Z.stZoneName
             FROM tblDivision D WITH(NOLOCK) 
             JOIN tblZone Z ON Z.inZoneId=D.inZoneId
             WHERE 1=1' 
  
 	IF(ISNULL(@stDivistionName,'')<>'') 
-		SET @stSQL = @stSQL + '  AND (D.stDivistionName LIKE ''%' + CONVERT(NVARCHAR(211), @stDivistionName)  + '%'')' 
+		SET @stSQL = @stSQL + '  AND (D.stDivisionName LIKE ''%' + CONVERT(NVARCHAR(211), @stDivistionName)  + '%'')' 
  
 	IF(ISNULL(@inStatus,0)>0)               
 		SET @stSQL = @stSQL +' AND D.inStatus= '+ CONVERT(NVARCHAR(11), @inStatus) +'' 

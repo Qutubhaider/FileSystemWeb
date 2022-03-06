@@ -11,7 +11,7 @@ namespace FileSystemBAL.Repository.IRepository
         void SaveDivision(Division.Models.Division foDivision, int fiUserId, out int fiSuccess);
         Division.Models.Division GetDivision(Guid unDivisionId);
         void DeleteDivision(Guid unDivisionId, out int fiSuccess);
-        List<Division.Models.Division> GetAllDivision(string stDivisionTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<Division.Models.DivisionListResult> GetAllDivision(string stDivisionTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
 
     }
 }
