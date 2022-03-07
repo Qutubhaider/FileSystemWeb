@@ -25,6 +25,7 @@ namespace FileSystemBAL.Data
         public DbSet<Department.Models.DepartmentListResult> DepartmentListResult { get; set; }
         public DbSet<Designation.Models.Designation> Designation { get; set; }
         public DbSet<Designation.Models.DesignationListResult> DesignationListResult { get; set; }
+        public DbSet<User.Models.UserEmailResult> UserEmailResult { get; set; }
         public DbSet<Select2> Select2 { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
@@ -38,6 +39,7 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<Designation.Models.Designation>().HasNoKey();
             foModelbuilder.Entity<Designation.Models.DesignationListResult>().HasNoKey();
             foModelbuilder.Entity<Select2>().HasNoKey();
+            foModelbuilder.Entity<User.Models.UserEmailResult>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

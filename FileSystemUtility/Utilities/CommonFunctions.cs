@@ -50,7 +50,11 @@ namespace FileSystemUtility.Utilities
             [StringValue("Cancelled")]
             Cancelled = 3
         }
-
+        public enum UserStatus
+        {
+            Active = 1,
+            InActive = 0
+        }
         #region retrive enum string
         public static class StringEnum
         {

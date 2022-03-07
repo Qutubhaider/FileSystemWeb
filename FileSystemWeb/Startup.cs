@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using FileSystemBAL.Data;
 using FileSystemBAL.Repository.IRepository;
 using FileSystemBAL.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace FileSystemWeb
 {
@@ -27,6 +28,12 @@ namespace FileSystemWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Home/Login";
+                    options.AccessDeniedPath = "/Home/Login";
+                });
             services.AddCors();
             services.AddControllersWithViews();
             services.AddMvc().AddRazorRuntimeCompilation();

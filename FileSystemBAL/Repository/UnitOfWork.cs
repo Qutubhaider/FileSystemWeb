@@ -18,12 +18,14 @@ namespace FileSystemBAL.Repository
             ZoneRepository = new ZoneRepository(moDatabaseContext);
             DepartmentRepository = new DepartmentRepository(moDatabaseContext);
             DesignationRepository = new DesignationRepository(moDatabaseContext);
+            UserRepository = new UserRepository(moDatabaseContext);
         }
 
         public IDivisionRepository DivisionRepository {get;private set;}
         public IZoneRepository ZoneRepository{get;private set;}
         public IDepartmentRepository DepartmentRepository{get;private set;}
         public IDesignationRepository DesignationRepository{get;private set;}
+        public IUserRepository UserRepository{get;private set;}
 
 
         public void Dispose()

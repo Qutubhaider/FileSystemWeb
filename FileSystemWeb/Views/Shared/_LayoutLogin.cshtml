@@ -19,42 +19,43 @@
 
     </head>
 
-    <body class="bg-pattern">
-        <div class="bg-overlay"></div>
-        <div class="account-pages my-5 pt-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-4 col-lg-6 col-md-8">
-                        <div class="card">
-                            <div class="card-body p-4">
-                                <div class="">
-                                    <div class="text-center">
-                                        <a href="index.html" class="">
-                                            <img src="https://www.jharkhand.gov.in/images/jhlogo55.PNG" alt="" class="auth-logo logo-dark mx-auto">
-                                            <img src="https://www.jharkhand.gov.in/images/jhlogo55.PNG" alt="" class="auth-logo logo-light mx-auto">
-                                        </a>
-                                    </div>
-                                    <!-- end row -->
-                                      @RenderBody()
+<body class="bg-pattern">
+    <div class="bg-overlay"></div>
+    <div class="account-pages my-5 pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-lg-6 col-md-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="">
+                                <div class="text-center">
+                                    <a href="index.html" class="">
+                                        <img src="https://www.jharkhand.gov.in/images/jhlogo55.PNG" alt="" class="auth-logo logo-dark mx-auto">
+                                        <img src="https://www.jharkhand.gov.in/images/jhlogo55.PNG" alt="" class="auth-logo logo-light mx-auto">
+                                    </a>
                                 </div>
+                                <!-- end row -->
+                                @RenderBody()
                             </div>
                         </div>
-                        <div class="mt-5 text-center">
-                            <p class="text-white-50">© <script>document.write(new Date().getFullYear())</script> DMF. Crafted with <i class="mdi mdi-heart text-danger"></i> by Monochrome Lab</p>
-                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <p class="text-white-50">©
+                        <script>document.write(new Date().getFullYear())</script> DMF. Crafted with <i class="mdi mdi-heart text-danger"></i> by Monochrome Lab</p>
                     </div>
                 </div>
-                <!-- end row -->
             </div>
+            <!-- end row -->
         </div>
-        <!-- end Account pages -->
-
-        <!-- JAVASCRIPT -->
-        <script src="~/assets/libs/jquery/jquery.min.js"></script>
-        <script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="~/assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="~/assets/libs/node-waves/waves.min.js"></script>
-        <script src="~/assets/js/app.js"></script>
-    </body>
+    </div>
+    <!-- end Account pages -->
+    <!-- JAVASCRIPT -->
+    <script src="~/assets/libs/jquery/jquery.min.js"></script>
+    <script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/assets/libs/node-waves/waves.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
 </html>
