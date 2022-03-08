@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Admin\Views\Desk\**" />
-    <Content Remove="Areas\Admin\Views\Desk\**" />
-    <EmbeddedResource Remove="Areas\Admin\Views\Desk\**" />
-    <None Remove="Areas\Admin\Views\Desk\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
   </ItemGroup>
 
