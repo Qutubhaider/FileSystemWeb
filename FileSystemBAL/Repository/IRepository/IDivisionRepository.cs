@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileSystemUtility.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace FileSystemBAL.Repository.IRepository
         Division.Models.Division GetDivision(Guid unDivisionId);
         void DeleteDivision(Guid unDivisionId, out int fiSuccess);
         List<Division.Models.DivisionListResult> GetAllDivision(string stDivisionTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<Select2> GetDivisionDropDown(int fiZoneId);
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FileSystemBAL.Desk.Models;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,10 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             {
                 loDesk = moUnitOfWork.DeskRepository.GetDesk(id);
             }
-            //loDivision.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
+            loDesk.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
+            //loDesk.DivisionList = moUnitOfWork.DivisionRepository.GetDivisionDropDown();
+            loDesk.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
+            loDesk.DesignationList = moUnitOfWork.DesignationRepository.GetDesignationDropDown();
             //return View("~/Areas/Admin/Views/Divistion/DivisionDetail.cshtml", loDivision);
             return View("~/Areas/Admin/Views/Desk/DeskDetail.cshtml", loDesk);
         }
@@ -122,6 +126,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             {
                 return RedirectToAction("Index", "Error");
             }
+
+        }
+        public IActionResult GetDivisionDropDown(int fiZoneId)
+        {
+            List<Select2> DivisionDropDown = moUnitOfWork.DivisionRepository.GetDivisionDropDown(fiZoneId);
+            return Json(new { data = DivisionDropDown });
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileSystemUtility.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace FileSystemBAL.Repository.IRepository
         Designation.Models.Designation GetDesignation(Guid fuDesignationId);
         void DeleteDepartment(Guid fuDesignationId, out int fiSuccess);
         List<Designation.Models.DesignationListResult> GetDesignationList(string stDesignationName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<Select2> GetDesignationDropDown();
     }
 }

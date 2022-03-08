@@ -1,6 +1,7 @@
 ﻿using FileSystemBAL.Data;
 using FileSystemBAL.Department.Models;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -30,6 +31,11 @@ namespace FileSystemBAL.Repository
         public Department.Models.Department GetDepartment(Guid fuDepartmentId)
         {
             return moDatabaseContext.Set<Department.Models.Department>().FromSqlInterpolated($"EXEC getDepartmentDetail @unDepartmentId={fuDepartmentId}").AsEnumerable().FirstOrDefault();
+        }
+
+        public List<Select2> GetDepartmentDropDown()
+        {
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getDepartmentDropDown").ToList();
         }
 
         public List<DepartmentListResult> GetDepartmentList(string fsDepartmentName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)

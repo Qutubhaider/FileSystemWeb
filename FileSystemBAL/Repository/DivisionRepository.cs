@@ -1,5 +1,6 @@
 ﻿using FileSystemBAL.Data;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,6 +19,10 @@ namespace FileSystemBAL.Repository
         public DivisionRepository(DatabaseContext foDatabaseContext)
         {
             moDatabaseContext = foDatabaseContext;
+        }
+        public List<Select2> GetDivisionDropDown(int fiZoneId)
+        {
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getDivisionDropDown @inZoneId={fiZoneId}").ToList();
         }
         public void DeleteDivision(Guid fuDivisionId, out int fiSuccess)
         {

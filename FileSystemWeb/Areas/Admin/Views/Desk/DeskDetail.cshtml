@@ -1,4 +1,4 @@
-﻿@model FileSystemBAL.Division.Models.Division;
+﻿@model FileSystemBAL.Desk.Models.Desk;
 @{
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Desk Detail";
@@ -62,4 +62,13 @@
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial.cshtml" />
+    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
+            $(document).ready(function () {
+                OnZoneChange(true);
+                
+        });
+    </script>
+    <script src="~/Scripts/VillageWard/VillageWardDetail.js" asp-append-version="true"></script>
 }

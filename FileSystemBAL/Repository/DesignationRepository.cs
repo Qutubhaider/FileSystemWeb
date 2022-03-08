@@ -1,6 +1,7 @@
 ﻿using FileSystemBAL.Data;
 using FileSystemBAL.Designation.Models;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -43,6 +44,11 @@ namespace FileSystemBAL.Repository
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
             moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveDesignation @inDesignationId={foDesignation.inDesignationId},@stDesignationName={foDesignation.stDesignationName},@inZoneId={foDesignation.inZoneId},@inDivisionId={foDesignation.inDivisionId},@inDepartmentId={foDesignation.inDepartmentId},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
+        }
+
+        public List<Select2> GetDesignationDropDown()
+        {
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getDesignationDropDown").ToList();
         }
     }
 }
