@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FileSystemBAL.Desk.Models
 {
-    public class DeskListResult
+    public class DeskListResult  
     {
         public int inRecordCount     {get;set;}
         public int inRownumber       {get;set;}

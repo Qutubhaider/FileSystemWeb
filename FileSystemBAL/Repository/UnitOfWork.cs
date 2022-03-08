@@ -19,6 +19,7 @@ namespace FileSystemBAL.Repository
             DepartmentRepository = new DepartmentRepository(moDatabaseContext);
             DesignationRepository = new DesignationRepository(moDatabaseContext);
             UserRepository = new UserRepository(moDatabaseContext);
+            DeskRepository = new DeskRepository(moDatabaseContext);
         }
 
         public IDivisionRepository DivisionRepository {get;private set;}
@@ -26,6 +27,7 @@ namespace FileSystemBAL.Repository
         public IDepartmentRepository DepartmentRepository{get;private set;}
         public IDesignationRepository DesignationRepository{get;private set;}
         public IUserRepository UserRepository{get;private set;}
+        public IDeskRepository DeskRepository{get;private set;}
 
 
         public void Dispose()
