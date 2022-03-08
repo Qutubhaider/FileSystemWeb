@@ -94,5 +94,9 @@
     <Build Include="dbo\Stored Procedures\getDesignationDetail.sql" />
     <Build Include="dbo\Stored Procedures\getDesignationDropDown.sql" />
     <Build Include="dbo\Stored Procedures\getUserByEmail.sql" />
+    <Build Include="dbo\Stored Procedures\saveDeskDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getDeskList.sql" />
+    <Build Include="dbo\Stored Procedures\getDeskDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getDeskDropDown.sql" />
   </ItemGroup>
 </Project>

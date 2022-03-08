@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[tblDeskDetail]
 (
     inDeskid INT IDENTITY(1,1) PRIMARY KEY,
-    unDeslId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,
+    unDeskId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,
     inZoneId INT,
     inDivisionId INT,
     inDepartmentId INT,
