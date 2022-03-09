@@ -23,29 +23,35 @@
                     <form class="custom-validation" asp-action="saveDesk" asp-controller="Desk" asp-area="Admin">
                         <div class="mb-3">
                             <label class="form-label">Zone Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddZone" asp-for="inZoneId" onchange="OnZoneChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">
                                 <option value="">Select Zone Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDivision" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Designation Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDesignation" asp-for="inDesignationId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DesignationList,"id","value"))">
                                 <option value="">Select Designation Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Department Name</label>
+                            <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
+                                <option value="">Select Department Name</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Desk Name</label>
-                            <input type="text" class="form-control" placeholder="Desk Name">
+                            <input asp-for="stDeskName" type="text" class="form-control" placeholder="Desk Name">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddStatus" asp-for="inStatus" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Statud</option>
                                 <option value="1">Active</option>
                                 <option value="2">Inactive</option>
@@ -61,6 +67,13 @@
                                 </button>
                             </div>
                         </div>
+                        <input type="hidden" asp-for="inDepartmentId" />
+                        <input type="hidden" asp-for="inDesignationId" />
+                        <input type="hidden" asp-for="inDeskId" />
+                        <input type="hidden" asp-for="inDivisionId" />
+                        <input type="hidden" asp-for="inStatus" />
+                        <input type="hidden" asp-for="inZoneId" />
+                        <input type="hidden" asp-for="unDeskId" />
                     </form>
 
                 </div>
@@ -78,5 +91,5 @@
                 
         });
     </script>
-    <script src="~/Scripts/VillageWard/VillageWardDetail.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Common//Dropdown.js" asp-append-version="true"></script>
 }

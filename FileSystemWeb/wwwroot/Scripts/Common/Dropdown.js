@@ -1,12 +1,12 @@
 ﻿function OnZoneChange(flgIsEdit = false) {
     var loData = new Object();
     if (flgIsEdit) {
-        var liStateId = $('#inZoneID').val();
+        var liZoneId = $('#inZoneId').val();
     }
     else {
-        var liStateId = $('#ddZone').val();
+        var liZoneId = $('#ddZone').val();
     }
-    loData.fiStateId = liStateId;
+    loData.fiZoneId = liZoneId;
 
     if ($("#ddDivision").length > 0) {
         $("#ddDivision").empty();

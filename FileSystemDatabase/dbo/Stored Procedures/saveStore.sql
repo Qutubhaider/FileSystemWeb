@@ -5,15 +5,13 @@
 /*  
 Ref# Modified By   Modified date   Description  
 */  
-CREATE PROC [dbo].[saveDeskDetail]  
+CREATE PROC [dbo].[saveStore]  
 (  
-	 @inDeskId INT=NULL,  
-	 @stDeskName nvarchar(200),
+	 @inStoreId INT=NULL,  
+	 @stStoreName nvarchar(200),
 	 @inZoneId INT,
 	 @inDivisionId INT,
 	 @inDepartmentId INT,
-	 @inDesignationId INT,
-	 @inStatus INT,
 	 @inCreatedBy INT,  
 	 @inSuccess INT OUT
 )  
@@ -24,24 +22,22 @@ SET NOCOUNT ON;
  SET @inSuccess=0 
 	BEGIN TRAN  
 	
-		 IF(ISNULL(@inDeskId,0)=0)  
+		 IF(ISNULL(@inStoreId,0)=0)  
 		 BEGIN 			
-				INSERT INTO tblDeskDetail(stDeskName,inZoneId,inDivisionId,inDepartmentId,inDesignationId,inStatus, dtCreateDate,inCreatedBy)  
-				SELECT  @stDeskName, @inZoneId,@inDivisionId,@inDepartmentId,@inDesignationId,@inStatus, @getDateTimeByTimezone, @inCreatedBy  
+				INSERT INTO tblStore(stStoreName,inZoneId,inDivisionId,inDepartmentId, dtCreateDate,inCreatedBy)  
+				SELECT  @stStoreName, @inZoneId,@inDivisionId,@inDepartmentId, @getDateTimeByTimezone, @inCreatedBy  
 				SET @inSuccess=101  
 		 END
 		 ELSE  
 		 BEGIN  
-				  UPDATE tblDeskDetail WITH(ROWLOCK) SET   
-						stDeskName=@stDeskName,
+				  UPDATE tblStore WITH(ROWLOCK) SET   
+						stStoreName=@stStoreName,
 						inZoneId=@inZoneId,
 						inDivisionId=@inDivisionId,
 						inDepartmentId=@inDepartmentId,
-						inDesignationId=@inDesignationId,
-						inStatus=@inStatus,
 						dtCreateDate=@getDateTimeByTimezone,
 						inCreatedBy=@inCreatedBy					 
-				  WHERE inDeskid=@inDeskId
+				  WHERE inStoreId=@inStoreId
 				  SET @inSuccess=102   		   
 			 END  		
 	COMMIT TRAN;  

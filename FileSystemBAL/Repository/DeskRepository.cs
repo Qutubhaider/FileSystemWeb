@@ -39,7 +39,7 @@ namespace FileSystemBAL.Repository
         public void SaveDesk(Desk.Models.Desk foDesk, int fiUserId, out int fiSuccess)
         {
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveDeskDetail @inDeskId={foDesk.inDeskId},@stDeskName={foDesk.stDeskName},@inZoneId={foDesk.inZoneId},@inDivisionId{foDesk.inDivisionId},@inDepartmentId={foDesk.inDepartmentId},@inDesignationId={foDesk.inDesignationId},@inStatus={foDesk.inStatus},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveDeskDetail @inDeskId={foDesk.inDeskId},@stDeskName={foDesk.stDeskName},@inZoneId={foDesk.inZoneId},@inDivisionId={foDesk.inDivisionId},@inDepartmentId={foDesk.inDepartmentId},@inDesignationId={foDesk.inDesignationId},@inStatus={foDesk.inStatus},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
     }

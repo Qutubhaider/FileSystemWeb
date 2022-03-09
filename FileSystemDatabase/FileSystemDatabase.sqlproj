@@ -98,5 +98,9 @@
     <Build Include="dbo\Stored Procedures\getDeskList.sql" />
     <Build Include="dbo\Stored Procedures\getDeskDetail.sql" />
     <Build Include="dbo\Stored Procedures\getDeskDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\saveStore.sql" />
+    <Build Include="dbo\Stored Procedures\getStoreDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getStoreList.sql" />
+    <Build Include="dbo\Stored Procedures\getStoreDropDown.sql" />
   </ItemGroup>
 </Project>

@@ -1,14 +1,13 @@
 ﻿-- ============================================= 
 -- Author:  Qutub Haider 
--- EXEC [getDeskList] 
+-- EXEC [[getStoreList]] 
 -- ============================================= 
 /* 
 Ref#	Modified By			Modified date			Description 
 */ 
-CREATE PROC [dbo].[getDeskList] 
+CREATE PROC [dbo].[getStoreList] 
 ( 
-	@stDeskName NVARCHAR(211)=NULL, 
-	@inStatus INT=NULL,   
+	@stStoreName NVARCHAR(211)=NULL,   
 	@inSortColumn INT = NULL, 
 	@stSortOrder NVARCHAR(51) = NULL, 
 	@inPageNo INT = 1, 
@@ -17,9 +16,9 @@ CREATE PROC [dbo].[getDeskList]
 AS 
 BEGIN 
 SET NOCOUNT ON;   
-	SET @stDeskName =REPLACE(@stDeskName,'''','''''') 
+	SET @stStoreName =REPLACE(@stStoreName,'''','''''') 
 	DECLARE @stSQL AS NVARCHAR(MAX) 
-	DECLARE @stSort AS NVARCHAR(MAX) = 'stDeskName' 
+	DECLARE @stSort AS NVARCHAR(MAX) = 'stStoreName' 
 	DECLARE @inStart INT, @inEnd INT 
  
 	SET @stSortOrder = ISNULL(@stSortOrder, 'DESC') 
@@ -28,36 +27,31 @@ SET NOCOUNT ON;
  
 	IF @inSortColumn = 1 
 	BEGIN 
-		SET @stSort = 'stDeskName'; 
-	END 
-	ELSE IF @inSortColumn = 2 
-	BEGIN 
-		SET @stSort = 'inStatus'; 
-	END 
+		SET @stSort = 'stStoreName'; 
+	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		inDeskId,unDeskId,stDeskName,stZoneName ,stDivisionName,stDepartmentName,stDesignationName
+		inStoreId,unStoreId,stStoreName,stZoneName ,stDivisionName,stDepartmentName,stDesignationName
 		FROM ( 
             SELECT  
-                    D.inDeskId, 
-                    D.unDeskId, 
-                    D.stDeskName, 
+                    S.inStoreId, 
+                    S.unStoreId, 
+                    S.stStoreName, 
                     Z.stZoneName,
 					DV.stDivisionName,
 					DP.stDepartmentName,
 					DS.stDesignationName
-            FROM tblDeskDetail D WITH(NOLOCK) 
+            FROM tblStore S WITH(NOLOCK) 
             JOIN tblZone Z ON Z.inZoneId=D.inZoneId
             JOIN tblDivision DV ON DV.inDivisionId=D.inDivisionId
             JOIN tblDepartment DP ON DP.inDepartmentId=D.inDepartmentId
             JOIN tblDesignation DS ON DS.inDesignationId=D.inDesignationId
             WHERE 1=1' 
  
-	IF(ISNULL(@stDeskName,'')<>'') 
-		SET @stSQL = @stSQL + '  AND (D.stDeskName LIKE ''%' + CONVERT(NVARCHAR(211), @stDeskName)  + '%'')' 
+	IF(ISNULL(@stStoreName,'')<>'') 
+		SET @stSQL = @stSQL + '  AND (D.stDeskName LIKE ''%' + CONVERT(NVARCHAR(211), @stStoreName)  + '%'')' 
  
-	IF(ISNULL(@inStatus,0)>0)               
-		SET @stSQL = @stSQL +' AND D.inStatus= '+ CONVERT(NVARCHAR(11), @inStatus) +'' 
+ +'' 
  
 	SET @stSQL = @stSQL +' 
 				)A )   
