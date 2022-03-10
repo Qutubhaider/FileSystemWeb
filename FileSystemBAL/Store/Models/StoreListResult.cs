@@ -16,6 +16,5 @@ namespace FileSystemBAL.Store.Models
         public string stZoneName { get; set; }
         public string stDivisionName { get; set; }
         public string stDepartmentName { get; set; }
-        public string stDesignationName { get; set; }
     }
 }
