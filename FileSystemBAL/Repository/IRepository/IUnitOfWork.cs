@@ -15,6 +15,7 @@ namespace FileSystemBAL.Repository.IRepository
         IDesignationRepository DesignationRepository { get; }
         IUserRepository UserRepository { get; }
         IDeskRepository DeskRepository { get; }
+        IStoreRepository StoreRepository { get; }
         void Save();
     }
 }

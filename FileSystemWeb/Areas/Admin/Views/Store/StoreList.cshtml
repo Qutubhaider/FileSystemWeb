@@ -1,6 +1,11 @@
 ﻿@{
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Manage Store";
+    var loTableHeaders = new[]
+                     {
+        new {Id="1", Visible=true, Title="Store Name",  Sort = true,   dbColName = "stStoreName",  CssClass = "w180 sorting_asc"},
+        new {Id="2", Visible=true, Title="",               Sort = false,  dbColName = "",                CssClass = "w40 text-center"}
+    };
 }
 <div class="container-fluid">
     <!-- start page title -->

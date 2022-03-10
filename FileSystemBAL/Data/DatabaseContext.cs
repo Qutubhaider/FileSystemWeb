@@ -28,6 +28,8 @@ namespace FileSystemBAL.Data
         public DbSet<User.Models.UserEmailResult> UserEmailResult { get; set; }
         public DbSet<Desk.Models.Desk> Desk { get; set; }
         public DbSet<Desk.Models.DeskListResult> DeskListResult { get; set; }
+        public DbSet<Store.Models.Store> Store { get; set; }
+        public DbSet<Store.Models.StoreListResult> StoreListResult { get; set; }
         public DbSet<Select2> Select2 { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
@@ -44,6 +46,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<User.Models.UserEmailResult>().HasNoKey();
             foModelbuilder.Entity<Desk.Models.Desk>().HasNoKey();
             foModelbuilder.Entity<Desk.Models.DeskListResult>().HasNoKey();
+            foModelbuilder.Entity<Store.Models.Store>().HasNoKey();
+            foModelbuilder.Entity<Store.Models.StoreListResult>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

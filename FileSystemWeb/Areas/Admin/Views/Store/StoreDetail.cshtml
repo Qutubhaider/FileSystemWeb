@@ -1,4 +1,4 @@
-﻿@model FileSystemBAL.Division.Models.Division;
+﻿@model FileSystemBAL.Store.Models.Store;
 @{
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Store Detail";
@@ -23,34 +23,27 @@
                     <form class="custom-validation" asp-action="saveStore" asp-controller="Store" asp-area="Admin" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">Zone Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select asp-for="inZoneId" id="ddZone" onchange="OnZoneChange()"  class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">
                                 <option value="">Select Zone Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select asp-for="inDivisionId" id="ddDivision" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select asp-for="inDepartmentId" id="ddDepartment" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"));">
                                 <option value="">Select Department Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Store Name</label>
-                            <input type="text" class="form-control" placeholder="Desk Name">
+                            <input asp-for="stStoreName" type="text" class="form-control" placeholder="Store Name">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
-                                <option value="">Select Statud</option>
-                                <option value="1">Active</option>
-                                <option value="2">Inactive</option>
-                            </select>
-                        </div>
+
                         <div>
                             <div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
@@ -61,6 +54,11 @@
                                 </button>
                             </div>
                         </div>
+                        <input type="hidden" asp-for="inDepartmentId" />
+                        <input type="hidden" asp-for="inStoreId" />
+                        <input type="hidden" asp-for="inDivisionId" />
+                        <input type="hidden" asp-for="inZoneId" />
+                        <input type="hidden" asp-for="unStoreId" />
                     </form>
 
                 </div>
@@ -70,4 +68,13 @@
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial.cshtml" />
+    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
+            $(document).ready(function () {
+                OnZoneChange(true);
+
+        });
+    </script>
+    <script src="~/Scripts/Common//Dropdown.js" asp-append-version="true"></script>
 }
