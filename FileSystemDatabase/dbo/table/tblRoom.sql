@@ -4,7 +4,7 @@
     unRoomId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,
     inZoneId INT,
     inDivisionId INT,
-    intDepartmentId INT,
+    [inDepartmentId] INT,
     inStoreId INT,
     stRoomNumber NVARCHAR(200),
     dtCreateDate DATETIME NOT NULL,

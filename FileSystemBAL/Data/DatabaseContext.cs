@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FileSystemBAL.Zone.Models;
 using FileSystemBAL.Division.Models;
 using FileSystemUtility.Models;
+using FileSystemBAL.Room.Models;
 
 namespace FileSystemBAL.Data
 {
@@ -30,6 +31,8 @@ namespace FileSystemBAL.Data
         public DbSet<Desk.Models.DeskListResult> DeskListResult { get; set; }
         public DbSet<Store.Models.Store> Store { get; set; }
         public DbSet<Store.Models.StoreListResult> StoreListResult { get; set; }
+        public DbSet<Room.Models.Room> Room { get; set; }
+        public DbSet<RoomListResult> RoomListResult { get; set; }
         public DbSet<Select2> Select2 { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
@@ -48,6 +51,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<Desk.Models.DeskListResult>().HasNoKey();
             foModelbuilder.Entity<Store.Models.Store>().HasNoKey();
             foModelbuilder.Entity<Store.Models.StoreListResult>().HasNoKey();
+            foModelbuilder.Entity<Room.Models.Room>().HasNoKey();
+            foModelbuilder.Entity<RoomListResult>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

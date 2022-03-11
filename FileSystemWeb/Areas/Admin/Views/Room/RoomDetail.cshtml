@@ -1,4 +1,4 @@
-﻿@model FileSystemBAL.Division.Models.Division;
+﻿@model FileSystemBAL.Room.Models.Room;
 @{
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Room Detail";
@@ -23,25 +23,25 @@
                     <form class="custom-validation" asp-action="saveRoom" asp-controller="Room" asp-area="Admin" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">Zone Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddZone" asp-for="inZoneId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">
                                 <option value="">Select Zone Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDivision" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Department Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Store Name</label>
-                            <select class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddStore" asp-for="inStoreId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Store Name</option>
                             </select>
                         </div>
@@ -67,6 +67,13 @@
                                 </button>
                             </div>
                         </div>
+                        <input type="hidden"  asp-for="inRoomId" />
+                        <input type="hidden"  asp-for="unRoomId" />
+                        <input type="hidden"  asp-for="inZoneId" />
+                        <input type="hidden"  asp-for="inDepartmentId" />
+                        <input type="hidden"  asp-for="inDesignationId" />
+                        <input type="hidden"  asp-for="inDivisionId" />
+                        <input type="hidden"  asp-for="inStoreId" />
                     </form>
 
                 </div>

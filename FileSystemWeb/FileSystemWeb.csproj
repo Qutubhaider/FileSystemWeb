@@ -21,7 +21,4 @@
     <None Remove="Areas\Admin\Views\Store\" />
     <None Remove="Areas\Admin\Views\Room\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Room\" />
-  </ItemGroup>
 </Project>

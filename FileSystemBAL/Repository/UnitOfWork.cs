@@ -21,6 +21,7 @@ namespace FileSystemBAL.Repository
             UserRepository = new UserRepository(moDatabaseContext);
             DeskRepository = new DeskRepository(moDatabaseContext);
             StoreRepository = new StoreRepository(moDatabaseContext);
+            RoomRepository = new RoomRepository(moDatabaseContext);
         }
 
         public IDivisionRepository DivisionRepository {get;private set;}
@@ -30,6 +31,7 @@ namespace FileSystemBAL.Repository
         public IUserRepository UserRepository{get;private set;}
         public IDeskRepository DeskRepository{get;private set;}
         public IStoreRepository StoreRepository{get;private set;}
+        public IRoomRepository RoomRepository{get;private set;}
 
 
         public void Dispose()

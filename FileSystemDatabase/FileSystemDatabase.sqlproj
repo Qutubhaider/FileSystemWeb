@@ -102,5 +102,12 @@
     <Build Include="dbo\Stored Procedures\getStoreDetail.sql" />
     <Build Include="dbo\Stored Procedures\getStoreList.sql" />
     <Build Include="dbo\Stored Procedures\getStoreDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\saveRoom.sql" />
+    <Build Include="dbo\Stored Procedures\getRoomDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getRoomList.sql" />
+    <Build Include="dbo\Stored Procedures\getRoomDropDown.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="FileSystemDatabase.refactorlog" />
   </ItemGroup>
 </Project>
