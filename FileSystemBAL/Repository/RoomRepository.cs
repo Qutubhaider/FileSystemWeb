@@ -46,7 +46,7 @@ namespace FileSystemBAL.Repository
         public void SaveRoom(Room.Models.Room foRoom, int fiUserId, out int fiSuccess)
         {
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveRoom  @stRoomNumber={foRoom.stRoomNumber} @inStoreId={foRoom.inStoreId},,@inZoneId={foRoom.inZoneId},@inDivisionId={foRoom.inDivisionId},@inDepartmentId={foRoom.inDepartmentId},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveRoom @inRoomId={foRoom.inRoomId},  @stRoomNumber={foRoom.stRoomNumber} ,@inStoreId={foRoom.inStoreId},@inZoneId={foRoom.inZoneId},@inDivisionId={foRoom.inDivisionId},@inDepartmentId={foRoom.inDepartmentId},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
     }

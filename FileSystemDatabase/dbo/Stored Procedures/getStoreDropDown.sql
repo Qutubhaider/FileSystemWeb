@@ -8,12 +8,8 @@ Ref# Modified By   Modified date   Description
 */
 
 CREATE PROCEDURE getStoreDropDown
-(   
-    @inStore INT
-)
 AS
 BEGIN
 SELECT inStoreId as id , stStoreName as value 
        FROM tblStore
-       WHERE inStoreId=@inStore
 END

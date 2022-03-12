@@ -40,6 +40,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             }
             loRoom.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loRoom.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
+            loRoom.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown(); ;
             //return View("~/Areas/Admin/Views/Desk/DeskDetail.cshtml", loDesk);
             return View("~/Areas/Admin/Views/Room/RoomDetail.cshtml",loRoom);
         }

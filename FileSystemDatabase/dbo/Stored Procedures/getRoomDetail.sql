@@ -10,6 +10,6 @@ CREATE PROCEDURE getRoomDetail(
 )
 AS
 BEGIN
-  SELECT inRoomId,unRoomId,stRoomNumber,inZoneId,inDivisionId,inDepartmentId FROM tblRoom
+  SELECT inRoomId,unRoomId,stRoomNumber,inZoneId,inDivisionId,inDepartmentId,inStoreId FROM tblRoom
   WHERE unRoomId=@unRoomId
 END

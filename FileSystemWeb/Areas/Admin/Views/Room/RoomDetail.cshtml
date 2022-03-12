@@ -23,31 +23,37 @@
                     <form class="custom-validation" asp-action="saveRoom" asp-controller="Room" asp-area="Admin" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">Zone Name</label>
-                            <select id="ddZone" asp-for="inZoneId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">
+                            <select id="ddZone" onchange="OnZoneChange();" asp-for="inZoneId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">
                                 <option value="">Select Zone Name</option>
                             </select>
+                            <span asp-validation-for="inZoneId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
                             <select id="ddDivision" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
+                            <span asp-validation-for="inDivisionId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
-                            <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
                                 <option value="">Select Department Name</option>
                             </select>
+                            <span asp-validation-for="inDepartmentId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Store Name</label>
-                            <select id="ddStore" asp-for="inStoreId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddStore" asp-for="inStoreId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.StoreList,"id","value"))">
                                 <option value="">Select Store Name</option>
+
                             </select>
+                            <span asp-validation-for="inStoreId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Room Number</label>
-                            <input type="text" class="form-control" placeholder="Room Number">
+                            <input asp-for="stRoomNumber" type="text" class="form-control" placeholder="Room Number">
+                            <span asp-validation-for="stRoomNumber" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
@@ -67,13 +73,12 @@
                                 </button>
                             </div>
                         </div>
-                        <input type="hidden"  asp-for="inRoomId" />
-                        <input type="hidden"  asp-for="unRoomId" />
-                        <input type="hidden"  asp-for="inZoneId" />
-                        <input type="hidden"  asp-for="inDepartmentId" />
-                        <input type="hidden"  asp-for="inDesignationId" />
-                        <input type="hidden"  asp-for="inDivisionId" />
-                        <input type="hidden"  asp-for="inStoreId" />
+                        <input type="hidden" asp-for="inRoomId" />
+                        <input type="hidden" asp-for="unRoomId" />
+                        <input type="hidden" asp-for="inZoneId" />
+                        <input type="hidden" asp-for="inDepartmentId" />
+                        <input type="hidden" asp-for="inDivisionId" />
+                        <input type="hidden" asp-for="inStoreId" />
                     </form>
 
                 </div>
@@ -83,4 +88,13 @@
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial.cshtml" />
+    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
+            $(document).ready(function () {
+                OnZoneChange(true);
+
+        });
+    </script>
+    <script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>
 }
