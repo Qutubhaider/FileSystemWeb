@@ -18,7 +18,7 @@ BEGIN
 SET NOCOUNT ON;   
 	SET @stAlmirahNumber =REPLACE(@stAlmirahNumber,'''','''''') 
 	DECLARE @stSQL AS NVARCHAR(MAX) 
-	DECLARE @stSort AS NVARCHAR(MAX) = 'stStoreName' 
+	DECLARE @stSort AS NVARCHAR(MAX) = 'stAlmirahNumber' 
 	DECLARE @inStart INT, @inEnd INT 
  
 	SET @stSortOrder = ISNULL(@stSortOrder, 'DESC') 
@@ -40,7 +40,6 @@ SET NOCOUNT ON;
                     Z.stZoneName,
 					DV.stDivisionName,
 					DP.stDepartmentName,
-					DS.stDesignationName,
 					R.stRoomNumber
             FROM tblAlmirah A WITH(NOLOCK) 
             JOIN tblZone Z ON Z.inZoneId=A.inZoneId

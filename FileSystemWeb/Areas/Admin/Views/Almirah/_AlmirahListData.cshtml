@@ -1,5 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model dynamic
+@using FileSystemBAL.Almirah.Models
+@using FileSystemUtility.Utilities
+@using FileSystemUtility.Models
+
+
+
+@if (Model.GetAlmirahList != null && Model.GetAlmirahList.Count > 0)
+{
+    foreach (AlmirahListResult loAlmirahList in Model.GetAlmirahList)
+    {
+        <tr>
+            <td>@loAlmirahList.stAlmirahNumber</td>
+            <td class="text-center"><a asp-area="Admin" asp-controller="Almirah" asp-action="Detail" asp-route-id="@loAlmirahList.unAlmirahId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="8" class="text-center py-5">No records found.</td>
+    </tr>
+}
+
 @{
+    Pagination loPagination = Model.Pagination;
+
+    <input type="hidden" id="hdnCurrentPage" value="@loPagination.inCurrentPage">
+    <input type="hidden" id="hdnTotalPage" value="@loPagination.inTotalPages" />
+    <input type="hidden" id="hdnTotalRecords" value="@loPagination.inTotalRecords" />
+    <input type="hidden" id="hdnNoOfRecordsMessage" value="@loPagination.stNoOfRecordsMessage" />
+
 }

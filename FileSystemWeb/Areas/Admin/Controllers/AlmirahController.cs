@@ -121,7 +121,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
                     liEndIndex = loAlmirahListResults[loAlmirahListResults.Count - 1].inRownumber;
                 }
                 loModel.Pagination = PaginationService.getPagination(liTotalRecords, pg.Value, size.Value, liStartIndex, liEndIndex);
-                return PartialView("~/Areas/Admin/Views/Room/_RoomListData.cshtml", loModel);
+                return PartialView("~/Areas/Admin/Views/Almirah/_AlmirahListData.cshtml", loModel);
             }
             catch (Exception ex)
             {

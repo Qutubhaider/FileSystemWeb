@@ -31,7 +31,7 @@ namespace FileSystemBAL.Repository
 
         public Almirah.Models.Almirah GetAlmirahDetail(Guid fuAlmirahId)
         {
-            return moDatabaseContext.Set<Almirah.Models.Almirah>().FromSqlInterpolated($"EXEC getRoomDetail @unAlmirahId={fuAlmirahId}").AsEnumerable().FirstOrDefault();
+            return moDatabaseContext.Set<Almirah.Models.Almirah>().FromSqlInterpolated($"EXEC getAlmirahDetail @unAlmirahId={fuAlmirahId}").AsEnumerable().FirstOrDefault();
         }
 
         public List<Select2> GetAlmirahDropDown()
@@ -47,7 +47,7 @@ namespace FileSystemBAL.Repository
         public void SaveAlmirah(Almirah.Models.Almirah foAmirah, int fiUserId, out int fiSuccess)
         {
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveAlmirah @inAmirahId={foAmirah.inAlmirahId},  @stAlmirahNumber={foAmirah.stAlmirahNumber} ,@inStoreId={foAmirah.inStoreId},@inZoneId={foAmirah.inZoneId},@inDivisionId={foAmirah.inDivisionId},@inDepartmentId={foAmirah.inDepartmentId},@inRoomId={foAmirah.inRoomId},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveAlmirah @inAmirahId={foAmirah.inAlmirahId},@stAlmirahNumber={foAmirah.stAlmirahNumber} ,@inStoreId={foAmirah.inStoreId},@inZoneId={foAmirah.inZoneId},@inDivisionId={foAmirah.inDivisionId},@inDepartmentId={foAmirah.inDepartmentId},@inRoomId={foAmirah.inRoomId},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
     }
