@@ -72,7 +72,7 @@
     <Build Include="dbo\table\tblStore.sql" />
     <Build Include="dbo\table\tblRoom.sql" />
     <Build Include="dbo\table\tblAlmirah.sql" />
-    <Build Include="dbo\table\tblShelves.sql" />
+    <Build Include="dbo\table\tblShelve.sql" />
     <Build Include="dbo\table\tblStoreFileDetails.sql" />
     <Build Include="dbo\table\tblIssueFileHistory.sql" />
     <Build Include="dbo\Fucntions\getDateTimeByTimezone.sql" />
@@ -110,6 +110,10 @@
     <Build Include="dbo\Stored Procedures\getAlmirahDetail.sql" />
     <Build Include="dbo\Stored Procedures\getAlmirahDropDown.sql" />
     <Build Include="dbo\Stored Procedures\getAlmirahList.sql" />
+    <Build Include="dbo\Stored Procedures\saveShelve.sql" />
+    <Build Include="dbo\Stored Procedures\getShelveDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getShelveList.sql" />
+    <Build Include="dbo\Stored Procedures\getShelveDropDown.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />
