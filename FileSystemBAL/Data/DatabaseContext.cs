@@ -9,6 +9,7 @@ using FileSystemBAL.Zone.Models;
 using FileSystemBAL.Division.Models;
 using FileSystemUtility.Models;
 using FileSystemBAL.Room.Models;
+using FileSystemBAL.Almirah.Models;
 
 namespace FileSystemBAL.Data
 {
@@ -33,6 +34,8 @@ namespace FileSystemBAL.Data
         public DbSet<Store.Models.StoreListResult> StoreListResult { get; set; }
         public DbSet<Room.Models.Room> Room { get; set; }
         public DbSet<RoomListResult> RoomListResult { get; set; }
+        public DbSet<Almirah.Models.Almirah> Almirah { get; set; }
+        public DbSet<AlmirahListResult> AlmirahListResult { get; set; }
         public DbSet<Select2> Select2 { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
@@ -53,6 +56,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<Store.Models.StoreListResult>().HasNoKey();
             foModelbuilder.Entity<Room.Models.Room>().HasNoKey();
             foModelbuilder.Entity<RoomListResult>().HasNoKey();
+            foModelbuilder.Entity<Almirah.Models.Almirah>().HasNoKey();
+            foModelbuilder.Entity<AlmirahListResult>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

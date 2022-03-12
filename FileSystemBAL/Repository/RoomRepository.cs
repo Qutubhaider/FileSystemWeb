@@ -35,7 +35,7 @@ namespace FileSystemBAL.Repository
 
         public List<Select2> GetRoomDropDown()
         {
-            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getRoomDropDown").ToList();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getRoomDropDown @inStore={1}").ToList();
         }
 
         public List<RoomListResult> GetRoomList(string fsRoomNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)

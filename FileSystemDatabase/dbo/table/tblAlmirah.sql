@@ -4,7 +4,7 @@
     unAlmirahId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,
     inZoneId INT,
     inDivisionId INT,
-    intDepartmentId INT,
+    inDepartmentId INT,
     inStoreId INT,
     inRoomId INT,
     stAlmirahNumber NVARCHAR(200),

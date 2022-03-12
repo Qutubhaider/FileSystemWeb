@@ -1,5 +1,13 @@
-﻿using FileSystemBAL.Repository.IRepository;
+﻿using FileSystemBAL.Almirah.Models;
+using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Models;
+using FileSystemUtility.Service.PaginationService;
+using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Text;
 
 namespace FileSystemWeb.Areas.Admin.Controllers
 {
@@ -19,9 +27,114 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             return View("~/Areas/Admin/Views/Almirah/AlmirahList.cshtml");
         }
 
-        public IActionResult Detail()
+        public IActionResult Detail(Guid id)
         {
-            return View("~/Areas/Admin/Views/Almirah/AlmirahDetail.cshtml");
+            Almirah loAlmirah = new Almirah();
+            if (id != Guid.Empty)
+            {
+                loAlmirah = moUnitOfWork.AlmirahRepository.GetAlmirahDetail(id);
+            }
+            loAlmirah.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
+            loAlmirah.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
+            loAlmirah.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
+            loAlmirah.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown();
+            return View("~/Areas/Admin/Views/Almirah/AlmirahDetail.cshtml",loAlmirah);
         }
+        public IActionResult SaveAlmirah(Almirah foAlmirah)
+        {
+            try
+            {
+                int liSuccess = 0;
+                int liUserId = 1; //User.FindFirst(SessionConstant)
+                if (foAlmirah != null)
+                {
+                    moUnitOfWork.AlmirahRepository.SaveAlmirah(foAlmirah, liUserId, out liSuccess);
+                    if (liSuccess == (int)CommonFunctions.ActionResponse.Add)
+                    {
+                        TempData["ResultCode"] = CommonFunctions.ActionResponse.Add;
+                        TempData["Message"] = string.Format(AlertMessage.RecordAdded, "Almirah");
+                        return RedirectToAction("Index");
+                    }
+                    else if (liSuccess == (int)CommonFunctions.ActionResponse.Update)
+                    {
+                        TempData["ResultCode"] = CommonFunctions.ActionResponse.Update;
+                        TempData["Message"] = string.Format(AlertMessage.RecordUpdated, "Almirah");
+                        return RedirectToAction("Index");
+
+                    }
+                    else
+                    {
+                        TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
+                        TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving almirah");
+                        return RedirectToAction("Index");
+                    }
+
+                }
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+                TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
+                TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving almirah");
+                return RedirectToAction("Index");
+            }
+        }
+        public IActionResult GetAlmirahList(string AlmirahNumber, int? Status, int? sort_column, string sort_order, int? pg, int? size)
+        {
+            StringBuilder lolog = new StringBuilder();
+            try
+            {
+                /*lolog.AppendLine("DeskName : " + DeskName);
+                lolog.AppendLine("Status : " + Status);
+                lolog.AppendLine("Sort Column : " + sort_column);
+                lolog.AppendLine("Sort Order : " + sort_order);
+                lolog.AppendLine("Page No : " + pg);
+                lolog.AppendLine("Page Size : " + size);
+*/
+                string lsSearch = string.Empty;
+                int liTotalRecords = 0, liStartIndex = 0, liEndIndex = 0;
+                if (sort_column == 0 || sort_column == null)
+                    sort_column = 1;
+                if (string.IsNullOrEmpty(sort_order) || sort_order == "desc")
+                {
+                    sort_order = "desc";
+                    ViewData["sortorder"] = "asc";
+                }
+                else
+                {
+                    ViewData["sortorder"] = "desc";
+                }
+                if (pg == null || pg <= 0)
+                    pg = 1;
+                if (size == null || size.Value <= 0)
+                    size = miPageSize;
+
+                List<AlmirahListResult> loAlmirahListResults = new List<AlmirahListResult>();
+                loAlmirahListResults = moUnitOfWork.AlmirahRepository.GetAlmirahList(AlmirahNumber == null ? AlmirahNumber : AlmirahNumber.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                dynamic loModel = new ExpandoObject();
+                loModel.GetAlmirahList = loAlmirahListResults;
+                if (loAlmirahListResults.Count > 0)
+                {
+                    liTotalRecords = loAlmirahListResults[0].inRecordCount;
+                    liStartIndex = loAlmirahListResults[0].inRownumber;
+                    liEndIndex = loAlmirahListResults[loAlmirahListResults.Count - 1].inRownumber;
+                }
+                loModel.Pagination = PaginationService.getPagination(liTotalRecords, pg.Value, size.Value, liStartIndex, liEndIndex);
+                return PartialView("~/Areas/Admin/Views/Room/_RoomListData.cshtml", loModel);
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+
+        }
+        public IActionResult GetDivisionDropDown(int fiZoneId)
+        {
+            List<Select2> DivisionDropDown = moUnitOfWork.DivisionRepository.GetDivisionDropDown(fiZoneId);
+            return Json(new { data = DivisionDropDown });
+
+        }
+
     }
 }

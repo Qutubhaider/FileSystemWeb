@@ -17,6 +17,7 @@ namespace FileSystemBAL.Repository.IRepository
         IDeskRepository DeskRepository { get; }
         IStoreRepository StoreRepository { get; }
         IRoomRepository RoomRepository { get; }
+        IAlmirahRepository AlmirahRepository { get; }
         void Save();
     }
 }
