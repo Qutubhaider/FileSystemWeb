@@ -16,7 +16,7 @@ CREATE PROC [dbo].[getRoomList]
 AS 
 BEGIN 
 SET NOCOUNT ON;   
-	SET @stRoomNumber =REPLACE(@stRoomNumber,'''','''''') 
+	SET @stRoomNumber=REPLACE(@stRoomNumber,'''','''''') 
 	DECLARE @stSQL AS NVARCHAR(MAX) 
 	DECLARE @stSort AS NVARCHAR(MAX) = 'stStoreName' 
 	DECLARE @inStart INT, @inEnd INT 

@@ -27,22 +27,23 @@ SET NOCOUNT ON;
 	
 		 IF(ISNULL(@inShelveId,0)=0)  
 		 BEGIN 			
-				INSERT INTO tblShelves(stShelveNumber,inZoneId,inDivisionId,inDepartmentId,inStoreId,inRoomId,inAlmirahId,dtCreateDate,inCreatedBy)  
+				INSERT INTO tblShelve(stShelveNumber,inZoneId,inDivisionId,inDepartmentId,inStoreId,inRoomId,inAlmirahId,dtCreateDate,inCreatedBy)  
 				SELECT  @stShelveNumber, @inZoneId,@inDivisionId,@inDepartmentId,@inStoreId,@inRoomId,@inAlmirahId ,@getDateTimeByTimezone, @inCreatedBy  
 				SET @inSuccess=101  
 		 END
 		 ELSE  
 		 BEGIN  
-				  UPDATE tblShelves WITH(ROWLOCK) SET   
+				  UPDATE tblShelve WITH(ROWLOCK) SET   
 						stShelveNumber=@stShelveNumber,
 						inZoneId=@inZoneId,
 						inDivisionId=@inDivisionId,
 						inDepartmentId= @inDepartmentId,
 						inStoreId=@inStoreId,
 						inRoomId=@inRoomId,
+						inAlmirahId=@inAlmirahId,
 						dtCreateDate=@getDateTimeByTimezone,
 						inCreatedBy=@inCreatedBy					 
-				  WHERE inShelvesId=@inShelveId
+				  WHERE inShelveId=@inShelveId
 				  SET @inSuccess=102   		   
 			 END  		
 	COMMIT TRAN;  

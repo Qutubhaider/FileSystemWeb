@@ -12,7 +12,7 @@ namespace FileSystemBAL.Repository.IRepository
     {
         void SaveShelve(Shelve.Models.Shelve foShelve, int fiUserId, out int fiSuccess);
         Shelve.Models.Shelve GetShelveDetail(Guid fuShelveId);
-        void DeleteShelve(Guid fuAmirahId, out int fiSuccess);
+        void DeleteShelve(Guid fuShelveId, out int fiSuccess);
         List<ShelveListResult> GetShelveList(string fsShelveNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
         List<Select2> GetShelveDropDown();
     }

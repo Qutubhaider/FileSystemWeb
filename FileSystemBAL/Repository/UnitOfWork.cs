@@ -23,6 +23,7 @@ namespace FileSystemBAL.Repository
             StoreRepository = new StoreRepository(moDatabaseContext);
             RoomRepository = new RoomRepository(moDatabaseContext);
             AlmirahRepository = new AlmirahRepository(moDatabaseContext);
+            ShelveRepository = new ShelveRepository(moDatabaseContext);
         }
 
         public IDivisionRepository DivisionRepository {get;private set;}
@@ -34,6 +35,7 @@ namespace FileSystemBAL.Repository
         public IStoreRepository StoreRepository{get;private set;}
         public IRoomRepository RoomRepository{get;private set;}
         public IAlmirahRepository AlmirahRepository{get;private set;}
+        public IShelveRepository ShelveRepository{get;private set;}
 
 
         public void Dispose()
