@@ -114,6 +114,9 @@
     <Build Include="dbo\Stored Procedures\getShelveDetail.sql" />
     <Build Include="dbo\Stored Procedures\getShelveList.sql" />
     <Build Include="dbo\Stored Procedures\getShelveDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\insertUserProfile.sql" />
+    <Build Include="dbo\Stored Procedures\getUserDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getUserList.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />

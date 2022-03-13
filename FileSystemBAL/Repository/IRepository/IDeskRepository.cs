@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileSystemUtility.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace FileSystemBAL.Repository.IRepository
         Desk.Models.Desk GetDesk(Guid fuDeskId);
         void DeleteDesk(Guid fuDeskId, out int fiSuccess);
         List<Desk.Models.DeskListResult> GetDeskList(string stDeskTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        public List<Select2> GetDeskDropDown(int fiDivision);
     }
 }

@@ -12,28 +12,38 @@
         $("#ddDivision").empty();
         $("#ddDivision").append("<option value='" + "" + "'>" + "Select Division" + "</option>");
     }
-
-    /*if ($("#ddDistrict").length > 0) {
-        $("#ddDistrict").empty();
-        $("#ddDistrict").append("<option value='" + "" + "'>" + "Select District" + "</option>");
+    if ($("#ddDesk").length > 0) {
+        $("#ddDesk").empty();
+        $("#ddDesk").append("<option value='" + "" + "'>" + "Select Desk" + "</option>");
     }
-
-    if ($("#ddBlock").length > 0) {
-        $("#ddBlock").empty();
-        $("#ddBlock").append("<option value='" + "" + "'>" + "Select Block" + "</option>");
-    }
-
-    if ($("#ddVillageWard").length > 0) {
-        $("#ddVillageWard").empty();
-        $("#ddVillageWard").append("<option value='" + "" + "'>" + "Select Village" + "</option>");
-
-    }*/
     loadMyRequest(msGetDivisionDropDown, "GET", loData, function (response) {
-        //console.log(response); 
-
         $("#ddDivision").append("<option value='" + "" + "'>" + "Select Division" + "</option>");
         response.data.forEach(d => $("#ddDivision").append("<option value='" + d.id + "'>" + d.value + "</option>"));
         if (flgIsEdit)
             $("#ddDivision").val($("#inDivisionId").val());
+    }, function () { });
+}
+
+function OnDivisionChange(flgIsEdit = false) {
+    var loData = new Object();
+    if (flgIsEdit) {
+        var liDivisionId = $('#inDivisionId').val();
+    }
+    else {
+        var liDivisionId = $('#ddDivision').val();
+    }
+
+    loData.fiDivisionId = liDivisionId;
+    if ($("#ddDesk").length > 0) {
+        $("#ddDesk").empty();
+        $("#ddDesk").append("<option value='" + "" + "'>" + "Select District" + "</option>");
+    }
+    loadMyRequest(msGetDeskDropDown, "GET", loData, function (response) {
+        //console.log(response);
+        $("#ddDesk").empty();
+        $("#ddDesk").append("<option value='" + "" + "'>" + "Select District" + "</option>");
+        response.data.forEach(d => $("#ddDesk").append("<option value='" + d.id + "'>" + d.value + "</option>"));
+        if (flgIsEdit)
+            $("#ddDesk").val($("#inDeskid").val());
     }, function () { });
 }

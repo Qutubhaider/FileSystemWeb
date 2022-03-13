@@ -9,11 +9,11 @@ Ref# Modified By   Modified date   Description
 
 CREATE PROCEDURE getDeskDropDown
 (   
-     @inDesignationId INT
+     @inDivisionId INT
 )
 AS
 BEGIN
 SELECT inDeskid as id , stDeskName as value 
        FROM tblDeskDetail
-       WHERE inDesignationId=@inDesignationId
+       WHERE inDivisionId=@inDivisionId
 END

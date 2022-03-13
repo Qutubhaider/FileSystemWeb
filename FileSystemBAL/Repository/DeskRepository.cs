@@ -1,5 +1,6 @@
 ﻿using FileSystemBAL.Data;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -42,5 +43,10 @@ namespace FileSystemBAL.Repository
             moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveDeskDetail @inDeskId={foDesk.inDeskId},@stDeskName={foDesk.stDeskName},@inZoneId={foDesk.inZoneId},@inDivisionId={foDesk.inDivisionId},@inDepartmentId={foDesk.inDepartmentId},@inDesignationId={foDesk.inDesignationId},@inStatus={foDesk.inStatus},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
+        public List<Select2> GetDeskDropDown(int fiDivisionId)
+        {
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getDeskDropDown @inDivisionId={fiDivisionId}").ToList();
+        }
+
     }
 }

@@ -7,45 +7,45 @@ function sort(fsSortColumn, element) {
         $(element).closest('th').removeClass("sorting_asc").addClass("sorting_desc");
         lsSortOrder = 'desc';
         lsSortCol = fsSortColumn;
-        getShelveData(lsPageNo, fsSortColumn, "desc");
+        getUserData(lsPageNo, fsSortColumn, "desc");
     }
     else {
         $(element).closest('th').removeClass("sorting_desc").addClass("sorting_asc");
         lsSortOrder = 'asc';
         lsSortCol = fsSortColumn;
-        getShelveData(lsPageNo, fsSortColumn, "asc");
+        getUserData(lsPageNo, fsSortColumn, "asc");
     }
 }
 
-function getShelveData(fsPageNo, fsSortColumn = lsSortCol, fsSortDirection = lsSortOrder) {
+function getUserData(fsPageNo, fsSortColumn = lsSortCol, fsSortDirection = lsSortOrder) {
     showLoading();
-    var lsShelveNumber = $('#txtShelveNumber').val();
+    var lsUserName = $('#txtUserName').val();
     var liStatus = '';
     var liSize = $('#ddPageSize').val();
 
     var loData = new Object();
     var pg = fsPageNo;
 
-    loData.ShelveNumber = lsShelveNumber;
+    loData.UserName = lsUserName;
     loData.Status = liStatus;
     loData.sort_column = fsSortColumn;
     loData.sort_order = fsSortDirection;
     loData.pg = pg;
     loData.size = liSize;
 
-    loadMyRequest(msGetShelveDataList, "GET", loData, getShelveDataSuccess, getShelveDataError);
+    loadMyRequest(msGetUserDataList, "GET", loData, getUserDataSuccess, getUserDataError);
     $('#preloader').hide();
 }
 
-function getShelveDataError(foResponse) {
+function getUserDataError(foResponse) {
     hideLoading();
 }
 
-function getShelveDataSuccess(foResponse) {
+function getUserDataSuccess(foResponse) {
     showLoading();
     if (foResponse.indexOf('No records found.') > -1) {
         lshasMoreRecords = false;
-        $('#ShelveList').find("table tbody").html(foResponse);
+        $('#UserList').find("table tbody").html(foResponse);
         $('#paginationList').html('');
         $('#spnNoOfRecordsMessage').html('');
         $('#ddPageSize').hide();
@@ -53,8 +53,8 @@ function getShelveDataSuccess(foResponse) {
     }
     else {
         $('#ddPageSize').show();
-        $('#ShelveList').find("table tbody").empty();
-        $('#ShelveList').find("table tbody").append(foResponse);
+        $('#UserList').find("table tbody").empty();
+        $('#UserList').find("table tbody").append(foResponse);
         if (lsSortCol != '') {
             $(".sorting").removeClass("sorting_asc");
             $(".sorting").removeClass("sorting_desc");
@@ -72,7 +72,7 @@ function getShelveDataSuccess(foResponse) {
 }
 
 function ResetSearch() {
-    getStoreData(true)
+    getUserData(true)
 }
 
 
@@ -135,7 +135,7 @@ function GeneratePageListpanel(fsvalue, ffName) {
         }
         else {
             if (liPageNo <= liTotalpages) {
-                lsHTML = lsHTML + '<li id="pagging_' + liPageNo + '" class="paginate_button page-item "><a href="javascript:onclick=getShelveData(' + liPageNo + ');" data-dt-idx="3" tabindex="0" class="page-link" id=aLinkPageNo' + liPageNo + '>' + liPageNo + '</a></li>';
+                lsHTML = lsHTML + '<li id="pagging_' + liPageNo + '" class="paginate_button page-item "><a href="javascript:onclick=getUserData(' + liPageNo + ');" data-dt-idx="3" tabindex="0" class="page-link" id=aLinkPageNo' + liPageNo + '>' + liPageNo + '</a></li>';
             }
         }
     }
