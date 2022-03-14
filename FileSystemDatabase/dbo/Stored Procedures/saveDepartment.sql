@@ -21,8 +21,8 @@ SET NOCOUNT ON;
 	
 		 IF(ISNULL(@inDepartmentId,0)=0)  
 		 BEGIN 			
-				INSERT INTO tblDepartment(stDepartmentName,dtCreateDate,inCreatedBy)  
-				SELECT  @stDepartmentName, @getDateTimeByTimezone, @inCreatedBy  
+				INSERT INTO tblDepartment(stDepartmentName,inZoneId,inDivisionId,dtCreateDate,inCreatedBy)  
+				SELECT  @stDepartmentName,0,0, @getDateTimeByTimezone, @inCreatedBy  
 				SET @inSuccess=101  
 		 END
 		 ELSE  

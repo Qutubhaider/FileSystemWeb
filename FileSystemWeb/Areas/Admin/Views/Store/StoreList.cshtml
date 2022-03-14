@@ -2,8 +2,11 @@
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Manage Store";
     var loTableHeaders = new[]
-                     {
+    {
         new {Id="1", Visible=true, Title="Store Name",  Sort = true,   dbColName = "stStoreName",  CssClass = "w180 sorting_asc"},
+        new {Id="2", Visible=true, Title="Zone Name",      Sort = true,   dbColName = "stZoneName",      CssClass = "w180 sorting_asc"},
+        new {Id="3", Visible=true, Title="Division Name",  Sort = true,   dbColName = "stDivisionName",  CssClass = "w180 sorting_asc"},
+        new {Id="4", Visible=true, Title="Department Name",  Sort = true,   dbColName = "stDepartmentName",  CssClass = "w180 sorting_asc"},
         new {Id="2", Visible=true, Title="Action",               Sort = false,  dbColName = "",                CssClass = "w40 text-center"}
     };
 }
@@ -65,22 +68,22 @@
                                                             @loHeader.Title
 
 
-                                                    </th>
+
+                                                        </th>
                                                 }
                                             }
                                     </thead>
                                     <tbody>
-                                        
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                              <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-between mx-0 pagination_wrap">
-                                  <div class="dataTables_paginate paging_full_numbers clearfix text-center">
-                                      <div class="pagination" id="paginationList">
-                                      </div>
-                                  </div>
-                              </div>
+                        <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-between mx-0 pagination_wrap">
+                            <div class="dataTables_paginate paging_full_numbers clearfix text-center">
+                                <div class="pagination" id="paginationList">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -91,13 +94,13 @@
 </div>
 @section Scripts {
 
-    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        var msGetStoreDataList = '@Url.Action("GetStoreList")';
-            $(document).ready(function () {
-                getStoreData();
+<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    var msGetStoreDataList = '@Url.Action("GetStoreList")';
+        $(document).ready(function () {
+            getStoreData();
 
-        });
-    </script>
-    <script src="~/Scripts/Store/StoreList.js" asp-append-version="true"></script>
+    });
+</script>
+<script src="~/Scripts/Store/StoreList.js" asp-append-version="true"></script>
 }

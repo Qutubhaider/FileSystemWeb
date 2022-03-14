@@ -2,10 +2,10 @@
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Manage Division";
     var loTableHeaders = new[]
-    {
-        new {Id="1", Visible=true, Title="Zone",   Sort = true,   dbColName = "stZoneName",   CssClass = "w150 sorting"},
-        new {Id="2", Visible=true, Title="Division",   Sort = true,   dbColName = "stDivisionName",   CssClass = "w150 sorting"},
-        new {Id="",  Visible=true, Title="Action",   Sort = false,  dbColName = "",           CssClass = "w40 text-center"}
+            {
+        new {Id="1", Visible=true, Title="Zone",     Sort = true,   dbColName = "stZoneName",     CssClass = "w150 sorting"},
+        new {Id="2", Visible=true, Title="Division", Sort = true,   dbColName = "stDivisionName", CssClass = "w150 sorting"},
+        new {Id="",  Visible=true, Title="Action",   Sort = false,  dbColName = "",               CssClass = "w40 text-center"}
     };
 }
 <div class="container-fluid">
@@ -33,27 +33,29 @@
                             <div class="col-sm-12" id="DivisionList">
 
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer dtr-inline" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
-                                    <tr role="row">
-                                        @{
-                                            int lsSortIndex = 0;
-                                            string lsSortOrder = "";
-                                            @foreach (var loHeader in loTableHeaders.Where(x => x.Visible == true))
-                                            {
-                                                <th class="@loHeader.CssClass" id="@loHeader.Id">
-                                                    @if (loHeader.Sort)
-                                                    {
-                                                        string lsSrtOrder = loHeader.Id.Equals(lsSortIndex) ? (lsSortOrder.Equals("asc") ? "desc" : "asc") : "asc";
-                                                        string lsSortingClass = loHeader.Id.Equals(lsSortIndex) ? (lsSortOrder.Equals("asc") ? "sorting" : "sorting_desc") : "";
-                                                        <a onclick="sort('@loHeader.Id',this);" href="Javascript:void(0);">@loHeader.Title</a>
-                                                    }
-                                                    else
-                                                        @loHeader.Title
-                                                </th>
+                                    <thead>
+                                        <tr role="row">
+                                            @{
+                                                int lsSortIndex = 0;
+                                                string lsSortOrder = "";
+                                                @foreach (var loHeader in loTableHeaders.Where(x => x.Visible == true))
+                                                {
+                                                    <th class="@loHeader.CssClass" id="@loHeader.Id">
+                                                        @if (loHeader.Sort)
+                                                        {
+                                                            string lsSrtOrder = loHeader.Id.Equals(lsSortIndex) ? (lsSortOrder.Equals("asc") ? "desc" : "asc") : "asc";
+                                                            string lsSortingClass = loHeader.Id.Equals(lsSortIndex) ? (lsSortOrder.Equals("asc") ? "sorting" : "sorting_desc") : "";
+                                                            <a onclick="sort('@loHeader.Id',this);" href="Javascript:void(0);">@loHeader.Title</a>
+                                                        }
+                                                        else
+                                                            @loHeader.Title
+
+                                                        </th>
+                                                }
                                             }
-                                        }
-                                    </tr>
+                                        </tr>
+                                    </thead>
                                     <tbody>
-                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -74,12 +76,12 @@
 </div>
 <input id="hdnPageNoListPanel" type="hidden" value="1" />
 @section Scripts {
-    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script type="text/javascript">
+<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+<script type="text/javascript">
     var msGetDivisionDataList = '@Url.Action("GetDivisionList")';
     $(document).ready(function () {
         getDivisionData();
     });
-    </script>
-    <script src="~/Scripts/Division/DivisionList.js" asp-append-version="true"></script>
+</script>
+<script src="~/Scripts/Division/DivisionList.js" asp-append-version="true"></script>
 } 
