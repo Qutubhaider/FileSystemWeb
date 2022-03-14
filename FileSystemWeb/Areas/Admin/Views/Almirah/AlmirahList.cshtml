@@ -2,9 +2,13 @@
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Manage Almirah";
     var loTableHeaders = new[]
-                     {
-        new {Id="1", Visible=true, Title="Almirah Number",  Sort = true,   dbColName = "stAlmirahNumber",  CssClass = "w180 sorting_asc"},
-        new {Id="2", Visible=true, Title="",               Sort = false,  dbColName = "",                CssClass = "w40 text-center"}
+     {        
+        new {Id="1", Visible=true, Title="Zone Name",      Sort = true,   dbColName = "stZoneName",      CssClass = "w180 sorting_asc"},
+        new {Id="2", Visible=true, Title="Division Name",  Sort = true,   dbColName = "stDivisionName",  CssClass = "w180 sorting_asc"},
+        new {Id="3", Visible=true, Title="Department Name",  Sort = true,   dbColName = "stDepartmentName",  CssClass = "w180 sorting_asc"},
+        new {Id="4", Visible=true, Title="Room Number",  Sort = true,   dbColName = "stRoomNumber",  CssClass = "w180 sorting_asc"},
+        new {Id="5", Visible=true, Title="Almirah Number",  Sort = true,   dbColName = "stAlmirahNumber",  CssClass = "w180 sorting_asc"},
+        new {Id="6", Visible=true, Title="",               Sort = false,  dbColName = "",                CssClass = "w40 text-center"}
     };
 }
 <div class="container-fluid">
@@ -45,7 +49,8 @@
                             <div class="col-sm-12 col-md-6">
                                 <div id="datatable_filter" class="dataTables_filter">
                                     <label>Search:<input type="search" id="txtAlmirahNumber" class="form-control form-control-sm" placeholder="" aria-controls="datatable"></label>
-                                    <button onclick="getAlmirahData();">Search</button>
+                                    &nbsp;
+                                    <button class="btn btn-info" onclick="getAlmirahData();">Search</button>
                                 </div>
                             </div>
 
