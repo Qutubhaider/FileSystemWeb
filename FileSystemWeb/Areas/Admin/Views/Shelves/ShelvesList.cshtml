@@ -2,8 +2,13 @@
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Manage Shelves";
     var loTableHeaders = new[]
-                     {
-        new {Id="1", Visible=true, Title="Shelve Number",  Sort = true,   dbColName = "stShelveNumber",  CssClass = "w180 sorting_asc"},
+                             {
+        new {Id="1", Visible=true, Title="Zone Name",      Sort = true,   dbColName = "stZoneName",      CssClass = "w180 sorting_asc"},
+        new {Id="2", Visible=true, Title="Division Name",  Sort = true,   dbColName = "stDivisionName",  CssClass = "w180 sorting_asc"},
+        new {Id="3", Visible=true, Title="Department Name",  Sort = true,   dbColName = "stDepartmentName",  CssClass = "w180 sorting_asc"},
+        new {Id="4", Visible=true, Title="Room Number",  Sort = true,   dbColName = "stRoomNumber",  CssClass = "w180 sorting_asc"},
+        new {Id="5", Visible=true, Title="Almirah Number",  Sort = true,   dbColName = "stAlmirahNumber",  CssClass = "w180 sorting_asc"},
+        new {Id="6", Visible=true, Title="Shelve Number",  Sort = true,   dbColName = "stShelveNumber",  CssClass = "w180 sorting_asc"},
         new {Id="2", Visible=true, Title="",               Sort = false,  dbColName = "",                CssClass = "w40 text-center"}
     };
 }
@@ -45,7 +50,8 @@
                             <div class="col-sm-12 col-md-6">
                                 <div id="datatable_filter" class="dataTables_filter">
                                     <label>Search:<input type="search" id="txtShelveNumber" class="form-control form-control-sm" placeholder="" aria-controls="datatable"></label>
-                                    <button onclick="getShelveData();">Search</button>
+                                    &nbsp;
+                                    <button onclick="getShelveData();" class="btn btn-info">Search</button>
                                 </div>
                             </div>
 
@@ -70,14 +76,11 @@
                                                     }
                                                     else
                                                         @loHeader.Title
-
-
-                                                </th>
+                                                    </th>
                                             }
                                         }
                                 </thead>
                                 <tbody>
-                                   
                                 </tbody>
                             </table>
                         </div>
@@ -99,13 +102,13 @@
 <input id="hdnPageNoListPanel" type="hidden" value="1" />
 @section Scripts {
 
-    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        var msGetShelveDataList = '@Url.Action("GetShelveList")';
-            $(document).ready(function () {
-                getShelveData();
+<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    var msGetShelveDataList = '@Url.Action("GetShelveList")';
+        $(document).ready(function () {
+            getShelveData();
 
-             });
-    </script>
-    <script src="~/Scripts/Shelve/ShelveList.js" asp-append-version="true"></script>
+         });
+</script>
+<script src="~/Scripts/Shelve/ShelveList.js" asp-append-version="true"></script>
 }
