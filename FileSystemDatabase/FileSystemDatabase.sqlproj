@@ -118,6 +118,8 @@
     <Build Include="dbo\Stored Procedures\getUserDetail.sql" />
     <Build Include="dbo\Stored Procedures\getUserList.sql" />
     <Build Include="dbo\Stored Procedures\saveFile.sql" />
+    <Build Include="dbo\Stored Procedures\getFileDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getFileList.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />
