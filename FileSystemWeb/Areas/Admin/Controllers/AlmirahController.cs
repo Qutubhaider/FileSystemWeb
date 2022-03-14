@@ -37,7 +37,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             loAlmirah.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loAlmirah.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             loAlmirah.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
-            loAlmirah.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown();
+            //loAlmirah.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown();
             return View("~/Areas/Admin/Views/Almirah/AlmirahDetail.cshtml",loAlmirah);
         }
         public IActionResult SaveAlmirah(Almirah foAlmirah)

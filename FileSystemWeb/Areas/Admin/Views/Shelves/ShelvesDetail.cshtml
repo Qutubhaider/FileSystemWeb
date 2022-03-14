@@ -44,7 +44,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Store Name</label>
-                            <select id="ddStore" asp-for="inStoreId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.StoreList,"id","value"))">
+                            <select id="ddStore" asp-for="inStoreId" onchange="OnStoreChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.StoreList,"id","value"))">
                                 <option value="">Select Store Name</option>
 
                             </select>
@@ -52,17 +52,15 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Room Number</label>
-                            <select id="ddRoom" asp-for="inRoomId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.RoomList,"id","value"))">
+                            <select id="ddRoom" asp-for="inRoomId" onchange="OnRoomChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Room Number</option>
                             </select>
                             <span asp-validation-for="inRoomId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Almirah Number</label>
-                            <select asp-for="inAlmirahId" id="ddAlmirah" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select asp-for="inAlmirahId"   id="ddAlmirah" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Almirah Number</option>
-                                <option value="1">Almirah 1</option>
-                                <option value="2">Almirah 2</option>
                             </select>
                             <span asp-validation-for="inAlmirahId" class="text-danger"></span>
                         </div>
@@ -109,8 +107,14 @@
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
     <script type="text/javascript">
         var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
+        var msGetRoomDropDown = '@Url.Action("GetRoomDropdown")';
+        var msGetAlmirahDropDown = '@Url.Action("GetAlmirahDropdown")';
+        var msGetShelveDropDown ='@Url.Action("GetShelveDropdown")';
             $(document).ready(function () {
                 OnZoneChange(true);
+                OnStoreChange(true);
+                OnRoomChange(true);
+                OnAlmirahChange(true);
 
         });
     </script>

@@ -47,3 +47,74 @@ function OnDivisionChange(flgIsEdit = false) {
             $("#ddDesk").val($("#inDeskid").val());
     }, function () { });
 }
+
+function OnStoreChange(flgIsEdit = false) {
+    var loData = new Object();
+    if (flgIsEdit) {
+        var liStoreId = $('#inStoreId').val();
+    }
+    else {
+        var liStoreId = $('#ddStore').val();
+    }
+
+    loData.fiStoreId = liStoreId;
+    if ($("#ddRoom").length > 0) {
+        $("#ddRoom").empty();
+        $("#ddRoom").append("<option value='" + "" + "'>" + "Select Room" + "</option>");
+    }
+    loadMyRequest(msGetRoomDropDown, "GET", loData, function (response) {
+        //console.log(response);
+        $("#ddRoom").empty();
+        $("#ddRoom").append("<option value='" + "" + "'>" + "Select Room" + "</option>");
+        response.data.forEach(d => $("#ddRoom").append("<option value='" + d.id + "'>" + d.value + "</option>"));
+        if (flgIsEdit)
+            $("#ddRoom").val($("#inRoomid").val());
+    }, function () { });
+}
+function OnRoomChange(flgIsEdit = false) {
+    var loData = new Object();
+    if (flgIsEdit) {
+        var liRoomId = $('#inRoomid').val();
+    }
+    else {
+        var liRoomId = $('#ddRoom').val();
+    }
+
+    loData.fiRoomId = liRoomId;
+    if ($("#ddAlmirah").length > 0) {
+        $("#ddAlmirah").empty();
+        $("#ddAlmirah").append("<option value='" + "" + "'>" + "Select Almirah" + "</option>");
+    }
+    loadMyRequest(msGetAlmirahDropDown, "GET", loData, function (response) {
+        //console.log(response);
+        $("#ddAlmirah").empty();
+        $("#ddAlmirah").append("<option value='" + "" + "'>" + "Select Almirah" + "</option>");
+        response.data.forEach(d => $("#ddAlmirah").append("<option value='" + d.id + "'>" + d.value + "</option>"));
+        if (flgIsEdit)
+            $("#ddAlmirah").val($("#inAlmirahid").val());
+    }, function () { });
+}
+
+function OnAlmirahChange(flgIsEdit = false) {
+    var loData = new Object();
+    if (flgIsEdit) {
+        var liAlmirahId = $('#inAlmirahid').val();
+    }
+    else {
+        var liAlmirahId = $('#ddAlmirah').val();
+    }
+
+    loData.fiRoomId = liRoomId;
+    if ($("#ddShelve").length > 0) {
+        $("#ddShelve").empty();
+        $("#ddShelve").append("<option value='" + "" + "'>" + "Select Shelve" + "</option>");
+    }
+    loadMyRequest(msGetShelveDropDown, "GET", loData, function (response) {
+        //console.log(response);
+        $("#ddShelve").empty();
+        $("#ddShelve").append("<option value='" + "" + "'>" + "Select Shelve" + "</option>");
+        response.data.forEach(d => $("#ddShelve").append("<option value='" + d.id + "'>" + d.value + "</option>"));
+        if (flgIsEdit)
+            $("#ddShelve").val($("#inShelveid").val());
+    }, function () { });
+}

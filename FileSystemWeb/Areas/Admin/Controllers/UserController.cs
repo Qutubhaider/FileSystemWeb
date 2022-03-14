@@ -38,7 +38,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             loUserProfile.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loUserProfile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             loUserProfile.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
-            loUserProfile.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown();
+            //loUserProfile.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown();
             return View("~/Areas/Admin/Views/User/UserDetail.cshtml", loUserProfile);
         }
         public IActionResult SaveUserProfile(UserProfile foUserProfile)

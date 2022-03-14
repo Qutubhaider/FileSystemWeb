@@ -33,9 +33,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Room.Models.Room>().FromSqlInterpolated($"EXEC getRoomDetail @unRoomId={fuRoomId}").AsEnumerable().FirstOrDefault();
         }
 
-        public List<Select2> GetRoomDropDown()
+        public List<Select2> GetRoomDropDown(int fiStoreId)
         {
-            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getRoomDropDown @inStore={1}").ToList();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getRoomDropDown @inStore={fiStoreId}").ToList();
         }
 
         public List<RoomListResult> GetRoomList(string fsRoomNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)

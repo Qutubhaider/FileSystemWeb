@@ -14,6 +14,6 @@ namespace FileSystemBAL.Repository.IRepository
         Room.Models.Room GetRoomDetail(Guid fuRoomId);
         void DeleteRoom(Guid fuRoomId, out int fiSuccess);
         List<RoomListResult> GetRoomList(string fsRoomNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
-        List<Select2> GetRoomDropDown();
+        List<Select2> GetRoomDropDown(int fiStoreId);
     }
 }

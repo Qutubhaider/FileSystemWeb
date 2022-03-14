@@ -34,9 +34,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Almirah.Models.Almirah>().FromSqlInterpolated($"EXEC getAlmirahDetail @unAlmirahId={fuAlmirahId}").AsEnumerable().FirstOrDefault();
         }
 
-        public List<Select2> GetAlmirahDropDown()
+        public List<Select2> GetAlmirahDropDown(int fiRoomId)
         {
-            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getRoomDropDown").ToList();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getAlmirahDropDown @inRoomId={fiRoomId}").ToList();
         }
 
         public List<AlmirahListResult> GetAlmirahList(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
