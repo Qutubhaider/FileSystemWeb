@@ -9,7 +9,11 @@
 {
     foreach (AlmirahListResult loAlmirahList in Model.GetAlmirahList)
     {
-        <tr>
+        <tr>           
+            <td>@loAlmirahList.stZoneName</td>
+            <td>@loAlmirahList.stDivisionName</td>
+            <td>@loAlmirahList.stDepartmentName</td>
+            <td>@loAlmirahList.stRoomNumber</td>
             <td>@loAlmirahList.stAlmirahNumber</td>
             <td class="text-center"><a asp-area="Admin" asp-controller="Almirah" asp-action="Detail" asp-route-id="@loAlmirahList.unAlmirahId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
         </tr>
