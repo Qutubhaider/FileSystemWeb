@@ -68,13 +68,13 @@ function OnStoreChange(flgIsEdit = false) {
         $("#ddRoom").append("<option value='" + "" + "'>" + "Select Room" + "</option>");
         response.data.forEach(d => $("#ddRoom").append("<option value='" + d.id + "'>" + d.value + "</option>"));
         if (flgIsEdit)
-            $("#ddRoom").val($("#inRoomid").val());
+            $("#ddRoom").val($("#inRoomId").val());
     }, function () { });
 }
 function OnRoomChange(flgIsEdit = false) {
     var loData = new Object();
     if (flgIsEdit) {
-        var liRoomId = $('#inRoomid').val();
+        var liRoomId = $('#inRoomId').val();
     }
     else {
         var liRoomId = $('#ddRoom').val();
@@ -91,7 +91,7 @@ function OnRoomChange(flgIsEdit = false) {
         $("#ddAlmirah").append("<option value='" + "" + "'>" + "Select Almirah" + "</option>");
         response.data.forEach(d => $("#ddAlmirah").append("<option value='" + d.id + "'>" + d.value + "</option>"));
         if (flgIsEdit)
-            $("#ddAlmirah").val($("#inAlmirahid").val());
+            $("#ddAlmirah").val($("#inAlmirahId").val());
     }, function () { });
 }
 
@@ -104,7 +104,7 @@ function OnAlmirahChange(flgIsEdit = false) {
         var liAlmirahId = $('#ddAlmirah').val();
     }
 
-    loData.fiRoomId = liRoomId;
+    loData.fiAlmirahId = liAlmirahId;
     if ($("#ddShelve").length > 0) {
         $("#ddShelve").empty();
         $("#ddShelve").append("<option value='" + "" + "'>" + "Select Shelve" + "</option>");

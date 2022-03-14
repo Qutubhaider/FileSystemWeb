@@ -135,6 +135,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             return Json(new { data = DivisionDropDown });
 
         }
+        public IActionResult GetRoomDropDown(int fiStoreId)
+        {
+            List<Select2> RoomDropDown = moUnitOfWork.RoomRepository.GetRoomDropDown(fiStoreId);
+            return Json(new { data = RoomDropDown });
+
+        }
 
     }
 }

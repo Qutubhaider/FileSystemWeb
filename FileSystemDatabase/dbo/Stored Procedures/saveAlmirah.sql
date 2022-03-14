@@ -38,6 +38,7 @@ SET NOCOUNT ON;
 						inDivisionId=@inDivisionId,
 						inDepartmentId= @inDepartmentId,
 						inStoreId=@inStoreId,
+						inRoomId=@inRoomId,
 						dtCreateDate=@getDateTimeByTimezone,
 						inCreatedBy=@inCreatedBy					 
 				  WHERE inAlmirahId=@inAmirahId
