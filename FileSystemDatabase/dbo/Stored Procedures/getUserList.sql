@@ -31,10 +31,11 @@ SET NOCOUNT ON;
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		stUserName
+		stUserName,unUserProfileId
 		FROM ( 
             SELECT  
-                    UP.stFirstName AS stUserName
+                    UP.stFirstName AS stUserName,
+					UP.unUserProfileId
             FROM tblUserProfile UP WITH(NOLOCK) 
             
             WHERE 1=1' 

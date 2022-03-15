@@ -11,5 +11,6 @@ namespace FileSystemBAL.User.Models
         public int inRecordCount { get; set; }
         public int inRownumber { get; set; }
         public string stUserName { get; set; }
+        public Guid unUserProfileId { get; set; }
     }
 }

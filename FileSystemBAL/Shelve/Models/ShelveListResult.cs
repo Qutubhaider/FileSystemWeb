@@ -16,6 +16,7 @@ namespace FileSystemBAL.Shelve.Models
         public string stZoneName { get; set; }
         public string stDivisionName { get; set; }
         public string stDepartmentName { get; set; }
+        public string stStoreName { get; set; }
         public string stRoomNumber { get; set; }
         public string stAlmirahNumber { get; set; }
     }

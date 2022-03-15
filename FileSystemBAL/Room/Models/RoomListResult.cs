@@ -13,6 +13,7 @@ namespace FileSystemBAL.Room.Models
         public int inRoomId { get; set; }
         public Guid unRoomId { get; set; }
         public string stRoomNumber { get; set; }
+        public string stStoreName { get; set; }
         public string stZoneName { get; set; }
         public string stDivisionName { get; set; }
         public string stDepartmentName { get; set; }

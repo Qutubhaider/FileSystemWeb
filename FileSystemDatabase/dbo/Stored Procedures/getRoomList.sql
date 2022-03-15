@@ -31,16 +31,18 @@ SET NOCOUNT ON;
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		inRoomId,unRoomId,stRoomNumber,stZoneName ,stDivisionName,stDepartmentName
+		inRoomId,unRoomId,stStoreName,stRoomNumber,stZoneName ,stDivisionName,stDepartmentName
 		FROM ( 
             SELECT  
                     R.inRoomId, 
-                    R.unRoomId, 
+                    R.unRoomId,
+					S.stStoreName,
                     R.stRoomNumber, 
                     Z.stZoneName,
 					DV.stDivisionName,
 					DP.stDepartmentName
             FROM tblRoom R WITH(NOLOCK) 
+			JOIN tblStore S ON S.inStoreId=R.inStoreId
             JOIN tblZone Z ON Z.inZoneId=R.inZoneId
             JOIN tblDivision DV ON DV.inDivisionId=R.inDivisionId
             JOIN tblDepartment DP ON DP.inDepartmentId=R.inDepartmentId

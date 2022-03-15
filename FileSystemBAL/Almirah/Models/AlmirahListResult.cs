@@ -13,6 +13,7 @@ namespace FileSystemBAL.Almirah.Models
         public int inAlmirahId { get; set; }
         public Guid unAlmirahId { get; set; }
         public string stAlmirahNumber { get; set; }
+        public string stStoreName { get; set; }
         public string stZoneName { get; set; }
         public string stDivisionName { get; set; }
         public string stDepartmentName { get; set; }
