@@ -138,76 +138,39 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
+
                         <li>
-                            <a asp-area="Admin" asp-controller="Zone" asp-action="Index" class="waves-effect">
-                                <i class=" ri-map-pin-fill"></i>
-                                <span>Zone</span>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-map-pin-line"></i>
+                                <span>Desk Allocation</span>
                             </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a asp-area="Admin" asp-controller="Zone" asp-action="Index">Zone</a></li>
+                                <li><a asp-area="Admin" asp-controller="Division" asp-action="Index">Division</a></li>
+                                <li><a asp-area="Admin" asp-controller="Department" asp-action="Index">Department</a></li>
+                                <li><a asp-area="Admin" asp-controller="Designation" asp-action="Index">Designation</a></li>
+                                <li><a asp-area="Admin" asp-controller="Desk" asp-action="Index">Desk</a></li>
+                            </ul>
                         </li>
+
                         <li>
-                            <a asp-area="Admin" asp-controller="Division" asp-action="Index" class="waves-effect">
-                                <i class="ri-pin-distance-line"></i>
-                                <span>Division</span>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-map-pin-line"></i>
+                                <span>File Allocation</span>
                             </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Department" asp-action="Index" class="waves-effect">
-                                <i class="ri-luggage-deposit-line"></i>
-                                <span>Department</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Designation" asp-action="Index" class="waves-effect">
-                                <i class="ri-file-user-line"></i>
-                                <span>Designation</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Desk" asp-action="Index" class="waves-effect">
-                                <i class="ri-user-add-fill"></i>
-                                <span>Desk</span>
-                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a asp-area="Admin" asp-controller="Store" asp-action="Index">Store</a></li>
+                                <li><a asp-area="Admin" asp-controller="Room" asp-action="Index">Room</a></li>
+                                <li><a asp-area="Admin" asp-controller="Almirah" asp-action="Index">Almirah</a></li>
+                                <li><a asp-area="Admin" asp-controller="Shelves" asp-action="Index">Shelves</a></li>
+                                <li><a asp-area="Admin" asp-controller="StoreFile" asp-action="Index">Store File</a></li>
+                                <li><a asp-area="Admin" asp-controller="IssueFileHistory" asp-action="Index">Issue File History</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a asp-area="Admin" asp-controller="User" asp-action="Index" class="waves-effect">
                                 <i class="ri-user-add-fill"></i>
                                 <span>Users</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Store" asp-action="Index" class="waves-effect">
-                                <i class="ri-store-2-fill"></i>
-                                <span>Store</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Room" asp-action="Index" class="waves-effect">
-                                <i class="ri-home-smile-2-line"></i>
-                                <span>Room</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Almirah" asp-action="Index" class="waves-effect">
-                                <i class="ri-table-alt-line"></i>
-                                <span>Almirah</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Shelves" asp-action="Index" class="waves-effect">
-                                <i class="ri-archive-drawer-line"></i>
-                                <span>Shelves</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="StoreFile" asp-action="Index" class="waves-effect">
-                                <i class=" ri-survey-fill"></i>
-                                <span>Store File</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="IssueFileHistory" asp-action="Index" class="waves-effect">
-                                <i class="ri-profile-line"></i>
-                                <span>Issue File History</span>
                             </a>
                         </li>
                     </ul>

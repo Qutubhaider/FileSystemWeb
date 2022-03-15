@@ -8,11 +8,11 @@
     foreach (DeskListResult loDeskList in Model.GetDeskList)
     {
         <tr>
-            <td>@loDeskList.stDeskName</td>
             <td>@loDeskList.stZoneName</td>
             <td>@loDeskList.stDivisionName</td>
             <td>@loDeskList.stDepartmentName</td>
             <td>@loDeskList.stDesignationName</td>
+            <td>@loDeskList.stDeskName</td>
             <td class="text-center"><a asp-area="Admin" asp-controller="Desk" asp-action="Detail" asp-route-id="@loDeskList.unDeskId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
         </tr>
     }
@@ -26,7 +26,6 @@ else
 
 @{
     Pagination loPagination = Model.Pagination;
-
     <input type="hidden" id="hdnCurrentPage" value="@loPagination.inCurrentPage">
     <input type="hidden" id="hdnTotalPage" value="@loPagination.inTotalPages" />
     <input type="hidden" id="hdnTotalRecords" value="@loPagination.inTotalRecords" />

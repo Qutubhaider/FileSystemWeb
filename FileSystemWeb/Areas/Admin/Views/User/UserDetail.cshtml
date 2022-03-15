@@ -36,13 +36,6 @@
                             <span asp-validation-for="inDivisionId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Desk Name</label>
-                            <select id="ddDesk" asp-for="inDeskid" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
-                                <option value="">Select Zone Name</option>
-                            </select>
-                            <span asp-validation-for="inDeskid" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label">Department Name</label>
                             <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
                                 <option value="">Select Department Name</option>
@@ -56,6 +49,14 @@
                             </select>
                             <span asp-validation-for="inDesignationId" class="text-danger"></span>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Desk Name</label>
+                            <select id="ddDesk" asp-for="inDeskid" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                                <option value="">Select Zone Name</option>
+                            </select>
+                            <span asp-validation-for="inDeskid" class="text-danger"></span>
+                        </div>
+
                         <div class="mb-3">
                             <label class="form-label">First Name</label>
                             <input asp-for="stFirstName" type="text" class="form-control" placeholder="First Name">
@@ -76,7 +77,7 @@
                             <input asp-for="stMobile" type="text" class="form-control" placeholder="Mobile">
                             <span asp-validation-for="stMobile" class="text-danger"></span>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 d-none">
                             <label class="form-label">Address</label>
                             <input asp-for="stAddress" type="text" class="form-control" placeholder="Address">
                             <span asp-validation-for="stAddress" class="text-danger"></span>
