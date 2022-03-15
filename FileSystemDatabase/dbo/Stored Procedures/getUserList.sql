@@ -31,13 +31,22 @@ SET NOCOUNT ON;
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		stUserName,unUserProfileId
+		stUserName,unUserProfileId,stZoneName,stDivisionName,stDepartmentName,stDesignationName,stDeskName
 		FROM ( 
             SELECT  
                     UP.stFirstName AS stUserName,
-					UP.unUserProfileId
+					UP.unUserProfileId,
+					Z.stZoneName,
+					DV.stDivisionName,
+					DP.stDepartmentName,
+					DS.stDesignationName,
+					DD.stDeskName
             FROM tblUserProfile UP WITH(NOLOCK) 
-            
+            JOIN tblZone Z ON Z.inZoneId=UP.inZoneId
+            JOIN tblDivision DV ON DV.inDivisionId=UP.inDivisionId
+            JOIN tblDepartment DP ON DP.inDepartmentId=UP.inDepartmentId
+            JOIN tblDesignation DS ON DS.inDesignationId=UP.inDesignationId
+            JOIN tblDeskDetail DD ON DD.inDeskId = UP.inDeskId
             WHERE 1=1' 
  
 	IF(ISNULL(@stUserName,'')<>'') 

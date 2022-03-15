@@ -12,6 +12,7 @@ using FileSystemBAL.Room.Models;
 using FileSystemBAL.Almirah.Models;
 using FileSystemBAL.Shelve.Models;
 using FileSystemBAL.User.Models;
+using FileSystemBAL.FIle.Models;
 
 namespace FileSystemBAL.Data
 {
@@ -42,6 +43,8 @@ namespace FileSystemBAL.Data
         public DbSet<ShelveListResult> ShelveListResult { get; set; }
         public DbSet<UserProfile> UserProfile { get; set; }
         public DbSet<UserListResult> UserListResult { get; set; }
+        public DbSet<FileListResult> FileListResult{ get; set; }
+        public DbSet<FileDetail> FileDetail { get; set; }
         public DbSet<Select2> Select2 { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
@@ -68,6 +71,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<ShelveListResult>().HasNoKey();
             foModelbuilder.Entity<UserProfile>().HasNoKey();
             foModelbuilder.Entity<UserListResult>().HasNoKey();
+            foModelbuilder.Entity<FileListResult>().HasNoKey();
+            foModelbuilder.Entity<FileDetail>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

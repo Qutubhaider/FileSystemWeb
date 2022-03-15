@@ -1,5 +1,8 @@
-﻿using System;
+﻿using FileSystemUtility.Models;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,5 +28,19 @@ namespace FileSystemBAL.FIle.Models
         public string stEmployeeNumber{get;set;}
         public string stMobile        {get;set;}
         public int inStatus { get; set; }
+        [NotMapped]
+        public List<Select2> ZoneList { get; set; }
+        [NotMapped]
+        public IFormFile File { get; set; }
+        [NotMapped]
+        public List<Select2> DivisionList { get; set; }
+        [NotMapped]
+        public List<Select2> DepartmentList { get; set; }
+        [NotMapped]
+        public List<Select2> DesignationList { get; set; }
+        [NotMapped]
+        public List<Select2> StoreList { get; set; }
+        [NotMapped]
+        public List<Select2> RoomList { get; set; }
     }
 }

@@ -2,10 +2,13 @@
 using FileSystemBAL.Repository.IRepository;
 using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
+using FileSystemUtility.Utilities;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +20,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork moUnitOfWork;
         private readonly static int miPageSize = 10;
+        private readonly IWebHostEnvironment moWebHostEnvironment;
 
-        public FileController(IUnitOfWork foUnitOfWork)
+        public FileController(IUnitOfWork foUnitOfWork, IWebHostEnvironment foWebHostEnvironment)
         {
             moUnitOfWork = foUnitOfWork;
+            moWebHostEnvironment = foWebHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -33,8 +38,62 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             {
                 loFileDetail =  moUnitOfWork.FileRepository.GetFileDetail(id);
             }
+            loFileDetail.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
+            loFileDetail.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
+            loFileDetail.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
             //sloState.StateList = moUnitOfWork.StateRepository.GetStateDropDown();
             return View("~/Areas/Admin/Views/File/FileDetail.cshtml", loFileDetail);
+        }
+
+        public IActionResult SaveFile(FileDetail foFileDetail)
+        {
+                try
+                {
+                    int liSuccess = 0;
+                    int liUserId = 1; //User.FindFirst(SessionConstant)
+                    if (foFileDetail != null)
+                    {
+                    if (foFileDetail.File != null)
+                    {
+                        string loFolderPath = Path.Combine(moWebHostEnvironment.WebRootPath, "Files");
+                        foFileDetail.stFileName = Guid.NewGuid().ToString() + Path.GetExtension(foFileDetail.File.FileName);
+                        string filePath = Path.Combine(loFolderPath, foFileDetail.stFileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            foFileDetail.File.CopyTo(fileStream);
+                        }
+                    }
+                    moUnitOfWork.FileRepository.SaveFile(foFileDetail, liUserId, out liSuccess);
+                        if (liSuccess == (int)CommonFunctions.ActionResponse.Add)
+                        {
+                            TempData["ResultCode"] = CommonFunctions.ActionResponse.Add;
+                            TempData["Message"] = string.Format(AlertMessage.RecordAdded, "Shelve");
+                            return RedirectToAction("Index");
+                        }
+                        else if (liSuccess == (int)CommonFunctions.ActionResponse.Update)
+                        {
+                            TempData["ResultCode"] = CommonFunctions.ActionResponse.Update;
+                            TempData["Message"] = string.Format(AlertMessage.RecordUpdated, "Shelve");
+                            return RedirectToAction("Index");
+
+                        }
+                        else
+                        {
+                            TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
+                            TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving shelve");
+                            return RedirectToAction("Index");
+                        }
+
+                    }
+                    return RedirectToAction("Index");
+
+                }
+                catch (Exception ex)
+                {
+                    TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
+                    TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving shelve");
+                    return RedirectToAction("Index");
+                }
         }
         public IActionResult GetFileList(string fsFileName, int? Status, int? sort_column, string sort_order, int? pg, int? size)
         {
@@ -77,7 +136,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
                     liEndIndex = loFileListResults[loFileListResults.Count - 1].inRownumber;
                 }
                 loModel.Pagination = PaginationService.getPagination(liTotalRecords, pg.Value, size.Value, liStartIndex, liEndIndex);
-                return PartialView("~/Areas/Admin/Views/Room/_RoomListData.cshtml", loModel);
+                return PartialView("~/Areas/Admin/Views/File/_FileListData.cshtml", loModel);
             }
             catch (Exception ex)
             {
@@ -90,6 +149,24 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             List<Select2> DivisionDropDown = moUnitOfWork.DivisionRepository.GetDivisionDropDown(fiZoneId);
             return Json(new { data = DivisionDropDown });
 
+
+        }
+        public IActionResult GetRoomDropDown(int fiStoreId)
+        {
+            List<Select2> RoomDropDown = moUnitOfWork.RoomRepository.GetRoomDropDown(fiStoreId);
+            return Json(new { data = RoomDropDown });
+
+        }
+        public IActionResult GetAlmirahDropDown(int fiRoomId)
+        {
+            List<Select2> AlmirahDropDown = moUnitOfWork.AlmirahRepository.GetAlmirahDropDown(fiRoomId);
+            return Json(new { data = AlmirahDropDown });
+
+        }
+        public IActionResult GetShelvesDropDown(int fiAlmirahId)
+        {
+            List<Select2> ShelveDropDown = moUnitOfWork.ShelveRepository.GetShelveDropDown(fiAlmirahId);
+            return Json(new { data = ShelveDropDown });
         }
 
     }

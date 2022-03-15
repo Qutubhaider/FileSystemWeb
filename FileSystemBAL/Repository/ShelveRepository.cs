@@ -34,9 +34,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Shelve.Models.Shelve>().FromSqlInterpolated($"EXEC getShelveDetail @unShelveId={fuShelveId}").AsEnumerable().FirstOrDefault();
         }
 
-        public List<Select2> GetShelveDropDown()
+        public List<Select2> GetShelveDropDown(int fiAlmirahId)
         {
-            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getShelveDropDown").ToList();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getShelveDropDown @inAlmirahId={fiAlmirahId}").ToList();
         }
 
         public List<ShelveListResult> GetShelveList(string fsShelveNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)

@@ -24,12 +24,12 @@ namespace FileSystemBAL.Repository
 
         public FileDetail GetFileDetail(Guid unFileId)
         {
-            return moDatabaseContext.Set<FileDetail>().FromSqlInterpolated($"EXEC getFileDetail @@unFileId={unFileId}").AsEnumerable().FirstOrDefault();
+            return moDatabaseContext.Set<FileDetail>().FromSqlInterpolated($"EXEC getFileDetail @unFileId={unFileId}").AsEnumerable().FirstOrDefault();
         }
 
         public List<FileListResult> GetFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
         {
-        return moDatabaseContext.Set<FileListResult>().FromSqlInterpolated($"EXEC getFileList @@stFileName={fsFileName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+        return moDatabaseContext.Set<FileListResult>().FromSqlInterpolated($"EXEC getFileList @stFileName={fsFileName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
     }
 
         public void SaveFile(FileDetail foFileDetail, int fiUserId, out int fiSuccess)

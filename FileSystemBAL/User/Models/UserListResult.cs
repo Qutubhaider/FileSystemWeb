@@ -12,5 +12,11 @@ namespace FileSystemBAL.User.Models
         public int inRownumber { get; set; }
         public string stUserName { get; set; }
         public Guid unUserProfileId { get; set; }
+        public string stZoneName { get; set; }
+        public string stDivisionName { get; set; }
+        public string stDepartmentName { get; set; }
+        public string stDesignationName { get; set; }
+        public string stDeskName { get; set; }
+
     }
 }

@@ -6,10 +6,12 @@
 Ref# Modified By   Modified date   Description  
 */
 
-CREATE PROCEDURE getShelveDropDown
+CREATE PROCEDURE getShelveDropDown(
+@inAlmirahId INT
+)
 AS
 BEGIN
 SELECT inShelveId as id , stShelveNumber as value 
        FROM tblShelve
-
+       WHERE inAlmirahId=@inAlmirahId
 END

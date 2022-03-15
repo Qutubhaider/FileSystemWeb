@@ -12,7 +12,7 @@ CREATE PROCEDURE getFileDetail(
 )
 AS
 BEGIN
-  SELECT inStoreFileDetailsId,unStoreFileDetailsId,inStoreId,inUserId,inZoneId,inDivisionId,inDepartmentId,inRoomId,inAlmirahId,inShelvesId,stFileName,stEmployeeName,
+  SELECT inStoreFileDetailsId AS inStoreFileDetail,unStoreFileDetailsId AS unStoreFileDetail,inStoreId,inUserId,inZoneId,inDivisionId,inDepartmentId,inRoomId,inAlmirahId,inShelvesId,stFileName,stEmployeeName,
 				stPPONumber,stPFNumber,stEmployeeNumber,stMobile,inStatus FROM tblStoreFileDetails
   WHERE unStoreFileDetailsId=@unFileId
 END

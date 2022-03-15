@@ -14,6 +14,6 @@ namespace FileSystemBAL.Repository.IRepository
         Shelve.Models.Shelve GetShelveDetail(Guid fuShelveId);
         void DeleteShelve(Guid fuShelveId, out int fiSuccess);
         List<ShelveListResult> GetShelveList(string fsShelveNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
-        List<Select2> GetShelveDropDown();
+        List<Select2> GetShelveDropDown(int fiAlmirahId);
     }
 }
