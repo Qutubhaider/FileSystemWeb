@@ -10,6 +10,11 @@
     foreach (UserListResult loUserList in Model.GetUserList)
     {
         <tr>
+            <td>@loUserList.stZoneName</td>
+            <td>@loUserList.stDivisionName</td>
+            <td>@loUserList.stDepartmentName</td>
+            <td>@loUserList.stDesignationName</td>
+            <td>@loUserList.stDeskName</td>
             <td>@loUserList.stUserName</td>
             <td class="text-center"><a asp-area="Admin" asp-controller="User" asp-action="Detail" asp-route-id="@loUserList.unUserProfileId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
         </tr>
