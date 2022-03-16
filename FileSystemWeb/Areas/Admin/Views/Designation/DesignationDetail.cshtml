@@ -22,7 +22,13 @@
                 <div class="card-body">
                     <form asp-action="SaveDesignation" asp-controller="Designation" asp-area="Admin" class="custom-validation" novalidate="">
                         <div class="mb-3">
-
+                            <label class="form-label">Department Name</label>
+                            <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
+                                <option value="">Select Department Name</option>
+                            </select>
+                            <span asp-validation-for="inDepartmentId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Designation Name</label>
                             <input asp-for="stDesignationName" type="text" class="form-control" placeholder="Designation Name">
                             <span asp-validation-for="stDesignationName" class="text-danger"></span>

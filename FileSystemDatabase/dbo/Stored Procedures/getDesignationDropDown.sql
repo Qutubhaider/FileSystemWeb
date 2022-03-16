@@ -6,10 +6,12 @@
 Ref# Modified By   Modified date   Description  
 */
 
-CREATE PROCEDURE getDesignationDropDown
+CREATE PROCEDURE getDesignationDropDown(
+@inDepartmentId INT
+)
 AS
 BEGIN
 SELECT inDesignationId as id , stDesignationName as value 
        FROM tblDesignation
-
+       WHERE inDepartmentId=@inDepartmentId
 END

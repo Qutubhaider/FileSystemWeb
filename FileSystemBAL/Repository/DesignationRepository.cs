@@ -46,9 +46,9 @@ namespace FileSystemBAL.Repository
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
 
-        public List<Select2> GetDesignationDropDown()
+        public List<Select2> GetDesignationDropDown(int fiDepartmentId)
         {
-            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getDesignationDropDown").ToList();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getDesignationDropDown @inDepartmentId={fiDepartmentId}").ToList();
         }
     }
 }

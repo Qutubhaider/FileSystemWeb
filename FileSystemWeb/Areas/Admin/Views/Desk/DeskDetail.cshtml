@@ -35,13 +35,13 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
-                            <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
+                            <select id="ddDepartment" asp-for="inDepartmentId" onchange="OnDepartmentChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
                                 <option value="">Select Department Name</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Designation Name</label>
-                            <select id="ddDesignation" asp-for="inDesignationId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DesignationList,"id","value"))">
+                            <select id="ddDesignation" asp-for="inDesignationId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." >
                                 <option value="">Select Designation Name</option>
                             </select>
                         </div>
@@ -86,9 +86,10 @@
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
     <script type="text/javascript">
         var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
+        var msGetDesignationDropDown = '@Url.Action("GetDesignationDropDown")';
             $(document).ready(function () {
                 OnZoneChange(true);
-                
+                OnDepartmentChange(true);
         });
     </script>
     <script src="~/Scripts/Common//Dropdown.js" asp-append-version="true"></script>

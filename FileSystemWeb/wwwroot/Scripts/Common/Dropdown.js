@@ -118,3 +118,27 @@ function OnAlmirahChange(flgIsEdit = false) {
             $("#ddShelve").val($("#inShelvesId").val());
     }, function () { });
 }
+
+function OnDepartmentChange(flgIsEdit = false) {
+    var loData = new Object();
+    if (flgIsEdit) {
+        var liDepartmentId = $('#inDepartmentId').val();
+    }
+    else {
+        var liDepartmentId = $('#ddDepartment').val();
+    }
+
+    loData.fiDepartmentId = liDepartmentId;
+    if ($("#ddDesignation").length > 0) {
+        $("#ddDesignation").empty();
+        $("#ddDesignation").append("<option value='" + "" + "'>" + "Select Designation" + "</option>");
+    }
+    loadMyRequest(msGetDesignationDropDown, "GET", loData, function (response) {
+        //console.log(response);
+        $("#ddDesignation").empty();
+        $("#ddDesignation").append("<option value='" + "" + "'>" + "Select Designation" + "</option>");
+        response.data.forEach(d => $("#ddDesignation").append("<option value='" + d.id + "'>" + d.value + "</option>"));
+        if (flgIsEdit)
+            $("#ddDesignation").val($("#inDesignationId").val());
+    }, function () { });
+}

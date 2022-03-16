@@ -30,6 +30,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             {
                 loDesignation = moUnitOfWork.DesignationRepository.GetDesignation(id);
             }
+            loDesignation.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             return View("~/Areas/Admin/Views/Designation/DesignationDetail.cshtml",loDesignation);
         }
         public IActionResult SaveDesignation(Designation foDesignation)

@@ -34,7 +34,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             loDesk.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             //loDesk.DivisionList = moUnitOfWork.DivisionRepository.GetDivisionDropDown();
             loDesk.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
-            loDesk.DesignationList = moUnitOfWork.DesignationRepository.GetDesignationDropDown();
+            //loDesk.DesignationList = moUnitOfWork.DesignationRepository.GetDesignationDropDown(loDesk.inDepartmentId);
             //return View("~/Areas/Admin/Views/Divistion/DivisionDetail.cshtml", loDivision);
             return View("~/Areas/Admin/Views/Desk/DeskDetail.cshtml", loDesk);
         }
@@ -134,5 +134,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             return Json(new { data = DivisionDropDown });
 
         }
+        public IActionResult GetDesignationDropDown(int fiDepartmentId)
+        {
+            List<Select2> DesignationDropDown = moUnitOfWork.DesignationRepository.GetDesignationDropDown(fiDepartmentId);
+            return Json(new { data = DesignationDropDown });
+
+        }
+
     }
 }

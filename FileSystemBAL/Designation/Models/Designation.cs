@@ -1,6 +1,8 @@
-﻿using System;
+﻿using FileSystemUtility.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,5 +18,7 @@ namespace FileSystemBAL.Designation.Models
         public int inZoneId { get; set; }
         public int inDivisionId { get; set; }
         public int inDepartmentId { get; set; }
+        [NotMapped]
+        public List<Select2> DepartmentList { get; set; }
     }
 }
