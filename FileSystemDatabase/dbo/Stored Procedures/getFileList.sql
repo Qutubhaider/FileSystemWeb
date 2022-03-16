@@ -1,6 +1,6 @@
 ﻿-- ============================================= 
 -- Author: Vaibhav Singh
--- EXEC [[getRoomList]] 
+-- EXEC getFileList 
 -- ============================================= 
 /* 
 Ref#	Modified By			Modified date			Description 
@@ -31,14 +31,34 @@ SET NOCOUNT ON;
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		inStoreFileDetailsId,unStoreFileDetailsId,stFileName
+		inStoreFileDetailsId,unStoreFileDetailsId,stFileName,stUnFileName,stEmployeeName,stPPONumber,stPFNumber,stEmployeeNumber,stMobile,stShelveNumber,stZoneName,stDivisionName,stDepartmentName,stStoreName,stRoomNumber,stAlmirahNumber
 		FROM ( 
             SELECT  
                     F.inStoreFileDetailsId, 
                     F.unStoreFileDetailsId, 
-                    F.stFileName
+                    F.stFileName,
+					F.stUnFileName,
+					F.stEmployeeName,
+					F.stPPONumber,
+					F.stPFNumber,
+					F.stEmployeeNumber,
+					F.stMobile,
+					S.stShelveNumber, 
+                    Z.stZoneName,
+					DV.stDivisionName,
+					DP.stDepartmentName,
+					ST.stStoreName,
+					R.stRoomNumber,
+					A.stAlmirahNumber
                     
-            FROM tblStoreFileDetails F WITH(NOLOCK) 
+            FROM tblStoreFileDetails F WITH(NOLOCK)
+			JOIN tblZone Z ON Z.inZoneId=F.inZoneId
+            JOIN tblStore ST ON ST.inStoreId=F.inStoreId
+            JOIN tblDivision DV ON DV.inDivisionId=F.inDivisionId
+            JOIN tblDepartment DP ON DP.inDepartmentId=F.inDepartmentId
+            JOIN tblAlmirah A ON A.inAlmirahId=F.inAlmirahId
+			JOIN tblRoom R ON R.inRoomId=F.inRoomId
+			JOIN tblShelve S ON S.inShelveId=F.inShelvesId
             
             WHERE 1=1' 
  

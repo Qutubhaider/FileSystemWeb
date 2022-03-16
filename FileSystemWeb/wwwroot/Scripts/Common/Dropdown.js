@@ -98,7 +98,7 @@ function OnRoomChange(flgIsEdit = false) {
 function OnAlmirahChange(flgIsEdit = false) {
     var loData = new Object();
     if (flgIsEdit) {
-        var liAlmirahId = $('#inAlmirahid').val();
+        var liAlmirahId = $('#inAlmirahId').val();
     }
     else {
         var liAlmirahId = $('#ddAlmirah').val();
@@ -115,6 +115,6 @@ function OnAlmirahChange(flgIsEdit = false) {
         $("#ddShelve").append("<option value='" + "" + "'>" + "Select Shelve" + "</option>");
         response.data.forEach(d => $("#ddShelve").append("<option value='" + d.id + "'>" + d.value + "</option>"));
         if (flgIsEdit)
-            $("#ddShelve").val($("#inShelveid").val());
+            $("#ddShelve").val($("#inShelvesId").val());
     }, function () { });
 }

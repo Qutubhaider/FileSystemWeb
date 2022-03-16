@@ -72,9 +72,15 @@
                             <span asp-validation-for="inShelvesId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">File Name</label>
+                            <label class="form-label">File</label>
                             <input type="file" class="filestyle" asp-for="File" data-buttonname="btn-secondary" />
                             <span asp-validation-for="stFileName" class="text-danger"></span>
+                            @if (Model.stFileName != null || Model.stFileName != string.Empty)
+                            {
+                                <input type="hidden" asp-for="stFileName" />
+                                <input type="hidden" asp-for="stUnFileName" />
+                            <a asp-action="DownloadFile" asp-controller="File" asp-area="Admin" asp-route-fuFileName="@Model.stUnFileName" asp-route-fileName="@Model.stFileName">@Model.stFileName</a>
+                            }
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Employee Name</label>

@@ -11,6 +11,7 @@
     inAlmirahId INT,
     inShelvesId INT,
     stFileName NVARCHAR(200),
+    stUnFileName NVARCHAR(200),
     stEmployeeName NVARCHAR(200),
     inEmployeeType INT,
     stPFNumber NVARCHAR(200),

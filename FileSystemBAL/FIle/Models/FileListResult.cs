@@ -13,6 +13,19 @@ namespace FileSystemBAL.FIle.Models
         public int inStoreFileDetailsId { get; set; }
         public Guid unStoreFileDetailsId { get; set; }
         public string stFileName { get; set; }
+        public string stUnFileName    {get;set;}
+        public string stEmployeeName  {get;set;}
+        public string stPPONumber     {get;set;}
+        public string stPFNumber      {get;set;}
+        public string stEmployeeNumber{get;set;}
+        public string stMobile        {get;set;}
+        public string stShelveNumber  {get;set;}
+        public string stZoneName      {get;set;}
+        public string stDivisionName  {get;set;}
+        public string stDepartmentName{get;set;}
+        public string stStoreName     {get;set;}
+        public string stRoomNumber    {get;set;}
+        public string stAlmirahNumber { get; set; }
 
     }
 }

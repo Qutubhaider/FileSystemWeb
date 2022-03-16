@@ -56,8 +56,9 @@ namespace FileSystemWeb.Areas.Admin.Controllers
                     if (foFileDetail.File != null)
                     {
                         string loFolderPath = Path.Combine(moWebHostEnvironment.WebRootPath, "Files");
-                        foFileDetail.stFileName = Guid.NewGuid().ToString() + Path.GetExtension(foFileDetail.File.FileName);
-                        string filePath = Path.Combine(loFolderPath, foFileDetail.stFileName);
+                        foFileDetail.stUnFileName = Guid.NewGuid().ToString() + Path.GetExtension(foFileDetail.File.FileName);
+                        foFileDetail.stFileName = foFileDetail.File.FileName;
+                        string filePath = Path.Combine(loFolderPath, foFileDetail.stUnFileName);
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
                             foFileDetail.File.CopyTo(fileStream);
@@ -167,6 +168,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
         {
             List<Select2> ShelveDropDown = moUnitOfWork.ShelveRepository.GetShelveDropDown(fiAlmirahId);
             return Json(new { data = ShelveDropDown });
+        }
+
+        public IActionResult DownloadFile(string fuFileName,string fileName)
+        {
+            byte[] fileBytes = System.IO.File.ReadAllBytes(Path.Combine(moWebHostEnvironment.WebRootPath, "Files", fuFileName));
+            return File(fileBytes, "application/octet-stream", fileName);
         }
 
     }
