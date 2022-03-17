@@ -33,9 +33,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Store.Models.Store>().FromSqlInterpolated($"EXEC getStoreDetail @unStoreId={fuStoreId}").AsEnumerable().FirstOrDefault();
         }
 
-        public List<Select2> GetStoreDropDown()
+        public List<Select2> GetStoreDropDown(int fiDivisionId)
         {
-            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getStoreDropDown").ToList();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getStoreDropDown @inDivisionId={fiDivisionId}").ToList();
         }
 
         public List<StoreListResult> GetStoreList(string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)

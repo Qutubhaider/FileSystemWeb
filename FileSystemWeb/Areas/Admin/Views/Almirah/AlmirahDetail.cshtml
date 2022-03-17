@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
-                            <select id="ddDivision" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDivision" asp-for="inDivisionId" onchange="OnDivisionChangeLoadStore();" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
                             <span asp-validation-for="inDivisionId" class="text-danger"></span>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Store Name</label>
-                            <select id="ddStore" asp-for="inStoreId" onchange="OnStoreChange();"  class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.StoreList,"id","value"))">
+                            <select id="ddStore" asp-for="inStoreId" onchange="OnStoreChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Store Name</option>
 
                             </select>
@@ -52,11 +52,13 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Room Number</label>
-                            <select id="ddRoom" asp-for="inRoomId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." >
-                                <option value="">Select Room Number</option>
+                            <select id="ddRoom" asp-for="inRoomId"  class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                                <option value="">Select Room Name</option>
+
                             </select>
                             <span asp-validation-for="inRoomId" class="text-danger"></span>
                         </div>
+                        
                         <div class="mb-3">
                             <label class="form-label">Almirah Number</label>
                             <input asp-for="stAlmirahNumber" type="text" class="form-control" placeholder="Almirah Number">
@@ -101,10 +103,11 @@
     <script type="text/javascript">
         var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
          var msGetRoomDropDown = '@Url.Action("GetRoomDropdown")';
+         var msGetStoreDropDown = '@Url.Action("GetStoreDropDown")';
             $(document).ready(function () {
                 OnZoneChange(true);
                 OnStoreChange(true);
-
+                OnDivisionChangeLoadStore(true);
         });
     </script>
     <script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>

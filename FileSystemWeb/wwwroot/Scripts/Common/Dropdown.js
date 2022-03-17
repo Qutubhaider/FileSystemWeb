@@ -24,7 +24,7 @@
     }, function () { });
 }
 
-function OnDivisionChange(flgIsEdit = false) {
+function OnDivisionChangeLoadDesk(flgIsEdit = false) {
     var loData = new Object();
     if (flgIsEdit) {
         var liDivisionId = $('#inDivisionId').val();
@@ -45,6 +45,30 @@ function OnDivisionChange(flgIsEdit = false) {
         response.data.forEach(d => $("#ddDesk").append("<option value='" + d.id + "'>" + d.value + "</option>"));
         if (flgIsEdit)
             $("#ddDesk").val($("#inDeskid").val());
+    }, function () { });
+}
+
+function OnDivisionChangeLoadStore(flgIsEdit = false) {
+    var loData = new Object();
+    if (flgIsEdit) {
+        var liDivisionId = $('#inDivisionId').val();
+    }
+    else {
+        var liDivisionId = $('#ddDivision').val();
+    }
+
+    loData.fiDivisionId = liDivisionId;
+    if ($("#ddStore").length > 0) {
+        $("#ddStore").empty();
+        $("#ddStore").append("<option value='" + "" + "'>" + "Select Store" + "</option>");
+    }
+    loadMyRequest(msGetStoreDropDown, "GET", loData, function (response) {
+        //console.log(response);
+        $("#ddStore").empty();
+        $("#ddStore").append("<option value='" + "" + "'>" + "Select Store" + "</option>");
+        response.data.forEach(d => $("#ddStore").append("<option value='" + d.id + "'>" + d.value + "</option>"));
+        if (flgIsEdit)
+            $("#ddStore").val($("#inStoreId").val());
     }, function () { });
 }
 
@@ -120,6 +144,30 @@ function OnAlmirahChange(flgIsEdit = false) {
 }
 
 function OnDepartmentChange(flgIsEdit = false) {
+    var loData = new Object();
+    if (flgIsEdit) {
+        var liDepartmentId = $('#inDepartmentId').val();
+    }
+    else {
+        var liDepartmentId = $('#ddDepartment').val();
+    }
+
+    loData.fiDepartmentId = liDepartmentId;
+    if ($("#ddDesignation").length > 0) {
+        $("#ddDesignation").empty();
+        $("#ddDesignation").append("<option value='" + "" + "'>" + "Select Designation" + "</option>");
+    }
+    loadMyRequest(msGetDesignationDropDown, "GET", loData, function (response) {
+        //console.log(response);
+        $("#ddDesignation").empty();
+        $("#ddDesignation").append("<option value='" + "" + "'>" + "Select Designation" + "</option>");
+        response.data.forEach(d => $("#ddDesignation").append("<option value='" + d.id + "'>" + d.value + "</option>"));
+        if (flgIsEdit)
+            $("#ddDesignation").val($("#inDesignationId").val());
+    }, function () { });
+}
+
+function OnSChange(flgIsEdit = false) {
     var loData = new Object();
     if (flgIsEdit) {
         var liDepartmentId = $('#inDepartmentId').val();

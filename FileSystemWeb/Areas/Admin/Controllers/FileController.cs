@@ -40,7 +40,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             }
             loFileDetail.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loFileDetail.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
-            loFileDetail.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
+            //loFileDetail.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
             //sloState.StateList = moUnitOfWork.StateRepository.GetStateDropDown();
             return View("~/Areas/Admin/Views/File/FileDetail.cshtml", loFileDetail);
         }
@@ -158,6 +158,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             return Json(new { data = RoomDropDown });
 
         }
+        public IActionResult GetStoreDropDown(int fiDivisionId)
+        {
+            List<Select2> StoreDropDown = moUnitOfWork.StoreRepository.GetStoreDropDown(fiDivisionId);
+            return Json(new { data = StoreDropDown });
+
+        }
         public IActionResult GetAlmirahDropDown(int fiRoomId)
         {
             List<Select2> AlmirahDropDown = moUnitOfWork.AlmirahRepository.GetAlmirahDropDown(fiRoomId);
@@ -172,8 +178,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
 
         public IActionResult DownloadFile(string fuFileName,string fileName)
         {
-            byte[] fileBytes = System.IO.File.ReadAllBytes(Path.Combine(moWebHostEnvironment.WebRootPath, "Files", fuFileName));
-            return File(fileBytes, "application/octet-stream", fileName);
+            return File(System.IO.File.ReadAllBytes(Path.Combine(moWebHostEnvironment.WebRootPath, "Files", fuFileName)), "application/octet-stream", fileName);
         }
 
     }

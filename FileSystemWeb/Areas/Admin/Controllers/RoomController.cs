@@ -40,7 +40,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             }
             loRoom.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loRoom.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
-            loRoom.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown(); ;
+            //loRoom.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown(); ;
             //return View("~/Areas/Admin/Views/Desk/DeskDetail.cshtml", loDesk);
             return View("~/Areas/Admin/Views/Room/RoomDetail.cshtml",loRoom);
         }
@@ -138,6 +138,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
         {
             List<Select2> DivisionDropDown = moUnitOfWork.DivisionRepository.GetDivisionDropDown(fiZoneId);
             return Json(new { data = DivisionDropDown });
+
+        } 
+        public IActionResult GetStoreDropdown(int fiDivisionId)
+        {
+            List<Select2> StoreDropDown = moUnitOfWork.StoreRepository.GetStoreDropDown(fiDivisionId);
+            return Json(new { data = StoreDropDown });
 
         }
     }

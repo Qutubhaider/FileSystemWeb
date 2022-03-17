@@ -36,7 +36,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             }
             loAlmirah.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loAlmirah.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
-            loAlmirah.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
+            //loAlmirah.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
             //loAlmirah.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown();
             return View("~/Areas/Admin/Views/Almirah/AlmirahDetail.cshtml",loAlmirah);
         }
@@ -140,6 +140,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             List<Select2> RoomDropDown = moUnitOfWork.RoomRepository.GetRoomDropDown(fiStoreId);
             return Json(new { data = RoomDropDown });
 
+        }
+
+        public IActionResult GetStoreDropDown(int fiDivisionId)
+        {
+            List<Select2> StoreDropDown = moUnitOfWork.StoreRepository.GetStoreDropDown(fiDivisionId);
+            return Json(new { data = StoreDropDown });
         }
 
     }

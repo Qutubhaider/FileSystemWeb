@@ -36,7 +36,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             }
             loShelve.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loShelve.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
-            loShelve.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
+            //loShelve.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
             return View("~/Areas/Admin/Views/Shelves/ShelvesDetail.cshtml", loShelve);
         }
         public IActionResult SaveShelve(Shelve foShelve)
@@ -145,6 +145,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
         {
             List<Select2> AlmirahDropDown = moUnitOfWork.AlmirahRepository.GetAlmirahDropDown(fiRoomId);
             return Json(new { data = AlmirahDropDown });
+
+        }
+        public IActionResult GetStoreDropDown(int fiDivisionId)
+        {
+            List<Select2> StoreDropDown = moUnitOfWork.StoreRepository.GetStoreDropDown(fiDivisionId);
+            return Json(new { data = StoreDropDown });
 
         }
     }

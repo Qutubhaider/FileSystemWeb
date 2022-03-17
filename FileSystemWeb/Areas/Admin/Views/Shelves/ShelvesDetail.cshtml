@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
-                            <select id="ddDivision" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDivision" asp-for="inDivisionId" onchange="OnDivisionChangeLoadStore();" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
                             <span asp-validation-for="inDivisionId" class="text-danger"></span>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Store Name</label>
-                            <select id="ddStore" asp-for="inStoreId" onchange="OnStoreChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.StoreList,"id","value"))">
+                            <select id="ddStore" asp-for="inStoreId" onchange="OnStoreChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Store Name</option>
 
                             </select>
@@ -110,11 +110,13 @@
         var msGetRoomDropDown = '@Url.Action("GetRoomDropdown")';
         var msGetAlmirahDropDown = '@Url.Action("GetAlmirahDropdown")';
         var msGetShelveDropDown ='@Url.Action("GetShelveDropdown")';
+        var msGetStoreDropDown ='@Url.Action("GetStoreDropdown")';
             $(document).ready(function () {
                 OnZoneChange(true);
                 OnStoreChange(true);
                 OnRoomChange(true);
                 OnAlmirahChange(true);
+                OnDivisionChangeLoadStore(true)
 
         });
     </script>
