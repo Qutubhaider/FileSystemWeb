@@ -32,7 +32,7 @@ namespace FileSystemBAL.Repository
 
         public List<Select2> GetUserDropDown()
         {
-            throw new NotImplementedException();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserDropDown").ToList();
         }
 
         public UserEmailResult GetUserByEmail(string stEmail)

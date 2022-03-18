@@ -120,6 +120,12 @@
     <Build Include="dbo\Stored Procedures\saveFile.sql" />
     <Build Include="dbo\Stored Procedures\getFileDetail.sql" />
     <Build Include="dbo\Stored Procedures\getFileList.sql" />
+    <Build Include="dbo\Stored Procedures\saveIssueFileHistory.sql" />
+    <Build Include="dbo\Stored Procedures\getIssueFileDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\getIssueFileDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getIssueFileList.sql" />
+    <Build Include="dbo\Stored Procedures\getUserDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\getFileDropDown.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />

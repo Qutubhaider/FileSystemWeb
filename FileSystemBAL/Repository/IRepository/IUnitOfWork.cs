@@ -20,6 +20,7 @@ namespace FileSystemBAL.Repository.IRepository
         IAlmirahRepository AlmirahRepository { get; }
         IShelveRepository ShelveRepository { get; }
         IFileRepository FileRepository { get; }
+        IIssueFileHistoryRepository IssueFileHistoryRepository { get; }
         void Save();
     }
 }

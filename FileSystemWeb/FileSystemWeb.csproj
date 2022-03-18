@@ -25,6 +25,5 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Files\" />
-    <Folder Include="Areas\Admin\Views\IssueFile\" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 ﻿using FileSystemBAL.Data;
 using FileSystemBAL.FIle.Models;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -25,6 +26,11 @@ namespace FileSystemBAL.Repository
         public FileDetail GetFileDetail(Guid unFileId)
         {
             return moDatabaseContext.Set<FileDetail>().FromSqlInterpolated($"EXEC getFileDetail @unFileId={unFileId}").AsEnumerable().FirstOrDefault();
+        }
+
+        public List<Select2> GetFileDropDown()
+        {
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getFileDropDown").ToList();
         }
 
         public List<FileListResult> GetFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)

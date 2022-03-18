@@ -13,6 +13,7 @@ using FileSystemBAL.Almirah.Models;
 using FileSystemBAL.Shelve.Models;
 using FileSystemBAL.User.Models;
 using FileSystemBAL.FIle.Models;
+using FileSystemBAL.IssueFIleHistory.Models;
 
 namespace FileSystemBAL.Data
 {
@@ -45,6 +46,8 @@ namespace FileSystemBAL.Data
         public DbSet<UserListResult> UserListResult { get; set; }
         public DbSet<FileListResult> FileListResult{ get; set; }
         public DbSet<FileDetail> FileDetail { get; set; }
+        public DbSet<IssueFile> IssueFile { get; set; }
+        public DbSet<IssueFileListResult> IssueFileListResult { get; set; }
         public DbSet<Select2> Select2 { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
@@ -73,6 +76,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<UserListResult>().HasNoKey();
             foModelbuilder.Entity<FileListResult>().HasNoKey();
             foModelbuilder.Entity<FileDetail>().HasNoKey();
+            foModelbuilder.Entity<IssueFileListResult>().HasNoKey();
+            foModelbuilder.Entity<IssueFile>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }
