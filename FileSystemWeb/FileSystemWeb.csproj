@@ -20,9 +20,11 @@
     <None Remove="Areas\Admin\Views\Desk\" />
     <None Remove="Areas\Admin\Views\Store\" />
     <None Remove="Areas\Admin\Views\Room\" />
+    <None Remove="Areas\Admin\Views\IssueFile\" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\Files\" />
+    <Folder Include="Areas\Admin\Views\IssueFile\" />
   </ItemGroup>
 </Project>
