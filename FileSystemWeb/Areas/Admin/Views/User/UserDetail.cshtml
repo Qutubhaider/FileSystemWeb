@@ -30,21 +30,21 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
-                            <select id="ddDivision" onchange="OnDivisionChange();" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDivision" onchange="OnDivisionChangeLoadDesk();" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
                             <span asp-validation-for="inDivisionId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
-                            <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
+                            <select id="ddDepartment" onchange="OnSChange();" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
                                 <option value="">Select Department Name</option>
                             </select>
                             <span asp-validation-for="inDepartmentId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Designation Name</label>
-                            <select id="ddDepartment" asp-for="inDesignationId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
+                            <select id="ddDesignation" asp-for="inDesignationId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Department Name</option>
                             </select>
                             <span asp-validation-for="inDesignationId" class="text-danger"></span>
@@ -120,9 +120,11 @@
     <script type="text/javascript">
         var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
         var msGetDeskDropDown =  '@Url.Action("GetDeskDropdown")';
+        var msGetDesignationDropDown = '@Url.Action("GetDesignationDropDown")';
             $(document).ready(function () {
                 OnZoneChange(true);
-                OnDivisionChange(true);
+                OnDivisionChangeLoadDesk(true);
+                OnDepartmentChange(true);
         });
     </script>
     <script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>

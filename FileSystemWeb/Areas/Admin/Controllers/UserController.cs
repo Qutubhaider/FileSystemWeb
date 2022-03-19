@@ -37,9 +37,13 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             }
             loUserProfile.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loUserProfile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
-            //loUserProfile.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
-            //loUserProfile.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown();
             return View("~/Areas/Admin/Views/User/UserDetail.cshtml", loUserProfile);
+        }
+        public IActionResult GetDesignationDropDown(int fiDepartmentId)
+        {
+            List<Select2> DesignationDropDown = moUnitOfWork.DesignationRepository.GetDesignationDropDown(fiDepartmentId);
+            return Json(new { data = DesignationDropDown });
+
         }
         public IActionResult SaveUserProfile(UserProfile foUserProfile)
         {

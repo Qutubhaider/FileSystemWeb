@@ -32,13 +32,15 @@ SET NOCOUNT ON;
 	END
 	SET @stSQL=''+'WITH PAGED AS( 
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber,
-		inDesignationId,unDesignationId,stDesignationName
+		inDesignationId,unDesignationId,stDesignationName,stDepartmentName
 		FROM (
 	SELECT 
 		D.inDesignationId,
 		D.unDesignationId,
-		D.stDesignationName
+		D.stDesignationName,
+		DP.stDepartmentName
 	FROM tblDesignation D WITH(NOLOCK)
+	JOIN tblDepartment DP ON DP.inDepartmentId=D.inDepartmentId
 	WHERE 1=1'
 
 	IF(ISNULL(@stDesignationName,'')<>'')

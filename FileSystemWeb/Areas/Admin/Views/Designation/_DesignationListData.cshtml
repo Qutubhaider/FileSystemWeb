@@ -7,7 +7,7 @@
     foreach (DesignationListResult loDesignationListResults in Model.GetDesignationList)
     {
         <tr>
-
+            <td>@loDesignationListResults.stDepartmentName</td>
             <td>@loDesignationListResults.stDesignationName</td>
             <td class="text-center"><a asp-area="Admin" asp-controller="Designation" asp-action="Detail" asp-route-id="@loDesignationListResults.unDesignationId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
         </tr>

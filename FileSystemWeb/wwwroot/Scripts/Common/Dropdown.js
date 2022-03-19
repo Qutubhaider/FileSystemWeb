@@ -95,6 +95,7 @@ function OnStoreChange(flgIsEdit = false) {
             $("#ddRoom").val($("#inRoomId").val());
     }, function () { });
 }
+
 function OnRoomChange(flgIsEdit = false) {
     var loData = new Object();
     if (flgIsEdit) {

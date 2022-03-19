@@ -13,5 +13,6 @@ namespace FileSystemBAL.Designation.Models
         public int inDesignationId { get; set; }
         public Guid unDesignationId { get; set; }
         public string stDesignationName { get; set; }
+        public string stDepartmentName { get; set; }
     }
 }
