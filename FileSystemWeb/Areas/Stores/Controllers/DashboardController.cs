@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace DmfWeb.Areas.Store.Controllers
+namespace DmfWeb.Areas.Stores.Controllers
 {
-    [Area("Store")]
+    [Area("Stores")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
         {
-            return View("~/Areas/Store/Views/Dashboard/Dashboard.cshtml");
+            return View("~/Areas/Stores/Views/Dashboard/Dashboard.cshtml");
         }
     }
 }
