@@ -2,14 +2,14 @@
     Layout = "_LayoutAdmin";
     ViewBag.Title = "Manage Almirah";
     var loTableHeaders = new[]
-     {        
-        new {Id="1", Visible=true, Title="Zone Name",      Sort = true,   dbColName = "stZoneName",      CssClass = "w180 sorting_asc"},
-        new {Id="2", Visible=true, Title="Division Name",  Sort = true,   dbColName = "stDivisionName",  CssClass = "w180 sorting_asc"},
-        new {Id="3", Visible=true, Title="Department Name",  Sort = true,   dbColName = "stDepartmentName",  CssClass = "w180 sorting_asc"},
-        new {Id="4", Visible=true, Title="Store Name",  Sort = true,   dbColName = "stStoreName",  CssClass = "w180 sorting_asc"},
-        new {Id="5", Visible=true, Title="Room Number",  Sort = true,   dbColName = "stRoomNumber",  CssClass = "w180 sorting_asc"},
-        new {Id="6", Visible=true, Title="Almirah Number",  Sort = true,   dbColName = "stAlmirahNumber",  CssClass = "w180 sorting_asc"},
-        new {Id="7", Visible=true, Title="",               Sort = false,  dbColName = "",                CssClass = "w40 text-center"}
+             {
+        new {Id="1", Visible=true, Title="Zone Name",        Sort = true,   dbColName = "stZoneName",        CssClass = ""},
+        new {Id="2", Visible=true, Title="Division Name",    Sort = true,   dbColName = "stDivisionName",    CssClass = ""},
+        new {Id="3", Visible=true, Title="Department Name",  Sort = true,   dbColName = "stDepartmentName",  CssClass = ""},
+        new {Id="4", Visible=true, Title="Store Name",       Sort = true,   dbColName = "stStoreName",       CssClass = ""},
+        new {Id="5", Visible=true, Title="Room Number",      Sort = true,   dbColName = "stRoomNumber",      CssClass = ""},
+        new {Id="6", Visible=true, Title="Almirah Number",   Sort = true,   dbColName = "stAlmirahNumber",   CssClass = ""},
+        new {Id="7", Visible=true, Title="",                 Sort = false,  dbColName = "",                  CssClass = ""}
     };
 }
 <div class="container-fluid">
@@ -78,7 +78,8 @@
                                                         @loHeader.Title
 
 
-                                                </th>
+
+                                                    </th>
                                             }
                                         }
                                 </thead>
@@ -104,13 +105,13 @@
 <input id="hdnPageNoListPanel" type="hidden" value="1" />
 @section Scripts {
 
-    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        var msGetAlmirahDataList = '@Url.Action("GetAlmirahList")';
-            $(document).ready(function () {
-                getAlmirahData();
+<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    var msGetAlmirahDataList = '@Url.Action("GetAlmirahList")';
+        $(document).ready(function () {
+            getAlmirahData();
 
-             });
-    </script>
-    <script src="~/Scripts/Almirah/AlmirahList.js" asp-append-version="true"></script>
+         });
+</script>
+<script src="~/Scripts/Almirah/AlmirahList.js" asp-append-version="true"></script>
 }

@@ -3,17 +3,15 @@
 @using FileSystemUtility.Utilities
 @using FileSystemUtility.Models
 
-
-
 @if (Model.GetStoreList != null && Model.GetStoreList.Count > 0)
 {
     foreach (StoreListResult loStoreList in Model.GetStoreList)
     {
         <tr>
-            <td>@loStoreList.stStoreName</td>
             <td>@loStoreList.stZoneName</td>
             <td>@loStoreList.stDivisionName</td>
             <td>@loStoreList.stDepartmentName</td>
+            <td>@loStoreList.stStoreName</td>
             <td class="text-center"><a asp-area="Admin" asp-controller="Store" asp-action="Detail" asp-route-id="@loStoreList.unStoreId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
         </tr>
     }

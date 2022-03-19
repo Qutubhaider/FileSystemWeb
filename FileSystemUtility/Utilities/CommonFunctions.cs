@@ -23,6 +23,7 @@ namespace FileSystemUtility.Utilities
 {
     public class CommonFunctions
     {
+        public const string gsEmailValidationRegex = @"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
         public enum ActionResponse
         {
             [StringValue("RecordAdded")]
