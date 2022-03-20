@@ -13,7 +13,7 @@ using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Divisions.Controllers
 {
-    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.DivisionAdmin))]
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.DivisionAdmin))]
     [Area("Divisions")]
     public class ShelvesController : Controller
     {

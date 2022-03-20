@@ -17,7 +17,7 @@ using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Admin.Controllers
 {
-    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.Admin))]
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.Admin))]
     [Area("Admin")]
     public class RoomController : Controller
     {

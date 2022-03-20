@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FileSystemWeb.Areas.Divisions.Controllers
 {
-    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.DivisionAdmin))]
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.DivisionAdmin))]
     [Area("Divisions")]
     public class RoomController : Controller
     {
