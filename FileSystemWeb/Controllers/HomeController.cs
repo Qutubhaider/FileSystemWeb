@@ -76,7 +76,20 @@ namespace FileSystemWeb.Controllers
                             ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                             HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = true, ExpiresUtc = DateTimeOffset.UtcNow.AddHours(24) });
 
-                            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                            if (UserDetail.inRole == (int)UserType.Admin)
+                                return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                            else if (UserDetail.inRole == (int)UserType.DivisionAdmin)
+                                return RedirectToAction("Index", "Dashboard", new { area = "Divisions" });
+                            else if (UserDetail.inRole == (int)UserType.DepartmentAdmin)
+                                return RedirectToAction("Index", "Dashboard", new { area = "Departments" });
+                            else if (UserDetail.inRole == (int)UserType.StoreOP)
+                                return RedirectToAction("Index", "Dashboard", new { area = "Stores" });
+                            else if (UserDetail.inRole == (int)UserType.DeskAdmin)
+                                return RedirectToAction("Index", "Dashboard", new { area = "DeskAdmin" });
+                            else
+                                return RedirectToAction("Index", "Dashboard", new { area = "DeskOP" });
+
+                           
                         }
 
                     }

@@ -3,14 +3,17 @@ using FileSystemBAL.Repository.IRepository;
 using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Admin.Controllers
 {
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.Admin))]
     [Area("Admin")]
     public class DeskController : Controller
     {

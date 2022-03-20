@@ -22,6 +22,19 @@
                 <div class="card-body">
                     <form class="custom-validation" asp-action="SaveUserProfile" asp-controller="User" asp-area="Admin" novalidate="">
                         <div class="mb-3">
+                            <label class="form-label">Select User Role</label>
+                            <select id="ddRole" asp-for="inRoleId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                                <option value="">Select Zone Name</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Division Admin</option>
+                                <option value="3">Department Admin</option>
+                                <option value="4">Desk Admin</option>
+                                <option value="5">Desk OP</option>
+                                <option value="6">Store OP</option>
+                            </select>
+                            <span asp-validation-for="inRoleId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Zone Name</label>
                             <select id="ddZone" onchange="OnZoneChange();" asp-for="inZoneId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">
                                 <option value="">Select Zone Name</option>

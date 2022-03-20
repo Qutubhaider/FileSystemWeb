@@ -3,6 +3,7 @@ using FileSystemBAL.Repository.IRepository;
 using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,9 +13,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Stores.Controllers
 {
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.StoreOP))]
     [Area("Stores")]
     public class FileController : Controller
     {
@@ -101,13 +104,6 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             StringBuilder lolog = new StringBuilder();
             try
             {
-                /*lolog.AppendLine("DeskName : " + DeskName);
-                lolog.AppendLine("Status : " + Status);
-                lolog.AppendLine("Sort Column : " + sort_column);
-                lolog.AppendLine("Sort Order : " + sort_order);
-                lolog.AppendLine("Page No : " + pg);
-                lolog.AppendLine("Page Size : " + size);
-*/
                 string lsSearch = string.Empty;
                 int liTotalRecords = 0, liStartIndex = 0, liEndIndex = 0;
                 if (sort_column == 0 || sort_column == null)

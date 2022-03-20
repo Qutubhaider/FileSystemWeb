@@ -3,6 +3,7 @@ using FileSystemBAL.Repository.IRepository;
 using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,9 +13,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Divisions.Controllers
 {
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.DivisionAdmin))]
     [Area("Divisions")]
     public class FileController : Controller
     {

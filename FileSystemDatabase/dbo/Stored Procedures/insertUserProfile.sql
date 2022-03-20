@@ -10,6 +10,7 @@ CREATE PROC [dbo].[insertUserProfile]
 	 @inUserProfileId INT=NULL,  
 	 @inDeskid INT,
 	 @inUserId INT,
+	 @inRoleId INT,
 	 @inZoneId INT,
 	 @inDivisionId INT,
 	 @inDepartmentId INT,
@@ -31,7 +32,7 @@ SET NOCOUNT ON;
 		 IF(ISNULL(@inUserProfileId,0)=0)  
 		 BEGIN 	
 		 INSERT INTO tblUser(stUsername,stPassword,inRole,stEmail,stMobile,inStatus,dtCreateDate,inCreatedBy)
-				SELECT @stEmail,CONVERT(varchar(255), NEWID()),1,@stEmail,@stMobile,@inStatus,@getDateTimeByTimezone, @inCreatedBy  
+				SELECT @stEmail,'pass@123',@inRoleId,@stEmail,@stMobile,@inStatus,@getDateTimeByTimezone, @inCreatedBy  
 				INSERT INTO tblUserProfile(inDeskid,inUserId,inZoneId,inDivisionId,inDepartmentId
 					,inDesignationId,stFirstName,stLastName,stEmail,stMobile,stAddress,inStatus
 					,dtCreateDate,inCreatedBy)  
@@ -59,4 +60,4 @@ SET NOCOUNT ON;
 						inCreatedBy=@inCreatedBy					 
 				  WHERE inUserProfileId=@inUserProfileId
 				  SET @inSuccess=102   		   
-			 END  
+			 END 

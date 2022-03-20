@@ -19,6 +19,9 @@ namespace FileSystemBAL.User.Models
         public int inDeskid { get; set; }
         public int inUserId { get; set; }
 
+        [Required(ErrorMessage = "Please select role.")]
+        public int inRoleId { get; set; }
+
         [Required(ErrorMessage = "Please select zone.")]
         public int inZoneId { get; set; }
 

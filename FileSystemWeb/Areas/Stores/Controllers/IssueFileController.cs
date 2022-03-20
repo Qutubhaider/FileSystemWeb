@@ -8,12 +8,15 @@ using FileSystemBAL.IssueFIleHistory.Models;
 using FileSystemBAL.Repository.IRepository;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace FileSystemWeb.Areas.Stores.Controllers
 {
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.StoreOP))]
     [Area("Stores")]
     public class IssueFileController : Controller
     {

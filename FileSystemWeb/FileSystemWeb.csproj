@@ -24,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\DeskAdmin\" />
+    <Folder Include="Areas\DeskOP\" />
     <Folder Include="wwwroot\Files\" />
   </ItemGroup>
 

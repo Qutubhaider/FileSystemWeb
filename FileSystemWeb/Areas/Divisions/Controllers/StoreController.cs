@@ -9,12 +9,15 @@ using FileSystemBAL.Store.Models;
 using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace FileSystemWeb.Areas.Divisions.Controllers
 {
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.DivisionAdmin))]
     [Area("Divisions")]
     public class StoreController : Controller
     {
