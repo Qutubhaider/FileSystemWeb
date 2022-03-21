@@ -66,7 +66,7 @@
                     <!-- LOGO -->
                     <div class="navbar-brand-box text-center">
                         <h2 style="color: white; margin: 14px;">
-                            Division Panel
+                            Store Panel
                         </h2>
                     </div>
 
@@ -81,7 +81,7 @@
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="mdi mdi-account-circle-outline"></i>
-                            <span class="d-none d-xl-inline-block ms-1">Division</span>
+                            <span class="d-none d-xl-inline-block ms-1">Store</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -112,38 +112,15 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ri-map-pin-line"></i>
-                                <span>Desk Allocation</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">                              
-                                <li><a asp-area="Admin" asp-controller="Department" asp-action="Index">Department</a></li>
-                                <li><a asp-area="Admin" asp-controller="Designation" asp-action="Index">Designation</a></li>
-                                <li><a asp-area="Admin" asp-controller="Desk" asp-action="Index">Desk</a></li>
-                            </ul>
-                        </li>
-
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ri-map-pin-line"></i>
                                 <span>File Allocation</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a asp-area="Admin" asp-controller="Store" asp-action="Index">Store</a></li>
-                                <li><a asp-area="Admin" asp-controller="Room" asp-action="Index">Room</a></li>
-                                <li><a asp-area="Admin" asp-controller="Almirah" asp-action="Index">Almirah</a></li>
-                                <li><a asp-area="Admin" asp-controller="Shelves" asp-action="Index">Shelves</a></li>
                                 <li><a asp-area="Admin" asp-controller="File" asp-action="Index">Store File</a></li>
                                 <li><a asp-area="Admin" asp-controller="IssueFile" asp-action="Index">Issue File History</a></li>
                             </ul>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="User" asp-action="Index" class="waves-effect">
-                                <i class="ri-user-add-fill"></i>
-                                <span>Users</span>
-                            </a>
                         </li>
                     </ul>
                 </div>
