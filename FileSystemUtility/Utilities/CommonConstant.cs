@@ -15,6 +15,10 @@ namespace FileSystemUtility.Utilities
             public const string stUserName = "stUserName";
             public const string stEmail = "stEmail";
             public const string RoleId = "RoleId";
+            public const string ZoneId = "ZoneId";
+            public const string DivisionId = "DivisionId";
+            public const string DesignationId = "DesignationId";
+            public const string DeskId = "DeskId";
         }
 
         public class RoleConstants

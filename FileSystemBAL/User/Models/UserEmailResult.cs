@@ -16,5 +16,10 @@ namespace FileSystemBAL.User.Models
         public string stEmail { get; set; }
         public string stMobile { get; set; }
         public int inStatus { get; set; }
+        public int inZoneId { get; set; }
+        public int inDesignationId { get; set; }
+        public int inDeskId { get; set; }
+        public int inDivisionId { get; set; }
+
     }
 }
