@@ -17,7 +17,7 @@ using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Stores.Controllers
 {
-    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, Roles = ((string)RoleConstants.StoreOP))]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     [Area("Stores")]
     public class FileController : Controller
     {
