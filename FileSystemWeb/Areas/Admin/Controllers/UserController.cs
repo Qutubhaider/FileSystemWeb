@@ -54,7 +54,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
+                int liUserId = 1;// Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 if (foUserProfile != null)
                 {
                     moUnitOfWork.UserRepository.InserUserProfile(foUserProfile, liUserId, out liSuccess);

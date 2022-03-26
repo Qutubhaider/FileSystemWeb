@@ -12,6 +12,7 @@ CREATE PROC [dbo].[insertUserProfile]
 	 @inUserId INT,
 	 @inRoleId INT,
 	 @inZoneId INT,
+	 @inStoreId INT,
 	 @inDivisionId INT,
 	 @inDepartmentId INT,
 	 @inDesignationId INT,
@@ -33,10 +34,10 @@ SET NOCOUNT ON;
 		 BEGIN 	
 		 INSERT INTO tblUser(stUsername,stPassword,inRole,stEmail,stMobile,inStatus,dtCreateDate,inCreatedBy)
 				SELECT @stEmail,'pass@123',@inRoleId,@stEmail,@stMobile,@inStatus,@getDateTimeByTimezone, @inCreatedBy  
-				INSERT INTO tblUserProfile(inDeskid,inUserId,inZoneId,inDivisionId,inDepartmentId
+				INSERT INTO tblUserProfile(inDeskid,inUserId,inZoneId,inStoreId,inDivisionId,inDepartmentId
 					,inDesignationId,stFirstName,stLastName,stEmail,stMobile,stAddress,inStatus
 					,dtCreateDate,inCreatedBy)  
-				SELECT  @inDeskid,SCOPE_IDENTITY(),@inZoneId,@inDivisionId,@inDepartmentId,@inDesignationId,@stFirstName
+				SELECT  @inDeskid,SCOPE_IDENTITY(),@inZoneId,@inStoreId,@inDivisionId,@inDepartmentId,@inDesignationId,@stFirstName
 					   ,@stLastName,@stEmail,@stMobile,@stAddress,@inStatus,@getDateTimeByTimezone, @inCreatedBy  
 			    
 				SET @inSuccess=101  
@@ -47,6 +48,7 @@ SET NOCOUNT ON;
 						inDeskid=@inDeskid,
 						inUserId=@inUserId,
 						inZoneId=@inZoneId,
+						inStoreId=@inStoreId,
 						inDivisionId=@inDivisionId,
 						inDepartmentId=@inDepartmentId,
 						inDesignationId=@inDesignationId,
