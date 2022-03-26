@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-4" style="float:right;">
-            <a class="btn btn-danger" style="float: right;" asp-area="Admin" asp-controller="Designation" asp-action="Index">Back</a>
+            <a class="btn btn-danger" style="float: right;" asp-area="Divisions" asp-controller="Designation" asp-action="Index">Back</a>
         </div>
     </div>
 
@@ -20,7 +20,7 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    <form asp-action="SaveDesignation" asp-controller="Designation" asp-area="Admin" class="custom-validation" novalidate="">
+                    <form asp-action="SaveDesignation" asp-controller="Designation" asp-area="Divisions" class="custom-validation" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
                             <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
@@ -38,7 +38,7 @@
                                 <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
                                     Submit
                                 </button>
-                                <a class="btn btn-secondary waves-effect" asp-area="Admin" asp-controller="Designation" asp-action="Index">
+                                <a class="btn btn-secondary waves-effect" asp-area="Divisions" asp-controller="Designation" asp-action="Index">
                                     Cancel
                                 </a>
                             </div>

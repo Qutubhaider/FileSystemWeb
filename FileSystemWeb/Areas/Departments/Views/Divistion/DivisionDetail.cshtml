@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-4" style="float:right;">
-            <a class="btn btn-danger" style="float: right;" asp-area="Admin" asp-controller="Division" asp-action="Index">Back</a>
+            <a class="btn btn-danger" style="float: right;" asp-area="Departments" asp-controller="Division" asp-action="Index">Back</a>
         </div>
     </div>
 
@@ -20,7 +20,7 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    <form class="custom-validation" asp-action="saveDivision" asp-controller="Division" asp-area="Admin" novalidate="">
+                    <form class="custom-validation" asp-action="saveDivision" asp-controller="Division" asp-area="Departments" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">State Name</label>
                             <select asp-for="inZoneId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">

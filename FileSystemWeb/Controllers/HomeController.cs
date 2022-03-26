@@ -4,6 +4,7 @@ using FileSystemUtility.Utilities;
 using FileSystemWeb.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -119,6 +120,22 @@ namespace FileSystemWeb.Controllers
                 TempData["Message"] = string.Format(AlertMessage.OperationalError, "login");
                 return RedirectToAction("Login");
             }
+        }
+
+        [AllowAnonymous]
+        //[HttpGet("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            try
+            {
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            }
+            catch (Exception e)
+            {
+
+                return RedirectToAction("Index", "Error");
+            }
+            return RedirectToAction("Login");
         }
     }
 }

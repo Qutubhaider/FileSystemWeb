@@ -124,7 +124,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
                     size = miPageSize;
 
                 List<FileListResult> loFileListResults = new List<FileListResult>();
-                loFileListResults = moUnitOfWork.FileRepository.GetFileList(fsFileName == null ? fsFileName : fsFileName.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loFileListResults = moUnitOfWork.FileRepository.GetFileList(fsFileName == null ? fsFileName : fsFileName.Trim(), sort_column, sort_order, pg.Value, size.Value, Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetFileList = loFileListResults;
                 if (loFileListResults.Count > 0)
