@@ -12,7 +12,7 @@ namespace FileSystemBAL.Repository.IRepository
         void SaveStore(Store.Models.Store foStore, int fiUserId, out int fiSuccess);
         Store.Models.Store GetStoreDetail(Guid fuStoreId);
         void DeleteStore(Guid fuStoreId, out int fiSuccess);
-        List<Store.Models.StoreListResult> GetStoreList(string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<Store.Models.StoreListResult> GetStoreList(string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null);
         List<Select2> GetStoreDropDown(int fiDivisionId);
     }
 }

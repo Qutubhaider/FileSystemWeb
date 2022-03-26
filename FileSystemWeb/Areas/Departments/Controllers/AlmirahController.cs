@@ -112,7 +112,7 @@ namespace FileSystemWeb.Areas.Departments.Controllers
                     size = miPageSize;
 
                 List<AlmirahListResult> loAlmirahListResults = new List<AlmirahListResult>();
-                loAlmirahListResults = moUnitOfWork.AlmirahRepository.GetAlmirahList(AlmirahNumber == null ? AlmirahNumber : AlmirahNumber.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loAlmirahListResults = moUnitOfWork.AlmirahRepository.GetAlmirahList(AlmirahNumber == null ? AlmirahNumber : AlmirahNumber.Trim(), sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetAlmirahList = loAlmirahListResults;
                 if (loAlmirahListResults.Count > 0)

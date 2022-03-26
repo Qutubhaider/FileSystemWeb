@@ -27,9 +27,9 @@ namespace FileSystemBAL.Repository
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
 
-        public List<Desk.Models.DeskListResult> GetDeskList(string fsDeskTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<Desk.Models.DeskListResult> GetDeskList(string fsDeskTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-            return moDatabaseContext.Set<Desk.Models.DeskListResult>().FromSqlInterpolated($"EXEC getDeskList @stDeskName={fsDeskTitle}, @inStatus={finStatus}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<Desk.Models.DeskListResult>().FromSqlInterpolated($"EXEC getDeskList @stDeskName={fsDeskTitle}, @inStatus={finStatus}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public Desk.Models.Desk GetDesk(Guid fuDeskId)

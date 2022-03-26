@@ -37,9 +37,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getZoneDropDown").ToList();
         }
 
-        public List<Zone.Models.ZoneListResult> GetZoneList(string fsZoneName, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<Zone.Models.ZoneListResult> GetZoneList(string fsZoneName, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-            return moDatabaseContext.Set<Zone.Models.ZoneListResult>().FromSqlInterpolated($"EXEC getZoneList @stZoneName={fsZoneName}, @inStatus={finStatus}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<Zone.Models.ZoneListResult>().FromSqlInterpolated($"EXEC getZoneList @stZoneName={fsZoneName}, @inStatus={finStatus}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void SaveZone(Zone.Models.Zone foZone, int fiUserId, out int fiSuccess)

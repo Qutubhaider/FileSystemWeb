@@ -29,9 +29,9 @@ namespace FileSystemBAL.Repository
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
 
-        public List<DesignationListResult> GetDesignationList(string stDesignationName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<DesignationListResult> GetDesignationList(string stDesignationName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId = null)
         {
-            return moDatabaseContext.Set<DesignationListResult>().FromSqlInterpolated($"EXEC getDesignationList @stDesignationName={stDesignationName},  @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<DesignationListResult>().FromSqlInterpolated($"EXEC getDesignationList @stDesignationName={stDesignationName},  @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public Designation.Models.Designation GetDesignation(Guid fuDesignationId)

@@ -105,7 +105,7 @@ namespace DmfWeb.Areas.Departments.Controllers
                     size = miPageSize;
 
                 List<DivisionListResult> loDivisionListResults = new List<DivisionListResult>();
-                loDivisionListResults = moUnitOfWork.DivisionRepository.GetAllDivision(DivisionName == null ? DivisionName : DivisionName.Trim(), Status, sort_column, sort_order, pg.Value, size.Value);
+                loDivisionListResults = moUnitOfWork.DivisionRepository.GetAllDivision(DivisionName == null ? DivisionName : DivisionName.Trim(), Status, sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetDivisionList = loDivisionListResults;
                 if (loDivisionListResults.Count > 0)

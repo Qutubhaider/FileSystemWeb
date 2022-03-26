@@ -38,9 +38,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getRoomDropDown @inStore={fiStoreId}").ToList();
         }
 
-        public List<RoomListResult> GetRoomList(string fsRoomNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<RoomListResult> GetRoomList(string fsRoomNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-            return moDatabaseContext.Set<RoomListResult>().FromSqlInterpolated($"EXEC getRoomList @stRoomNumber={fsRoomNumber}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<RoomListResult>().FromSqlInterpolated($"EXEC getRoomList @stRoomNumber={fsRoomNumber}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void SaveRoom(Room.Models.Room foRoom, int fiUserId, out int fiSuccess)

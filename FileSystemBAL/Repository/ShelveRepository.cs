@@ -39,9 +39,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getShelveDropDown @inAlmirahId={fiAlmirahId}").ToList();
         }
 
-        public List<ShelveListResult> GetShelveList(string fsShelveNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<ShelveListResult> GetShelveList(string fsShelveNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-            return moDatabaseContext.Set<ShelveListResult>().FromSqlInterpolated($"EXEC getShelveList @stShelveNumber={fsShelveNumber}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<ShelveListResult>().FromSqlInterpolated($"EXEC getShelveList @stShelveNumber={fsShelveNumber}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void SaveShelve(Shelve.Models.Shelve foShelve, int fiUserId, out int fiSuccess)

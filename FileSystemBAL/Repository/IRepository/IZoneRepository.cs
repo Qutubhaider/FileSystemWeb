@@ -12,7 +12,7 @@ namespace FileSystemBAL.Repository.IRepository
         void SaveZone(Zone.Models.Zone foZone, int fiUserId, out int fiSuccess);
         Zone.Models.Zone GetZoneDetail(Guid unZoneId);
         void DeleteZone(Guid fuZoneId, out int fiSuccess);
-        List<Zone.Models.ZoneListResult> GetZoneList(string fsZoneName, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<Zone.Models.ZoneListResult> GetZoneList(string fsZoneName, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null);
         List<Select2> GetZoneDropDown();
     }
 }

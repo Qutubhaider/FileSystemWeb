@@ -114,7 +114,7 @@ namespace FileSystemWeb.Areas.Divisions.Controllers
                     size = miPageSize;
 
                 List<DeskListResult> loDeskListResults = new List<DeskListResult>();
-                loDeskListResults = moUnitOfWork.DeskRepository.GetDeskList(DeskName == null ? DeskName : DeskName.Trim(), Status, sort_column, sort_order, pg.Value, size.Value);
+                loDeskListResults = moUnitOfWork.DeskRepository.GetDeskList(DeskName == null ? DeskName : DeskName.Trim(), Status, sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetDeskList = loDeskListResults;
                 if (loDeskListResults.Count > 0)

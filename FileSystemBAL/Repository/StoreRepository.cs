@@ -38,9 +38,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getStoreDropDown @inDivisionId={fiDivisionId}").ToList();
         }
 
-        public List<StoreListResult> GetStoreList(string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<StoreListResult> GetStoreList(string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-            return moDatabaseContext.Set<Store.Models.StoreListResult>().FromSqlInterpolated($"EXEC getStoreList @stStoreName={fsStoreName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<Store.Models.StoreListResult>().FromSqlInterpolated($"EXEC getStoreList @stStoreName={fsStoreName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void SaveStore(Store.Models.Store foStore, int fiUserId, out int fiSuccess)

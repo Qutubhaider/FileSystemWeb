@@ -99,7 +99,7 @@ namespace DmfWeb.Areas.Departments.Controllers
                     size = miPageSize;
 
                 List<DepartmentListResult> loDepartmentListResult = new List<DepartmentListResult>();
-                loDepartmentListResult = moUnitOfWork.DepartmentRepository.GetDepartmentList(DepartmentName == null ? DepartmentName : DepartmentName.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loDepartmentListResult = moUnitOfWork.DepartmentRepository.GetDepartmentList(DepartmentName == null ? DepartmentName : DepartmentName.Trim(), sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetDepartmentList = loDepartmentListResult;
                 if (loDepartmentListResult.Count > 0)

@@ -39,9 +39,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getAlmirahDropDown @inRoomId={fiRoomId}").ToList();
         }
 
-        public List<AlmirahListResult> GetAlmirahList(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<AlmirahListResult> GetAlmirahList(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-            return moDatabaseContext.Set<AlmirahListResult>().FromSqlInterpolated($"EXEC getAlmirahList @stAlmirahNumber={fsAlmirahNumber}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<AlmirahListResult>().FromSqlInterpolated($"EXEC getAlmirahList @stAlmirahNumber={fsAlmirahNumber}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void SaveAlmirah(Almirah.Models.Almirah foAmirah, int fiUserId, out int fiSuccess)

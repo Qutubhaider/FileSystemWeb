@@ -12,7 +12,7 @@ namespace FileSystemBAL.Repository.IRepository
         void SaveDesk(Desk.Models.Desk foDesk, int fiUserId, out int fiSuccess);
         Desk.Models.Desk GetDesk(Guid fuDeskId);
         void DeleteDesk(Guid fuDeskId, out int fiSuccess);
-        List<Desk.Models.DeskListResult> GetDeskList(string stDeskTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<Desk.Models.DeskListResult> GetDeskList(string stDeskTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null);
         public List<Select2> GetDeskDropDown(int fiDivision);
     }
 }

@@ -12,7 +12,7 @@ namespace FileSystemBAL.Repository.IRepository
     {
         void SaveFile(FileDetail foFileDetail, int fiUserId, out int fiSuccess);
         FileDetail GetFileDetail(Guid unFileId);
-        List<FileListResult> GetFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<FileListResult> GetFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId = null);
         List<Select2> GetFileDropDown();
 
     }

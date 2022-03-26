@@ -115,7 +115,7 @@ namespace FileSystemWeb.Areas.Departments.Controllers
                     size = miPageSize;
 
                 List<StoreListResult> loStoreListResults = new List<StoreListResult>();
-                loStoreListResults = moUnitOfWork.StoreRepository.GetStoreList(StoreName == null ? StoreName : StoreName.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loStoreListResults = moUnitOfWork.StoreRepository.GetStoreList(StoreName == null ? StoreName : StoreName.Trim(), sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetStoreList = loStoreListResults;
                 if (loStoreListResults.Count > 0)
@@ -124,7 +124,7 @@ namespace FileSystemWeb.Areas.Departments.Controllers
                     liStartIndex = loStoreListResults[0].inRownumber;
                     liEndIndex = loStoreListResults[loStoreListResults.Count - 1].inRownumber;
                 }
-                loModel.Pagination = PaginationService.getPagination(liTotalRecords, pg.Value, size.Value, liStartIndex, liEndIndex);
+                loModel.Pagination = PaginationService.getPagination(liTotalRecords, pg.Value, size.Value,liStartIndex, liEndIndex);
                 return PartialView("~/Areas/Departments/Views/Store/_StoreListData.cshtml", loModel);
             }
             catch (Exception ex)

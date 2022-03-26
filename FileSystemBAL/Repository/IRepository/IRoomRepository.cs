@@ -13,7 +13,7 @@ namespace FileSystemBAL.Repository.IRepository
         void SaveRoom(Room.Models.Room foRoom, int fiUserId, out int fiSuccess);
         Room.Models.Room GetRoomDetail(Guid fuRoomId);
         void DeleteRoom(Guid fuRoomId, out int fiSuccess);
-        List<RoomListResult> GetRoomList(string fsRoomNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<RoomListResult> GetRoomList(string fsRoomNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null);
         List<Select2> GetRoomDropDown(int fiStoreId);
     }
 }

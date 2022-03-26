@@ -27,9 +27,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<IssueFile>().FromSqlInterpolated($"EXEC getIssueFileDetail @unIssueFileDetail={fuIssueFileId}").AsEnumerable().FirstOrDefault();
         }
 
-        public List<IssueFileListResult> GetIssueFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<IssueFileListResult> GetIssueFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-            return moDatabaseContext.Set<IssueFileListResult>().FromSqlInterpolated($"EXEC getIssueFileList @stFileName={fsFileName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<IssueFileListResult>().FromSqlInterpolated($"EXEC getIssueFileList @stFileName={fsFileName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void SaveIssueFile(IssueFile foIssueFile, int fiUserId, out int fiSuccess)

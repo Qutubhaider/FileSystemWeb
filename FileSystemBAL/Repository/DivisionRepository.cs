@@ -31,9 +31,9 @@ namespace FileSystemBAL.Repository
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
 
-        public List<Division.Models.DivisionListResult> GetAllDivision(string fsDivisionTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<Division.Models.DivisionListResult> GetAllDivision(string fsDivisionTitle, int? finStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-            return moDatabaseContext.Set<Division.Models.DivisionListResult>().FromSqlInterpolated($"EXEC getDivisionList @stDivistionName={fsDivisionTitle}, @inStatus={finStatus}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<Division.Models.DivisionListResult>().FromSqlInterpolated($"EXEC getDivisionList @stDivistionName={fsDivisionTitle}, @inStatus={finStatus}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public Division.Models.Division GetDivision(Guid fuDivisionId)

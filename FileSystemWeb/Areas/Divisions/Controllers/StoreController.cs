@@ -111,7 +111,7 @@ namespace FileSystemWeb.Areas.Divisions.Controllers
                     size = miPageSize;
 
                 List<StoreListResult> loStoreListResults = new List<StoreListResult>();
-                loStoreListResults = moUnitOfWork.StoreRepository.GetStoreList(StoreName == null ? StoreName : StoreName.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loStoreListResults = moUnitOfWork.StoreRepository.GetStoreList(StoreName == null ? StoreName : StoreName.Trim(), sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetStoreList = loStoreListResults;
                 if (loStoreListResults.Count > 0)

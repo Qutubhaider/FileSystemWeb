@@ -107,7 +107,7 @@ namespace FileSystemWeb.Areas.Divisions.Controllers
                     size = miPageSize;
 
                 List<ShelveListResult> loShelveListResults = new List<ShelveListResult>();
-                loShelveListResults = moUnitOfWork.ShelveRepository.GetShelveList(ShelveNumber == null ? ShelveNumber : ShelveNumber.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loShelveListResults = moUnitOfWork.ShelveRepository.GetShelveList(ShelveNumber == null ? ShelveNumber : ShelveNumber.Trim(), sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetShelveList = loShelveListResults;
                 if (loShelveListResults.Count > 0)

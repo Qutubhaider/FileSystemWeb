@@ -103,7 +103,7 @@ namespace FileSystemWeb.Areas.Divisions.Controllers
                     size = miPageSize;
 
                 List<DesignationListResult> loDesignationResult = new List<DesignationListResult>();
-                loDesignationResult = moUnitOfWork.DesignationRepository.GetDesignationList(DesignationName == null ? DesignationName : DesignationName.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loDesignationResult = moUnitOfWork.DesignationRepository.GetDesignationList(DesignationName == null ? DesignationName : DesignationName.Trim(), sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetDesignationList = loDesignationResult;
                 if (loDesignationResult.Count > 0)

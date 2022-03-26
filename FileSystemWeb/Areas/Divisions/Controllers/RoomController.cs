@@ -113,7 +113,7 @@ namespace FileSystemWeb.Areas.Divisions.Controllers
                     size = miPageSize;
 
                 List<RoomListResult> loRoomListResults = new List<RoomListResult>();
-                loRoomListResults = moUnitOfWork.RoomRepository.GetRoomList(RoomNumber == null ? RoomNumber : RoomNumber.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loRoomListResults = moUnitOfWork.RoomRepository.GetRoomList(RoomNumber == null ? RoomNumber : RoomNumber.Trim(), sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetRoomList = loRoomListResults;
                 if (loRoomListResults.Count > 0)
