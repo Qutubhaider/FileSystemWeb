@@ -13,9 +13,7 @@ namespace FileSystemBAL.User.Models
     public class UserProfile
     {
         public int inUserProfileId { get; set; } 
-        public Guid unUserProfileId { get; set; }
-
-        [Required(ErrorMessage = "Please select desk.")]
+        public Guid unUserProfileId { get; set; }        
         public int inDeskid { get; set; }
         public int inUserId { get; set; }
 
@@ -24,11 +22,7 @@ namespace FileSystemBAL.User.Models
 
         [Required(ErrorMessage = "Please select zone.")]
         public int inZoneId { get; set; }
-
-        [Required(ErrorMessage = "Please select store.")]
         public int inStoreId { get; set; }
-
-        [Required(ErrorMessage = "Please select division.")]
         public int inDivisionId { get; set; }
 
         [Required(ErrorMessage = "Please select department.")]
