@@ -1,5 +1,6 @@
 ﻿using FileSystemBAL.FIle.Models;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemBAL.User.Models;
 using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
@@ -33,7 +34,10 @@ namespace FileSystemWeb.Areas.Stores.Controllers
         }
         public IActionResult Index()
         {
-            return View("~/Areas/Stores/Views/File/FileList.cshtml");
+            FileDetail fileDetail = new FileDetail();
+            fileDetail.inZoneId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
+            fileDetail.inDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
+            return View("~/Areas/Stores/Views/File/FileList.cshtml", fileDetail);
         }
         public IActionResult Detail(Guid id)
         {
