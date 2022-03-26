@@ -53,7 +53,7 @@ namespace FileSystemBAL.Repository
         public void InserUserProfile(UserProfile foUserProfile, int fiUserId, out int fiSuccess)
         {
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC insertUserProfile @inUserProfileId={foUserProfile.inUserProfileId},@inDeskid={foUserProfile.inDeskid},@inUserId={foUserProfile.inUserId},@inRoleId={foUserProfile.inRole},@inZoneId={foUserProfile.inZoneId},@inDivisionId={foUserProfile.inDivisionId},@inDepartmentId={foUserProfile.inDepartmentId},@inDesignationId={foUserProfile.inDesignationId},@stFirstName={foUserProfile.stFirstName},@stLastName={foUserProfile.stLastName},@stEmail={foUserProfile.stEmail},@stMobile={foUserProfile.stMobile},@stAddress={foUserProfile.stAddress},@inStatus={foUserProfile.inStatus}, @inCreatedBy ={fiUserId},@inSuccess={loSuccess} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC insertUserProfile @inUserProfileId={foUserProfile.inUserProfileId},@inDeskid={foUserProfile.inDeskid},@inUserId={foUserProfile.inUserId},@inRoleId={foUserProfile.inRole},@inZoneId={foUserProfile.inZoneId},@inStoreId={foUserProfile.inStoreId},@inDivisionId={foUserProfile.inDivisionId},@inDepartmentId={foUserProfile.inDepartmentId},@inDesignationId={foUserProfile.inDesignationId},@stFirstName={foUserProfile.stFirstName},@stLastName={foUserProfile.stLastName},@stEmail={foUserProfile.stEmail},@stMobile={foUserProfile.stMobile},@stAddress={foUserProfile.stAddress},@inStatus={foUserProfile.inStatus}, @inCreatedBy ={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
     }

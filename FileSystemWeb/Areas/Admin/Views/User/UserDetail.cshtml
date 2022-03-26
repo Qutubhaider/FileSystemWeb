@@ -41,9 +41,17 @@
                             </select>
                             <span asp-validation-for="inZoneId" class="text-danger"></span>
                         </div>
+                         <div class="mb-3">
+                            <label class="form-label">Store Name</label>
+                            <select id="ddStore" asp-for="inStoreId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                                <option value="">Select Store Name</option>
+
+                            </select>
+                            <span asp-validation-for="inStoreId" class="text-danger"></span>
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
-                            <select id="ddDivision" onchange="OnDivisionChangeLoadDesk();" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDivision" onchange="OnDivisionChangeLoadDesk();OnDivisionChangeLoadStore();" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
                             <span asp-validation-for="inDivisionId" class="text-danger"></span>
@@ -117,6 +125,7 @@
                         <input type="hidden" asp-for="unUserProfileId" />
                         <input type="hidden" asp-for="inDeskid" />
                         <input type="hidden" asp-for="inZoneId" />
+                        <input type="hidden" asp-for="inStoreId" />
                         <input type="hidden" asp-for="inDepartmentId" />
                         <input type="hidden" asp-for="inDivisionId" />
                         <input type="hidden" asp-for="inDesignationId" />
@@ -134,9 +143,11 @@
         var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
         var msGetDeskDropDown =  '@Url.Action("GetDeskDropdown")';
         var msGetDesignationDropDown = '@Url.Action("GetDesignationDropDown")';
+        var msGetStoreDropDown = '@Url.Action("GetStoreDropdown")';
             $(document).ready(function () {
                 OnZoneChange(true);
                 OnDivisionChangeLoadDesk(true);
+                OnDivisionChangeLoadStore(true);
                 OnDepartmentChange(true);
         });
     </script>

@@ -5,6 +5,7 @@
     inDeskid INT,
     inUserId INT,
     inZoneId INT,
+    inStoreId INT,
     inDivisionId INT,
     inDepartmentId INT,
     inDesignationId INT,

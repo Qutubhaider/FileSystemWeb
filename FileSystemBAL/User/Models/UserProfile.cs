@@ -25,6 +25,9 @@ namespace FileSystemBAL.User.Models
         [Required(ErrorMessage = "Please select zone.")]
         public int inZoneId { get; set; }
 
+        [Required(ErrorMessage = "Please select store.")]
+        public int inStoreId { get; set; }
+
         [Required(ErrorMessage = "Please select division.")]
         public int inDivisionId { get; set; }
 

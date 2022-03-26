@@ -143,6 +143,12 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             return Json(new { data = DeskDropDown });
 
         }
+        public IActionResult GetStoreDropdown(int fiDivisionId)
+        {
+            List<Select2> StoreDropDown = moUnitOfWork.StoreRepository.GetStoreDropDown(fiDivisionId);
+            return Json(new { data = StoreDropDown });
+
+        }
 
     }
 }

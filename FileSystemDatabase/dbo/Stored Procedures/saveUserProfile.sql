@@ -11,6 +11,7 @@ CREATE PROC [dbo].[saveUserProfile]
 	 @inDeskid INT,
 	 @inUserId INT,
 	 @inZoneId INT,
+	 @inStoreId INT,
 	 @inDivisionId INT,
 	 @inDepartmentId INT,
 	 @inDesignationId INT,
@@ -32,10 +33,10 @@ SET NOCOUNT ON;
 	
 		 IF(ISNULL(@inUserProfileId,0)=0)  
 		 BEGIN 			
-				INSERT INTO tblUserProfile(inDeskid,inUserId,inZoneId,inDivisionId,inDepartmentId
+				INSERT INTO tblUserProfile(inDeskid,inUserId,inZoneId,inStoreId, inDivisionId,inDepartmentId
 					,inDesignationId,stFirstName,stLastName,stEmail,stMobile,stAddress,inStatus
 					,dtCreateDate,inCreatedBy)  
-				SELECT  @inDeskid,@inUserId,@inZoneId,@inDivisionId,@inDepartmentId,@inDesignationId,@stFirstName
+				SELECT  @inDeskid,@inUserId,@inZoneId,@inStoreId,@inDivisionId,@inDepartmentId,@inDesignationId,@stFirstName
 					   ,@stLastName,@stEmail,@stMobile,@stAddress,@inStatus,@getDateTimeByTimezone, @inCreatedBy  
 				SET @inSuccess=101  
 		 END
@@ -45,6 +46,7 @@ SET NOCOUNT ON;
 						inDeskid=@inDeskid,
 						inUserId=@inUserId,
 						inZoneId=@inZoneId,
+						inStoreId=@inStoreId,
 						inDivisionId=@inDivisionId,
 						inDepartmentId=@inDepartmentId,
 						inDesignationId=@inDesignationId,
