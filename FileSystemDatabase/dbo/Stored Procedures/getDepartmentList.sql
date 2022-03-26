@@ -11,7 +11,8 @@ CREATE PROC [dbo].[getDepartmentList]
 	@inSortColumn INT = NULL, 
 	@stSortOrder NVARCHAR(51) = NULL, 
 	@inPageNo INT = 1, 
-	@inPageSize INT = 10 
+	@inPageSize INT = 10 ,
+	@inUserId INT = NULL
 ) 
 AS 
 BEGIN 
@@ -40,10 +41,14 @@ SET NOCOUNT ON;
                     D.stDepartmentName, 
                    
             FROM tblDepartment D WITH(NOLOCK)
+			JOIN tblUserProfile UP ON UP.inUserId=D.inCreatedBy
             WHERE 1=1' 
  
 	IF(ISNULL(@stDepartmentName,'')<>'') 
 		SET @stSQL = @stSQL + '  AND (S.stSectorName LIKE ''%' + CONVERT(NVARCHAR(211), @stDepartmentName)  + '%'')' 
+
+	IF(ISNULL(@inUserId,'')<>'') 
+		SET @stSQL = @stSQL + '  AND (UP.inUserId LIKE ''%' + CONVERT(NVARCHAR(211), @inUserId)  + '%'')' 
  
 	SET @stSQL = @stSQL +' 
 				)A )   

@@ -41,7 +41,7 @@ namespace DmfWeb.Areas.Divisions.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = 1; //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 if (foDepartment != null)
                 {
                     moUnitOfWork.DepartmentRepository.SaveDepartment(foDepartment, liUserId, out liSuccess);
@@ -81,8 +81,8 @@ namespace DmfWeb.Areas.Divisions.Controllers
             StringBuilder lolog = new StringBuilder();
             try
             {
-                
 
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString());
                 string lsSearch = string.Empty;
                 int liTotalRecords = 0, liStartIndex = 0, liEndIndex = 0;
                 if (sort_column == 0 || sort_column == null)
@@ -102,7 +102,7 @@ namespace DmfWeb.Areas.Divisions.Controllers
                     size = miPageSize;
 
                 List<DepartmentListResult> loDepartmentListResult = new List<DepartmentListResult>();
-                loDepartmentListResult = moUnitOfWork.DepartmentRepository.GetDepartmentList(DepartmentName == null ? DepartmentName : DepartmentName.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loDepartmentListResult = moUnitOfWork.DepartmentRepository.GetDepartmentList(DepartmentName == null ? DepartmentName : DepartmentName.Trim(), sort_column, sort_order, pg.Value, size.Value, liUserId);
                 dynamic loModel = new ExpandoObject();
                 loModel.GetDepartmentList = loDepartmentListResult;
                 if (loDepartmentListResult.Count > 0)

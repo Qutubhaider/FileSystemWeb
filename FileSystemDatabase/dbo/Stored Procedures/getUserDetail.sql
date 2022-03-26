@@ -1,5 +1,4 @@
-﻿
--- =============================================  
+﻿-- =============================================  
 -- Author: Vaibhav Singh  
 -- Create Date: 11-MAR-2022  
 -- =============================================  
@@ -11,6 +10,8 @@ CREATE PROCEDURE getUserDetail(
 )
 AS
 BEGIN
-  SELECT inUserProfileId,unUserProfileId,inUserId,inZoneId,inDivisionId,inDeskid,inDepartmentId,inDesignationId,stFirstName,stLastName,stEmail,stMobile,stAddress,inStatus FROM tblUserProfile
+  SELECT UP.inUserProfileId,UP.unUserProfileId,U.inUserId,U.inRole,UP.inZoneId,UP.inDivisionId,UP.inDeskid,UP.inDepartmentId,UP.inDesignationId,UP.stFirstName,UP.stLastName,UP.stEmail,UP.stMobile,UP.stAddress,UP.inStatus 
+  FROM tblUserProfile UP
+  JOIN tblUser U ON U.inUserId=UP.inUserId
   WHERE unUserProfileId=@unUserProfileId
 END

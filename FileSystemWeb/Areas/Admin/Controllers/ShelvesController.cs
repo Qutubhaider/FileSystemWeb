@@ -48,7 +48,7 @@ namespace FileSystemWeb.Areas.Admin.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = 1; //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 if (foShelve != null)
                 {
                     moUnitOfWork.ShelveRepository.SaveShelve(foShelve, liUserId, out liSuccess);

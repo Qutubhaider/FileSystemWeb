@@ -10,6 +10,7 @@ using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Mvc;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -48,7 +49,7 @@ namespace FileSystemWeb.Areas.Departments.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = 1; //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 if (foStore != null)
                 {
                     moUnitOfWork.StoreRepository.SaveStore(foStore, liUserId, out liSuccess);

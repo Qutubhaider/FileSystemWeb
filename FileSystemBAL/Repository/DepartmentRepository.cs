@@ -38,9 +38,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getDepartmentDropDown").ToList();
         }
 
-        public List<DepartmentListResult> GetDepartmentList(string fsDepartmentName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<DepartmentListResult> GetDepartmentList(string fsDepartmentName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId=null)
         {
-            return moDatabaseContext.Set<DepartmentListResult>().FromSqlInterpolated($"EXEC getDepartmentList @stDepartmentName={fsDepartmentName},  @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<DepartmentListResult>().FromSqlInterpolated($"EXEC getDepartmentList @stDepartmentName={fsDepartmentName},  @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void SaveDepartment(Department.Models.Department foDepartment, int fiUserId, out int fiSuccess)

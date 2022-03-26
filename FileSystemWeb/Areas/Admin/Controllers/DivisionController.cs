@@ -43,7 +43,7 @@ namespace DmfWeb.Areas.Admin.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = 1; //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 if (foDivision != null)
                 {
                     moUnitOfWork.DivisionRepository.SaveDivision(foDivision, liUserId, out liSuccess);

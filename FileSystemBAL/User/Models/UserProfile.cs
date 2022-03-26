@@ -20,7 +20,7 @@ namespace FileSystemBAL.User.Models
         public int inUserId { get; set; }
 
         [Required(ErrorMessage = "Please select role.")]
-        public int inRoleId { get; set; }
+        public int inRole { get; set; }
 
         [Required(ErrorMessage = "Please select zone.")]
         public int inZoneId { get; set; }

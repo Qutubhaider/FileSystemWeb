@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Departments.Controllers
 {
@@ -45,7 +46,7 @@ namespace FileSystemWeb.Areas.Departments.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = 1; //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 if (foAlmirah != null)
                 {
                     moUnitOfWork.AlmirahRepository.SaveAlmirah(foAlmirah, liUserId, out liSuccess);

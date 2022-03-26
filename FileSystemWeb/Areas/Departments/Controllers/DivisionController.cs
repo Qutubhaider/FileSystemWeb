@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace DmfWeb.Areas.Departments.Controllers
 {
@@ -38,7 +39,7 @@ namespace DmfWeb.Areas.Departments.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = 1; //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 if (foDivision != null)
                 {
                     moUnitOfWork.DivisionRepository.SaveDivision(foDivision, liUserId, out liSuccess);
