@@ -31,7 +31,7 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
                 loUserProfile = moUnitOfWork.UserRepository.GetUserDetail(id);
             }
             //loUserProfile.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
-            //loUserProfile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
+            loUserProfile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             loUserProfile.inZoneId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
             loUserProfile.inDivisionId= Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
             return View("~/Areas/DeskAdmin/Views/User/UserDetail.cshtml",loUserProfile);

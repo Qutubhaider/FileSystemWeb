@@ -25,18 +25,13 @@
                             <label class="form-label">Select User Role</label>
                             <select id="ddRole" asp-for="inRole" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Role</option>
-                                <option value="1">Admin</option>
-                                <option value="2">Division Admin</option>
-                                <option value="3">Department Admin</option>
-                                <option value="4">Desk Admin</option>
                                 <option value="5">Desk OP</option>
-                                <option value="6">Store OP</option>
                             </select>
                             <span asp-validation-for="inRole" class="text-danger"></span>
                         </div>
                         <div class="mb-3 d-none">
                             <label class="form-label">Zone Name</label>
-                            <select id="ddZone" onchange="OnZoneChange();" asp-for="inZoneId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">
+                            <select id="ddZone" onchange="OnZoneChange();" asp-for="inZoneId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Zone Name</option>
                             </select>
                             <span asp-validation-for="inZoneId" class="text-danger"></span>
