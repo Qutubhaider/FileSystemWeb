@@ -12,7 +12,8 @@ CREATE PROC [dbo].[getDeskList]
 	@inSortColumn INT = NULL, 
 	@stSortOrder NVARCHAR(51) = NULL, 
 	@inPageNo INT = 1, 
-	@inPageSize INT = 10 
+	@inPageSize INT = 10 ,
+	@inUserId INT = NULL
 ) 
 AS 
 BEGIN 
@@ -58,6 +59,8 @@ SET NOCOUNT ON;
  
 	IF(ISNULL(@inStatus,0)>0)               
 		SET @stSQL = @stSQL +' AND D.inStatus= '+ CONVERT(NVARCHAR(11), @inStatus) +'' 
+	IF(ISNULL(@inUserId,0)>0)               
+		SET @stSQL = @stSQL +' AND D.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +'' 
  
 	SET @stSQL = @stSQL +' 
 				)A )   

@@ -11,7 +11,8 @@ CREATE PROC [dbo].[getStoreList]
 	@inSortColumn INT = NULL, 
 	@stSortOrder NVARCHAR(51) = NULL, 
 	@inPageNo INT = 1, 
-	@inPageSize INT = 10 
+	@inPageSize INT = 10 ,
+	@inUserId INT=NULL
 ) 
 AS 
 BEGIN 
@@ -31,7 +32,7 @@ SET NOCOUNT ON;
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		inStoreId,unStoreId,stStoreName,stZoneName ,stDivisionName,stDepartmentName,stDesignationName
+		inStoreId,unStoreId,stStoreName,stZoneName ,stDivisionName,stDepartmentName
 		FROM ( 
             SELECT  
                     S.inStoreId, 
@@ -39,19 +40,19 @@ SET NOCOUNT ON;
                     S.stStoreName, 
                     Z.stZoneName,
 					DV.stDivisionName,
-					DP.stDepartmentName,
-					DS.stDesignationName
+					DP.stDepartmentName
             FROM tblStore S WITH(NOLOCK) 
-            JOIN tblZone Z ON Z.inZoneId=D.inZoneId
-            JOIN tblDivision DV ON DV.inDivisionId=D.inDivisionId
-            JOIN tblDepartment DP ON DP.inDepartmentId=D.inDepartmentId
-            JOIN tblDesignation DS ON DS.inDesignationId=D.inDesignationId
+            JOIN tblZone Z ON Z.inZoneId=S.inZoneId
+            JOIN tblDivision DV ON DV.inDivisionId=S.inDivisionId
+            JOIN tblDepartment DP ON DP.inDepartmentId=S.inDepartmentId
             WHERE 1=1' 
  
 	IF(ISNULL(@stStoreName,'')<>'') 
-		SET @stSQL = @stSQL + '  AND (D.stDeskName LIKE ''%' + CONVERT(NVARCHAR(211), @stStoreName)  + '%'')' 
+		SET @stSQL = @stSQL + '  AND (S.stStoreName LIKE ''%' + CONVERT(NVARCHAR(211), @stStoreName)  + '%'')' 
  
  +'' 
+ IF(ISNULL(@inUserId,0)>0)               
+		SET @stSQL = @stSQL +' AND S.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +''
  
 	SET @stSQL = @stSQL +' 
 				)A )   

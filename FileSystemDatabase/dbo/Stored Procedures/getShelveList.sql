@@ -11,7 +11,8 @@ CREATE PROC [dbo].[getShelveList]
 	@inSortColumn INT = NULL, 
 	@stSortOrder NVARCHAR(51) = NULL, 
 	@inPageNo INT = 1, 
-	@inPageSize INT = 10 
+	@inPageSize INT = 10 ,
+	@inUserId INT=NULL
 ) 
 AS 
 BEGIN 
@@ -42,7 +43,7 @@ SET NOCOUNT ON;
 					DP.stDepartmentName,
 					ST.stStoreName,
 					R.stRoomNumber,
-					A.stAlmirahId
+					A.stAlmirahNumber
             FROM tblShelve S WITH(NOLOCK) 
             JOIN tblZone Z ON Z.inZoneId=S.inZoneId
             JOIN tblStore ST ON ST.inStoreId=S.inStoreId
@@ -56,7 +57,8 @@ SET NOCOUNT ON;
 		SET @stSQL = @stSQL + '  AND (S.stShelveNumber LIKE ''%' + CONVERT(NVARCHAR(211), @stShelveNumber)  + '%'')' 
  
  +'' 
- 
+ IF(ISNULL(@inUserId,0)>0)               
+		SET @stSQL = @stSQL +' AND S.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +''
 	SET @stSQL = @stSQL +' 
 				)A )   
 				SELECT (SELECT CAST(COUNT(*) AS INT) FROM PAGED) AS inRecordCount,*   

@@ -11,7 +11,8 @@ CREATE PROC [dbo].[getIssueFileList]
 	@inSortColumn INT = NULL, 
 	@stSortOrder NVARCHAR(51) = NULL, 
 	@inPageNo INT = 1, 
-	@inPageSize INT = 10 
+	@inPageSize INT = 10 ,
+	@inUserId INT = NULL
 ) 
 AS 
 BEGIN 
@@ -55,7 +56,8 @@ SET NOCOUNT ON;
 		SET @stSQL = @stSQL + '  AND (F.stFileName LIKE ''%' + CONVERT(NVARCHAR(211), @stFileName)  + '%'')' 
  
  +'' 
- 
+ IF(ISNULL(@inUserId,0)>0)               
+		SET @stSQL = @stSQL +' AND F.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +''
 	SET @stSQL = @stSQL +' 
 				)A )   
 				SELECT (SELECT CAST(COUNT(*) AS INT) FROM PAGED) AS inRecordCount,*   

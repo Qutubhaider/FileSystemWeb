@@ -12,7 +12,8 @@ CREATE PROC [dbo].[getDesignationList]
 	@inSortColumn INT = NULL,
 	@stSortOrder NVARCHAR(51) = NULL,
 	@inPageNo INT = 1,
-	@inPageSize INT = 10
+	@inPageSize INT = 10,
+	@inUserId INT = NULL
 )
 AS
 BEGIN
@@ -46,6 +47,8 @@ SET NOCOUNT ON;
 	IF(ISNULL(@stDesignationName,'')<>'')
 		SET @stSQL = @stSQL + '  AND (D.stDesignationName LIKE ''%' + CONVERT(NVARCHAR(211), @stDesignationName)  + '%'')'
  +''
+ IF(ISNULL(@inUserId,0)>0)               
+		SET @stSQL = @stSQL +' AND D.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +''
 
 	SET @stSQL = @stSQL +'
 				)A )  
