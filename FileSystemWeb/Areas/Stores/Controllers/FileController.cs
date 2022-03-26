@@ -36,7 +36,8 @@ namespace FileSystemWeb.Areas.Stores.Controllers
         {
             FileDetail fileDetail = new FileDetail();
             fileDetail.inZoneId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
-            fileDetail.inDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
+            fileDetail.inDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
+            //fileDetail.inDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.).Value.ToString());
             return View("~/Areas/Stores/Views/File/FileList.cshtml", fileDetail);
         }
         public IActionResult Detail(Guid id)

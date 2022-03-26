@@ -14,6 +14,10 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
             {
                 return View("~/Areas/DeskOP/Views/Case/CaseList.cshtml");
             }
+            public IActionResult Detail()
+            {
+                return View("~/Areas/DeskOP/Views/Case/CaseDetail.cshtml");
+            }
         }
     }
 }
