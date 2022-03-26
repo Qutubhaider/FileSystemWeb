@@ -20,6 +20,8 @@ namespace FileSystemBAL.User.Models
         public int inDesignationId { get; set; }
         public int inDeskId { get; set; }
         public int inDivisionId { get; set; }
+        public int inStoreId { get; set; }
+        public int inDepartmentId { get; set; }
 
     }
 }
