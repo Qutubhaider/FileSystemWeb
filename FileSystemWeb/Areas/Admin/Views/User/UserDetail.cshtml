@@ -23,7 +23,7 @@
                     <form class="custom-validation" asp-action="SaveUserProfile" asp-controller="User" asp-area="Admin" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">Select User Role</label>
-                            <select id="ddRole" asp-for="inRole" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddRole" asp-for="inRole" class="select2 form-control select2-multiple" onchange="changePanel();" data-placeholder="Choose ...">
                                 <option value="">Select Role</option>
                                 <option value="1">Admin</option>
                                 <option value="2">Division Admin</option>
@@ -41,21 +41,11 @@
                             </select>
                             <span asp-validation-for="inZoneId" class="text-danger"></span>
                         </div>
-                        
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
                             <select id="ddDivision" onchange="OnDivisionChangeLoadDesk();OnDivisionChangeLoadStore();" asp-for="inDivisionId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Division Name</option>
                             </select>
-                            <span asp-validation-for="inDivisionId" class="text-danger"></span>
-                        </div>
-                         <div class="mb-3">
-                            <label class="form-label">Store Name</label>
-                            <select id="ddStore" asp-for="inStoreId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
-                                <option value="">Select Store Name</option>
-
-                            </select>
-                            <span asp-validation-for="inStoreId" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
@@ -76,9 +66,14 @@
                             <select id="ddDesk" asp-for="inDeskid" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Zone Name</option>
                             </select>
-                            <span asp-validation-for="inDeskid" class="text-danger"></span>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Store Name</label>
+                            <select id="ddStore" asp-for="inStoreId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                                <option value="">Select Store Name</option>
 
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">First Name</label>
                             <input asp-for="stFirstName" type="text" class="form-control" placeholder="First Name">
@@ -138,19 +133,21 @@
     </div>
 </div>
 @section Scripts {
-    <partial name="_ValidationScriptsPartial.cshtml" />
-    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
-        var msGetDeskDropDown =  '@Url.Action("GetDeskDropdown")';
-        var msGetDesignationDropDown = '@Url.Action("GetDesignationDropDown")';
-        var msGetStoreDropDown = '@Url.Action("GetStoreDropdown")';
-            $(document).ready(function () {
-                OnZoneChange(true);
-                OnDivisionChangeLoadDesk(true);
-                OnDivisionChangeLoadStore(true);
-                OnDepartmentChange(true);
-        });
-    </script>
-    <script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>
+<partial name="_ValidationScriptsPartial.cshtml" />
+<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
+    var msGetDeskDropDown =  '@Url.Action("GetDeskDropdown")';
+    var msGetDesignationDropDown = '@Url.Action("GetDesignationDropDown")';
+    var msGetStoreDropDown = '@Url.Action("GetStoreDropdown")';
+        $(document).ready(function () {
+            OnZoneChange(true);
+            OnDivisionChangeLoadDesk(true);
+            OnDivisionChangeLoadStore(true);
+            OnDepartmentChange(true);
+
+
+    });
+</script>
+<script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>
 }

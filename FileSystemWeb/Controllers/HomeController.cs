@@ -66,7 +66,6 @@ namespace FileSystemWeb.Controllers
                         }
                         else
                         {
-
                             var claims = new List<Claim>();
                             claims.Add(new Claim(SessionConstant.stEmail, UserDetail.stEmail));
                             claims.Add(new Claim(SessionConstant.Id, UserDetail.inUserId.ToString()));
