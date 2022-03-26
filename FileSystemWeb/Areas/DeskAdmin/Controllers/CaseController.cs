@@ -14,6 +14,10 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
             {
                 return View("~/Areas/DeskAdmin/Views/Case/CaseList.cshtml");
             }
+            public IActionResult Detail()
+            {
+                return View("~/Areas/DeskAdmin/Views/Case/CaseDetail.cshtml");
+            }
         }
     }
 }
