@@ -57,7 +57,7 @@ SET NOCOUNT ON;
  
  +'' 
  IF(ISNULL(@inUserId,0)>0)               
-		SET @stSQL = @stSQL +' AND F.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +''
+		SET @stSQL = @stSQL +' AND IFH.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +''
 	SET @stSQL = @stSQL +' 
 				)A )   
 				SELECT (SELECT CAST(COUNT(*) AS INT) FROM PAGED) AS inRecordCount,*   

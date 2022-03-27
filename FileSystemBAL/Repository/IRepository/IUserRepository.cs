@@ -15,5 +15,7 @@ namespace FileSystemBAL.Repository.IRepository
         void DeleteUser(Guid fuUserId, out int fiSuccess);
         List<User.Models.UserListResult> GetUserList(string fsUserName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId=null);
         List<Select2> GetUserDropDown();
+        List<Select2> GetUserListForIssueFile(int fiStoreId);
+
     }
 }

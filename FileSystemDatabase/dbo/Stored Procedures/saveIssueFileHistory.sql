@@ -42,7 +42,7 @@ AS
 		inStatus 				=  @inStatus   		,       			  
 		dtCreateDate    =          @currentDateTime,
 		inCreatedBy =@inCreatedBy
-		WHERE @inIssueFileId=@inIssueFileId
+		WHERE inlssueFileId=@inIssueFileId
 		SET @inSuccess=102
 		END
  END

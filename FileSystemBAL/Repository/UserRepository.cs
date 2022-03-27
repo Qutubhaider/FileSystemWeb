@@ -34,7 +34,10 @@ namespace FileSystemBAL.Repository
         {
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserDropDown").ToList();
         }
-
+        public List<Select2> GetUserListForIssueFile(int fiStoreId)
+        {
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserListForIssueFile @inStoreId={fiStoreId}").ToList();
+        }
         public UserEmailResult GetUserByEmail(string stEmail)
         {
             return moDatabaseContext.Set<UserEmailResult>().FromSqlInterpolated($"EXEC getUserByEmail @stUserEmail={stEmail}").AsEnumerable().FirstOrDefault();

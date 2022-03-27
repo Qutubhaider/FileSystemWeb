@@ -44,7 +44,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             loIssueFile.inDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value.ToString());
             loIssueFile.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown(Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString()));
             loIssueFile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
-            loIssueFile.UserList = moUnitOfWork.UserRepository.GetUserDropDown();
+            loIssueFile.UserList = moUnitOfWork.UserRepository.GetUserListForIssueFile(Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString()));
             loIssueFile.FileList = moUnitOfWork.FileRepository.GetFileDropDown();
             return View("~/Areas/Stores/Views/IssueFile/IssueFile.cshtml", loIssueFile);
         }
@@ -131,6 +131,8 @@ namespace FileSystemWeb.Areas.Stores.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+       
     }
 }
 
