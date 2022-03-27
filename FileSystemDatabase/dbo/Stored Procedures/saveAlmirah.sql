@@ -27,7 +27,7 @@ SET NOCOUNT ON;
 		 IF(ISNULL(@inAmirahId,0)=0)  
 		 BEGIN 			
 				INSERT INTO tblAlmirah(stAlmirahNumber,inZoneId,inDivisionId,inDepartmentId,inStoreId,inRoomId,dtCreateDate,inCreatedBy)  
-				SELECT  @stAmirahNumber, @inZoneId,@inDivisionId,@inDepartmentId,@inStoreId,@inStoreId ,@getDateTimeByTimezone, @inCreatedBy  
+				SELECT  @stAmirahNumber, @inZoneId,@inDivisionId,@inDepartmentId,@inStoreId,@inRoomId ,@getDateTimeByTimezone, @inCreatedBy  
 				SET @inSuccess=101  
 		 END
 		 ELSE  

@@ -105,7 +105,7 @@
                 <div id="sidebar-menu">
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
-                       
+
                         <li>
                             <a asp-area="Stores" asp-controller="Dashboard" asp-action="Index" class="waves-effect">
                                 <i class="mdi mdi-home-variant-outline"></i>
@@ -118,6 +118,9 @@
                                 <span>File Allocation</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
+                                <li><a asp-area="Stores" asp-controller="Room" asp-action="Index">Room</a></li>
+                                <li><a asp-area="Stores" asp-controller="Almirah" asp-action="Index">Almirah</a></li>
+                                <li><a asp-area="Stores" asp-controller="Shelves" asp-action="Index">Shelves</a></li>
                                 <li><a asp-area="Stores" asp-controller="File" asp-action="Index">Store File</a></li>
                                 <li><a asp-area="Stores" asp-controller="IssueFile" asp-action="Index">Issue File History</a></li>
                             </ul>
