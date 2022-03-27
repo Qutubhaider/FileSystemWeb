@@ -13,7 +13,7 @@ namespace FileSystemBAL.Repository.IRepository
         public void InserUserProfile(User.Models.UserProfile foUserProfile, int fiUserId, out int fiSuccess);
         User.Models.UserProfile GetUserDetail(Guid fuUserId);
         void DeleteUser(Guid fuUserId, out int fiSuccess);
-        List<User.Models.UserListResult> GetUserList(string fsUserName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        List<User.Models.UserListResult> GetUserList(string fsUserName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId=null);
         List<Select2> GetUserDropDown();
     }
 }

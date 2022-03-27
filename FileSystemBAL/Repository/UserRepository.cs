@@ -45,9 +45,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<UserProfile>().FromSqlInterpolated($"EXEC getUserDetail @unUserProfileId={fuUserId}").AsEnumerable().FirstOrDefault();
         }
 
-        public List<UserListResult> GetUserList(string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        public List<UserListResult> GetUserList(string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId=null)
         {
-            return moDatabaseContext.Set<UserListResult>().FromSqlInterpolated($"EXEC getUserList @stUserName={fsStoreName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+            return moDatabaseContext.Set<UserListResult>().FromSqlInterpolated($"EXEC getUserList @stUserName={fsStoreName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void InserUserProfile(UserProfile foUserProfile, int fiUserId, out int fiSuccess)

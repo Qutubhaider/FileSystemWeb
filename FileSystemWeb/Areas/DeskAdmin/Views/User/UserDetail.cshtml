@@ -1,6 +1,6 @@
 ﻿@model FileSystemBAL.User.Models.UserProfile
 @{
-    Layout = "_LayoutAdmin";
+    Layout = "_LayoutDeskAdmin";
     ViewBag.Title = "Shelves Detail";
 }
 <div class="container-fluid">
@@ -20,7 +20,7 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    <form class="custom-validation" asp-action="SaveUserProfile" asp-controller="User" asp-area="Admin" novalidate="">
+                    <form class="custom-validation" asp-action="SaveUserProfile" asp-controller="User" asp-area="DeskAdmin" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">Select User Role</label>
                             <select id="ddRole" asp-for="inRole" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
@@ -98,6 +98,7 @@
                         <input type="hidden" asp-for="inUserProfileId" />
                         <input type="hidden" asp-for="unUserProfileId" />
                         <input type="hidden" asp-for="inDeskid" />
+                        <input type="hidden" asp-for="inZoneId" />
                         <input type="hidden" asp-for="inDepartmentId" />
                         <input type="hidden" asp-for="inDivisionId" />
                         <input type="hidden" asp-for="inDesignationId" />

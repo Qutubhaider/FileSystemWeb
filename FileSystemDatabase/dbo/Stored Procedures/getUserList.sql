@@ -11,7 +11,8 @@ CREATE PROC [dbo].[getUserList]
 	@inSortColumn INT = NULL, 
 	@stSortOrder NVARCHAR(51) = NULL, 
 	@inPageNo INT = 1, 
-	@inPageSize INT = 10 
+	@inPageSize INT = 10 ,
+	@inUserId INT=NULL
 ) 
 AS 
 BEGIN 
@@ -53,6 +54,8 @@ SET NOCOUNT ON;
 		SET @stSQL = @stSQL + '  AND (UP.stFirstName LIKE ''%' + CONVERT(NVARCHAR(211), @stUserName)  + '%'')' 
  
  +'' 
+   IF(ISNULL(@inUserId,0)>0)               
+		SET @stSQL = @stSQL +' AND UP.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +''
  
 	SET @stSQL = @stSQL +' 
 				)A )   
