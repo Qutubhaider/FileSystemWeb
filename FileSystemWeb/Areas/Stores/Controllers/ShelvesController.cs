@@ -38,9 +38,11 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             {
                 loShelve = moUnitOfWork.ShelveRepository.GetShelveDetail(id);
             }
-            loShelve.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
-            loShelve.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
-            //loShelve.StoreList = moUnitOfWork.StoreRepository.GetStoreDropDown();
+            loShelve.inZoneId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
+            loShelve.inDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
+            loShelve.inDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value.ToString());
+            loShelve.inStoreId = Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString());
+            loShelve.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown(Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString()));
             return View("~/Areas/Stores/Views/Shelves/ShelvesDetail.cshtml", loShelve);
         }
         public IActionResult SaveShelve(Shelve foShelve)
@@ -48,7 +50,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString());
                 if (foShelve != null)
                 {
                     moUnitOfWork.ShelveRepository.SaveShelve(foShelve, liUserId, out liSuccess);
@@ -88,13 +90,6 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             StringBuilder lolog = new StringBuilder();
             try
             {
-                /*lolog.AppendLine("DeskName : " + DeskName);
-                lolog.AppendLine("Status : " + Status);
-                lolog.AppendLine("Sort Column : " + sort_column);
-                lolog.AppendLine("Sort Order : " + sort_order);
-                lolog.AppendLine("Page No : " + pg);
-                lolog.AppendLine("Page Size : " + size);
-*/
                 string lsSearch = string.Empty;
                 int liTotalRecords = 0, liStartIndex = 0, liEndIndex = 0;
                 if (sort_column == 0 || sort_column == null)
@@ -114,7 +109,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
                     size = miPageSize;
 
                 List<ShelveListResult> loShelveListResults = new List<ShelveListResult>();
-                loShelveListResults = moUnitOfWork.ShelveRepository.GetShelveList(ShelveNumber == null ? ShelveNumber : ShelveNumber.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                loShelveListResults = moUnitOfWork.ShelveRepository.GetShelveList(ShelveNumber == null ? ShelveNumber : ShelveNumber.Trim(), sort_column, sort_order, pg.Value, size.Value, Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetShelveList = loShelveListResults;
                 if (loShelveListResults.Count > 0)
@@ -132,29 +127,11 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             }
 
         }
-        public IActionResult GetDivisionDropDown(int fiZoneId)
-        {
-            List<Select2> DivisionDropDown = moUnitOfWork.DivisionRepository.GetDivisionDropDown(fiZoneId);
-            return Json(new { data = DivisionDropDown });
-            
-
-        }
-        public IActionResult GetRoomDropDown(int fiStoreId)
-        {
-            List<Select2> RoomDropDown  = moUnitOfWork.RoomRepository.GetRoomDropDown(fiStoreId);
-            return Json(new { data = RoomDropDown });
-
-        }
+        
         public IActionResult GetAlmirahDropDown(int fiRoomId)
         {
             List<Select2> AlmirahDropDown = moUnitOfWork.AlmirahRepository.GetAlmirahDropDown(fiRoomId);
             return Json(new { data = AlmirahDropDown });
-
-        }
-        public IActionResult GetStoreDropDown(int fiDivisionId)
-        {
-            List<Select2> StoreDropDown = moUnitOfWork.StoreRepository.GetStoreDropDown(fiDivisionId);
-            return Json(new { data = StoreDropDown });
 
         }
     }

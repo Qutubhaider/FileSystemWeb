@@ -1,6 +1,6 @@
 ﻿@model FileSystemBAL.Shelve.Models.Shelve
 @{
-    Layout = "_LayoutAdmin";
+    Layout = "_LayoutStores";
     ViewBag.Title = "Shelves Detail";
 }
 <div class="container-fluid">
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-4" style="float:right;">
-            <a class="btn btn-danger" style="float: right;" asp-area="Admin" asp-controller="Shelves" asp-action="Index">Back</a>
+            <a class="btn btn-danger" style="float: right;" asp-area="Stores" asp-controller="Shelves" asp-action="Index">Back</a>
         </div>
     </div>
 
@@ -20,39 +20,11 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    <form class="custom-validation" asp-action="saveShelve" asp-controller="Shelves" asp-area="Admin" novalidate="">
-                        <div class="mb-3">
-                            <label class="form-label">Zone Name</label>
-                            <select id="ddZone" onchange="OnZoneChange();" asp-for="inZoneId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.ZoneList,"id","value"))">
-                                <option value="">Select Zone Name</option>
-                            </select>
-                            <span asp-validation-for="inZoneId" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Division Name</label>
-                            <select id="ddDivision" asp-for="inDivisionId" onchange="OnDivisionChangeLoadStore();" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
-                                <option value="">Select Division Name</option>
-                            </select>
-                            <span asp-validation-for="inDivisionId" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Department Name</label>
-                            <select id="ddDepartment" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
-                                <option value="">Select Department Name</option>
-                            </select>
-                            <span asp-validation-for="inDepartmentId" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Store Name</label>
-                            <select id="ddStore" asp-for="inStoreId" onchange="OnStoreChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
-                                <option value="">Select Store Name</option>
-
-                            </select>
-                            <span asp-validation-for="inStoreId" class="text-danger"></span>
-                        </div>
+                    <form class="custom-validation" asp-action="saveShelve" asp-controller="Shelves" asp-area="Stores" novalidate="">
+                        
                         <div class="mb-3">
                             <label class="form-label">Room Number</label>
-                            <select id="ddRoom" asp-for="inRoomId" onchange="OnRoomChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddRoom" asp-for="inRoomId" onchange="OnRoomChange();" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.RoomList,"id","value"))">
                                 <option value="">Select Room Number</option>
                             </select>
                             <span asp-validation-for="inRoomId" class="text-danger"></span>
@@ -106,18 +78,9 @@
     <partial name="_ValidationScriptsPartial.cshtml" />
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
     <script type="text/javascript">
-        var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
-        var msGetRoomDropDown = '@Url.Action("GetRoomDropdown")';
         var msGetAlmirahDropDown = '@Url.Action("GetAlmirahDropdown")';
-        var msGetShelveDropDown ='@Url.Action("GetShelveDropdown")';
-        var msGetStoreDropDown ='@Url.Action("GetStoreDropdown")';
             $(document).ready(function () {
-                OnZoneChange(true);
-                OnStoreChange(true);
                 OnRoomChange(true);
-                OnAlmirahChange(true);
-                OnDivisionChangeLoadStore(true)
-
         });
     </script>
     <script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>

@@ -40,6 +40,7 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
             loUserProfile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             loUserProfile.inZoneId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
             loUserProfile.inDivisionId= Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
+            loUserProfile.inStoreId = Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString());
             return View("~/Areas/DeskAdmin/Views/User/UserDetail.cshtml",loUserProfile);
         }
         public IActionResult SaveUserProfile(UserProfile foUserProfile)

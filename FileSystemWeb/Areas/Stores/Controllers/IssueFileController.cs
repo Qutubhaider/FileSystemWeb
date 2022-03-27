@@ -39,10 +39,13 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             {
                 loIssueFile = moUnitOfWork.IssueFileHistoryRepository.GetIssueFileDetail(id);
             }
+            
+            loIssueFile.inDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
+            loIssueFile.inDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value.ToString());
+            loIssueFile.RoomList = moUnitOfWork.RoomRepository.GetRoomDropDown(Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString()));
             loIssueFile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             loIssueFile.UserList = moUnitOfWork.UserRepository.GetUserDropDown();
             loIssueFile.FileList = moUnitOfWork.FileRepository.GetFileDropDown();
-            //loDivision.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             return View("~/Areas/Stores/Views/IssueFile/IssueFile.cshtml", loIssueFile);
         }
 
@@ -92,7 +95,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             try
             {
                 int liSuccess = 0;
-                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString());
                 if (foIssueFileDetail != null)
                 {
                     

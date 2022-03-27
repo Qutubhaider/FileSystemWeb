@@ -26,5 +26,8 @@ namespace FileSystemBAL.IssueFIleHistory.Models
         [NotMapped]
         public List<Select2> FileList { get; set; }
 
+        [NotMapped]
+        public List<Select2> RoomList { get; set; }
+
     }
 }

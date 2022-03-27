@@ -46,7 +46,6 @@ SET NOCOUNT ON;
 		 BEGIN  
 				  UPDATE tblUserProfile WITH(ROWLOCK) SET   
 						inDeskid=@inDeskid,
-						inUserId=@inUserId,
 						inZoneId=@inZoneId,
 						inStoreId=@inStoreId,
 						inDivisionId=@inDivisionId,
