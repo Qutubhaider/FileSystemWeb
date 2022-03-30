@@ -68,5 +68,10 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+
+        public IActionResult FileDetail(Guid? id)
+        {
+            return View("~/Areas/DeskAdmin/Views/AssignFile/AssignFileList.cshtml");
+        }
     }
 }
