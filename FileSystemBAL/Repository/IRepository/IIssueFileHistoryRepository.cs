@@ -12,8 +12,6 @@ namespace FileSystemBAL.Repository.IRepository
     {
         void SaveIssueFile(IssueFile foIssueFile, int fiUserId, out int fiSuccess);
         IssueFile GetIssueFileDetail(Guid fuIssueFileId);
-        //void DeleteAlmirah(Guid fuAmirahId, out int fiSuccess);
-        List<IssueFileListResult> GetIssueFileList(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null);
-        //List<Select2> GetADropDown(int fiRoomId);
+        List<IssueFileListResult> GetIssueFileList(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null, int? fiDepartmentId = null, int? fiDivisionId = null);      
     }
 }

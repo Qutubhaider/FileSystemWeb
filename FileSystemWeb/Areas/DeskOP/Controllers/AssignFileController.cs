@@ -9,10 +9,10 @@ using System.Collections.Generic;
 using System.Dynamic;
 using static FileSystemUtility.Utilities.CommonConstant;
 
-namespace FileSystemWeb.Areas.DeskAdmin.Controllers
+namespace FileSystemWeb.Areas.DeskOP.Controllers
 {
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Area("DeskAdmin")]
+    [Area("DeskOP")]
     public class AssignFileController : Controller
     {
        
@@ -25,7 +25,7 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
         }
         public IActionResult Index()
         {
-            return View("~/Areas/DeskAdmin/Views/AssignFile/AssignFileList.cshtml");
+            return View("~/Areas/DeskOP/Views/AssignFile/AssignFileList.cshtml");
         }
 
         public IActionResult GetIssueFileList(string fsFileName, int? Status, int? sort_column, string sort_order, int? pg, int? size)
@@ -61,7 +61,7 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
                     liEndIndex = loIssueFileListResult[loIssueFileListResult.Count - 1].inRownumber;
                 }
                 loModel.Pagination = PaginationService.getPagination(liTotalRecords, pg.Value, size.Value, liStartIndex, liEndIndex);
-                return PartialView("~/Areas/DeskAdmin/Views/AssignFile/_AssignFileList.cshtml", loModel);
+                return PartialView("~/Areas/DeskOP/Views/IssueFile/_IssueFileListData.cshtml", loModel);
             }
             catch (Exception ex)
             {
