@@ -75,5 +75,11 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
 
             return View("~/Areas/DeskAdmin/Views/AssignFile/AssignFileDetail.cshtml", assignedFile);
         }
-    }
+
+        [HttpPost]
+
+        public IActionResult AcceptAssignFile(GetAssignFileDetailResult loAssignFile)
+        {
+
+        }
 }
