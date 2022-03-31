@@ -1,4 +1,5 @@
-﻿@{
+﻿@model FileSystemBAL.IssueFIleHistory.Models.GetAssignFileDetailResult
+@{
     Layout = "_LayoutDeskAdmin";
     ViewBag.Title = "Assign File Detail";
     
@@ -16,7 +17,45 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <form class="custom-validation" action="." novalidate="">
+                        <div class="mb-3">
+                            <label class="form-label">File Name</label>
+                            <input asp-for="stFileName" type="text" class="form-control" placeholder="Division Name">
+                           
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">User Name</label>
+                            <input asp-for="stUserName" type="text" class="form-control" placeholder="Division Name">
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Department Name</label>
+                            <input asp-for="stDepartmentName" type="text" class="form-control" placeholder="Division Name">
+                           
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Division Name</label>
+                            <input asp-for="stDivisionName" type="text" class="form-control" placeholder="Division Name">
+                            
+                        </div>
+                         <div class="mb-3">
+                            <label class="form-label">Comment</label>
+                            <input asp-for="stComment" type="text" class="form-control" placeholder="Division Name">
+                            
+                        </div>
+                        <div>
+                            <div>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-secondary waves-effect">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                       
 
+                    </form>
                 </div>
 
             </div>

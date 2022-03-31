@@ -38,5 +38,10 @@ namespace FileSystemBAL.Repository
             moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveIssueFileHistory @inIssueFileId={foIssueFile.inlssueFileId},@inStoreFileId={foIssueFile.inStoreFileDetailsId} ,@inDivisionId={foIssueFile.inDivisionId},@inDepartmentId={foIssueFile.inDepartmentId},@inUserId={foIssueFile.inAssignUserId},@dtIssueDate={foIssueFile.dtIssueDate},@stComment={foIssueFile.stComment},@inStatus={foIssueFile.inStatus},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
+
+        public GetAssignFileDetailResult AssignFileDetailResult(Guid? fuAssignFileId)
+        {
+            return moDatabaseContext.Set<GetAssignFileDetailResult>().FromSqlInterpolated($"EXEC getAssignFileDetail @unAssignFileId={fuAssignFileId}").AsEnumerable().FirstOrDefault();
+        }
     }
 }

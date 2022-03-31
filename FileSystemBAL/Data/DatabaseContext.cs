@@ -48,6 +48,7 @@ namespace FileSystemBAL.Data
         public DbSet<FileDetail> FileDetail { get; set; }
         public DbSet<IssueFile> IssueFile { get; set; }
         public DbSet<IssueFileListResult> IssueFileListResult { get; set; }
+        public DbSet<GetAssignFileDetailResult> GetAssignFileDetailResult { get; set; }
         public DbSet<Select2> Select2 { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
@@ -78,6 +79,7 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<FileDetail>().HasNoKey();
             foModelbuilder.Entity<IssueFileListResult>().HasNoKey();
             foModelbuilder.Entity<IssueFile>().HasNoKey();
+            foModelbuilder.Entity<GetAssignFileDetailResult>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

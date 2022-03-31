@@ -7,13 +7,15 @@
 Ref# Modified By   Modified date   Description  
 */
 
-CREATE PROCEDURE getUserListForIssueFile
+ALTER PROCEDURE getUserListForIssueFile
 (   
-     @inStoreId INT
+     @inStoreId INT,
+	 @inDivisionId INT
 )
 AS
 BEGIN
-SELECT inUserProfileId as id , stFirstName+' '+stLastName as value 
-       FROM tblUserProfile
-       WHERE inStoreId=@inStoreId
+SELECT UP.inUserProfileId as id , UP.stFirstName+' '+UP.stLastName as value 
+       FROM tblUserProfile UP
+	   JOIN tblUser U on U.inUserId = UP.inUserId
+       WHERE inStoreId=@inStoreId and inDivisionId=@inDivisionId and U.inRole=5 -- Desk Operator
 END

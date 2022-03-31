@@ -127,6 +127,7 @@
     <Build Include="dbo\Stored Procedures\getUserDropDown.sql" />
     <Build Include="dbo\Stored Procedures\getFileDropDown.sql" />
     <Build Include="dbo\Stored Procedures\getUserListForIssueFile.sql" />
+    <Build Include="dbo\Stored Procedures\getAssignFileDetail.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />

@@ -34,9 +34,9 @@ namespace FileSystemBAL.Repository
         {
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserDropDown").ToList();
         }
-        public List<Select2> GetUserListForIssueFile(int fiStoreId)
+        public List<Select2> GetUserListForIssueFile(int fiStoreId,int inDivisionId)
         {
-            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserListForIssueFile @inStoreId={fiStoreId}").ToList();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserListForIssueFile @inStoreId={fiStoreId},@inDivisionId={inDivisionId}").ToList();
         }
         public UserEmailResult GetUserByEmail(string stEmail)
         {

@@ -71,7 +71,9 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
 
         public IActionResult AssignFileDetail(Guid? id)
         {
-            return View("~/Areas/DeskAdmin/Views/AssignFile/AssignFileDetail.cshtml");
+            GetAssignFileDetailResult assignedFile = moUnitOfWork.IssueFileHistoryRepository.AssignFileDetailResult(id);
+
+            return View("~/Areas/DeskAdmin/Views/AssignFile/AssignFileDetail.cshtml", assignedFile);
         }
     }
 }

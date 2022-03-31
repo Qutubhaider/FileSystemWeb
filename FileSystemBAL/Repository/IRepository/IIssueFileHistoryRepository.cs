@@ -12,6 +12,7 @@ namespace FileSystemBAL.Repository.IRepository
     {
         void SaveIssueFile(IssueFile foIssueFile, int fiUserId, out int fiSuccess);
         IssueFile GetIssueFileDetail(Guid fuIssueFileId);
+        GetAssignFileDetailResult AssignFileDetailResult(Guid? fuAssignFileId);
         List<IssueFileListResult> GetIssueFileList(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null, int? fiDepartmentId = null, int? fiDivisionId = null);      
     }
 }
