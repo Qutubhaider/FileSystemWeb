@@ -10,5 +10,5 @@
     inStatus	INT NOT NULL,
     stComment	NVARCHAR(200) NOT NULL,
     dtCreateDate DATETIME NOT NULL,
-    inCreatedBy	INT NOT NULL
+    inAcceptededBy	INT NOT NULL
 )

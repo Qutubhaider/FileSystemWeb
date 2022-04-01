@@ -21,6 +21,7 @@ namespace FileSystemBAL.Repository.IRepository
         IShelveRepository ShelveRepository { get; }
         IFileRepository FileRepository { get; }
         IIssueFileHistoryRepository IssueFileHistoryRepository { get; }
+        ICaseRepository CaseRepository { get; }
         void Save();
     }
 }

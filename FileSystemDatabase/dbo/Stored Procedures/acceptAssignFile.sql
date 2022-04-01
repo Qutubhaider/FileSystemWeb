@@ -14,8 +14,8 @@ CREATE PROC [dbo].[acceptAssignFile]
 	 @inDesignationId INT,
 	 @inStoreFileDetailId INT,
 	 @inStatus INT,
-	 @stComment NVARCHAR(200) NOT NULL,
-	 @inCreatedBy INT,  
+	 @stComment NVARCHAR(200),
+	 @inAcceptedBy INT,  
 	 @inSuccess INT OUT
 )  
 AS  
@@ -27,8 +27,8 @@ SET NOCOUNT ON;
 	
 		 IF(ISNULL(@inCaseId,0)=0) 
 		 BEGIN 			
-				INSERT INTO tblCase(inZoneId,inDivisionId,inDepartmentId,inDesignationId,inStoreFileDetailId,inStatus,stComment,dtCreateDate,inCreatedBy)  
-				SELECT  @inZoneId,@inDivisionId,@inDepartmentId,@inDesignationId,@inStoreFileDetailId,@inStatus,@stComment ,@getDateTimeByTimezone, @inCreatedBy  
+				INSERT INTO tblCase(inZoneId,inDivisionId,inDepartmentId,inDesignationId,inStoreFileDetailId,inStatus,stComment,dtCreateDate,inAcceptededBy)  
+				SELECT  @inZoneId,@inDivisionId,@inDepartmentId,@inDesignationId,@inStoreFileDetailId,@inStatus,@stComment ,@getDateTimeByTimezone, @inAcceptedBy  
 				SET @inSuccess=101  
 		 END 		
 	COMMIT TRAN;  

@@ -14,6 +14,6 @@ namespace FileSystemBAL.Repository.IRepository
         Almirah.Models.Almirah GetAlmirahDetail(Guid fuAlmirahId);
         void DeleteAlmirah(Guid fuAmirahId, out int fiSuccess);
         List<AlmirahListResult> GetAlmirahList(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null);
-        List<Select2> GetAlmirahDropDown(int fiRoomId);
+        List<Select2> GetAlmirahDropDown(int fiRoomId); 
     }
 }

@@ -17,6 +17,6 @@ namespace FileSystemBAL.Case.Models
         public int inStoreFileDetailId { get; set; } 
         public int inStatus { get; set; } 
         public string stComment { get; set; } 
-        
+        public int inAcceptedBy { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 Ref# Modified By   Modified date   Description  
 */
 
-ALTER PROCEDURE getUserListForIssueFile
+CREATE PROCEDURE getUserListForIssueFile
 (   
      @inStoreId INT,
 	 @inDivisionId INT

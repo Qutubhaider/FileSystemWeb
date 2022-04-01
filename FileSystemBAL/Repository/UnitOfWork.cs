@@ -26,6 +26,7 @@ namespace FileSystemBAL.Repository
             ShelveRepository = new ShelveRepository(moDatabaseContext);
             FileRepository = new FileRepository(moDatabaseContext);
             IssueFileHistoryRepository = new IssueFileHistoreyRepository(moDatabaseContext);
+            CaseRepository = new CaseRepository(moDatabaseContext);
         }
 
         public IDivisionRepository DivisionRepository {get;private set;}
@@ -40,7 +41,7 @@ namespace FileSystemBAL.Repository
         public IShelveRepository ShelveRepository{get;private set;}
         public IFileRepository FileRepository{get;private set;}
         public IIssueFileHistoryRepository IssueFileHistoryRepository{get;private set;}
-
+        public ICaseRepository CaseRepository {get;private set;}
 
         public void Dispose()
         {

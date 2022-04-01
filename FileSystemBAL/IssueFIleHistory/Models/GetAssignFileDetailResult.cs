@@ -14,5 +14,8 @@ namespace FileSystemBAL.IssueFIleHistory.Models
         public string stDivisionName { get; set; }
         public string stUserName { get; set; }
         public string stDepartmentName { get; set; }
+        public int inStoreFileDetailsId { get; set; }
+        public int inAssignUserId { get; set; }
+        public int inlssueFileId { get; set; }
     }
 }
