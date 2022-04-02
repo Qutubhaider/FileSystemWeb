@@ -131,6 +131,8 @@
     <Build Include="dbo\table\tblCase.sql" />
     <Build Include="dbo\Stored Procedures\acceptAssignFile.sql" />
     <Build Include="dbo\Stored Procedures\saveCase.sql" />
+    <Build Include="dbo\Stored Procedures\getCaseList.sql" />
+    <Build Include="dbo\Stored Procedures\getCaseDetail.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />

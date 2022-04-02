@@ -20,27 +20,27 @@
                     <form class="custom-validation" asp-action="AcceptAssignFile" asp-controller="AssignFile" asp-area="DeskAdmin" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">File Name</label>
-                            <input asp-for="stFileName" type="text" class="form-control" placeholder="Division Name">
+                            <input asp-for="stFileName" type="text" class="form-control" placeholder="Division Name" readonly>
                            
                         </div>
                         <div class="mb-3">
                             <label class="form-label">User Name</label>
-                            <input asp-for="stUserName" type="text" class="form-control" placeholder="Division Name">
+                            <input asp-for="stUserName" type="text" class="form-control" placeholder="Division Name" readonly>
                             
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
-                            <input asp-for="stDepartmentName" type="text" class="form-control" placeholder="Division Name">
+                            <input asp-for="stDepartmentName" type="text" class="form-control" placeholder="Division Name" readonly>
                            
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
-                            <input asp-for="stDivisionName" type="text" class="form-control" placeholder="Division Name">
+                            <input asp-for="stDivisionName" type="text" class="form-control" placeholder="Division Name" readonly>
                             
                         </div>
                          <div class="mb-3">
                             <label class="form-label">Comment</label>
-                            <input asp-for="stComment" type="text" class="form-control" placeholder="Division Name">
+                            <textarea asp-for="stComment" class="form-control" placeholder="Division Name" readonly></textarea>
                             
                         </div>
                         <div>

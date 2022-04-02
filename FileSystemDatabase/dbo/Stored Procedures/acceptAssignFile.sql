@@ -7,7 +7,8 @@ Ref# Modified By   Modified date   Description
 */  
 CREATE PROC [dbo].[acceptAssignFile]  
 (  
-	 @inCaseId INT=NULL, 
+	 @inCaseId INT=NULL,
+	 @inIssueFileId INT,
 	 @inZoneId INT,
 	 @inDivisionId INT,
 	 @inDepartmentId INT,
@@ -29,7 +30,9 @@ SET NOCOUNT ON;
 		 BEGIN 			
 				INSERT INTO tblCase(inZoneId,inDivisionId,inDepartmentId,inDesignationId,inStoreFileDetailId,inStatus,stComment,dtCreateDate,inAcceptededBy)  
 				SELECT  @inZoneId,@inDivisionId,@inDepartmentId,@inDesignationId,@inStoreFileDetailId,@inStatus,@stComment ,@getDateTimeByTimezone, @inAcceptedBy  
-				SET @inSuccess=101  
+				SET @inSuccess=101
+				
+				UPDATE tblIssueFileHistory SET inStatus=1 WHERE inlssueFileId=@inIssueFIleId
 		 END 		
 	COMMIT TRAN;  
 END TRY  

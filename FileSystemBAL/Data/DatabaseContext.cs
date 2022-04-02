@@ -14,6 +14,7 @@ using FileSystemBAL.Shelve.Models;
 using FileSystemBAL.User.Models;
 using FileSystemBAL.FIle.Models;
 using FileSystemBAL.IssueFIleHistory.Models;
+using FileSystemBAL.Case.Models;
 
 namespace FileSystemBAL.Data
 {
@@ -50,6 +51,8 @@ namespace FileSystemBAL.Data
         public DbSet<IssueFileListResult> IssueFileListResult { get; set; }
         public DbSet<GetAssignFileDetailResult> GetAssignFileDetailResult { get; set; }
         public DbSet<Select2> Select2 { get; set; }
+        public DbSet<CaseListResult> CaseListResult { get; set; }
+        public DbSet<CaseDetailResult> CaseDetailResult { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
         {
@@ -80,6 +83,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<IssueFileListResult>().HasNoKey();
             foModelbuilder.Entity<IssueFile>().HasNoKey();
             foModelbuilder.Entity<GetAssignFileDetailResult>().HasNoKey();
+            foModelbuilder.Entity<CaseListResult>().HasNoKey();
+            foModelbuilder.Entity<CaseDetailResult>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

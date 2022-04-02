@@ -1,4 +1,5 @@
-﻿using FileSystemBAL.Data;
+﻿using FileSystemBAL.Case.Models;
+using FileSystemBAL.Data;
 using FileSystemBAL.Repository.IRepository;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -25,17 +26,20 @@ namespace FileSystemBAL.Repository
             throw new NotImplementedException();
         }
 
-        public Case.Models.Case GetCaseDetail(Guid fuCaseId)
-        {
-            throw new NotImplementedException();
-        }
-
         public void SaveCase(Case.Models.Case foCase, int fiUserId, out int fiSuccess)
         {
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC acceptAssignFile @inZoneId={foCase.inZoneId},@inDivisionId={foCase.inDivisionId},@inDepartmentId={foCase.inDepartmentId},@inDesignationId={foCase.inDesignationId},@inStoreFileDetailId={foCase.inStoreFileDetailId},@inStatus={1},@stComment={foCase.stComment},@inAcceptedBy={fiUserId},@inSuccess={loSuccess} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC acceptAssignFile @inIssueFileId={foCase.inIssueFileId}, @inZoneId={foCase.inZoneId},@inDivisionId={foCase.inDivisionId},@inDepartmentId={foCase.inDepartmentId},@inDesignationId={foCase.inDesignationId},@inStoreFileDetailId={foCase.inStoreFileDetailId},@inStatus={1},@stComment={foCase.stComment},@inAcceptedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
-            
+
+        }
+        public List<CaseListResult> GetCaseList(string fsFileName, int inStatus, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
+        {
+           return moDatabaseContext.Set<CaseListResult>().FromSqlInterpolated($"EXEC getCaseList @stFileName={fsFileName},@inStatus={inStatus},  @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
+        }
+        public CaseDetailResult GetCaseDetail(Guid fuCaseId)
+        {
+            return moDatabaseContext.Set<CaseDetailResult>().FromSqlInterpolated($"EXEC getCaseDetail @unCaseId={fuCaseId}").AsEnumerable().FirstOrDefault();
         }
     }
 }

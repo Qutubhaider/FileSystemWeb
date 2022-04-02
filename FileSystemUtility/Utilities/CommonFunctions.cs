@@ -56,6 +56,11 @@ namespace FileSystemUtility.Utilities
             Active = 1,
             InActive = 0
         }
+        public enum FilsStatus
+        {
+            Accepted = 1,
+            Pending = 0
+        }
         #region retrive enum string
         public static class StringEnum
         {
