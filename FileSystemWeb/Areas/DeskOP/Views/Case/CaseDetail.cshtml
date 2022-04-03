@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-4" style="float:right;">
-            <a class="btn btn-danger" style="float: right;" asp-area="DeskAdmin" asp-controller="Case" asp-action="Index">Back</a>
+            <a class="btn btn-danger" style="float: right;" asp-area="DeskOP" asp-controller="Case" asp-action="Index">Back</a>
         </div>
     </div>
 
@@ -20,19 +20,58 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="custom-validation" novalidate="" enctype="multipart/form-data">
+                    <form class="custom-validation" novalidate="" asp-action="ForwardFile" asp-area="DeskOP" asp-controller="Case" enctype="multipart/form-data">
                         
-                        <div class="mb-3">
+                         <div class="mb-3">
                             <label class="form-label">Employee Name</label>
-                            <input asp-for="stEmployeeName" type="text" class="form-control" placeholder="Shelves Number">
+                            <input asp-for="stEmployeeName" type="text" class="form-control" placeholder="Shelves Number" readonly>
                             <span asp-validation-for="stEmployeeName" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Employee Number</label>
-                            <input asp-for="stEmployeeNumber" type="text" class="form-control" placeholder="Shelves Number">
+                            <input asp-for="stEmployeeNumber" type="text" class="form-control" placeholder="Shelves Number" readonly>
                             <span asp-validation-for="stEmployeeNumber" class="text-danger"></span>
                         </div>
-                       
+                        <div class="mb-3">
+                            <label class="form-label">PF Number</label>
+                            <input asp-for="stPFNumber" type="text" class="form-control" placeholder="Shelves Number" readonly>
+                            <span asp-validation-for="stPFNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">PPO Number</label>
+                            <input asp-for="stPPONumber" type="text" class="form-control" placeholder="Shelves Number" readonly>
+                            <span asp-validation-for="stPPONumber" class="text-danger"></span>
+                        </div>
+                      @*  <div class="mb-3">
+                            <label class="form-label">Employee Type</label>
+                            <input asp-for="stEmployeeName" type="text" class="form-control" placeholder="Shelves Number" readonly>
+                            <span asp-validation-for="stEmployeeName" class="text-danger"></span>
+                        </div>*@
+                              <div class="mb-3">
+                            <label class="form-label">Mobile Number</label>
+                            <input asp-for="stMobile" type="text" class="form-control" placeholder="Shelves Number" readonly>
+                            <span asp-validation-for="stMobile" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Assign User</label>
+                            <select asp-for="assignedTo"  class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
+                                <option value="">Select User</option>
+                            </select>
+                            <span asp-validation-for="stMobile" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Comment</label>
+                           <textarea asp-for="stComment" class="form-control" placeholder="Comment.."></textarea>
+                            <span asp-validation-for="stPPONumber" class="text-danger"></span>
+                        </div>
+                       <div>
+                            <div>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
+                                    Forward
+                                </button>
+                       </div>
+                   </div>
+                   <input type=hidden asp-for=inStoreFileDetailId/>
                     </form>
 
                 </div>

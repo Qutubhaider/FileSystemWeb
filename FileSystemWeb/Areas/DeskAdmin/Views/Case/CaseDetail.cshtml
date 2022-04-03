@@ -24,13 +24,33 @@
                         
                         <div class="mb-3">
                             <label class="form-label">Employee Name</label>
-                            <input asp-for="stEmployeeName" type="text" class="form-control" placeholder="Shelves Number">
+                            <input asp-for="stEmployeeName" type="text" class="form-control" placeholder="Shelves Number" readonly>
                             <span asp-validation-for="stEmployeeName" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Employee Number</label>
-                            <input asp-for="stEmployeeNumber" type="text" class="form-control" placeholder="Shelves Number">
+                            <input asp-for="stEmployeeNumber" type="text" class="form-control" placeholder="Shelves Number" readonly>
                             <span asp-validation-for="stEmployeeNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">PF Number</label>
+                            <input asp-for="stPFNumber" type="text" class="form-control" placeholder="Shelves Number" readonly>
+                            <span asp-validation-for="stPFNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">PPO Number</label>
+                            <input asp-for="stPPONumber" type="text" class="form-control" placeholder="Shelves Number" readonly>
+                            <span asp-validation-for="stPPONumber" class="text-danger"></span>
+                        </div>
+                      @*  <div class="mb-3">
+                            <label class="form-label">Employee Type</label>
+                            <input asp-for="stEmployeeName" type="text" class="form-control" placeholder="Shelves Number" readonly>
+                            <span asp-validation-for="stEmployeeName" class="text-danger"></span>
+                        </div>*@
+                              <div class="mb-3">
+                            <label class="form-label">Mobile Number</label>
+                            <input asp-for="stMobile" type="text" class="form-control" placeholder="Shelves Number" readonly>
+                            <span asp-validation-for="stMobile" class="text-danger"></span>
                         </div>
                        
                     </form>

@@ -59,5 +59,12 @@ namespace FileSystemBAL.Repository
             moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC insertUserProfile @inUserProfileId={foUserProfile.inUserProfileId},@inDeskid={foUserProfile.inDeskid},@inUserId={foUserProfile.inUserId},@inRoleId={foUserProfile.inRole},@inZoneId={foUserProfile.inZoneId},@inStoreId={foUserProfile.inStoreId},@inDivisionId={foUserProfile.inDivisionId},@inDepartmentId={foUserProfile.inDepartmentId},@inDesignationId={foUserProfile.inDesignationId},@stFirstName={foUserProfile.stFirstName},@stLastName={foUserProfile.stLastName},@stEmail={foUserProfile.stEmail},@stMobile={foUserProfile.stMobile},@stAddress={foUserProfile.stAddress},@inStatus={foUserProfile.inStatus}, @inCreatedBy ={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
+
+        public List<Select2> GetUserListByDepartmentId(int fiDepartmentId)
+        {
+
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserListByDepartmentId @inDepartmentId={fiDepartmentId}").ToList();
+
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace FileSystemBAL.Repository.IRepository
         List<User.Models.UserListResult> GetUserList(string fsUserName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId=null);
         List<Select2> GetUserDropDown();
         List<Select2> GetUserListForIssueFile(int fiStoreId,int inDivisionId);
+        List<Select2> GetUserListByDepartmentId(int fiDepartmentId);
 
     }
 }

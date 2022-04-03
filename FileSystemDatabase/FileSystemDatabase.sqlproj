@@ -133,6 +133,7 @@
     <Build Include="dbo\Stored Procedures\saveCase.sql" />
     <Build Include="dbo\Stored Procedures\getCaseList.sql" />
     <Build Include="dbo\Stored Procedures\getCaseDetail.sql" />
+    <Build Include="dbo\Stored Procedures\getUserListByDepartmentId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />
