@@ -66,7 +66,7 @@
                     <!-- LOGO -->
                     <div class="navbar-brand-box text-center">
                         <h2 style="color: white; margin: 14px;">
-                            Store Panel
+                            Desk OP
                         </h2>
                     </div>
 
@@ -105,7 +105,7 @@
                 <div id="sidebar-menu">
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
-                       
+
                         <li>
                             <a asp-area="Stores" asp-controller="Dashboard" asp-action="Index" class="waves-effect">
                                 <i class="mdi mdi-home-variant-outline"></i>
@@ -118,6 +118,7 @@
                                 <span>Case</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
+                                <li><a asp-area="DeskOP" asp-controller="AssignFile" asp-action="Index">Assign File</a></li>
                                 <li><a asp-area="DeskOP" asp-controller="Case" asp-action="Index">Case</a></li>
                             </ul>
                         </li>
