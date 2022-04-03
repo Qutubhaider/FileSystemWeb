@@ -1,6 +1,8 @@
-﻿using FileSystemBAL.IssueFIleHistory.Models;
+﻿using FileSystemBAL.Case.Models;
+using FileSystemBAL.IssueFIleHistory.Models;
 using FileSystemBAL.Repository.IRepository;
 using FileSystemUtility.Service.PaginationService;
+using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -51,7 +53,7 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
                     size = miPageSize;
 
                 List<IssueFileListResult> loIssueFileListResult = new List<IssueFileListResult>();
-                loIssueFileListResult = moUnitOfWork.IssueFileHistoryRepository.GetIssueFileList(fsFileName == null ? fsFileName : fsFileName.Trim(), sort_column, sort_order, pg.Value, size.Value,null, Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value.ToString()));
+                loIssueFileListResult = moUnitOfWork.IssueFileHistoryRepository.GetIssueFileList(fsFileName == null ? fsFileName : fsFileName.Trim(), sort_column, sort_order, pg.Value, size.Value, Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetIssueFileList = loIssueFileListResult;
                 if (loIssueFileListResult.Count > 0)
@@ -61,12 +63,74 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
                     liEndIndex = loIssueFileListResult[loIssueFileListResult.Count - 1].inRownumber;
                 }
                 loModel.Pagination = PaginationService.getPagination(liTotalRecords, pg.Value, size.Value, liStartIndex, liEndIndex);
-                return PartialView("~/Areas/DeskOP/Views/IssueFile/_IssueFileListData.cshtml", loModel);
+                return PartialView("~/Areas/DeskOP/Views/AssignFile/_AssignFileList.cshtml", loModel);
             }
             catch (Exception ex)
             {
                 return RedirectToAction("Index", "Error");
             }
         }
+            public IActionResult Detail(Guid? id)
+            {
+                GetAssignFileDetailResult assignedFile = moUnitOfWork.IssueFileHistoryRepository.AssignFileDetailResult(id);
+
+                return View("~/Areas/DeskOP/Views/AssignFile/AssignFileDetail.cshtml", assignedFile);
+            }
+
+        [HttpPost]
+        public IActionResult AcceptAssignFile(GetAssignFileDetailResult loAssignFile)
+        {
+
+            try
+            {
+                Case locase = new Case();
+
+                locase.inZoneId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value);
+                locase.inDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value);
+                locase.inDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value);
+                locase.inDesignationId = Convert.ToInt32(User.FindFirst(SessionConstant.DesignationId).Value);
+                locase.inStoreFileDetailId = loAssignFile.inStoreFileDetailsId;
+                locase.stComment = loAssignFile.stComment;
+                locase.inAcceptedBy = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value);
+                locase.inIssueFileId = loAssignFile.inlssueFileId;
+                int liSuccess = 0;
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
+                if (locase != null)
+                {
+                    moUnitOfWork.CaseRepository.SaveCase(locase, liUserId, out liSuccess);
+                    if (liSuccess == (int)CommonFunctions.ActionResponse.Add)
+                    {
+                        TempData["ResultCode"] = CommonFunctions.ActionResponse.Add;
+                        TempData["Message"] = string.Format(AlertMessage.RecordAdded, "Case");
+                        return RedirectToAction("Index");
+                    }
+                    else if (liSuccess == (int)CommonFunctions.ActionResponse.Update)
+                    {
+                        TempData["ResultCode"] = CommonFunctions.ActionResponse.Update;
+                        TempData["Message"] = string.Format(AlertMessage.RecordUpdated, "Case");
+                        return RedirectToAction("Index");
+
+                    }
+                    else
+                    {
+                        TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
+                        TempData["Message"] = string.Format(AlertMessage.OperationalError, "accepting case");
+                        return RedirectToAction("Index");
+                    }
+
+                }
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+                TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
+                TempData["Message"] = string.Format(AlertMessage.OperationalError, "accepting case");
+                return RedirectToAction("Index");
+            }
+
+
+        }
     }
-}
+ }
+

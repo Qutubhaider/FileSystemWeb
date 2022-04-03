@@ -103,20 +103,20 @@ namespace FileSystemWeb.Areas.Stores.Controllers
                     if (liSuccess == (int)CommonFunctions.ActionResponse.Add)
                     {
                         TempData["ResultCode"] = CommonFunctions.ActionResponse.Add;
-                        TempData["Message"] = string.Format(AlertMessage.RecordAdded, "Shelve");
+                        TempData["Message"] = string.Format(AlertMessage.RecordAdded, "Issue File");
                         return RedirectToAction("Index");
                     }
                     else if (liSuccess == (int)CommonFunctions.ActionResponse.Update)
                     {
                         TempData["ResultCode"] = CommonFunctions.ActionResponse.Update;
-                        TempData["Message"] = string.Format(AlertMessage.RecordUpdated, "Shelve");
+                        TempData["Message"] = string.Format(AlertMessage.RecordUpdated, "Issue File");
                         return RedirectToAction("Index");
 
                     }
                     else
                     {
                         TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
-                        TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving shelve");
+                        TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving issue file");
                         return RedirectToAction("Index");
                     }
 
@@ -127,7 +127,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             catch (Exception ex)
             {
                 TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
-                TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving shelve");
+                TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving issue file");
                 return RedirectToAction("Index");
             }
         }

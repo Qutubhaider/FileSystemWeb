@@ -96,3 +96,17 @@
         </div>
     </div>
 </div> 
+
+<input id="hdnPageNoListPanel" type="hidden" value="1" />
+@section Scripts {
+
+<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    var msGetCaseDataList = '@Url.Action("GetCaseList")';
+        $(document).ready(function () {
+            getCaseData();
+
+         });
+</script>
+<script src="~/Scripts/Case/CaseList.js" asp-append-version="true"></script>
+}
