@@ -77,7 +77,7 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
             {
                 loCaseDetail = moUnitOfWork.CaseRepository.GetCaseDetail(Id);
             }
-            loCaseDetail.UserList = moUnitOfWork.UserRepository.GetUserListByDepartmentId(Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value));
+            loCaseDetail.UserList = moUnitOfWork.UserRepository.GetUserListByDivisionId(Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value));
             return View("~/Areas/DeskOP/Views/Case/CaseDetail.cshtml", loCaseDetail);
         }
 

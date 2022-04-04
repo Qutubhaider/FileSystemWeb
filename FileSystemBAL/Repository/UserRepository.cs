@@ -60,10 +60,10 @@ namespace FileSystemBAL.Repository
             fiSuccess = Convert.ToInt32(loSuccess.Value);
         }
 
-        public List<Select2> GetUserListByDepartmentId(int fiDepartmentId)
+        public List<Select2> GetUserListByDivisionId(int fiDivisionId)
         {
 
-            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserListByDepartmentId @inDepartmentId={fiDepartmentId}").ToList();
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserListByDivisionId @inDivisionId={fiDivisionId}").ToList();
 
         }
     }

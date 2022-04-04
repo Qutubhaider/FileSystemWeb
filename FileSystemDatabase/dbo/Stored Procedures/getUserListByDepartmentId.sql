@@ -7,11 +7,12 @@ Ref# Modified By   Modified date   Description
 */
 
 CREATE PROCEDURE getUserListByDepartmentId(
-@inDepartmentId INT
+@inDivisionId INT
 )
 AS
 BEGIN
-SELECT inUserProfileId as id , stFirstName+' '+stLastName as value 
-       FROM tblUserProfile
-       WHERE inDepartmentId=@inDepartmentId
+SELECT UP.inUserProfileId as id , UP.stFirstName+' '+UP.stLastName as value 
+       FROM tblUserProfile UP
+	   JOIN tblUser U on U.inUserId = UP.inUserId
+       WHERE U.inRole=5  AND UP.inDivisionId=@inDivisionId
 END
