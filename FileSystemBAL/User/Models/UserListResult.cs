@@ -17,6 +17,7 @@ namespace FileSystemBAL.User.Models
         public string stDepartmentName { get; set; }
         public string stDesignationName { get; set; }
         public string stDeskName { get; set; }
+        public int? inRole { get; set; }
 
     }
 }
