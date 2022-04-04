@@ -3,12 +3,12 @@
     ViewBag.Title = "Case List";
     var loTableHeaders = new[]
              {
-        new {Id="1", Visible=true, Title="Division Name",    Sort = false,   dbColName = "stDivisionName",    CssClass = ""},
-        new {Id="2", Visible=true, Title="Department Name",  Sort = false,   dbColName = "stDepartmentName",  CssClass = ""},
-        new {Id="3", Visible=true, Title="Designation Name", Sort = false,   dbColName = "stDesignationName", CssClass = ""},
-        new {Id="4", Visible=true, Title="File Name",        Sort = false,   dbColName = "stFileName",        CssClass = ""},
-        new {Id="5", Visible=true, Title="Status",           Sort = false,   dbColName = "inStatus",          CssClass = ""},
-        new {Id="6", Visible=true, Title="",                 Sort = false,   dbColName = "",                  CssClass = ""}
+        new {Id="1", Visible=true, Title="Division Name",    Sort = true,   dbColName = "stDivisionName",    CssClass = ""},
+        new {Id="2", Visible=true, Title="Department Name",  Sort = true,   dbColName = "stDepartmentName",  CssClass = ""},
+        new {Id="3", Visible=true, Title="Designation Name", Sort = true,   dbColName = "stDesignationName", CssClass = ""},
+        new {Id="4", Visible=true, Title="File Name",        Sort = true,   dbColName = "stFileName",        CssClass = ""},
+        new {Id="5", Visible=true, Title="Status",           Sort = true,   dbColName = "inStatus",          CssClass = ""},
+        new {Id="6", Visible=true, Title="Action",           Sort = false,   dbColName = "",                  CssClass = ""}
     };
 }
 <div class="container-fluid">

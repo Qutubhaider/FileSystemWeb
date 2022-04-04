@@ -61,6 +61,13 @@ namespace FileSystemUtility.Utilities
             Accepted = 1,
             Pending = 0
         }
+
+        public enum CaseStatus
+        {
+            Forward = 1,
+            Completed = 2
+        }
+
         #region retrive enum string
         public static class StringEnum
         {

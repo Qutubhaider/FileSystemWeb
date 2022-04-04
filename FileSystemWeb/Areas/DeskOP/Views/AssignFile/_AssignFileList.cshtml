@@ -20,11 +20,11 @@
             <td> @dtIssueDate.Date.ToString("dd MMM', 'yyyy")</td>
             @if (loIssueFileList.inStatus == (int)CommonFunctions.FilsStatus.Accepted)
             {
-                <td class="text-center"><a class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-eye"></i> </a></td>
+                <td></td>
             }
             else
             {
-            <td class="text-center"><a asp-area="DeskOP" asp-controller="AssignFile" asp-action="Detail" asp-route-id="@loIssueFileList.unlssueFileId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
+            <td class="text-center"><a asp-area="DeskOP" asp-controller="AssignFile" asp-action="Detail" asp-route-id="@loIssueFileList.unlssueFileId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-eye"></i></a></td>
             }
         </tr>
     }
