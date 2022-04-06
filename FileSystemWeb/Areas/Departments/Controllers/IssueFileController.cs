@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using FileSystemBAL.IssueFIleHistory.Models;
 using FileSystemBAL.Repository.IRepository;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using static FileSystemUtility.Utilities.CommonConstant;
 
@@ -20,9 +22,12 @@ namespace FileSystemWeb.Areas.Departments.Controllers
     {
         private readonly IUnitOfWork moUnitOfWork;
         private readonly static int miPageSize = 10;
-        public IssueFileController(IUnitOfWork foUnitOfWork)
+
+        private readonly IWebHostEnvironment moWebHostEnvironment;
+        public IssueFileController(IUnitOfWork foUnitOfWork, IWebHostEnvironment foWebHostEnvironment)
         {
             moUnitOfWork = foUnitOfWork;
+            moWebHostEnvironment = foWebHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -131,6 +136,10 @@ namespace FileSystemWeb.Areas.Departments.Controllers
                 TempData["Message"] = string.Format(AlertMessage.OperationalError, "saving shelve");
                 return RedirectToAction("Index");
             }
+        }
+        public IActionResult DownloadFile(string fuFileName, string fileName)
+        {
+            return File(System.IO.File.ReadAllBytes(Path.Combine(moWebHostEnvironment.WebRootPath, "Files", fuFileName)), "application/octet-stream", fileName);
         }
     }
 }

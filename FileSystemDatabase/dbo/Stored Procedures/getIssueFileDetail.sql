@@ -12,6 +12,9 @@ CREATE PROCEDURE getIssueFileDetail(
 )
 AS
 BEGIN
-  SELECT inlssueFileId,unlssueFileId,inAssignUserId,inDivisionId,inDepartmentId,inStoreFileDetailsId,dtIssueDate,stComment,inStatus FROM tblIssueFileHistory
+  SELECT IFH.inlssueFileId,IFH.unlssueFileId,IFH.inAssignUserId,IFH.inDivisionId,IFH.inDepartmentId,IFH.inStoreFileDetailsId,IFH.dtIssueDate,IFH.stComment,IFH.inStatus,SFD.stUnFileName,SFD.stFileName
+  FROM tblIssueFileHistory IFH
+  JOIN tblStoreFileDetails SFD ON SFD.inStoreFileDetailsId=IFH.inStoreFileDetailsId
+
   WHERE unlssueFileId=@unIssueFileDetail
 END

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using static FileSystemUtility.Utilities.CommonConstant;
 
@@ -23,9 +25,11 @@ namespace FileSystemWeb.Areas.Stores.Controllers
     {
         private readonly IUnitOfWork moUnitOfWork;
         private readonly static int miPageSize = 10;
-        public IssueFileController(IUnitOfWork foUnitOfWork)
+        private readonly IWebHostEnvironment moWebHostEnvironment;
+        public IssueFileController(IUnitOfWork foUnitOfWork, IWebHostEnvironment foWebHostEnvironment)
         {
             moUnitOfWork = foUnitOfWork;
+            moWebHostEnvironment = foWebHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -132,7 +136,10 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             }
         }
 
-       
+        public IActionResult DownloadFile(string fuFileName, string fileName)
+        {
+            return File(System.IO.File.ReadAllBytes(Path.Combine(moWebHostEnvironment.WebRootPath, "Files", fuFileName)), "application/octet-stream", fileName);
+        }
     }
 }
 

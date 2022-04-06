@@ -21,6 +21,7 @@
                         <div class="mb-3">
                             <label class="form-label">File Name</label>
                             <input asp-for="stFileName" type="text" class="form-control" placeholder="Division Name" readonly>
+                             <a asp-action="downloadfile" asp-controller="IssueFile" asp-area="Admin" asp-route-fuFileName="@Model.stUnFileName" asp-route-fileName="@Model.stFileName">Download File</a>
                            
                         </div>
                         <div class="mb-3">
