@@ -18,19 +18,15 @@
             <td>@loUserList.stUserName</td>
             @if (loUserList.inRole == (int)CommonConstant.UserType.Admin)
             {
-                <td>Admin</td>
-            }
-            else if (loUserList.inRole == (int)CommonConstant.UserType.DepartmentAdmin)
-            {
-                <td>Department Admin</td>
+                <td>Super Admin</td>
             }
             else if (loUserList.inRole == (int)CommonConstant.UserType.DeskAdmin)
             {
-                <td>Desk Admin</td>
+                <td>Department Admin</td>
             }
             else if (loUserList.inRole == (int)CommonConstant.UserType.DeskOP)
             {
-                <td>Desk OP</td>
+                <td>Desk Operator</td>
             }
             else if (loUserList.inRole == (int)CommonConstant.UserType.DivisionAdmin)
             {
@@ -38,7 +34,7 @@
             }
             else if (loUserList.inRole == (int)CommonConstant.UserType.StoreOP)
             {
-                <td>Store OP</td>
+                <td>Store Operator</td>
             }
             <td class="text-center"><a asp-area="Admin" asp-controller="User" asp-action="Detail" asp-route-id="@loUserList.unUserProfileId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
         </tr>

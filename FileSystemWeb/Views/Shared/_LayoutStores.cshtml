@@ -122,7 +122,17 @@
                                 <li><a asp-area="Stores" asp-controller="Almirah" asp-action="Index">Almirah</a></li>
                                 <li><a asp-area="Stores" asp-controller="Shelves" asp-action="Index">Shelves</a></li>
                                 <li><a asp-area="Stores" asp-controller="File" asp-action="Index">Store File</a></li>
-                                <li><a asp-area="Stores" asp-controller="IssueFile" asp-action="Index">Issue File History</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-map-pin-line"></i>
+                                <span>File</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a asp-area="Stores" asp-controller="IssueFile" asp-action="Index">Issue File</a></li>
+                                <li><a asp-area="Stores" asp-controller="TraceFile" asp-action="Index">Trace File</a></li>
+                                <li><a asp-area="Stores" asp-controller="WithdrawFile" asp-action="Index">Withdraw File</a></li>
                             </ul>
                         </li>
                     </ul>

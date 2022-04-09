@@ -25,12 +25,11 @@
                             <label class="form-label">Select User Role</label>
                             <select id="ddRole" asp-for="inRole" class="select2 form-control select2-multiple" onchange="changePanel();" data-placeholder="Choose ...">
                                 <option value="">Select Role</option>
-                                <option value="1">Admin</option>
+                                <option value="1">Super Admin</option>
                                 <option value="2">Division Admin</option>
-                                <option value="3">Department Admin</option>
-                                <option value="4">Desk Admin</option>
-                                <option value="5">Desk OP</option>
-                                <option value="6">Store OP</option>
+                                <option value="4">Department Admin</option>
+                                <option value="5">Desk Operator</option>
+                                <option value="6">Store Operator</option>
                             </select>
                             <span asp-validation-for="inRole" class="text-danger"></span>
                         </div>
