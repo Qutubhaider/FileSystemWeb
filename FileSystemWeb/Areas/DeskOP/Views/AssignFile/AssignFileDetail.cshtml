@@ -58,6 +58,7 @@
                         <input type="hidden" asp-for="inAssignUserId"/>
                         <input type="hidden" asp-for="inlssueFileId"/>
                         <input type="hidden" asp-for="inStoreFileDetailsId"/>
+                        <input type="hidden" asp-for="inUserProfileId"/>
                     </form>
                 </div>
 
@@ -65,3 +66,20 @@
         </div>
     </div> <!-- end col -->
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    
+    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+    <script src="~/Scripts/IssueFile/FileDetail.js" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+    var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
+    var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
+
+    $(document).ready(function () {
+            GetUserDetail(@Model.inUserProfileId);
+            GetFileDetail(@Model.inStoreFileDetailsId);
+         });
+</script>
+}

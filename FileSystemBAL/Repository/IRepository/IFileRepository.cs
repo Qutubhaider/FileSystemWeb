@@ -14,6 +14,9 @@ namespace FileSystemBAL.Repository.IRepository
         FileDetail GetFileDetail(Guid unFileId);
         List<FileListResult> GetFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId = null);
         List<Select2> GetFileDropDown();
+        StoreFileDetailDropDownResult GetFileDetailDropDown(int fiFileId);
+
+
 
     }
 }

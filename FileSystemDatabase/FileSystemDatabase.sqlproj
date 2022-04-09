@@ -134,6 +134,8 @@
     <Build Include="dbo\Stored Procedures\getCaseList.sql" />
     <Build Include="dbo\Stored Procedures\getCaseDetail.sql" />
     <Build Include="dbo\Stored Procedures\getUserListByDepartmentId.sql" />
+    <Build Include="dbo\Stored Procedures\getUserDataByDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\getFileDetailFromDropDown.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />

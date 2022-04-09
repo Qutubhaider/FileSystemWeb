@@ -53,6 +53,8 @@ namespace FileSystemBAL.Data
         public DbSet<Select2> Select2 { get; set; }
         public DbSet<CaseListResult> CaseListResult { get; set; }
         public DbSet<CaseDetailResult> CaseDetailResult { get; set; }
+        public DbSet<UserDropDownDetailResult> UserDropDownDetailResult { get; set; }
+        public DbSet<StoreFileDetailDropDownResult> StoreFileDetailDropDownResult { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
         {
@@ -85,6 +87,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<GetAssignFileDetailResult>().HasNoKey();
             foModelbuilder.Entity<CaseListResult>().HasNoKey();
             foModelbuilder.Entity<CaseDetailResult>().HasNoKey();
+            foModelbuilder.Entity<UserDropDownDetailResult>().HasNoKey();
+            foModelbuilder.Entity<StoreFileDetailDropDownResult>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

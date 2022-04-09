@@ -66,5 +66,10 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getUserListByDivisionId @inDivisionId={fiDivisionId}").ToList();
 
         }
+
+        public UserDropDownDetailResult GetUserDetailFromDropDown(int fiUserId)
+        {
+            return moDatabaseContext.Set<UserDropDownDetailResult>().FromSqlInterpolated($"EXEC getUserDataByDropDown @inUserId={fiUserId}").AsEnumerable().FirstOrDefault();
+        }
     }
 }

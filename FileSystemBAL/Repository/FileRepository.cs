@@ -33,6 +33,11 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getFileDropDown").ToList();
         }
 
+        public StoreFileDetailDropDownResult GetFileDetailDropDown(int fiFileId)
+        {
+            return moDatabaseContext.Set<StoreFileDetailDropDownResult>().FromSqlInterpolated($"EXEC getFileDetailFromDropDown @inStoreFileId={fiFileId}").AsEnumerable().FirstOrDefault();
+        }
+
         public List<FileListResult> GetFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
         return moDatabaseContext.Set<FileListResult>().FromSqlInterpolated($"EXEC getFileList @stFileName={fsFileName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();

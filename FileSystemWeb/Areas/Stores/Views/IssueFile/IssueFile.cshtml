@@ -23,13 +23,13 @@
                     <form asp-action="SaveIssueFile" asp-controller="IssueFile" asp-area="Stores" class="custom-validation" novalidate="">                       
                         <div class="mb-3">
                             <label class="form-label">Assign to User</label>
-                            <select asp-for="inAssignUserId" id="ddUser" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
+                            <select onchange="GetUserDetail();" asp-for="inAssignUserId" id="ddUser" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
                                 <option value="">Select User</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">File Name</label>
-                            <select asp-for="inStoreFileDetailsId" id="ddFileName" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.FileList,"id","value"))">
+                            <select onchange="GetFileDetail();" asp-for="inStoreFileDetailsId" id="ddFileName" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.FileList,"id","value"))">
                                 <option value="">Select File Name</option>
                             </select>
                         </div>
@@ -63,4 +63,10 @@
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial.cshtml" />
+    <script type="text/javascript">
+    var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
+    var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
+</script>
+    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+    <script src="~/Scripts/IssueFile/FileDetail.js" asp-append-version="true"></script>
 }

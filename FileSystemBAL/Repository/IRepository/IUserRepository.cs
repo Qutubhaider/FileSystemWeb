@@ -1,4 +1,5 @@
-﻿using FileSystemUtility.Models;
+﻿using FileSystemBAL.User.Models;
+using FileSystemUtility.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,6 @@ namespace FileSystemBAL.Repository.IRepository
         List<Select2> GetUserDropDown();
         List<Select2> GetUserListForIssueFile(int fiStoreId,int inDivisionId);
         List<Select2> GetUserListByDivisionId(int fiDivisionId);
-
+        UserDropDownDetailResult GetUserDetailFromDropDown(int fiUserId);
     }
 }
