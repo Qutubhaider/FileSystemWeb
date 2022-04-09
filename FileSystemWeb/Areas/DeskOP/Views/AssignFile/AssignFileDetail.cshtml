@@ -2,7 +2,7 @@
 @{
     Layout = "_LayoutDeskOP";
     ViewBag.Title = "Assign File Detail";
-    
+
 }
 <div class="container-fluid">
     <!-- start page title -->
@@ -14,35 +14,38 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
             <div class="card">
                 <div class="card-body">
+                    <div class="text-center">
+                        <h4>Assign File Detail</h4>
+                    </div>
                     <form class="custom-validation" asp-action="AcceptAssignFile" asp-controller="AssignFile" asp-area="DeskOP" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">File Name</label>
                             <input asp-for="stFileName" type="text" class="form-control" placeholder="Division Name" readonly>
-                             <a asp-action="downloadfile" asp-controller="IssueFile" asp-area="Admin" asp-route-fuFileName="@Model.stUnFileName" asp-route-fileName="@Model.stFileName">Download File</a>
-                           
+                            <a asp-action="downloadfile" asp-controller="IssueFile" asp-area="Admin" asp-route-fuFileName="@Model.stUnFileName" asp-route-fileName="@Model.stFileName">Download File</a>
+
                         </div>
                         <div class="mb-3">
                             <label class="form-label">User Name</label>
                             <input asp-for="stUserName" type="text" class="form-control" placeholder="Division Name" readonly>
-                            
+
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Department Name</label>
                             <input asp-for="stDepartmentName" type="text" class="form-control" placeholder="Division Name" readonly>
-                           
+
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Division Name</label>
                             <input asp-for="stDivisionName" type="text" class="form-control" placeholder="Division Name" readonly>
-                            
+
                         </div>
-                         <div class="mb-3">
+                        <div class="mb-3">
                             <label class="form-label">Comment</label>
                             <textarea asp-for="stComment" class="form-control" placeholder="Division Name" readonly></textarea>
-                            
+
                         </div>
                         <div>
                             <div>
@@ -54,14 +57,74 @@
                                 </button>
                             </div>
                         </div>
-                       
-                        <input type="hidden" asp-for="inAssignUserId"/>
-                        <input type="hidden" asp-for="inlssueFileId"/>
-                        <input type="hidden" asp-for="inStoreFileDetailsId"/>
-                        <input type="hidden" asp-for="inUserProfileId"/>
+
+                        <input type="hidden" asp-for="inAssignUserId" />
+                        <input type="hidden" asp-for="inlssueFileId" />
+                        <input type="hidden" asp-for="inStoreFileDetailsId" />
+                        <input type="hidden" asp-for="inUserProfileId" />
                     </form>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h4>User Detail</h4>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">First Name</label>
+                        <input id="txtFirstName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input id="txtLastName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input id="txtEmail" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mobile</label>
+                        <input id="txtMobile" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        <textarea id="txtAddress" class="form-control" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h4>File Detail</h4>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">First Name</label>
+                        <input id="txtFirstName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input id="txtLastName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input id="txtEmail" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mobile</label>
+                        <input id="txtMobile" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        <textarea id="txtAddress" class="form-control" readonly></textarea>
+                    </div>
+                </div>
             </div>
         </div>
     </div> <!-- end col -->
@@ -69,7 +132,7 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial.cshtml" />
-    
+
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
     <script src="~/Scripts/IssueFile/FileDetail.js" asp-append-version="true"></script>
 
@@ -77,9 +140,9 @@
     var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
     var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
 
-    $(document).ready(function () {
+        $(document).ready(function () {
             GetUserDetail(@Model.inUserProfileId);
             GetFileDetail(@Model.inStoreFileDetailsId);
-         });
-</script>
+        });
+    </script>
 }

@@ -1,4 +1,5 @@
 ﻿@model FileSystemBAL.User.Models.UserProfile
+@using FileSystemUtility.Utilities;
 @{
     Layout = "_LayoutDeskAdmin";
     ViewBag.Title = "Shelves Detail";
@@ -29,7 +30,7 @@
                                 <option value="6">Store Operator</option>
                             </select>
                             <span asp-validation-for="inRole" class="text-danger"></span>
-                        </div>                      
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">Desk Name</label>
                             <select id="ddDesk" asp-for="inDeskid" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DeskList,"id","value"))">
@@ -37,21 +38,22 @@
                             </select>
                             <span asp-validation-for="inDeskid" class="text-danger"></span>
                         </div>
-                         <div class="mb-3">
+                        <div class="mb-3">
                             <label class="form-label">Department Name</label>
-                            <select id="ddDepartment" onchange="OnSChange();" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
-                                <option value="">Select Department Name</option>
-                            </select>
-                            <span asp-validation-for="inDepartmentId" class="text-danger"></span>
+                            <input type="text" class="form-control" value="@User.FindFirst(CommonConstant.SessionConstant.DepartmentName).Value.ToString()" readonly />
+                            @* <select id="ddDepartment" onchange="OnSChange();" asp-for="inDepartmentId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
+                                    <option value="">Select Department Name</option>
+                                </select>
+                                <span asp-validation-for="inDepartmentId" class="text-danger"></span>*@
                         </div>
-                        
+
                         <div class="mb-3">
                             <label class="form-label">Designation Name</label>
                             <select id="ddDesignation" asp-for="inDesignationId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
                                 <option value="">Select Department Name</option>
                             </select>
                             <span asp-validation-for="inDesignationId" class="text-danger"></span>
-                        </div>                       
+                        </div>
 
                         <div class="mb-3">
                             <label class="form-label">First Name</label>

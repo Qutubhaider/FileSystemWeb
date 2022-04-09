@@ -49,6 +49,7 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
             {
                 int liSuccess = 0;
                 int liUserId =  Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
+                foUserProfile.inDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value);
                 if (foUserProfile != null)
                 {
                     moUnitOfWork.UserRepository.InserUserProfile(foUserProfile, liUserId, out liSuccess);
