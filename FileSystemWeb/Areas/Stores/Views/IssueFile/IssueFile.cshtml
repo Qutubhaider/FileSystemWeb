@@ -17,10 +17,10 @@
     </div>
 
     <div class="row">
-        <div class="col-xl-6">
+        <div class="col-xl-4">
             <div class="card">
                 <div class="card-body">
-                    <form asp-action="SaveIssueFile" asp-controller="IssueFile" asp-area="Stores" class="custom-validation" novalidate="">                       
+                    <form asp-action="SaveIssueFile" asp-controller="IssueFile" asp-area="Stores" class="custom-validation" novalidate="">
                         <div class="mb-3">
                             <label class="form-label">Assign to User</label>
                             <select onchange="GetUserDetail();" asp-for="inAssignUserId" id="ddUser" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
@@ -33,11 +33,11 @@
                                 <option value="">Select File Name</option>
                             </select>
                         </div>
-                         <a asp-action="downloadfile" asp-controller="IssueFile" asp-area="Admin" asp-route-fuFileName="@Model.stUnFileName" asp-route-fileName="@Model.stFileName">Download File</a>
-                        <div class="mb-3">
+                        <a asp-action="downloadfile" asp-controller="IssueFile" asp-area="Admin" asp-route-fuFileName="@Model.stUnFileName" asp-route-fileName="@Model.stFileName">Download File</a>
+                       @* <div class="mb-3">
                             <label class="form-label">Issue date</label>
                             <input asp-for="dtIssueDate" type="date" id="txtIssueDate" class="form-control" />
-                        </div>
+                        </div>*@
                         <div class="mb-3">
                             <label class="form-label">Comment</label>
                             <textarea asp-for="stComment" id="txtComment" class="form-control"></textarea>
@@ -56,6 +56,69 @@
                         <input type="hidden" asp-for="inDepartmentId">
                         <input type="hidden" asp-for="inDivisionId">
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h4>Assigned By</h4>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input id="txtFirstName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        <input id="txtLastName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input id="txtEmail" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mobile</label>
+                        <input id="txtMobile" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">User Type</label>
+                        <input id="txtUserType" type="text" class="form-control" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h4>File Detail</h4>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">File Name</label>
+                        <input id="txtFileName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Employee Name</label>
+                        <input id="txtEmpoloyeeName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Employee Number</label>
+                        <input id="txtEmployeeNumber" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">PF Number</label>
+                        <input id="txtPFNumber" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mobile</label>
+                        <input id="txtMobile" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">PPO Number</label>
+                        <textarea id="txtPPONumber" class="form-control" readonly></textarea>
+                    </div>
                 </div>
             </div>
         </div>
