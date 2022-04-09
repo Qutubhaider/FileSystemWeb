@@ -29,7 +29,7 @@ namespace FileSystemBAL.Repository
         public void SaveCase(Case.Models.Case foCase, int fiUserId, out int fiSuccess)
         {
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC acceptAssignFile @inIssueFileId={foCase.inIssueFileId}, @inZoneId={foCase.inZoneId},@inDivisionId={foCase.inDivisionId},@inDepartmentId={foCase.inDepartmentId},@inDesignationId={foCase.inDesignationId},@inStoreFileDetailId={foCase.inStoreFileDetailId},@inStatus={1},@stComment={foCase.stComment},@inAcceptedBy={fiUserId},@inSuccess={loSuccess} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC acceptAssignFile @inIssueFileId={foCase.inIssueFileId}, @inZoneId={foCase.inZoneId},@inDivisionId={foCase.inDivisionId},@inDepartmentId={foCase.inDepartmentId},@inDesignationId={foCase.inDesignationId},@inStoreFileDetailId={foCase.inStoreFileDetailId},@inStatus={1},@stComment={foCase.stComment},@inAcceptedBy={fiUserId},@inAssignedBy={foCase.inAssignedBy},@inSRId={foCase.inSRId},@inSuccess={loSuccess} OUT");
             fiSuccess = Convert.ToInt32(loSuccess.Value);
 
         }

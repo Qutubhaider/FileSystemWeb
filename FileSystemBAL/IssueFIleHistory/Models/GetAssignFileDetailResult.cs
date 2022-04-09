@@ -20,5 +20,6 @@ namespace FileSystemBAL.IssueFIleHistory.Models
         public string stUnFileName { get; set; }
         public int inUserProfileId { get; set; }
         public int inCreatedBy { get; set; }
+        public int inSRId { get; set; }
     }
 }

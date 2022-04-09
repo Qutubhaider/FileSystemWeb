@@ -19,5 +19,7 @@ namespace FileSystemBAL.Case.Models
         public string stComment { get; set; } 
         public int inAcceptedBy { get; set; }
         public int inIssueFileId { get; set; }
+        public int inAssignedBy { get; set; }
+        public int inSRId { get; set; }
     }
 }

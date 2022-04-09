@@ -105,7 +105,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
                 if (foIssueFileDetail != null)
                 {
                     
-                    moUnitOfWork.IssueFileHistoryRepository.SaveIssueFile(foIssueFileDetail, liUserId, out liSuccess);
+                    moUnitOfWork.IssueFileHistoryRepository.SaveIssueFileByStore(foIssueFileDetail, liUserId, out liSuccess);
                     if (liSuccess == (int)CommonFunctions.ActionResponse.Add)
                     {
                         TempData["ResultCode"] = CommonFunctions.ActionResponse.Add;

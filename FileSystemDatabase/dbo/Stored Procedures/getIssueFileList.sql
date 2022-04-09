@@ -34,9 +34,9 @@ SET NOCOUNT ON;
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		inlssueFileId,unlssueFileId,dtIssueDate,stComment,inStatus,stFileName,stDivisionName,stDepartmentName,stFirstName
+		inSRId,inlssueFileId,unlssueFileId,dtIssueDate,stComment,inStatus,stFileName,stDivisionName,stDepartmentName,stFirstName
 		FROM ( 
-            SELECT  
+            SELECT  IFH.inSRId,
                     IFH.inlssueFileId, 
                     IFH.unlssueFileId, 
 					IFH.dtIssueDate,

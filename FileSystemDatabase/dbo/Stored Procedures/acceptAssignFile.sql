@@ -17,6 +17,8 @@ CREATE PROC [dbo].[acceptAssignFile]
 	 @inStatus INT,
 	 @stComment NVARCHAR(200),
 	 @inAcceptedBy INT,  
+	 @inAssignedBy INT,
+	 @inSRId INT,
 	 @inSuccess INT OUT
 )  
 AS  
@@ -28,8 +30,8 @@ SET NOCOUNT ON;
 	
 		 IF(ISNULL(@inCaseId,0)=0) 
 		 BEGIN 			
-				INSERT INTO tblCase(inZoneId,inDivisionId,inDepartmentId,inDesignationId,inStoreFileDetailId,inStatus,stComment,dtCreateDate,inAcceptededBy)  
-				SELECT  @inZoneId,@inDivisionId,@inDepartmentId,@inDesignationId,@inStoreFileDetailId,@inStatus,@stComment ,@getDateTimeByTimezone, @inAcceptedBy  
+				INSERT INTO tblCase(inZoneId,inDivisionId,inDepartmentId,inDesignationId,inStoreFileDetailId,inStatus,stComment,dtCreateDate,inAcceptededBy,inAssignedBy,inSRId)  
+				SELECT  @inZoneId,@inDivisionId,@inDepartmentId,@inDesignationId,@inStoreFileDetailId,@inStatus,@stComment ,@getDateTimeByTimezone, @inAcceptedBy , @inAssignedBy, @inSRId 
 				SET @inSuccess=101
 				
 				UPDATE tblIssueFileHistory SET inStatus=1 WHERE inlssueFileId=@inIssueFIleId

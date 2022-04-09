@@ -99,6 +99,8 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
                 locase.stComment = loAssignFile.stComment;
                 locase.inAcceptedBy = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value);
                 locase.inIssueFileId = loAssignFile.inlssueFileId;
+                locase.inAssignedBy = loAssignFile.inCreatedBy;
+                locase.inSRId = loAssignFile.inSRId;
                 int liSuccess = 0;
                 int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 if (locase != null)

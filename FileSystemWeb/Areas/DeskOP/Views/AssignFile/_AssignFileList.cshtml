@@ -10,10 +10,12 @@
     foreach (IssueFileListResult loIssueFileList in Model.GetIssueFileList)
     {
         <tr>
+            <td>@loIssueFileList.inSRId</td>
             <td>@loIssueFileList.stFirstName</td>
             <td>@loIssueFileList.stDepartmentName</td>
             <td>@loIssueFileList.stFileName</td>
-             <td>@Enum.GetName(typeof(CommonFunctions.FilsStatus),loIssueFileList.inStatus)</td>
+            <td>@loIssueFileList.stComment</td>
+            <td>@Enum.GetName(typeof(CommonFunctions.FilsStatus), loIssueFileList.inStatus)</td>
             @{
                 DateTime dtIssueDate = Convert.ToDateTime(loIssueFileList.dtIssueDate);
             }
@@ -24,7 +26,7 @@
             }
             else
             {
-            <td class="text-center"><a asp-area="DeskOP" asp-controller="AssignFile" asp-action="Detail" asp-route-id="@loIssueFileList.unlssueFileId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-eye"></i></a></td>
+                <td class="text-center"><a asp-area="DeskOP" asp-controller="AssignFile" asp-action="Detail" asp-route-id="@loIssueFileList.unlssueFileId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-eye"></i></a></td>
             }
         </tr>
     }

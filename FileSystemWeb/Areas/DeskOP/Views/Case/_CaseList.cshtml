@@ -9,8 +9,9 @@
 {
     foreach (CaseListResult loCaseList in Model.GetCaseList)
     {
-        <tr>           
-            <td>@loCaseList.stDivisionName</td>
+        <tr>
+            <td>@loCaseList.inSRId</td>
+            <td>@loCaseList.stAssignedBy</td>
             <td>@loCaseList.stDepartmentName</td>
             <td>@loCaseList.stDesignationName</td>
             <td>@loCaseList.stFileName</td>

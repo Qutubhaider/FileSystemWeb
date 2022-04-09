@@ -1,11 +1,18 @@
-﻿function GetUserDetail() {
+﻿const Role = {
+    DeskAdmin: 4,
+    DeskOP: 5,
+    StoreOP: 6
+};
+
+
+function GetUserDetail() {
     var loData = new Object();
     loData.userId = $('#ddUser').val();
     loadMyRequest(msGetUserDetail, "GET", loData, GetUserDetailSuccess, GetUserDetailError)
 
 }
 
-function GetUserDetailSuccess() {
+function GetUserDetailSuccess(fresponse) {
     $('#txtFirstName').val(fresponse.data.stFirstName);
     $('#txtLastName').val(fresponse.data.stLastName);
     $('#txtEmail').val(fresponse.data.stEmail);
@@ -19,7 +26,8 @@ function GetUserDetailSuccess() {
     else if (fresponse.data.inRole == Role.StoreOP) {
         $('#txtUserType').val('Store Operator');
     }
-    }
+
+}
 function GetUserDetailError() { }
 
 function GetFileDetail() {
@@ -29,5 +37,14 @@ function GetFileDetail() {
 
 }
 
-function GetFileDetailSuccess() { }
+
+function GetFileDetailSuccess(fresponse) {
+    $('#txtFileName').val(fresponse.data.stFileName);
+    $('#txtEmpoloyeeName').val(fresponse.data.stEmployeeName);
+    $('#txtEmployeeNumber').val(fresponse.data.stEmployeeNumber);
+    $('#txtPFNumber').val(fresponse.data.stPFNumber);
+    $('#txtMobile').val(fresponse.data.stMobile);
+    $('#txtPPONumber').val(fresponse.data.stPPONumber);
+
+}
 function GetFileDetailError() { }

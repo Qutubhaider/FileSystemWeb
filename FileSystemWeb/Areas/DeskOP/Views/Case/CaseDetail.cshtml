@@ -49,7 +49,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Assign User</label>
-                            <select asp-for="assignedTo" id="ddUser" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
+                            <select asp-for="assignedTo" onchange="GetUserDetail($('#assignedTo').val());" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
                                 <option value="">Select User</option>
                             </select>
                             <span asp-validation-for="stMobile" class="text-danger"></span>
@@ -58,6 +58,10 @@
                             <label class="form-label">Comment</label>
                             <textarea asp-for="stComment" class="form-control" placeholder="Comment.."></textarea>
                             <span asp-validation-for="stPPONumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Attehment</label>
+                            <input type="file" />
                         </div>
                         <div>
                             <div>
@@ -121,12 +125,5 @@
             OnDivisionChangeLoadStore(true);
     });
 </script>
-
-<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script src="~/Scripts/File/FileDetail.js" asp-append-version="true"></script>
-
-    <script type="text/javascript">
-    var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
-    var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
-    </script>
+<script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>
 }
