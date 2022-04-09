@@ -62,6 +62,7 @@
                         <input type="hidden" asp-for="inlssueFileId" />
                         <input type="hidden" asp-for="inStoreFileDetailsId" />
                         <input type="hidden" asp-for="inUserProfileId" />
+                        <input type="hidden" asp-for="inCreatedBy" />
                     </form>
                 </div>
 
@@ -141,7 +142,8 @@
     var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
 
         $(document).ready(function () {
-            GetUserDetail(@Model.inUserProfileId);
+            alert(@Model.inCreatedBy);
+            GetUserDetail(@Model.inCreatedBy);
             GetFileDetail(@Model.inStoreFileDetailsId);
         });
     </script>

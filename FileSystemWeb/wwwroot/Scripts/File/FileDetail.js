@@ -1,11 +1,18 @@
 ﻿function GetUserDetail(fiUserId) {
+    alert(fiUserId);
     var loData = new Object();
     loData.userId = fiUserId;
     loadMyRequest(msGetUserDetail, "GET", loData, GetUserDetailSuccess, GetUserDetailError)
 
 }
 
-function GetUserDetailSuccess() { }
+function GetUserDetailSuccess(fresponse) {
+    $('#txtFirstName').val(fresponse.data.stFirstName);
+    $('#txtLastName').val(fresponse.data.stLastName);
+    $('#txtEmail').val(fresponse.data.stEmail);
+    $('#txtMobile').val(fresponse.data.stMobile);
+    $('#txtUserType').val(fresponse.data.inRole);
+}
 function GetUserDetailError() { }
 
 function GetFileDetail(fiFileId) {
@@ -17,3 +24,4 @@ function GetFileDetail(fiFileId) {
 
 function GetFileDetailSuccess() { }
 function GetFileDetailError() { }
+

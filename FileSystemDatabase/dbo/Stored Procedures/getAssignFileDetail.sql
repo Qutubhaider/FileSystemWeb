@@ -11,7 +11,7 @@ CREATE PROCEDURE getAssignFileDetail(
 )
 AS
 BEGIN
-  SELECT UP.inUserProfileId, IFH.unlssueFileId,IFH.stComment,F.stFileName,F.stUnFileName,DV.stDivisionName,UP.stFirstName +' '+UP.stLastName AS stUserName,DP.stDepartmentName,F.inStoreFileDetailsId,IFH.inAssignUserId,IFH.inlssueFileId
+  SELECT UP.inUserProfileId, IFH.unlssueFileId,IFH.stComment,F.stFileName,F.stUnFileName,DV.stDivisionName,UP.stFirstName +' '+UP.stLastName AS stUserName,DP.stDepartmentName,F.inStoreFileDetailsId,IFH.inAssignUserId,IFH.inlssueFileId,IFH.inCreatedBy
   FROM tblIssueFileHistory IFH
             JOIN tblDivision DV ON DV.inDivisionId=IFH.inDivisionId
             JOIN tblUserProfile UP ON UP.inUserProfileId=IFH.inAssignUserId

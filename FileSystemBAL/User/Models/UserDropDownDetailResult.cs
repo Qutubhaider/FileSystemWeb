@@ -15,5 +15,6 @@ namespace FileSystemBAL.User.Models
         public string stEmail           {get;set;}
         public string stMobile          {get;set;}
         public string stAddress { get; set; }
+        public int inRole { get; set; }
     }
 }
