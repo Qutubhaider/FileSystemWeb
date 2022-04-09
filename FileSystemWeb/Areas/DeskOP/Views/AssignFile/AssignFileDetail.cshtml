@@ -58,11 +58,11 @@
                             </div>
                         </div>
 
-                        <input type="hidden" asp-for="inAssignUserId" />
-                        <input type="hidden" asp-for="inlssueFileId" />
-                        <input type="hidden" asp-for="inStoreFileDetailsId" />
-                        <input type="hidden" asp-for="inUserProfileId" />
-                        <input type="hidden" asp-for="inCreatedBy" />
+                        <input hidden asp-for="inAssignUserId" />
+                        <input hidden asp-for="inlssueFileId" />
+                        <input hidden asp-for="inStoreFileDetailsId" />
+                        <input hidden asp-for="inUserProfileId" />
+                        <input hidden asp-for="inCreatedBy" />
                     </form>
                 </div>
 
@@ -135,14 +135,13 @@
     <partial name="_ValidationScriptsPartial.cshtml" />
 
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script src="~/Scripts/IssueFile/FileDetail.js" asp-append-version="true"></script>
+    <script src="~/Scripts/File/FileDetail.js" asp-append-version="true"></script>
 
     <script type="text/javascript">
     var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
     var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
 
         $(document).ready(function () {
-            alert(@Model.inCreatedBy);
             GetUserDetail(@Model.inCreatedBy);
             GetFileDetail(@Model.inStoreFileDetailsId);
         });

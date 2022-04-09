@@ -1,5 +1,10 @@
-﻿function GetUserDetail(fiUserId) {
-    alert(fiUserId);
+﻿const Role = {
+    DeskAdmin: 4,
+    DeskOP: 5,
+    StoreOP: 6
+};
+
+function GetUserDetail(fiUserId) {
     var loData = new Object();
     loData.userId = fiUserId;
     loadMyRequest(msGetUserDetail, "GET", loData, GetUserDetailSuccess, GetUserDetailError)
@@ -11,7 +16,16 @@ function GetUserDetailSuccess(fresponse) {
     $('#txtLastName').val(fresponse.data.stLastName);
     $('#txtEmail').val(fresponse.data.stEmail);
     $('#txtMobile').val(fresponse.data.stMobile);
-    $('#txtUserType').val(fresponse.data.inRole);
+    if (fresponse.data.inRole == Role.DeskOP) {
+        $('#txtUserType').val('Desk Operator');
+    }
+    else if (fresponse.data.inRole == Role.DeskAdmin) {
+        $('#txtUserType').val('Department Admin');
+    }
+    else if (fresponse.data.inRole == Role.StoreOP) {
+        $('#txtUserType').val('Store Operator');
+    }
+    
 }
 function GetUserDetailError() { }
 
