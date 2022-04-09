@@ -1,6 +1,8 @@
 ﻿using FileSystemBAL.Case.Models;
+using FileSystemBAL.FIle.Models;
 using FileSystemBAL.IssueFIleHistory.Models;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemBAL.User.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -125,6 +127,19 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
             {
                 return RedirectToAction("Index", "Error");
             }
+        }
+        public IActionResult GetUserDetailFromDropDown(int userId)
+        {
+            UserDropDownDetailResult user = moUnitOfWork.UserRepository.GetUserDetailFromDropDown(userId);
+
+            return Json(new { data = user });
+        }
+
+        public IActionResult GetFileDetailFromDropDown(int fileId)
+        {
+            StoreFileDetailDropDownResult file = moUnitOfWork.FileRepository.GetFileDetailDropDown(fileId);
+
+            return Json(new { data = file });
         }
     }
 }
