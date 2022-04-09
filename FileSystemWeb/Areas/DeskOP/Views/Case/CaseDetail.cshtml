@@ -21,8 +21,8 @@
             <div class="card">
                 <div class="card-body">
                     <form class="custom-validation" novalidate="" asp-action="ForwardFile" asp-area="DeskOP" asp-controller="Case" enctype="multipart/form-data">
-                        
-                         <div class="mb-3">
+
+                        <div class="mb-3">
                             <label class="form-label">Employee Name</label>
                             <input asp-for="stEmployeeName" type="text" class="form-control" placeholder="Shelves Number" readonly>
                             <span asp-validation-for="stEmployeeName" class="text-danger"></span>
@@ -42,59 +42,84 @@
                             <input asp-for="stPPONumber" type="text" class="form-control" placeholder="Shelves Number" readonly>
                             <span asp-validation-for="stPPONumber" class="text-danger"></span>
                         </div>
-                      @*  <div class="mb-3">
-                            <label class="form-label">Employee Type</label>
-                            <input asp-for="stEmployeeName" type="text" class="form-control" placeholder="Shelves Number" readonly>
-                            <span asp-validation-for="stEmployeeName" class="text-danger"></span>
-                        </div>*@
-                              <div class="mb-3">
+                        <div class="mb-3">
                             <label class="form-label">Mobile Number</label>
                             <input asp-for="stMobile" type="text" class="form-control" placeholder="Shelves Number" readonly>
                             <span asp-validation-for="stMobile" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Assign User</label>
-                            <select asp-for="assignedTo"  class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
+                            <select asp-for="assignedTo" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
                                 <option value="">Select User</option>
                             </select>
                             <span asp-validation-for="stMobile" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Comment</label>
-                           <textarea asp-for="stComment" class="form-control" placeholder="Comment.."></textarea>
+                            <textarea asp-for="stComment" class="form-control" placeholder="Comment.."></textarea>
                             <span asp-validation-for="stPPONumber" class="text-danger"></span>
                         </div>
-                       <div>
+                        <div>
                             <div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
                                     Forward
                                 </button>
-                       </div>
-                   </div>
-                   <input type=hidden asp-for=inStoreFileDetailId/>
+                            </div>
+                        </div>
+                        <input type=hidden asp-for=inStoreFileDetailId />
                     </form>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h4>Assigned By</h4>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input id="txtFirstName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        <input id="txtLastName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input id="txtEmail" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Mobile</label>
+                        <input id="txtMobile" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">User Type</label>
+                        <input id="txtUserType" type="text" class="form-control" readonly>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @section Scripts {
-    <partial name="_ValidationScriptsPartial.cshtml" />
-    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
-        var msGetRoomDropDown = '@Url.Action("GetRoomDropdown")';
-        var msGetAlmirahDropDown = '@Url.Action("GetAlmirahDropdown")';
-        var msGetShelveDropDown ='@Url.Action("GetShelvesDropDown")';
-        var msGetStoreDropDown ='@Url.Action("GetStoreDropDown")';
-            $(document).ready(function () {
-                OnZoneChange(true);
-                OnStoreChange(true);
-                OnRoomChange(true);
-                OnAlmirahChange(true);
-                OnDivisionChangeLoadStore(true);
-        });
-    </script>
-    <script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>
+<partial name="_ValidationScriptsPartial.cshtml" />
+<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+<script type="text/javascript">
+    var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
+    var msGetRoomDropDown = '@Url.Action("GetRoomDropdown")';
+    var msGetAlmirahDropDown = '@Url.Action("GetAlmirahDropdown")';
+    var msGetShelveDropDown ='@Url.Action("GetShelvesDropDown")';
+    var msGetStoreDropDown ='@Url.Action("GetStoreDropDown")';
+        $(document).ready(function () {
+            OnZoneChange(true);
+            OnStoreChange(true);
+            OnRoomChange(true);
+            OnAlmirahChange(true);
+            OnDivisionChangeLoadStore(true);
+    });
+</script>
+<script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>
 }
