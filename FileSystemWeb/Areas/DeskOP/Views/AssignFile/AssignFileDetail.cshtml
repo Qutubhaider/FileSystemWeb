@@ -27,7 +27,7 @@
                             <a asp-action="downloadfile" asp-controller="IssueFile" asp-area="Admin" asp-route-fuFileName="@Model.stUnFileName" asp-route-fileName="@Model.stFileName">Download File</a>
 
                         </div>
-                        <div class="mb-3">
+                        @*<div class="mb-3">
                             <label class="form-label">User Name</label>
                             <input asp-for="stUserName" type="text" class="form-control" placeholder="Division Name" readonly>
 
@@ -41,7 +41,7 @@
                             <label class="form-label">Division Name</label>
                             <input asp-for="stDivisionName" type="text" class="form-control" placeholder="Division Name" readonly>
 
-                        </div>
+                        </div>*@
                         <div class="mb-3">
                             <label class="form-label">Comment</label>
                             <textarea asp-for="stComment" class="form-control" placeholder="Division Name" readonly></textarea>
