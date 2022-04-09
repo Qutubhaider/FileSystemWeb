@@ -11,7 +11,7 @@ function GetUserDetailSuccess(fresponse) {
     $('#txtLastName').val(fresponse.data.stLastName);
     $('#txtEmail').val(fresponse.data.stEmail);
     $('#txtMobile').val(fresponse.data.stMobile);
-    $('#txtUserType').val(fresponse.data.inRole);
+    $('#txtAddress').val(fresponse.data.stAddress);
 }
 function GetUserDetailError() { }
 
@@ -22,6 +22,14 @@ function GetFileDetail(fiFileId) {
 
 }
 
-function GetFileDetailSuccess() { }
+function GetFileDetailSuccess(fresponse) {
+    $('#txtFileName').val(fresponse.data.stFileName);
+    $('#txtEmpoloyeeName').val(fresponse.data.stEmployeeName);
+    $('#txtEmployeeNumber').val(fresponse.data.stEmployeeNumber);
+    $('#txtPFNumber').val(fresponse.data.stPFNumber);
+    $('#txtMobile').val(fresponse.data.stMobile);
+    $('#txtPPONumber').val(fresponse.data.stPPONumber);
+
+}
 function GetFileDetailError() { }
 

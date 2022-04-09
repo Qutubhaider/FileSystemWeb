@@ -106,24 +106,28 @@
                         <h4>File Detail</h4>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">First Name</label>
-                        <input id="txtFirstName" type="text" class="form-control" readonly>
+                        <label class="form-label">File Name</label>
+                        <input id="txtFileName" type="text" class="form-control" readonly>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Last Name</label>
-                        <input id="txtLastName" type="text" class="form-control" readonly>
+                        <label class="form-label">Employee Name</label>
+                        <input id="txtEmpoloyeeName" type="text" class="form-control" readonly>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input id="txtEmail" type="text" class="form-control" readonly>
+                        <label class="form-label">Employee Number</label>
+                        <input id="txtEmployeeNumber" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">PF Number</label>
+                        <input id="txtPFNumber" type="text" class="form-control" readonly>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Mobile</label>
                         <input id="txtMobile" type="text" class="form-control" readonly>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Address</label>
-                        <textarea id="txtAddress" class="form-control" readonly></textarea>
+                        <label class="form-label">PPO Number</label>
+                        <textarea id="txtPPONumber" class="form-control" readonly></textarea>
                     </div>
                 </div>
             </div>
@@ -135,7 +139,7 @@
     <partial name="_ValidationScriptsPartial.cshtml" />
 
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script src="~/Scripts/IssueFile/FileDetail.js" asp-append-version="true"></script>
+    <script src="~/Scripts/File/FileDetail.js" asp-append-version="true"></script>
 
     <script type="text/javascript">
     var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
