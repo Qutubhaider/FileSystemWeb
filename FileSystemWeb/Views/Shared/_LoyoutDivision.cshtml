@@ -1,4 +1,11 @@
-﻿@using FileSystemUtility.Utilities;
+﻿@using FileSystemUtility.Utilities
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var lsUserName = User.FindFirst(CommonConstant.SessionConstant.stUserName).Value.ToString();
+    var lsDepartmentName = User.FindFirst(CommonConstant.SessionConstant.DepartmentName).Value.ToString();
+}
 <!doctype html>
 <html lang="en">
 <head>
@@ -79,7 +86,7 @@
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="mdi mdi-account-circle-outline"></i>
-                            <span class="d-none d-xl-inline-block ms-1">Division</span>
+                            <span class="d-none d-xl-inline-block ms-1">Division / @lsDepartmentName / @lsUserName</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -103,7 +110,7 @@
                 <div id="sidebar-menu">
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
-                       
+
                         <li>
                             <a asp-area="Divisions" asp-controller="Dashboard" asp-action="Index" class="waves-effect">
                                 <i class="mdi mdi-home-variant-outline"></i>
@@ -116,7 +123,7 @@
                                 <i class="ri-map-pin-line"></i>
                                 <span>Desk Allocation</span>
                             </a>
-                            <ul class="sub-menu" aria-expanded="false">                              
+                            <ul class="sub-menu" aria-expanded="false">
                                 <li><a asp-area="Divisions" asp-controller="Department" asp-action="Index">Department</a></li>
                                 <li><a asp-area="Divisions" asp-controller="Designation" asp-action="Index">Designation</a></li>
                                 <li><a asp-area="Divisions" asp-controller="Desk" asp-action="Index">Desk</a></li>

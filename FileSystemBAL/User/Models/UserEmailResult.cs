@@ -22,6 +22,6 @@ namespace FileSystemBAL.User.Models
         public int inDivisionId { get; set; }
         public int inStoreId { get; set; }
         public int inDepartmentId { get; set; }
-
+        public string stDepartmentName { get; set; }
     }
 }

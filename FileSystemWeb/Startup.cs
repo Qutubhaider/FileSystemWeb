@@ -13,6 +13,7 @@ using FileSystemBAL.Data;
 using FileSystemBAL.Repository.IRepository;
 using FileSystemBAL.Repository;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace FileSystemWeb
 {
@@ -42,6 +43,7 @@ namespace FileSystemWeb
                 options.UseSqlServer(Configuration.GetConnectionString("DBConnection"))
             );
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,11 @@
-﻿@using FileSystemUtility.Utilities;
+﻿@using FileSystemUtility.Utilities
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var lsUserName = User.FindFirst(CommonConstant.SessionConstant.stUserName).Value.ToString();
+    var lsDepartmentName = User.FindFirst(CommonConstant.SessionConstant.DepartmentName).Value.ToString();
+}
 <!doctype html>
 <html lang="en">
 <head>
@@ -81,7 +88,7 @@
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="mdi mdi-account-circle-outline"></i>
-                            <span class="d-none d-xl-inline-block ms-1">Store</span>
+                            <span class="d-none d-xl-inline-block ms-1">Store / @lsDepartmentName / @lsUserName</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">

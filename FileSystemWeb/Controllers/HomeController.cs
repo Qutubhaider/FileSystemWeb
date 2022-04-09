@@ -78,6 +78,7 @@ namespace FileSystemWeb.Controllers
                             claims.Add(new Claim(SessionConstant.DeskId, UserDetail.inDeskId.ToString()));
                             claims.Add(new Claim(SessionConstant.DepartmentId, UserDetail.inDepartmentId.ToString()));
                             claims.Add(new Claim(SessionConstant.StoreId, UserDetail.inStoreId.ToString()));
+                            claims.Add(new Claim(SessionConstant.DepartmentName, UserDetail.stDepartmentName.ToString()));
                             claims.Add(new Claim(ClaimTypes.Role, UserDetail.inRole.ToString()));
                             ClaimsIdentity userIdentity = new ClaimsIdentity(claims, "Login");
                             ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
