@@ -105,7 +105,7 @@
                 <div id="sidebar-menu">
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
-                       
+
                         <li>
                             <a asp-area="DeskAdmin" asp-controller="Dashboard" asp-action="Index" class="waves-effect">
                                 <i class="mdi mdi-home-variant-outline"></i>
@@ -122,7 +122,17 @@
                                 <li><a asp-area="DeskAdmin" asp-controller="Case" asp-action="Index">Case</a></li>
                             </ul>
                         </li>
-                         <li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-map-pin-line"></i>
+                                <span>Trace</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a asp-area="DeskAdmin" asp-controller="Trace" asp-action="TraceFile">Trace File</a></li>
+                                <li><a asp-area="DeskAdmin" asp-controller="Trace" asp-action="TraceCase">Trace Case</a></li>
+                            </ul>
+                        </li>
+                        <li>
                             <a asp-area="DeskAdmin" asp-controller="User" asp-action="Index" class="waves-effect">
                                 <i class="ri-user-add-fill"></i>
                                 <span>Users</span>
