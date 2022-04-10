@@ -48,7 +48,7 @@
                             <span asp-validation-for="stMobile" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Assign User</label>
+                            <label class="form-label">Assign To</label>
                             <select asp-for="assignedTo" onchange="GetUserDetail($('#assignedTo').val());" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
                                 <option value="">Select User</option>
                             </select>
@@ -81,7 +81,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <h4>Assigned By</h4>
+                        <h4>Assigned To</h4>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Name</label>
@@ -109,21 +109,11 @@
     </div>
 </div>
 @section Scripts {
-<partial name="_ValidationScriptsPartial.cshtml" />
-<script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-<script type="text/javascript">
-    var msGetDivisionDropDown = '@Url.Action("GetDivisionDropdown")';
-    var msGetRoomDropDown = '@Url.Action("GetRoomDropdown")';
-    var msGetAlmirahDropDown = '@Url.Action("GetAlmirahDropdown")';
-    var msGetShelveDropDown ='@Url.Action("GetShelvesDropDown")';
-    var msGetStoreDropDown ='@Url.Action("GetStoreDropDown")';
-        $(document).ready(function () {
-            OnZoneChange(true);
-            OnStoreChange(true);
-            OnRoomChange(true);
-            OnAlmirahChange(true);
-            OnDivisionChangeLoadStore(true);
-    });
-</script>
-<script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
+    <script src="~/Scripts/File/FileDetail.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+         var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
+         var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
+    </script>
 }

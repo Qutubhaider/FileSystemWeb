@@ -136,8 +136,12 @@
     <Build Include="dbo\Stored Procedures\getUserListByDepartmentId.sql" />
     <Build Include="dbo\Stored Procedures\getUserDataByDropDown.sql" />
     <Build Include="dbo\Stored Procedures\getFileDetailFromDropDown.sql" />
+    <Build Include="dbo\table\tblServiceRequest.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="dbo\Stored Procedures\saveIssueFileByStore.sql" />
   </ItemGroup>
 </Project>

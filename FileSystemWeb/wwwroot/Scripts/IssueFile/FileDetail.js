@@ -45,6 +45,9 @@ function GetFileDetailSuccess(fresponse) {
     $('#txtPFNumber').val(fresponse.data.stPFNumber);
     $('#txtMobile').val(fresponse.data.stMobile);
     $('#txtPPONumber').val(fresponse.data.stPPONumber);
-
+    $('#txtStoreName').val(fresponse.data.stStoreName);
+    $('#txtRoomNumber').val(fresponse.data.stRoomNumber);
+    $('#txtAlmirahNumber').val(fresponse.data.stAlmirahNumber);
+    $('#txtShelveNumber').val(fresponse.data.stShelveNumber);
 }
 function GetFileDetailError() { }

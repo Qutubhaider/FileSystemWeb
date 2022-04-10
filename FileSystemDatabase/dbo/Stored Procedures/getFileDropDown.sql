@@ -9,6 +9,6 @@ Ref# Modified By   Modified date   Description
 CREATE PROCEDURE getFileDropDown
 AS
 BEGIN
-SELECT inStoreFileDetailsId as id , stFileName as value 
+SELECT inStoreFileDetailsId as id , (stEmployeeName+' || '+stEmployeeNumber+' || '+stPFNumber+' || '+stPPONumber) as value 
        FROM tblStoreFileDetails
 END

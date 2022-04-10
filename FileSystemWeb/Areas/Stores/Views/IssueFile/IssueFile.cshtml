@@ -28,7 +28,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">File Name</label>
+                            <label class="form-label">Employee Name || Employee No || PPO No || PF No</label>
                             <select onchange="GetFileDetail($('#inStoreFileDetailsId').val());" asp-for="inStoreFileDetailsId" id="ddFileName" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.FileList,"id","value"))">
                                 <option value="">Select File Name</option>
                             </select>
@@ -94,6 +94,22 @@
                 <div class="card-body">
                     <div class="text-center">
                         <h4>File Detail</h4>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Store Name</label>
+                        <input id="txtStoreName" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Room Number</label>
+                        <input id="txtRoomNumber" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Almirah Number</label>
+                        <input id="txtAlmirahNumber" type="text" class="form-control" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Shelve Number</label>
+                        <input id="txtShelveNumber" type="text" class="form-control" readonly>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">File Name</label>
