@@ -1,4 +1,5 @@
-﻿using FileSystemUtility.Models;
+﻿using FileSystemBAL.IssueFIleHistory.Models;
+using FileSystemUtility.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,11 +22,18 @@ namespace FileSystemBAL.Case.Models
         public string stMobile { get; set; }
         public int inStatus { get; set; }
         public int inStoreFileDetailId { get; set; }
+        public int inSRId { get; set; }
+
         [NotMapped]
         public string stComment { get; set; }
+
         [NotMapped]
         public int assignedTo { get; set; }
+
         [NotMapped]
         public List<Select2> UserList { get; set; }
+
+        [NotMapped]
+        public List<IssueFileListResult> IssueFileListResult { get; set; }
     }
 }

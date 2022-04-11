@@ -80,6 +80,7 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
                 loCaseDetail = moUnitOfWork.CaseRepository.GetCaseDetail(Id);
             }
             loCaseDetail.UserList = moUnitOfWork.UserRepository.GetUserListByDivisionId(Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value));
+            loCaseDetail.IssueFileListResult= moUnitOfWork.IssueFileHistoryRepository.GetFileHistoryList(loCaseDetail.inSRId);
             return View("~/Areas/DeskOP/Views/Case/CaseDetail.cshtml", loCaseDetail);
         }
 
@@ -95,9 +96,9 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
                     inDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value),
                     inStoreFileDetailsId = foCaseDetail.inStoreFileDetailId,
                     stComment = foCaseDetail.stComment,
-                    dtIssueDate = DateTime.Now,
-                    inStatus = (int)CommonFunctions.FilsStatus.Pending
-
+                    inStatus = (int)CommonFunctions.FileStatus.Pending,
+                    inSRId = foCaseDetail.inSRId,
+                    inCaseId = foCaseDetail.inCaseId
                 };
                 int liSuccess = 0;
                 int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString());

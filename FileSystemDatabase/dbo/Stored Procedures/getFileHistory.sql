@@ -1,28 +1,24 @@
 ﻿-- ============================================= 
--- Author: Vaibhav Singh
--- EXEC getFileList 
+-- Author: Qutub
+-- EXEC getFileHistory 
 -- ============================================= 
 /* 
 Ref#	Modified By			Modified date			Description 
 */ 
-CREATE PROC [dbo].[getIssueFileList] 
+CREATE PROC [dbo].[getFileHistory] 
 ( 
-	@stFileName NVARCHAR(211)=NULL,   
-	@inSortColumn INT = NULL, 
-	@stSortOrder NVARCHAR(51) = NULL, 
-	@inPageNo INT = 1, 
-	@inPageSize INT = 10 ,
-	@inUserId INT = NULL,
-	@inDepartmentId INT = NULL,
-	@inDivisionId INT = NULL
+	@inSRId INT
 ) 
 AS 
 BEGIN 
-SET NOCOUNT ON;   
-	SET @stFileName =REPLACE(@stFileName,'''','''''') 
+SET NOCOUNT ON; 
 	DECLARE @stSQL AS NVARCHAR(MAX) 
-	DECLARE @stSort AS NVARCHAR(MAX) = 'stFileName' 
+	DECLARE @stSort AS NVARCHAR(MAX) = 'inSRId' 
 	DECLARE @inStart INT, @inEnd INT 
+	DECLARE @inSortColumn INT = 1
+	DECLARE @stSortOrder NVARCHAR(51) = 'DESC'
+	DECLARE @inPageNo INT = 1
+	DECLARE @inPageSize INT = 10 
  
 	SET @stSortOrder = ISNULL(@stSortOrder, 'DESC') 
 	SET @inStart  = (@inPageNo - 1) * @inPageSize + 1 
@@ -30,7 +26,7 @@ SET NOCOUNT ON;
  
 	IF @inSortColumn = 1 
 	BEGIN 
-		SET @stSort = 'stFileName'; 
+		SET @stSort = 'inSRId'; 
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
@@ -46,7 +42,7 @@ SET NOCOUNT ON;
 					DV.stDivisionName,
 					DP.stDepartmentName,
 					UP.stFirstName
-             FROM tblIssueFileHistory IFH WITH(NOLOCK)
+            FROM tblIssueFileHistory IFH WITH(NOLOCK)
             JOIN tblDivision DV ON DV.inDivisionId=IFH.inDivisionId
             JOIN tblUserProfile UP ON UP.inUserProfileId=IFH.inCreatedBy
             JOIN tblStoreFileDetails F ON F.inStoreFileDetailsId=IFH.inStoreFileDetailsId
@@ -54,12 +50,9 @@ SET NOCOUNT ON;
             
             WHERE 1=1' 
  
-	IF(ISNULL(@stFileName,'')<>'') 
-		SET @stSQL = @stSQL + '  AND (F.stFileName LIKE ''%' + CONVERT(NVARCHAR(211), @stFileName)  + '%'')' 
- 
- +'' 
- IF(ISNULL(@inUserId,0)>0)               
-		SET @stSQL = @stSQL +' AND IFH.inAssignUserId= '+ CONVERT(NVARCHAR(11), @inUserId) +''
+	
+ IF(ISNULL(@inSRId,0)>0)               
+		SET @stSQL = @stSQL +' AND IFH.inSRId= '+ CONVERT(NVARCHAR(11), @inSRId) +''
 	SET @stSQL = @stSQL +' 
 				)A )   
 				SELECT (SELECT CAST(COUNT(*) AS INT) FROM PAGED) AS inRecordCount,*   

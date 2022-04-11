@@ -12,12 +12,13 @@ CREATE PROCEDURE [dbo].[saveIssueFileHistory]
 @inStoreFileId			INT,																
 @inUserId			INT,																															
 @inDivisionId		INT,													
-@inDepartmentId		INT,																																
-@dtIssueDate		DateTime,																						
+@inDepartmentId		INT,																					
 @stComment		NVARCHAR(200),
 @inStatus           INT,
 @inCreatedBy        INT,
-@inSuccess INT OUT
+@inSuccess INT OUT,
+@inSRId INT,
+@inCaseId INT
 )
 AS
  BEGIN
@@ -25,9 +26,11 @@ AS
   SET @inSuccess=0
 	IF(ISNULL(@inIssueFileId,0)=0)  
 		 BEGIN 			
-				INSERT INTO tblIssueFileHistory(inStoreFileDetailsId,inAssignUserId,inDivisionId,inDepartmentId,dtIssueDate,stComment,inStatus,dtCreateDate,inCreatedBy)  
-				SELECT  @inStoreFileId,@inUserId,@inDivisionId,@inDepartmentId,@dtIssueDate,@stComment,@inStatus,@currentDateTime, @inCreatedBy  
+				INSERT INTO tblIssueFileHistory(inStoreFileDetailsId,inAssignUserId,inDivisionId,inDepartmentId,dtIssueDate,stComment,inStatus,dtCreateDate,inCreatedBy,inSRId)  
+				SELECT  @inStoreFileId,@inUserId,@inDivisionId,@inDepartmentId,GETDATE(),@stComment,@inStatus,@currentDateTime, @inCreatedBy  ,@inSRId
 				SET @inSuccess=101  
+
+				UPDATE tblCase SET @inStatus=2 WHERE inSRId=@inSRId AND inCaseId=@inCaseId
 		 END
     ELSE
 		BEGIN
@@ -37,11 +40,12 @@ AS
 		inDivisionId 			=   @inDivisionId	,
 		inDepartmentId			=   @inDepartmentId	,
 		inStoreFileDetailsId	 =  @inStoreFileId	,
-		dtIssueDate 			=  @dtIssueDate		,
+		dtIssueDate 			=  GETDATE()		,
 		stComment 				 = @stComment		,
 		inStatus 				=  @inStatus   		,       			  
 		dtCreateDate    =          @currentDateTime,
-		inCreatedBy =@inCreatedBy
+		inCreatedBy =@inCreatedBy,
+		inSRId=@inSRId
 		WHERE inlssueFileId=@inIssueFileId
 		SET @inSuccess=102
 		END

@@ -19,5 +19,6 @@ namespace FileSystemBAL.Case.Models
         public string stFileName { get; set; }
         public string stAssignedBy { get; set; }
         public int inSRId { get; set; }
+        public int inStatus { get; set; }
     }
 }

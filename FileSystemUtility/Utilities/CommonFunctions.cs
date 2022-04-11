@@ -56,7 +56,7 @@ namespace FileSystemUtility.Utilities
             Active = 1,
             InActive = 0
         }
-        public enum FilsStatus
+        public enum FileStatus
         {
             Accepted = 1,
             Pending = 0
@@ -64,8 +64,9 @@ namespace FileSystemUtility.Utilities
 
         public enum CaseStatus
         {
-            Forward = 1,
-            Completed = 2
+            Open = 1,
+            Forward = 2,
+            Completed = 3
         }
 
         #region retrive enum string

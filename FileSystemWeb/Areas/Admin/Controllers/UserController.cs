@@ -16,7 +16,7 @@ using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Admin.Controllers
 {
-    //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     [Area("Admin")]
     public class UserController : Controller
     {

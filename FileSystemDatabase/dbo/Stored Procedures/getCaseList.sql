@@ -37,7 +37,7 @@ SET NOCOUNT ON;
 	END 
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		inSRId,inCaseId,unCaseId,stZoneName ,stDivisionName,stDepartmentName,stDesignationName,stFileName,stAssignedBy
+		inSRId,inCaseId,unCaseId,stZoneName ,stDivisionName,stDepartmentName,stDesignationName,stFileName,stAssignedBy,inStatus
 		FROM ( 
             SELECT  
 					C.inSRId,
@@ -47,8 +47,9 @@ SET NOCOUNT ON;
 					DV.stDivisionName,
 					DP.stDepartmentName,
 					DS.stDesignationName,
-					SF.stFileName,
-					(UP.stFirstName) AS stAssignedBy
+					(SF.stEmployeeName+'' || ''+SF.stEmployeeNumber+'' || ''+SF.stPPONumber+'' || ''+SF.stPFNumber) AS stFileName,
+					(UP.stFirstName) AS stAssignedBy,
+					C.inStatus
             FROM tblCase C WITH(NOLOCK) 
             JOIN tblZone Z ON Z.inZoneId=C.inZoneId
             JOIN tblDivision DV ON DV.inDivisionId=C.inDivisionId

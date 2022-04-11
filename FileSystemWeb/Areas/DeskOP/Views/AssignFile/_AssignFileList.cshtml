@@ -15,12 +15,12 @@
             <td>@loIssueFileList.stDepartmentName</td>
             <td>@loIssueFileList.stFileName</td>
             <td>@loIssueFileList.stComment</td>
-            <td>@Enum.GetName(typeof(CommonFunctions.FilsStatus), loIssueFileList.inStatus)</td>
+            <td>@Enum.GetName(typeof(CommonFunctions.FileStatus), loIssueFileList.inStatus)</td>
             @{
                 DateTime dtIssueDate = Convert.ToDateTime(loIssueFileList.dtIssueDate);
             }
             <td> @dtIssueDate.Date.ToString("dd MMM', 'yyyy")</td>
-            @if (loIssueFileList.inStatus == (int)CommonFunctions.FilsStatus.Accepted)
+            @if (loIssueFileList.inStatus == (int)CommonFunctions.FileStatus.Accepted)
             {
                 <td></td>
             }

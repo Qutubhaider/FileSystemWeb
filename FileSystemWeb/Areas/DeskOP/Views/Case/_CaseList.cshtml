@@ -15,8 +15,10 @@
             <td>@loCaseList.stDepartmentName</td>
             <td>@loCaseList.stDesignationName</td>
             <td>@loCaseList.stFileName</td>
-            <td></td>
-            <td class="text-center"><a asp-area="DeskOP" asp-controller="Case" asp-action="Detail" asp-route-id="@loCaseList.unCaseId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
+            <td>@Enum.GetName(typeof(CommonFunctions.CaseStatus), loCaseList.inStatus)</td>
+
+            <td class="text-center"><a asp-area="DeskOP" asp-controller="Case" asp-action="Detail" asp-route-id="@loCaseList.unCaseId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-eye"></i> </a></td>
+
         </tr>
     }
 }
