@@ -60,24 +60,25 @@
                             <input asp-for="stMobile" type="text" class="form-control" placeholder="Shelves Number" readonly>
                             <span asp-validation-for="stMobile" class="text-danger"></span>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Assign To</label>
-                            <select asp-for="assignedTo" onchange="GetUserDetail($('#assignedTo').val());" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
-                                <option value="">Select User</option>
-                            </select>
-                            <span asp-validation-for="stMobile" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Comment</label>
-                            <textarea asp-for="stComment" class="form-control" placeholder="Comment.."></textarea>
-                            <span asp-validation-for="stPPONumber" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Attehment</label>
-                            <input type="file" />
-                        </div>
                         @if (Model.inStatus == (int)CommonFunctions.CaseStatus.Open)
                         {
+                            <div class="mb-3">
+                                <label class="form-label">Assign To</label>
+                                <select asp-for="assignedTo" onchange="GetUserDetail($('#assignedTo').val());" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
+                                    <option value="">Select User</option>
+                                </select>
+                                <span asp-validation-for="stMobile" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Comment</label>
+                                <textarea asp-for="stComment" class="form-control" placeholder="Comment.."></textarea>
+                                <span asp-validation-for="stPPONumber" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Attehment</label>
+                                <input type="file" />
+                            </div>
+
                             <div>
                                 <div>
                                     <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
@@ -94,38 +95,39 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <h4>Assigned To</h4>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Name</label>
-                        <input id="txtFirstName" type="text" class="form-control" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Department</label>
-                        <input id="txtLastName" type="text" class="form-control" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input id="txtEmail" type="text" class="form-control" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Mobile</label>
-                        <input id="txtMobile" type="text" class="form-control" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">User Type</label>
-                        <input id="txtUserType" type="text" class="form-control" readonly>
+        @if (Model.inStatus == (int)CommonFunctions.CaseStatus.Open)
+        {
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h4>Assigned To</h4>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input id="txtFirstName" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <input id="txtLastName" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input id="txtEmail" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mobile</label>
+                            <input id="txtMobile" type="text" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">User Type</label>
+                            <input id="txtUserType" type="text" class="form-control" readonly>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
-
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -197,7 +199,7 @@
         </div>
     </div>
 </div>
-</div>
+    </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial.cshtml" />
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>

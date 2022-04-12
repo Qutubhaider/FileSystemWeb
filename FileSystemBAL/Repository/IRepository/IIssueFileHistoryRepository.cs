@@ -15,6 +15,7 @@ namespace FileSystemBAL.Repository.IRepository
         IssueFile GetIssueFileDetail(Guid fuIssueFileId);
         GetAssignFileDetailResult AssignFileDetailResult(Guid? fuAssignFileId);
         List<IssueFileListResult> GetIssueFileList(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null, int? fiDepartmentId = null, int? fiDivisionId = null);
+        List<IssueFileListResult> GetIssueFileListByStore(string fsAlmirahNumber, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null, int? fiDepartmentId = null, int? fiDivisionId = null);
         List<IssueFileListResult> GetFileHistoryList(int fiSRId);
     }
 }

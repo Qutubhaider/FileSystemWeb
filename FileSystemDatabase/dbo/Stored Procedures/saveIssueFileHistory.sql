@@ -30,7 +30,7 @@ AS
 				SELECT  @inStoreFileId,@inUserId,@inDivisionId,@inDepartmentId,GETDATE(),@stComment,@inStatus,@currentDateTime, @inCreatedBy  ,@inSRId
 				SET @inSuccess=101  
 
-				UPDATE tblCase SET @inStatus=2 WHERE inSRId=@inSRId AND inCaseId=@inCaseId
+				UPDATE tblCase SET inStatus=2 WHERE inCaseId=@inCaseId
 		 END
     ELSE
 		BEGIN
