@@ -49,7 +49,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Designation Name</label>
-                            <select id="ddDesignation" asp-for="inDesignationId" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                            <select id="ddDesignation" asp-for="inDesignationId" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DesignationList,"id","value"))">
                                 <option value="">Select Department Name</option>
                             </select>
                             <span asp-validation-for="inDesignationId" class="text-danger"></span>
@@ -116,11 +116,5 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial.cshtml" />
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        var msGetDesignationDropDown = '@Url.Action("GetDesignationDropDown")';
-            $(document).ready(function () {
-                OnDepartmentChange(true);
-        });
-    </script>
-    <script src="~/Scripts/Common/Dropdown.js" asp-append-version="true"></script>
+   
 }  

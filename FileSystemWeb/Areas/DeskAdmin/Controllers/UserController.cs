@@ -41,6 +41,7 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
             loUserProfile.inZoneId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
             loUserProfile.inDivisionId= Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
             loUserProfile.inStoreId = Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString());
+            loUserProfile.DesignationList = moUnitOfWork.DesignationRepository.GetDesignationDropDown(Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value.ToString()));
             return View("~/Areas/DeskAdmin/Views/User/UserDetail.cshtml",loUserProfile);
         }
         public IActionResult SaveUserProfile(UserProfile foUserProfile)
@@ -127,11 +128,5 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
 
         }
 
-        public IActionResult GetDesignationDropDown(int fiDepartmentId)
-        {
-            List<Select2> DesignationDropDown = moUnitOfWork.DesignationRepository.GetDesignationDropDown(fiDepartmentId);
-            return Json(new { data = DesignationDropDown });
-
-        }
     }
 }
