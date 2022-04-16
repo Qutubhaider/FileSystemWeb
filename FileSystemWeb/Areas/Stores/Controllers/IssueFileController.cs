@@ -9,6 +9,7 @@ using FileSystemBAL.FIle.Models;
 using FileSystemBAL.IssueFIleHistory.Models;
 using FileSystemBAL.Repository.IRepository;
 using FileSystemBAL.User.Models;
+using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -155,6 +156,13 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             StoreFileDetailDropDownResult file = moUnitOfWork.FileRepository.GetFileDetailDropDown(fileId);
 
             return Json(new { data = file });
+        }
+
+        public IActionResult GetUserDropdown(int DepartmentId)
+        {
+            List<Select2> UserDropDown = moUnitOfWork.UserRepository.GetUserListByDepartmentId(DepartmentId);
+            return Json(new { data = UserDropDown });
+
         }
     }
 }

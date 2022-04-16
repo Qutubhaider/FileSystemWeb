@@ -10,8 +10,8 @@
     foreach (IssueFileListResult loIssueFileList in Model.GetIssueFileList)
     {
         <tr>
-            <td>@loIssueFileList.stFirstName</td>
-            <td>@loIssueFileList.stDepartmentName</td>
+            <td>@loIssueFileList.stFirstNameAssignedBy</td>
+            <td>@loIssueFileList.stDepartmentAssignedBy</td>
             <td>@loIssueFileList.stFileName</td>
             @{
                 DateTime dtIssueDate = Convert.ToDateTime(loIssueFileList.dtIssueDate);

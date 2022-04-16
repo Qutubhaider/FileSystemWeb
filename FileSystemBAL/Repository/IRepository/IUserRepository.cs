@@ -18,6 +18,7 @@ namespace FileSystemBAL.Repository.IRepository
         List<Select2> GetUserDropDown();
         List<Select2> GetUserListForIssueFile(int fiStoreId,int inDivisionId);
         List<Select2> GetUserListByDivisionId(int fiDivisionId);
+        List<Select2> GetUserListByDepartmentId(int fiDepartmentId);
         UserDropDownDetailResult GetUserDetailFromDropDown(int fiUserId);
     }
 }

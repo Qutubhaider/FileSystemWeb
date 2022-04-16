@@ -23,6 +23,7 @@ namespace FileSystemBAL.Case.Models
         public int inStatus { get; set; }
         public int inStoreFileDetailId { get; set; }
         public int inSRId { get; set; }
+        public int? inDepartmentId { get; set; }
 
         [NotMapped]
         public string stComment { get; set; }
@@ -35,5 +36,8 @@ namespace FileSystemBAL.Case.Models
 
         [NotMapped]
         public List<IssueFileListResult> IssueFileListResult { get; set; }
+
+        [NotMapped]
+        public List<Select2> DepartmentList { get; set; }
     }
 }

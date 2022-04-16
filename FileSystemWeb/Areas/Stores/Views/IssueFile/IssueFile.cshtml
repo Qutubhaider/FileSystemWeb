@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-8">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Add Designation</h4>
+                <h4 class="mb-sm-0">Issue File</h4>
             </div>
         </div>
         <div class="col-4" style="float:right;">
@@ -21,18 +21,7 @@
             <div class="card">
                 <div class="card-body">
                     <form asp-action="SaveIssueFile" asp-controller="IssueFile" asp-area="Stores" class="custom-validation" novalidate="">
-                        <div class="mb-3">
-                            <label class="form-label">Department</label>
-                            <select id="ddUser" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
-                                <option value="">Select Department</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Assign to User</label>
-                            <select onchange="GetUserDetail($('#inAssignUserId').val());" asp-for="inAssignUserId" id="ddUser" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.UserList,"id","value"))">
-                                <option value="">Select User</option>
-                            </select>
-                        </div>
+
                         <div class="mb-3">
                             <label class="form-label">Employee Name || Employee No || PPO No || PF No</label>
                             <select onchange="GetFileDetail($('#inStoreFileDetailsId').val());" asp-for="inStoreFileDetailsId" id="ddFileName" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.FileList,"id","value"))">
@@ -40,10 +29,22 @@
                             </select>
                         </div>
                         <a asp-action="downloadfile" asp-controller="IssueFile" asp-area="Admin" asp-route-fuFileName="@Model.stUnFileName" asp-route-fileName="@Model.stFileName">Download File</a>
-                        @* <div class="mb-3">
-            <label class="form-label">Issue date</label>
-            <input asp-for="dtIssueDate" type="date" id="txtIssueDate" class="form-control" />
-        </div>*@
+
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <select id="ddDepartmentId" asp-for="inDepartmentId" onchange="getUserList($('#ddDepartmentId').val());" class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-items="@(new SelectList(Model.DepartmentList,"id","value"))">
+                                <option value="">Select Department</option>
+                            </select>
+                            <span asp-validation-for="inDepartmentId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Assign to User</label>
+                            <select onchange="GetUserDetail($('#inAssignUserId').val());" asp-for="inAssignUserId" id="ddUser" class="select2 form-control select2-multiple" data-placeholder="Choose ...">
+                                <option value="">Select User</option>
+                            </select>
+                        </div>
+
+
                         <div class="mb-3">
                             <label class="form-label">Comment</label>
                             <textarea asp-for="stComment" id="txtComment" class="form-control"></textarea>
@@ -150,7 +151,24 @@
     <partial name="_ValidationScriptsPartial.cshtml" />
     <script type="text/javascript">
     var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
-    var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
+        var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
+        var msUserList = '@Url.Action("GetUserDropdown")';
+
+        function getUserList(id) {
+            console.log(id);
+            var loData = new Object();
+            loData.DepartmentId = id;
+            if ($("#ddUser").length > 0) {
+                $("#ddUser").empty();
+                $("#ddUser").append("<option value='" + "" + "'>" + "Select User" + "</option>");
+            }
+            loadMyRequest(msUserList, "GET", loData, function (response) {
+                $("#ddUser").empty();
+                $("#ddUser").append("<option value='" + "" + "'>" + "Select User" + "</option>");
+                response.data.forEach(d => $("#ddUser").append("<option value='" + d.id + "'>" + d.value + "</option>"));
+
+            }, function () { });
+        }
     </script>
     <script src="~/Scripts/Common/Common.js" asp-append-version="true"></script>
     <script src="~/Scripts/IssueFile/FileDetail.js" asp-append-version="true"></script>

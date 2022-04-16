@@ -3,6 +3,7 @@ using FileSystemBAL.FIle.Models;
 using FileSystemBAL.IssueFIleHistory.Models;
 using FileSystemBAL.Repository.IRepository;
 using FileSystemBAL.User.Models;
+using FileSystemUtility.Models;
 using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -79,8 +80,9 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
             {
                 loCaseDetail = moUnitOfWork.CaseRepository.GetCaseDetail(Id);
             }
-            loCaseDetail.UserList = moUnitOfWork.UserRepository.GetUserListByDivisionId(Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value));
+            //loCaseDetail.UserList = moUnitOfWork.UserRepository.GetUserListByDepartmentId(Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value));
             loCaseDetail.IssueFileListResult= moUnitOfWork.IssueFileHistoryRepository.GetFileHistoryList(loCaseDetail.inSRId);
+            loCaseDetail.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             return View("~/Areas/DeskOP/Views/Case/CaseDetail.cshtml", loCaseDetail);
         }
 
@@ -132,15 +134,20 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
         public IActionResult GetUserDetailFromDropDown(int userId)
         {
             UserDropDownDetailResult user = moUnitOfWork.UserRepository.GetUserDetailFromDropDown(userId);
-
             return Json(new { data = user });
         }
 
         public IActionResult GetFileDetailFromDropDown(int fileId)
         {
             StoreFileDetailDropDownResult file = moUnitOfWork.FileRepository.GetFileDetailDropDown(fileId);
-
             return Json(new { data = file });
+        }
+
+        public IActionResult GetUserDropdown(int DepartmentId)
+        {
+            List<Select2> UserDropDown = moUnitOfWork.UserRepository.GetUserListByDepartmentId(DepartmentId);
+            return Json(new { data = UserDropDown });
+
         }
     }
 }
