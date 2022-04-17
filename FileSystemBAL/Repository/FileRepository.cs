@@ -1,6 +1,7 @@
 ﻿using FileSystemBAL.Data;
 using FileSystemBAL.FIle.Models;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemBAL.Trace;
 using FileSystemUtility.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace FileSystemBAL.Repository
 {
-    public class FileRepository:IFileRepository
+    public class FileRepository : IFileRepository
     {
         private readonly DatabaseContext moDatabaseContext;
         private int fiSuccess;
@@ -40,8 +41,13 @@ namespace FileSystemBAL.Repository
 
         public List<FileListResult> GetFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize, int? fiUserId = null)
         {
-        return moDatabaseContext.Set<FileListResult>().FromSqlInterpolated($"EXEC getFileList @stFileName={fsFileName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
-    }
+            return moDatabaseContext.Set<FileListResult>().FromSqlInterpolated($"EXEC getFileList @stFileName={fsFileName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
+        }
+
+        public List<TraceFileResults> GetTraceFileList(int fiUserId,int? fiSRId,string fsEmployeeNo,string fsPPONo,string fsPFNo,string fsMobile, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize)
+        {
+            return moDatabaseContext.Set<TraceFileResults>().FromSqlInterpolated($"EXEC getTraceFile @inUserId={fiUserId},@inSRId={fiSRId},@stEmployeeNo={fsEmployeeNo},@stPPONo={fsPPONo},@stPFNo={fsPFNo},@stMobile={fsMobile},@inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize}").ToList();
+        }
 
         public void SaveFile(FileDetail foFileDetail, int fiUserId, out int fiSuccess)
         {
