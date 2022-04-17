@@ -139,6 +139,7 @@
     <Build Include="dbo\table\tblServiceRequest.sql" />
     <Build Include="dbo\Stored Procedures\getFileHistory.sql" />
     <Build Include="dbo\Stored Procedures\getIssueFileListByStore.sql" />
+    <Build Include="dbo\Stored Procedures\getUserListDepartmentId.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />

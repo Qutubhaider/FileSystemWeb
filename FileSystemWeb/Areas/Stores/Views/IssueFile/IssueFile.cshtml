@@ -154,6 +154,12 @@
         var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
         var msUserList = '@Url.Action("GetUserDropdown")';
 
+        
+         $(document).ready(function () {
+            getUserList($('#ddDepartmentId').val());
+            console.log($('#ddDepartmentId').val());
+         });
+
         function getUserList(id) {
             console.log(id);
             var loData = new Object();

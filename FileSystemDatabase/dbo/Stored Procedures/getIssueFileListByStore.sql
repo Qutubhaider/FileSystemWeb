@@ -21,7 +21,7 @@ BEGIN
 SET NOCOUNT ON;   
 	SET @stFileName =REPLACE(@stFileName,'''','''''') 
 	DECLARE @stSQL AS NVARCHAR(MAX) 
-	DECLARE @stSort AS NVARCHAR(MAX) = 'stFileName' 
+	DECLARE @stSort AS NVARCHAR(MAX) = 'dtIssueDate' 
 	DECLARE @inStart INT, @inEnd INT 
  
 	SET @stSortOrder = ISNULL(@stSortOrder, 'DESC') 
@@ -33,7 +33,7 @@ SET NOCOUNT ON;
 		SET @stSort = 'stFileName'; 
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
-		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
+		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'DESC') + ' ) AS INT) AS inRownumber, 
 		inSRId,inlssueFileId,unlssueFileId,dtIssueDate,stComment,inStatus,stFileName,stDivisionName,stDepartmentName,stFirstName
 		FROM ( 
             SELECT  IFH.inSRId,
@@ -52,7 +52,7 @@ SET NOCOUNT ON;
             JOIN tblStoreFileDetails F ON F.inStoreFileDetailsId=IFH.inStoreFileDetailsId
             JOIN tblDepartment DP ON DP.inDepartmentId=IFH.inDepartmentId
             
-            WHERE 1=1' 
+            WHERE 1=1  ' 
  
 	IF(ISNULL(@stFileName,'')<>'') 
 		SET @stSQL = @stSQL + '  AND (F.stFileName LIKE ''%' + CONVERT(NVARCHAR(211), @stFileName)  + '%'')' 
