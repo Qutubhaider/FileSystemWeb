@@ -6,7 +6,7 @@
 Ref# Modified By   Modified date   Description  
 */ 
 
-CREATE PROCEDURE [dbo].[saveIssueFileByStore]
+ALTER PROCEDURE [dbo].[saveIssueFileByStore]
 (  
 	@inIssueFileId	INT=NULL,																																	
 	@inStoreFileId	INT,																
@@ -23,7 +23,7 @@ AS
   DECLARE @currentDateTime DATETIME=getDate()
   SET @inSuccess=0
 		 BEGIN 	
-				INSERT INTO tblServiceRequest(inStoreFileDetailsId) VALUES (@inStoreFileId)
+				INSERT INTO tblServiceRequest(inStoreFileDetailsId,dtSRdate,inCreatedBy) VALUES (@inStoreFileId,@currentDateTime,@inCreatedBy)
 
 				INSERT INTO tblIssueFileHistory(inStoreFileDetailsId,inAssignUserId,inDivisionId,inDepartmentId,dtIssueDate,stComment,inStatus,
 												dtCreateDate,inCreatedBy,inSRId)  

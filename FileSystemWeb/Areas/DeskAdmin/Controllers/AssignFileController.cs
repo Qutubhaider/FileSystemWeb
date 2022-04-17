@@ -134,8 +134,7 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
                 TempData["Message"] = string.Format(AlertMessage.OperationalError, "accepting case");
                 return RedirectToAction("Index");
             }
-            return null;
-           
+            return null;           
 
         }
         public IActionResult DownloadFile(string fuFileName, string fileName)
