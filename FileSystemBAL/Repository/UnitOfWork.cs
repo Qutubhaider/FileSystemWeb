@@ -27,6 +27,7 @@ namespace FileSystemBAL.Repository
             FileRepository = new FileRepository(moDatabaseContext);
             IssueFileHistoryRepository = new IssueFileHistoreyRepository(moDatabaseContext);
             CaseRepository = new CaseRepository(moDatabaseContext);
+            DashboardRepository = new DashboardRepository(moDatabaseContext);
         }
 
         public IDivisionRepository DivisionRepository {get;private set;}
@@ -42,6 +43,7 @@ namespace FileSystemBAL.Repository
         public IFileRepository FileRepository{get;private set;}
         public IIssueFileHistoryRepository IssueFileHistoryRepository{get;private set;}
         public ICaseRepository CaseRepository {get;private set;}
+        public IDashboardRepository DashboardRepository { get;private set;}
 
         public void Dispose()
         {

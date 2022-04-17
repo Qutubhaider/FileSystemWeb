@@ -1,0 +1,50 @@
+﻿using FileSystemBAL.Data;
+using FileSystemBAL.Repository.IRepository;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FileSystemBAL.Repository
+{
+    public class DashboardRepository : IDashboardRepository
+    {
+        private readonly DatabaseContext moDatabaseContext;
+
+        public DashboardRepository(DatabaseContext foDatabaseContext)
+        {
+            moDatabaseContext = foDatabaseContext;
+        }
+        public void getDeskOperatorCount(int inUserId, int inRoleId, out int inDeskOperatorCount)
+        {
+            SqlParameter loDeskOPCount = new SqlParameter("@inDeskOpCount", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inDeskOperatorCount={loDeskOPCount} OUT");
+            inDeskOperatorCount = Convert.ToInt32(loDeskOPCount.Value);
+        }
+
+        public void getPendingAcceptFileCount(int inUserId, int inRoleId, out int inPendingAcceptFileCount)
+        {
+            SqlParameter loFileCount = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inPendingAcceptFileCount={loFileCount} OUT");
+            inPendingAcceptFileCount = Convert.ToInt32(loFileCount.Value);
+        }
+
+        public void getPendingCaseCount(int inUserId, int inRoleId, out int inPendingCaseCount)
+        {
+            SqlParameter loCaseCount = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inSuccess={loCaseCount} OUT");
+            inPendingCaseCount = Convert.ToInt32(loCaseCount.Value);
+        }
+
+        public void getStoreUserCount(int inUserId, int inRoleId, out int inStoreUserCount)
+        {
+            SqlParameter loStoreUserCount = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inSuccess={loStoreUserCount} OUT");
+            inStoreUserCount = Convert.ToInt32(loStoreUserCount.Value);
+        }
+    }
+}

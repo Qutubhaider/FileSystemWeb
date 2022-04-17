@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using FileSystemBAL.Dashboard.Models;
+using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Utilities;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace DmfWeb.DeskAdmin.Stores.Controllers
@@ -9,9 +13,24 @@ namespace DmfWeb.DeskAdmin.Stores.Controllers
     [Area("DeskAdmin")]
     public class DashboardController : Controller
     {
+        private readonly IUnitOfWork moUnitOfWork;
+        private readonly static int miPageSize = 10;
+        public DashboardController(IUnitOfWork foUnitOfWork)
+        {
+            moUnitOfWork = foUnitOfWork;
+        }
         public IActionResult Index()
         {
-            return View("~/Areas/DeskAdmin/Views/Dashboard/Dashboard.cshtml");
+            DashboardResult loDashboardResult = new DashboardResult();
+            moUnitOfWork.DashboardRepository.getStoreUserCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value),(int)CommonConstant.UserType.DeskAdmin,out int inStoreUserCount);
+            loDashboardResult.inStoreUserCount= inStoreUserCount;
+            moUnitOfWork.DashboardRepository.getDeskOperatorCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inDeskOpCount);
+            loDashboardResult.inDeskOperatorCount = inDeskOpCount;
+            moUnitOfWork.DashboardRepository.getPendingAcceptFileCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inPendingAcceptFileCount);
+            loDashboardResult.inPendingAcceptFileCount = inPendingAcceptFileCount;
+            moUnitOfWork.DashboardRepository.getPendingCaseCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inCaseCount);
+            loDashboardResult.inPendingCaseCount = inCaseCount;
+            return View("~/Areas/DeskAdmin/Views/Dashboard/Dashboard.cshtml",loDashboardResult);
         }
     }
 }
