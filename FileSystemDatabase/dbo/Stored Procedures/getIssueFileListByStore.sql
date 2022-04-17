@@ -21,7 +21,7 @@ BEGIN
 SET NOCOUNT ON;   
 	SET @stFileName =REPLACE(@stFileName,'''','''''') 
 	DECLARE @stSQL AS NVARCHAR(MAX) 
-	DECLARE @stSort AS NVARCHAR(MAX) = 'stFileName' 
+	DECLARE @stSort AS NVARCHAR(MAX) = 'dtIssueDate' 
 	DECLARE @inStart INT, @inEnd INT 
  
 	SET @stSortOrder = ISNULL(@stSortOrder, 'DESC') 
@@ -33,8 +33,8 @@ SET NOCOUNT ON;
 		SET @stSort = 'stFileName'; 
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
-		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		inSRId,inlssueFileId,unlssueFileId,dtIssueDate,stComment,inStatus,stFileName,stDivisionName,stDepartmentName,stFirstName
+		SELECT CAST(ROW_NUMBER() OVER(ORDER BY DESC ' + ISNULL(@stSortOrder,'DESC') + ' ) AS INT) AS inRownumber, 
+		inSRId,inlssueFileId,unlssueFileId,dtIssueDate,stComment,inStatus,stFileName,stDivisionName,stFirstNameAssignedBy,stDepartmentAssignedBy,stFirstNameAssignTo,stDepartmentAssignedTo
 		FROM ( 
             SELECT  IFH.inSRId,
                     IFH.inlssueFileId, 
@@ -43,15 +43,18 @@ SET NOCOUNT ON;
 					IFH.stComment,
 					IFH.inStatus,
                     (F.stEmployeeName+'' || ''+F.stEmployeeNumber+'' || ''+F.stPPONumber+'' || ''+F.stPFNumber) AS stFileName,
-					DV.stDivisionName,
-					DP.stDepartmentName,
-					UP.stFirstName
-             FROM tblIssueFileHistory IFH WITH(NOLOCK)
+					DV.stDivisionName,					
+					(UP.stFirstName) AS stFirstNameAssignedBy,
+					(DP.stDepartmentName) stDepartmentAssignedBy,
+					(UPF.stFirstName) AS stFirstNameAssignTo,
+					(DPS.stDepartmentName) stDepartmentAssignedTo
+            FROM tblIssueFileHistory IFH WITH(NOLOCK)
             JOIN tblDivision DV ON DV.inDivisionId=IFH.inDivisionId
-            JOIN tblUserProfile UP ON UP.inUserProfileId=IFH.inAssignUserId
+            JOIN tblUserProfile UP ON UP.inUserProfileId=IFH.inCreatedBy
+			JOIN tblUserProfile UPF ON UPF.inUserProfileId=IFH.inAssignUserId
             JOIN tblStoreFileDetails F ON F.inStoreFileDetailsId=IFH.inStoreFileDetailsId
-            JOIN tblDepartment DP ON DP.inDepartmentId=IFH.inDepartmentId
-            
+            JOIN tblDepartment DP ON DP.inDepartmentId=UP.inDepartmentId
+            JOIN tblDepartment DPS ON DPS.inDepartmentId=UPF.inDepartmentId
             WHERE 1=1' 
  
 	IF(ISNULL(@stFileName,'')<>'') 
