@@ -22,7 +22,7 @@ namespace FileSystemBAL.Repository
         public void getDeskOperatorCount(int inUserId, int inRoleId, out int inDeskOperatorCount)
         {
             SqlParameter loDeskOPCount = new SqlParameter("@inDeskOpCount", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inDeskOperatorCount={loDeskOPCount} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inDeskOpCount={loDeskOPCount} OUT");
             inDeskOperatorCount = Convert.ToInt32(loDeskOPCount.Value);
         }
 
@@ -36,14 +36,14 @@ namespace FileSystemBAL.Repository
         public void getPendingCaseCount(int inUserId, int inRoleId, out int inPendingCaseCount)
         {
             SqlParameter loCaseCount = new SqlParameter("@inPendingCaseCount", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inSuccess={loCaseCount} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inPendingCaseCount={loCaseCount} OUT");
             inPendingCaseCount = Convert.ToInt32(loCaseCount.Value);
         }
 
         public void getStoreUserCount(int inUserId, int inRoleId, out int inStoreUserCount)
         {
             SqlParameter loStoreUserCount = new SqlParameter("@inStoreUserCount", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inSuccess={loStoreUserCount} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inStoreUserCount={loStoreUserCount} OUT");
             inStoreUserCount = Convert.ToInt32(loStoreUserCount.Value);
         }
     }
