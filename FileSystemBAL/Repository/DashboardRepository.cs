@@ -28,21 +28,21 @@ namespace FileSystemBAL.Repository
 
         public void getPendingAcceptFileCount(int inUserId, int inRoleId, out int inPendingAcceptFileCount)
         {
-            SqlParameter loFileCount = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            SqlParameter loFileCount = new SqlParameter("@inPendingAcceptFileCount", SqlDbType.Int) { Direction = ParameterDirection.Output };
             moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inPendingAcceptFileCount={loFileCount} OUT");
             inPendingAcceptFileCount = Convert.ToInt32(loFileCount.Value);
         }
 
         public void getPendingCaseCount(int inUserId, int inRoleId, out int inPendingCaseCount)
         {
-            SqlParameter loCaseCount = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            SqlParameter loCaseCount = new SqlParameter("@inPendingCaseCount", SqlDbType.Int) { Direction = ParameterDirection.Output };
             moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inSuccess={loCaseCount} OUT");
             inPendingCaseCount = Convert.ToInt32(loCaseCount.Value);
         }
 
         public void getStoreUserCount(int inUserId, int inRoleId, out int inStoreUserCount)
         {
-            SqlParameter loStoreUserCount = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            SqlParameter loStoreUserCount = new SqlParameter("@inStoreUserCount", SqlDbType.Int) { Direction = ParameterDirection.Output };
             moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC getDeskOperatorCount @inUserId={inUserId},@inRoleId={inRoleId} @inSuccess={loStoreUserCount} OUT");
             inStoreUserCount = Convert.ToInt32(loStoreUserCount.Value);
         }
