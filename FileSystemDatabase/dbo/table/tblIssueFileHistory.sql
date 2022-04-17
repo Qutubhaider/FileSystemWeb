@@ -9,6 +9,8 @@
     dtIssueDate DATETIME,
     stComment NVARCHAR(200),
     inStatus INT,
+    stFileName NVARCHAR(200),
+    stUnFileName NVARCHAR(200),
     flgIsDeleted BIT DEFAULT(0),
     dtCreateDate DATETIME NOT NULL,
     inCreatedBy INT NOT NULL, 

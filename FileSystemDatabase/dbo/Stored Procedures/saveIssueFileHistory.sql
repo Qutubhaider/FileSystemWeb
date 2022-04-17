@@ -14,6 +14,8 @@ CREATE PROCEDURE [dbo].[saveIssueFileHistory]
 @inDivisionId		INT,													
 @inDepartmentId		INT,																					
 @stComment		NVARCHAR(200),
+@stFileName		NVARCHAR(200),
+@stUnFileName		NVARCHAR(200),
 @inStatus           INT,
 @inCreatedBy        INT,
 @inSuccess INT OUT,
@@ -26,8 +28,8 @@ AS
   SET @inSuccess=0
 	IF(ISNULL(@inIssueFileId,0)=0)  
 		 BEGIN 			
-				INSERT INTO tblIssueFileHistory(inStoreFileDetailsId,inAssignUserId,inDivisionId,inDepartmentId,dtIssueDate,stComment,inStatus,dtCreateDate,inCreatedBy,inSRId)  
-				SELECT  @inStoreFileId,@inUserId,@inDivisionId,@inDepartmentId,GETDATE(),@stComment,@inStatus,@currentDateTime, @inCreatedBy  ,@inSRId
+				INSERT INTO tblIssueFileHistory(inStoreFileDetailsId,inAssignUserId,inDivisionId,inDepartmentId,dtIssueDate,stComment,inStatus,dtCreateDate,inCreatedBy,inSRId,stFileName,stUnFileName)  
+				SELECT  @inStoreFileId,@inUserId,@inDivisionId,@inDepartmentId,GETDATE(),@stComment,@inStatus,@currentDateTime, @inCreatedBy  ,@inSRId,@stFileName,@stUnFileName
 				SET @inSuccess=101  
 
 				UPDATE tblCase SET inStatus=2 WHERE inCaseId=@inCaseId

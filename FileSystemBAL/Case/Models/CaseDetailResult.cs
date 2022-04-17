@@ -1,5 +1,6 @@
 ﻿using FileSystemBAL.IssueFIleHistory.Models;
 using FileSystemUtility.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -39,5 +40,7 @@ namespace FileSystemBAL.Case.Models
 
         [NotMapped]
         public List<Select2> DepartmentList { get; set; }
+        [NotMapped]
+        public IFormFile File { get; set; }
     }
 }

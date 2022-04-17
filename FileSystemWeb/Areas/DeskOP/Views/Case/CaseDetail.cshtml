@@ -86,7 +86,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Attehment</label>
-                                <input type="file" class="filestyle" data-buttonname="btn-secondary" />
+                                <input type="file" class="filestyle" asp-for="File" data-buttonname="btn-secondary" />
                             </div>
 
                             <div>
@@ -220,6 +220,11 @@
         var msGetUserDetail = '@Url.Action("GetUserDetailFromDropDown")';
         var msGetFileDetail = '@Url.Action("GetFileDetailFromDropDown")';
         var msUserList = '@Url.Action("GetUserDropdown")';
+
+         $(document).ready(function () {
+            getUserList($('#ddDepartmentId').val());
+            console.log($('#ddDepartmentId').val());
+         });
 
         function getUserList(id) {
             console.log(id);

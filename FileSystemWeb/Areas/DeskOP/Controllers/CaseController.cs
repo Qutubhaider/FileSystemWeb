@@ -8,10 +8,12 @@ using FileSystemUtility.Service.PaginationService;
 using FileSystemUtility.Utilities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.DeskOP.Controllers
@@ -23,10 +25,12 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
 
             private readonly IUnitOfWork moUnitOfWork;
             private readonly static int miPageSize = 10;
+            private readonly IWebHostEnvironment moWebHostEnvironment;
 
-            public CaseController(IUnitOfWork foUnitOfWork)
+        public CaseController(IUnitOfWork foUnitOfWork,IWebHostEnvironment foWebHostEnvironment)
             {
                 moUnitOfWork = foUnitOfWork;
+            moWebHostEnvironment = foWebHostEnvironment;
             }
             public IActionResult Index()
             {
@@ -102,7 +106,26 @@ namespace FileSystemWeb.Areas.DeskOP.Controllers
                     inSRId = foCaseDetail.inSRId,
                     inCaseId = foCaseDetail.inCaseId
                 };
-                int liSuccess = 0;
+
+                string stUnFileName = string.Empty;
+                //string stFile = string.Empty;
+                if (foCaseDetail != null)
+                {
+                    if (foCaseDetail.File != null)
+                    {
+                        string loFolderPath = Path.Combine(moWebHostEnvironment.WebRootPath, "Files");
+                        loIssueFile.stUnFileName = Guid.NewGuid().ToString() + Path.GetExtension(foCaseDetail.File.FileName);
+                        loIssueFile.stFileName = foCaseDetail.File.FileName;
+                        string filePath = Path.Combine(loFolderPath, loIssueFile.stUnFileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            foCaseDetail.File.CopyTo(fileStream);
+                        }
+                    }
+                }
+
+
+                 int liSuccess = 0;
                 int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString());
                 moUnitOfWork.IssueFileHistoryRepository.SaveIssueFile(loIssueFile, liUserId, out liSuccess);
                 if (liSuccess == (int)CommonFunctions.ActionResponse.Add)
