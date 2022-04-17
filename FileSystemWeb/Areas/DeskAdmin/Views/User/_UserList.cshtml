@@ -16,6 +16,7 @@
             <td>@loUserList.stDesignationName</td>
             <td>@loUserList.stDeskName</td>
             <td>@loUserList.stUserName</td>
+            <td>@Enum.GetName(typeof(CommonFunctions.UserStatus), loUserList.inStatus)</td>
             <td class="text-center"><a asp-area="DeskAdmin" asp-controller="User" asp-action="Detail" asp-route-id="@loUserList.unUserProfileId" class="btn btn-outline-secondary btn-sm edit"><i class="fas fa-pencil-alt"></i> </a></td>
         </tr>
     }

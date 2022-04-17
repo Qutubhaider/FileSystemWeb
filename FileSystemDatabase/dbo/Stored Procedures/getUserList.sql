@@ -32,10 +32,11 @@ SET NOCOUNT ON;
 	END  
 	SET @stSQL=''+'WITH PAGED AS(  
 		SELECT CAST(ROW_NUMBER() OVER(ORDER BY '+ @stSort + ' ' + ISNULL(@stSortOrder,'ASC') + ' ) AS INT) AS inRownumber, 
-		stUserName,unUserProfileId,stZoneName,stDivisionName,stDepartmentName,stDesignationName,stDeskName,inRole
+		stUserName, inStatus ,unUserProfileId,stZoneName,stDivisionName,stDepartmentName,stDesignationName,stDeskName,inRole
 		FROM ( 
             SELECT  
                     UP.stFirstName AS stUserName,
+					UP.inStatus,
 					U.inRole,
 					UP.unUserProfileId,
 					Z.stZoneName,
@@ -70,6 +71,3 @@ SET NOCOUNT ON;
 	PRINT(@stSQL) 
 	EXEC (@stSQL) 
 END 
-
-
-select * from tblUser
