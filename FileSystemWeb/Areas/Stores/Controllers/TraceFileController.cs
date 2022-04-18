@@ -54,7 +54,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
                 if (size == null || size.Value <= 0)
                     size = miPageSize;
 
-                List<TraceFileResults> loIssueFileListResult = moUnitOfWork.FileRepository.GetTraceFileList(fsFileName == null ? fsFileName : fsFileName.Trim(), sort_column, sort_order, pg.Value, size.Value, Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
+                List<TraceFileResults> loIssueFileListResult = null;//moUnitOfWork.FileRepository.GetTraceFileList(fsFileName == null ? fsFileName : fsFileName.Trim(), sort_column, sort_order, pg.Value, size.Value, Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetIssueFileList = loIssueFileListResult;
                 if (loIssueFileListResult.Count > 0)

@@ -140,6 +140,10 @@
     <Build Include="dbo\Stored Procedures\getFileHistory.sql" />
     <Build Include="dbo\Stored Procedures\getIssueFileListByStore.sql" />
     <Build Include="dbo\Stored Procedures\getUserListDepartmentId.sql" />
+    <Build Include="dbo\Stored Procedures\getDeskOperatorCount.sql" />
+    <Build Include="dbo\Stored Procedures\getStoreUserCount.sql" />
+    <Build Include="dbo\Stored Procedures\getPendingAcceptFileCount.sql" />
+    <Build Include="dbo\Stored Procedures\getPendingCaseCount.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />
