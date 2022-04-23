@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using static FileSystemUtility.Utilities.CommonConstant;
 
 namespace FileSystemWeb.Areas.Stores.Controllers
 {
@@ -31,7 +32,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             return View("~/Areas/Stores/Views/TraceFile/TraceFile.cshtml");
         }
 
-        public IActionResult GetIssueFileList(string fsFileName, int? Status, int? sort_column, string sort_order, int? pg, int? size)
+        public IActionResult GetIssueFileList(int? sort_column, string sort_order, int? pg, int? size)
         {
             StringBuilder lolog = new StringBuilder();
             try

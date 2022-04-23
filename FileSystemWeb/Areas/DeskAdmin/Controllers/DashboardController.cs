@@ -21,16 +21,17 @@ namespace DmfWeb.DeskAdmin.Stores.Controllers
         }
         public IActionResult Index()
         {
-            DashboardResult loDashboardResult = new DashboardResult();
-            moUnitOfWork.DashboardRepository.getStoreUserCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value),(int)CommonConstant.UserType.DeskAdmin,out int inStoreUserCount);
-            loDashboardResult.inStoreUserCount= inStoreUserCount;
-            moUnitOfWork.DashboardRepository.getDeskOperatorCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inDeskOpCount);
-            loDashboardResult.inDeskOperatorCount = inDeskOpCount;
-            moUnitOfWork.DashboardRepository.getPendingAcceptFileCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inPendingAcceptFileCount);
-            loDashboardResult.inPendingAcceptFileCount = inPendingAcceptFileCount;
-            moUnitOfWork.DashboardRepository.getPendingCaseCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inCaseCount);
-            loDashboardResult.inPendingCaseCount = inCaseCount;
-            return View("~/Areas/DeskAdmin/Views/Dashboard/Dashboard.cshtml",loDashboardResult);
+            /* DashboardResult loDashboardResult = new DashboardResult();
+             moUnitOfWork.DashboardRepository.getStoreUserCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value),(int)CommonConstant.UserType.DeskAdmin,out int inStoreUserCount);
+             loDashboardResult.inStoreUserCount= inStoreUserCount;
+             moUnitOfWork.DashboardRepository.getDeskOperatorCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inDeskOpCount);
+             loDashboardResult.inDeskOperatorCount = inDeskOpCount;
+             moUnitOfWork.DashboardRepository.getPendingAcceptFileCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inPendingAcceptFileCount);
+             loDashboardResult.inPendingAcceptFileCount = inPendingAcceptFileCount;
+             moUnitOfWork.DashboardRepository.getPendingCaseCount(Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value), (int)CommonConstant.UserType.DeskAdmin, out int inCaseCount);
+             loDashboardResult.inPendingCaseCount = inCaseCount;*/
+            return View("~/Areas/DeskAdmin/Views/Dashboard/Dashboard.cshtml");
+            //return View("~/Areas/DeskAdmin/Views/Dashboard/Dashboard.cshtml",loDashboardResult);
         }
     }
 }
