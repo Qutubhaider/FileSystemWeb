@@ -113,7 +113,8 @@ namespace FileSystemWeb.Areas.Divisions.Controllers
                     size = miPageSize;
 
                 List<UserListResult> loUserListResults = new List<UserListResult>();
-                loUserListResults = moUnitOfWork.UserRepository.GetUserList(UserName == null ? UserName : UserName.Trim(), sort_column, sort_order, pg.Value, size.Value);
+                int lsDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
+                loUserListResults = moUnitOfWork.UserRepository.GetUserList(null, lsDivisionId, UserName == null ? UserName : UserName.Trim(), sort_column, sort_order, pg.Value, size.Value);
                 dynamic loModel = new ExpandoObject();
                 loModel.GetUserList = loUserListResults;
                 if (loUserListResults.Count > 0)

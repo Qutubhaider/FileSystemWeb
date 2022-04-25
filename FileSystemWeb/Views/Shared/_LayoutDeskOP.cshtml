@@ -3,7 +3,9 @@
 
 @inject IHttpContextAccessor HttpContextAccessor
 @{
-    var lsUserName = User.FindFirst(CommonConstant.SessionConstant.stUserName).Value.ToString();
+    var lsUserName = User.FindFirst(CommonConstant.SessionConstant.Name).Value.ToString();
+    var lsZoneName = User.FindFirst(CommonConstant.SessionConstant.ZoneName).Value.ToString();
+    var lsDivisionName = User.FindFirst(CommonConstant.SessionConstant.DivisionName).Value.ToString();
     var lsDepartmentName = User.FindFirst(CommonConstant.SessionConstant.DepartmentName).Value.ToString();
 }
 <!doctype html>
@@ -80,7 +82,27 @@
                     <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
                         <i class="ri-menu-2-line align-middle"></i>
                     </button>
-
+                    <div class="card-body">
+                        <div class="flex-grow-1 overflow-hidden">
+                            <p class="text-truncate mb-0">
+                                <span class="text-success me-2">Zone Name</span> @lsZoneName &nbsp;&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex-grow-1 overflow-hidden">
+                            <p class="text-truncate mb-0">
+                                <span class="text-success me-2">Division Name</span> @lsDivisionName &nbsp;&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex-grow-1 overflow-hidden">
+                            <p class="text-truncate mb-0">
+                                <span class="text-success me-2">Department Name</span> @lsDepartmentName &nbsp;&nbsp;
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="d-flex">
@@ -88,7 +110,7 @@
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="mdi mdi-account-circle-outline"></i>
-                            <span class="d-none d-xl-inline-block ms-1">Department Operator / @lsDepartmentName / @lsUserName</span>
+                            <span class="d-none d-xl-inline-block ms-1">@lsUserName</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">

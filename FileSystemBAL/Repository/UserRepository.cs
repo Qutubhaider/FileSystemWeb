@@ -48,9 +48,9 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<UserProfile>().FromSqlInterpolated($"EXEC getUserDetail @unUserProfileId={fuUserId}").AsEnumerable().FirstOrDefault();
         }
 
-        public List<UserListResult> GetUserList(string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId=null)
+        public List<UserListResult> GetUserList(int? fiDepartmentId,int? fiDivisionId, string fsStoreName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId=null)
         {
-            return moDatabaseContext.Set<UserListResult>().FromSqlInterpolated($"EXEC getUserList @stUserName={fsStoreName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
+            return moDatabaseContext.Set<UserListResult>().FromSqlInterpolated($"EXEC getUserList @inDepartmentId={fiDepartmentId} ,@inDivisionId={fiDivisionId}, @stUserName={fsStoreName}, @inSortColumn={fiSortColumn},@stSortOrder={fsSortOrder}, @inPageNo={fiPageNo},@inPageSize={fiPageSize},@inUserId={fiUserId}").ToList();
         }
 
         public void InserUserProfile(UserProfile foUserProfile, int fiUserId, out int fiSuccess)

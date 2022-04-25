@@ -39,17 +39,17 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
             loUserProfile.DeskList = moUnitOfWork.DeskRepository.GetDeskDropDown(Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString()));
             loUserProfile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             loUserProfile.inZoneId = Convert.ToInt32(User.FindFirst(SessionConstant.ZoneId).Value.ToString());
-            loUserProfile.inDivisionId= Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
+            loUserProfile.inDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
             loUserProfile.inStoreId = Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString());
             loUserProfile.DesignationList = moUnitOfWork.DesignationRepository.GetDesignationDropDown(Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value.ToString()));
-            return View("~/Areas/DeskAdmin/Views/User/UserDetail.cshtml",loUserProfile);
+            return View("~/Areas/DeskAdmin/Views/User/UserDetail.cshtml", loUserProfile);
         }
         public IActionResult SaveUserProfile(UserProfile foUserProfile)
         {
             try
             {
                 int liSuccess = 0;
-                int liUserId =  Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
+                int liUserId = Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()); //User.FindFirst(SessionConstant)
                 foUserProfile.inDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value);
                 if (foUserProfile != null)
                 {
@@ -109,7 +109,9 @@ namespace FileSystemWeb.Areas.DeskAdmin.Controllers
                     size = miPageSize;
 
                 List<UserListResult> loUserListResults = new List<UserListResult>();
-                loUserListResults = moUnitOfWork.UserRepository.GetUserList(UserName == null ? UserName : UserName.Trim(), sort_column, sort_order, pg.Value, size.Value,Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value));
+                int liDivisionId = Convert.ToInt32(User.FindFirst(SessionConstant.DivisionId).Value.ToString());
+                int liDepartmentId = Convert.ToInt32(User.FindFirst(SessionConstant.DepartmentId).Value.ToString());
+                loUserListResults = moUnitOfWork.UserRepository.GetUserList(liDepartmentId, liDivisionId, UserName == null ? UserName : UserName.Trim(), sort_column, sort_order, pg.Value, size.Value, Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value));
                 dynamic loModel = new ExpandoObject();
                 loModel.GetUserList = loUserListResults;
                 if (loUserListResults.Count > 0)

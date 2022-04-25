@@ -1,5 +1,5 @@
 ﻿using FileSystemBAL.FIle.Models;
-using FileSystemBAL.Trace;
+using FileSystemBAL.Trace.Models;
 using FileSystemUtility.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace FileSystemBAL.Repository.IRepository
         void SaveFile(FileDetail foFileDetail, int fiUserId, out int fiSuccess);
         FileDetail GetFileDetail(Guid unFileId);
         List<FileListResult> GetFileList(string fsFileName, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize,int? fiUserId = null);
-        public List<TraceFileResults> GetTraceFileList(int fiUserId, int? fiSRId, string fsEmployeeNo, string fsPPONo, string fsPFNo, string fsMobile, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
+        public List<TraceFileResults> GetTraceFileList(int? fiDivisionId, int? fiStoreId, int? fiSRId, string fsEmployeeNo, string fsPPONo, string fsPFNo, string fsMobile, int? fiSortColumn, string fsSortOrder, int? fiPageNo, int? fiPageSize);
         List<Select2> GetFileDropDown();
         StoreFileDetailDropDownResult GetFileDetailDropDown(int fiFileId);
 

@@ -22,6 +22,9 @@ namespace FileSystemUtility.Utilities
             public const string StoreId = "StoreId";
             public const string DepartmentId = "DepartmentId";
             public const string DepartmentName = "DepartmentName";
+            public const string DivisionName = "DivisionName";
+            public const string ZoneName = "ZoneName";
+            public const string Name = "Name";
         }
 
         public class RoleConstants

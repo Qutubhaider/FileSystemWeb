@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileSystemBAL.Trace
+namespace FileSystemBAL.Trace.Models
 {
     public class TraceFileResults
     {

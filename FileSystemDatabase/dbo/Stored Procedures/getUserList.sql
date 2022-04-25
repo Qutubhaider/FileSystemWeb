@@ -7,6 +7,8 @@ Ref#	Modified By			Modified date			Description
 */ 
 CREATE PROC [dbo].[getUserList] 
 ( 
+	@inDepartmentId INT=NULL,
+	@inDivisionId INT=NULL,
 	@stUserName NVARCHAR(211)=NULL,   
 	@inSortColumn INT = NULL, 
 	@stSortOrder NVARCHAR(51) = NULL, 
@@ -53,14 +55,21 @@ SET NOCOUNT ON;
             JOIN tblDeskDetail DD ON DD.inDeskId = UP.inDeskId
             WHERE 1=1' 
  
-	IF(ISNULL(@stUserName,'')<>'') 
-		SET @stSQL = @stSQL + '  AND (UP.stFirstName LIKE ''%' + CONVERT(NVARCHAR(211), @stUserName)  + '%'')' 
- 
- +'' 
-   IF(ISNULL(@inUserId,0)>0)               
+ IF(ISNULL(@stUserName,'')<>'') 
+		SET @stSQL = @stSQL + '  AND (UP.stFirstName LIKE ''%' + CONVERT(NVARCHAR(211), @stUserName)  + '%'')' +'' 
+
+
+
+ IF(ISNULL(@inDepartmentId,0)>0)               
+		SET @stSQL = @stSQL +' AND UP.inDepartmentId= '+ CONVERT(NVARCHAR(11), @inDepartmentId) +''
+ ELSE  IF(ISNULL(@inUserId,0)>0)               
 		SET @stSQL = @stSQL +' AND UP.inCreatedBy= '+ CONVERT(NVARCHAR(11), @inUserId) +''
  
-	SET @stSQL = @stSQL +' 
+ IF(ISNULL(@inDivisionId,0)>0)               
+		SET @stSQL = @stSQL +' AND UP.inDivisionId= '+ CONVERT(NVARCHAR(11), @inDivisionId) +''
+
+ 
+ SET @stSQL = @stSQL +' 
 				)A )   
 				SELECT (SELECT CAST(COUNT(*) AS INT) FROM PAGED) AS inRecordCount,*   
 				FROM PAGED '  

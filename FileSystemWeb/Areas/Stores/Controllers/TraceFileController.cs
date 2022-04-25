@@ -1,5 +1,6 @@
 ﻿using FileSystemBAL.Repository.IRepository;
 using FileSystemBAL.Trace;
+using FileSystemBAL.Trace.Models;
 using FileSystemUtility.Service.PaginationService;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -32,7 +33,7 @@ namespace FileSystemWeb.Areas.Stores.Controllers
             return View("~/Areas/Stores/Views/TraceFile/TraceFile.cshtml");
         }
 
-        public IActionResult GetIssueFileList(int? sort_column, string sort_order, int? pg, int? size)
+        public IActionResult GetTraceFileList(int? sort_column, string sort_order, int? pg, int? size)
         {
             StringBuilder lolog = new StringBuilder();
             try
@@ -55,9 +56,9 @@ namespace FileSystemWeb.Areas.Stores.Controllers
                 if (size == null || size.Value <= 0)
                     size = miPageSize;
 
-                List<TraceFileResults> loIssueFileListResult = null;//moUnitOfWork.FileRepository.GetTraceFileList(fsFileName == null ? fsFileName : fsFileName.Trim(), sort_column, sort_order, pg.Value, size.Value, Convert.ToInt32(User.FindFirst(SessionConstant.Id).Value.ToString()));
+                List<TraceFileResults> loIssueFileListResult = moUnitOfWork.FileRepository.GetTraceFileList(null,Convert.ToInt32(User.FindFirst(SessionConstant.StoreId).Value.ToString()),null,null,null,null,null, sort_column, sort_order, pg.Value, size.Value);
                 dynamic loModel = new ExpandoObject();
-                loModel.GetIssueFileList = loIssueFileListResult;
+                loModel.GetTraceFileList = loIssueFileListResult;
                 if (loIssueFileListResult.Count > 0)
                 {
                     liTotalRecords = loIssueFileListResult[0].inRecordCount;
