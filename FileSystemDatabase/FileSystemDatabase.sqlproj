@@ -144,6 +144,8 @@
     <Build Include="dbo\Stored Procedures\getStoreUserCount.sql" />
     <Build Include="dbo\Stored Procedures\getPendingAcceptFileCount.sql" />
     <Build Include="dbo\Stored Procedures\getPendingCaseCount.sql" />
+    <Build Include="dbo\table\tblUserDetails.sql" />
+    <Build Include="dbo\Stored Procedures\saveUserDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />

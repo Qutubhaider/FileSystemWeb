@@ -76,5 +76,12 @@ namespace FileSystemBAL.Repository
         {
             return moDatabaseContext.Set<UserDropDownDetailResult>().FromSqlInterpolated($"EXEC getUserDataByDropDown @inUserId={fiUserId}").AsEnumerable().FirstOrDefault();
         }
+
+        public void SaveUser(UserRegisterVM foUser, out int fiSuccess)
+        {
+            SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveUserDetails @inDeskid={foUser.inDeskid},@inZoneId={foUser.inZoneId},@inStoreId={foUser.inStoreId},@inDivisionId ={foUser.inDivisionId},@inDepartmentId  ={foUser.inDepartmentId},@inDesignationId ={foUser.inDesignationId},@stFirstName={foUser.stFirstName},@stLastName ={foUser.stLastName},@stEmail={foUser.stEmail},@stMobile={foUser.stMobile},@stAddress ={foUser.stAddress},@inEmployeeType={foUser.inEmployeeType},@stPFNumber ={foUser.stPFNumber},@stEmployeeNumber={foUser.stEmployeeNumber},@stPPONumber ={foUser.stPPONumber},@inStatus={1}, @inSuccess={loSuccess} OUT");
+            fiSuccess = Convert.ToInt32(loSuccess.Value);
+        }
     }
 }

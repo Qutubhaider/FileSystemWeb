@@ -53,10 +53,33 @@ namespace FileSystemWeb.Controllers
 
         public IActionResult SignUp()
         {
-            UserProfile loUserProfile = new UserProfile();          
+            UserRegisterVM loUserProfile = new UserRegisterVM();          
             loUserProfile.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
             loUserProfile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
             return View("~/Views/Home/SignUp.cshtml", loUserProfile);
+        }
+
+        [HttpPost]
+        public IActionResult SaveUser(UserRegisterVM foUser)
+        {
+            try
+            {
+                moUnitOfWork.UserRepository.SaveUser(foUser, out int success);
+                if(success==(int)CommonFunctions.ActionResponse.Add)
+                {
+                    TempData["ResultCode"] = CommonFunctions.ActionResponse.Add;
+                    TempData["Message"] = string.Format(AlertMessage.RecordAdded,"user");
+                    return RedirectToAction("Login");
+                }
+                TempData["ResultCode"] = CommonFunctions.ActionResponse.Error;
+                TempData["Message"] = string.Format(AlertMessage.OperationalError,"saving user");
+                return RedirectToAction("Login");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
+            
         }
 
         public IActionResult GetDesignationDropDown(int fiDepartmentId)
