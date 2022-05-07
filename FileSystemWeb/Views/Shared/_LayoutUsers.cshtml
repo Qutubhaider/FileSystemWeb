@@ -8,11 +8,12 @@
     var lsDivisionName = User.FindFirst(CommonConstant.SessionConstant.DivisionName).Value.ToString();
     var lsDepartmentName = User.FindFirst(CommonConstant.SessionConstant.DepartmentName).Value.ToString();
 }
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title | Store - File System</title>
+    <title>@ViewBag.Title | Department Admin - File System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
     <link rel="shortcut icon" href="">
@@ -74,9 +75,9 @@
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box text-center">
-                        <h2 style="color: white; margin: 14px;">
-                            Store Panel
-                        </h2>
+                        <h5 style="color: white; margin: 14px;">
+                            Department Admin
+                        </h5>
                     </div>
 
                     <button type="button" class="btn btn-sm px-3 font-size-24 header-item waves-effect" id="vertical-menu-btn">
@@ -104,7 +105,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="d-flex">
                     <div class="dropdown d-inline-block user-dropdown">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
@@ -114,9 +114,7 @@
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="ri-user-line align-middle me-1"></i> Profile</a>
-                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-info" asp-area="Admin" asp-controller="Dashboard" asp-action="ChangePassword"><i class="ri-lock-unlock-line align-middle me-1"></i> Change Password</a>
                             <a class="dropdown-item text-danger" asp-area="" asp-controller="Home" asp-action="Logout"><i class="ri-shut-down-line align-middle me-1 text-danger"></i> Logout</a>
                         </div>
                     </div>
@@ -136,7 +134,7 @@
                     <ul class="metismenu list-unstyled" id="side-menu">
 
                         <li>
-                            <a asp-area="Stores" asp-controller="Dashboard" asp-action="Index" class="waves-effect">
+                            <a asp-area="DeskAdmin" asp-controller="Dashboard" asp-action="Index" class="waves-effect">
                                 <i class="mdi mdi-home-variant-outline"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -144,26 +142,12 @@
                         <li>
                             <a href="javascript: void(0);" class="has-arrow waves-effect">
                                 <i class="ri-map-pin-line"></i>
-                                <span>File Allocation</span>
+                                <span>Case</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a asp-area="Stores" asp-controller="Room" asp-action="Index">Room</a></li>
-                                <li><a asp-area="Stores" asp-controller="Almirah" asp-action="Index">Almirah</a></li>
-                                <li><a asp-area="Stores" asp-controller="Shelves" asp-action="Index">Shelves</a></li>
-                                <li><a asp-area="Stores" asp-controller="File" asp-action="Index">Store File</a></li>
+                                <li><a asp-area="Users" asp-controller="Complain" asp-action="Index">My Complain</a></li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="ri-map-pin-line"></i>
-                                <span>File</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a asp-area="Stores" asp-controller="IssueFile" asp-action="Index">Issue File</a></li>
-                                <li><a asp-area="Stores" asp-controller="TraceFile" asp-action="Index">Trace File</a></li>
-                                <li><a asp-area="Stores" asp-controller="WithdrawFile" asp-action="Index">Withdraw File</a></li>
-                            </ul>
-                        </li>
+                        </li>                       
                     </ul>
                 </div>
                 <!-- Sidebar -->

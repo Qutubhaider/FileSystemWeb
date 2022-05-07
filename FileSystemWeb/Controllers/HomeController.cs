@@ -1,5 +1,6 @@
 ﻿using FileSystemBAL.Repository.IRepository;
 using FileSystemBAL.User.Models;
+using FileSystemUtility.Models;
 using FileSystemUtility.Utilities;
 using FileSystemWeb.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -43,12 +44,43 @@ namespace FileSystemWeb.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
         public IActionResult Login()
         {
             LoginVM loLoginVM = new LoginVM();
             return View("~/Views/Home/Login.cshtml", loLoginVM);
         }
 
+        public IActionResult SignUp()
+        {
+            UserProfile loUserProfile = new UserProfile();          
+            loUserProfile.ZoneList = moUnitOfWork.ZoneRepository.GetZoneDropDown();
+            loUserProfile.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
+            return View("~/Views/Home/SignUp.cshtml", loUserProfile);
+        }
+
+        public IActionResult GetDesignationDropDown(int fiDepartmentId)
+        {
+            List<Select2> DesignationDropDown = moUnitOfWork.DesignationRepository.GetDesignationDropDown(fiDepartmentId);
+            return Json(new { data = DesignationDropDown });
+        }
+
+        public IActionResult GetDivisionDropDown(int fiZoneId)
+        {
+            List<Select2> DivisionDropDown = moUnitOfWork.DivisionRepository.GetDivisionDropDown(fiZoneId);
+            return Json(new { data = DivisionDropDown });
+        }
+        public IActionResult GetDeskDropdown(int fiDivisionId)
+        {
+            List<Select2> DeskDropDown = moUnitOfWork.DeskRepository.GetDeskDropDown(fiDivisionId);
+            return Json(new { data = DeskDropDown });
+        }
+        public IActionResult GetStoreDropdown(int fiDivisionId)
+        {
+            List<Select2> StoreDropDown = moUnitOfWork.StoreRepository.GetStoreDropDown(fiDivisionId);
+            return Json(new { data = StoreDropDown });
+
+        }
         public IActionResult AuthenticateUser(LoginVM foLoginVM)
         {
             try
