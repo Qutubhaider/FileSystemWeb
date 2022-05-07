@@ -45,7 +45,8 @@ namespace FileSystemUtility.Utilities
             DepartmentAdmin = 3,
             DeskAdmin = 4,
             DeskOP = 5,
-            StoreOP = 6
+            StoreOP = 6,
+            SignUpUser= 7
         }
     }
 }

@@ -152,6 +152,8 @@ namespace FileSystemWeb.Controllers
                                 return RedirectToAction("Index", "Dashboard", new { area = "Stores" });
                             else if (UserDetail.inRole == (int)UserType.DeskAdmin)
                                 return RedirectToAction("Index", "Dashboard", new { area = "DeskAdmin" });
+                            else if (UserDetail.inRole == (int)UserType.SignUpUser)
+                                return RedirectToAction("Index", "Dashboard", new { area = "Users" });
                             else
                                 return RedirectToAction("Index", "Dashboard", new { area = "DeskOP" });
 

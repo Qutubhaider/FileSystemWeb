@@ -6,7 +6,7 @@ using static FileSystemUtility.Utilities.CommonConstant;
 namespace FileSystemWeb.Areas.Users.Controllers
 {
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Area("Admin")]
+    [Area("Users")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
