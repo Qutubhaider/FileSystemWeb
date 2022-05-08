@@ -146,6 +146,7 @@
     <Build Include="dbo\Stored Procedures\getPendingCaseCount.sql" />
     <Build Include="dbo\table\tblUserDetails.sql" />
     <Build Include="dbo\Stored Procedures\saveUserDetails.sql" />
+    <Build Include="dbo\table\tblCategoryMaster.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FileSystemDatabase.refactorlog" />
