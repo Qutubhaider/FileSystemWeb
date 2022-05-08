@@ -11,8 +11,9 @@ namespace FileSystemBAL.Category.Models
         public int inCategoryId { get; set; }
         public Guid unCategoryId { get; set; }
         public int inParentCategoryId { get; set; }
+        public int inDepartmentId { get; set; }
+        public int inStatus { get; set; }
         public string stCategoryName { get; set; }
-        public bool flgIsActive { get; set; }
-        public int inCreatedBy { get; set; }
+
     }
 }

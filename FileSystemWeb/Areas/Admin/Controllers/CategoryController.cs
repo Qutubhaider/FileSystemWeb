@@ -11,7 +11,7 @@ using FileSystemUtility.Utilities;
 namespace FileSystemWeb.Areas.Admin.Controllers
 {
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Area("DeskAdmin")]
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork moUnitOfWork;
@@ -29,11 +29,13 @@ namespace FileSystemWeb.Areas.Admin.Controllers
         public IActionResult Detail(Guid id)
         {
             FileSystemBAL.Category.Models.Category loCategory = new FileSystemBAL.Category.Models.Category();
-            if (id != null || id != Guid.Empty)
+            if ( id != Guid.Empty)
             {
                 loCategory = moUnitOfWork.CategoryRepository.GetCategory(id);
             }
-            return View("~/Areas/Admin/Vies/Category/Detail.cshtml", loCategory);
+            loCategory.DepartmentList = moUnitOfWork.DepartmentRepository.GetDepartmentDropDown();
+            loCategory.CategoryList = moUnitOfWork.CategoryRepository.GetCategoryDropDown();
+            return View("~/Areas/Admin/Views/Category/Detail.cshtml", loCategory);
         }
 
         [HttpPost]

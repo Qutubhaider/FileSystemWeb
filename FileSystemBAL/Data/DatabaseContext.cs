@@ -16,6 +16,7 @@ using FileSystemBAL.FIle.Models;
 using FileSystemBAL.IssueFIleHistory.Models;
 using FileSystemBAL.Case.Models;
 using FileSystemBAL.Trace.Models;
+using FileSystemBAL.Category.Models;
 
 namespace FileSystemBAL.Data
 {
@@ -57,6 +58,8 @@ namespace FileSystemBAL.Data
         public DbSet<UserDropDownDetailResult> UserDropDownDetailResult { get; set; }
         public DbSet<StoreFileDetailDropDownResult> StoreFileDetailDropDownResult { get; set; }
         public DbSet<TraceFileResults> TraceFileResults { get; set; }
+        public DbSet<CategoryListResult> CategoryListResult { get; set; }
+        public DbSet<Category.Models.Category> Category { get; set; }
 
         protected override void OnModelCreating(ModelBuilder foModelbuilder)
         {
@@ -92,6 +95,8 @@ namespace FileSystemBAL.Data
             foModelbuilder.Entity<UserDropDownDetailResult>().HasNoKey();
             foModelbuilder.Entity<StoreFileDetailDropDownResult>().HasNoKey();
             foModelbuilder.Entity<TraceFileResults>().HasNoKey();
+            foModelbuilder.Entity<CategoryListResult>().HasNoKey();
+            foModelbuilder.Entity<Category.Models.Category>().HasNoKey();
             base.OnModelCreating(foModelbuilder);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using FileSystemBAL.Category.Models;
 using FileSystemBAL.Data;
 using FileSystemBAL.Repository.IRepository;
+using FileSystemUtility.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,7 +22,7 @@ namespace FileSystemBAL.Repository
         }
         public List<CategoryListResult> GetCategoriesList()
         {
-            return moDatabaseContext.Set<CategoryListResult>().FromSqlInterpolated($"EXEC getCategoriesList ").ToList();
+            return moDatabaseContext.Set<CategoryListResult>().FromSqlInterpolated($"EXEC getCategoryList").ToList();
         }
 
         public FileSystemBAL.Category.Models.Category GetCategory(Guid unCategoryId)
@@ -31,10 +32,15 @@ namespace FileSystemBAL.Repository
 
         }
 
+        public List<Select2> GetCategoryDropDown()
+        {
+            return moDatabaseContext.Set<Select2>().FromSqlInterpolated($"EXEC getCategoryDropDown").ToList();
+        }
+
         public void SaveCategory(Category.Models.Category foCategory, int fiUserId,out int fiSuccesss)
         {
             SqlParameter loSuccess = new SqlParameter("@inSuccess", SqlDbType.Int) { Direction = ParameterDirection.Output };
-            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveCategory @inCategoryId={foCategory.inCategoryId},@inParentCategoryId={foCategory.inParentCategoryId},@stCategoryName={foCategory.stCategoryName},@flgIsActive={foCategory.flgIsActive},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
+            moDatabaseContext.Database.ExecuteSqlInterpolated($"EXEC saveCategory @unCategoryId={foCategory.unCategoryId}, @inCategoryId={foCategory.inCategoryId},@inDepartmentId={foCategory.inDepartmentId},@inStatus={foCategory.inStatus},@inParentCategoryId={foCategory.inParentCategoryId},@stCategoryName={foCategory.stCategoryName},@inCreatedBy={fiUserId},@inSuccess={loSuccess} OUT");
             fiSuccesss = Convert.ToInt32(loSuccess.Value);
         }
     }
