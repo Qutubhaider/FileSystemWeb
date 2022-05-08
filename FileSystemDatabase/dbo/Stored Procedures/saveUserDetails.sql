@@ -1,4 +1,4 @@
-﻿ALTER PROCEDURE [dbo].[saveUserDetails](
+﻿CREATE PROCEDURE [dbo].[saveUserDetails](
 @inDeskid INT,  -- INT,
 @inZoneId INT,
 @inStoreId INT,   

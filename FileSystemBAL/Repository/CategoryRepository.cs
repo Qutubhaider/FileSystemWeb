@@ -24,10 +24,10 @@ namespace FileSystemBAL.Repository
             return moDatabaseContext.Set<CategoryListResult>().FromSqlInterpolated($"EXEC getCategoriesList ").ToList();
         }
 
-        public Category GetCategory(Guid unCategoryId)
+        public FileSystemBAL.Category.Models.Category GetCategory(Guid unCategoryId)
         {
 
-            return moDatabaseContext.Set<Category>().FromSqlInterpolated($"EXEC getCategoryDetail @unCategoryId={unCategoryId}").AsEnumerable().FirstOrDefault();
+            return moDatabaseContext.Set<FileSystemBAL.Category.Models.Category>().FromSqlInterpolated($"EXEC getCategoryDetail @unCategoryId={unCategoryId}").AsEnumerable().FirstOrDefault();
 
         }
 
