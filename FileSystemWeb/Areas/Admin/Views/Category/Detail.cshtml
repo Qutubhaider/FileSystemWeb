@@ -35,7 +35,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Select Parent Category</label>
-                         <select id="ddParentCategory" class="select2 form-control select2-multiple" data-placeholder="Self"asp-items="@(new SelectList(Model.CategoryList,"id","value"))">
+                         <select id="ddParentCategory" asp-for="inParentCategoryId" class="select2 form-control select2-multiple" data-placeholder="Self"asp-items="@(new SelectList(Model.CategoryList,"id","value"))">
                                 <option value="0">Self</option>
                             </select>
                              <span asp-validation-for="inParentCategoryId" class="text-danger"></span>
@@ -58,7 +58,8 @@
                                 </a>
                             </div>
                         </div>
-                     
+                     <input type="hidden" asp-for=inCategoryId/>
+                     <input type="hidden" asp-for=unCategoryId/>
                     </form>
                 </div>
             </div>

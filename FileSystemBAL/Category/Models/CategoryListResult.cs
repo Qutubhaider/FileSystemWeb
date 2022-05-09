@@ -10,8 +10,8 @@ namespace FileSystemBAL.Category.Models
     {
         public int inCategoryId { get; set; }
         public Guid unCategoryId { get; set; }
-        public int inParentCategoryId { get; set; }
-        public int inDepartmentId { get; set; }
+        public string stParentCategoryName { get; set; }
+        public string stDepartmentName { get; set; }
         public int inStatus { get; set; }
         public string stCategoryName { get; set; }
 
